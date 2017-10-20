@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.version;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class VersionExtended extends com.ankamagames.dofus.network.types.version
   // i8
   public byte technology;
 
-  public VersionExtended()
-  {}
+  public VersionExtended() {}
 
   public VersionExtended(
       byte major,
@@ -27,8 +26,7 @@ public class VersionExtended extends com.ankamagames.dofus.network.types.version
       byte patch,
       byte buildType,
       byte install,
-      byte technology)
-  {
+      byte technology) {
 
     super(major, minor, release, revision, patch, buildType);
     this.install = install;
@@ -36,14 +34,12 @@ public class VersionExtended extends com.ankamagames.dofus.network.types.version
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 393;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.install);
@@ -51,8 +47,7 @@ public class VersionExtended extends com.ankamagames.dofus.network.types.version
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.install = reader.read_i8();
@@ -60,8 +55,7 @@ public class VersionExtended extends com.ankamagames.dofus.network.types.version
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "VersionExtended("
         + "major="

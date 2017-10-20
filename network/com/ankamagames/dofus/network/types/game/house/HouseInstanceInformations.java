@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,8 +24,7 @@ public class HouseInstanceInformations extends NetworkType {
   // vi64
   public long price;
 
-  public HouseInstanceInformations()
-  {}
+  public HouseInstanceInformations() {}
 
   public HouseInstanceInformations(
       boolean secondHand,
@@ -33,8 +32,7 @@ public class HouseInstanceInformations extends NetworkType {
       boolean isSaleLocked,
       int instanceId,
       java.lang.String ownerName,
-      long price)
-  {
+      long price) {
     this.secondHand = secondHand;
     this.isLocked = isLocked;
     this.isSaleLocked = isSaleLocked;
@@ -44,14 +42,12 @@ public class HouseInstanceInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 511;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.secondHand, 0);
@@ -64,8 +60,7 @@ public class HouseInstanceInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.secondHand = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -77,8 +72,7 @@ public class HouseInstanceInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseInstanceInformations("
         + "secondHand="

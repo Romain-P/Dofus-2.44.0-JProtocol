@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,16 +20,14 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations[]
       defenders;
 
-  public MapRunningFightDetailsMessage()
-  {}
+  public MapRunningFightDetailsMessage() {}
 
   public MapRunningFightDetailsMessage(
       int fightId,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations[]
           attackers,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations[]
-          defenders)
-  {
+          defenders) {
     this.fightId = fightId;
     this.attackers = attackers;
     this.defenders = defenders;
@@ -44,8 +42,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight
                   .GameFightFighterLightInformations>
-          defenders)
-  {
+          defenders) {
     this.fightId = fightId;
     this.attackers =
         attackers.toArray(
@@ -60,19 +57,16 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5751;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.fightId);
     writer.write_ui16(attackers.length);
 
-    for (int i = 0; i < attackers.length; i++)
-  {
+    for (int i = 0; i < attackers.length; i++) {
 
       writer.write_ui16(attackers[i].getProtocolId());
 
@@ -80,8 +74,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
     }
     writer.write_ui16(defenders.length);
 
-    for (int i = 0; i < defenders.length; i++)
-  {
+    for (int i = 0; i < defenders.length; i++) {
 
       writer.write_ui16(defenders[i].getProtocolId());
 
@@ -90,8 +83,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i32();
 
     int attackers_length = reader.read_ui16();
@@ -99,8 +91,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations
             [attackers_length];
 
-    for (int i = 0; i < attackers_length; i++)
-  {
+    for (int i = 0; i < attackers_length; i++) {
 
       int attackers_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations
@@ -118,8 +109,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations
             [defenders_length];
 
-    for (int i = 0; i < defenders_length; i++)
-  {
+    for (int i = 0; i < defenders_length; i++) {
 
       int defenders_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations
@@ -134,8 +124,7 @@ public class MapRunningFightDetailsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapRunningFightDetailsMessage("
         + "fightId="

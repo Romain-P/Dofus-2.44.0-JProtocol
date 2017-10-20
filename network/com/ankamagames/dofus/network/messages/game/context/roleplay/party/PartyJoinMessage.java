@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,8 @@ public class PartyJoinMessage
   public static final int PROTOCOL_ID = 5576;
   // i8
   public byte partyType;
-  // ui64
-  public java.math.BigInteger partyLeaderId;
+  // vi64
+  public long partyLeaderId;
   // i8
   public byte maxParticipants;
   // array,com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberInformations
@@ -30,21 +30,19 @@ public class PartyJoinMessage
   // str
   public java.lang.String partyName;
 
-  public PartyJoinMessage()
-  {}
+  public PartyJoinMessage() {}
 
   public PartyJoinMessage(
       int partyId,
       byte partyType,
-      java.math.BigInteger partyLeaderId,
+      long partyLeaderId,
       byte maxParticipants,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberInformations[]
           members,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations[]
           guests,
       boolean restricted,
-      java.lang.String partyName)
-  {
+      java.lang.String partyName) {
 
     super(partyId);
     this.partyType = partyType;
@@ -59,7 +57,7 @@ public class PartyJoinMessage
   public PartyJoinMessage(
       int partyId,
       byte partyType,
-      java.math.BigInteger partyLeaderId,
+      long partyLeaderId,
       byte maxParticipants,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party
@@ -70,8 +68,7 @@ public class PartyJoinMessage
                   .PartyGuestInformations>
           guests,
       boolean restricted,
-      java.lang.String partyName)
-  {
+      java.lang.String partyName) {
 
     super(partyId);
     this.partyType = partyType;
@@ -91,23 +88,20 @@ public class PartyJoinMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5576;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.partyType);
-    writer.write_ui64(this.partyLeaderId);
+    writer.write_vi64(this.partyLeaderId);
     writer.write_i8(this.maxParticipants);
     writer.write_ui16(members.length);
 
-    for (int i = 0; i < members.length; i++)
-  {
+    for (int i = 0; i < members.length; i++) {
 
       writer.write_ui16(members[i].getProtocolId());
 
@@ -115,8 +109,7 @@ public class PartyJoinMessage
     }
     writer.write_ui16(guests.length);
 
-    for (int i = 0; i < guests.length; i++)
-  {
+    for (int i = 0; i < guests.length; i++) {
 
       guests[i].serialize(writer);
     }
@@ -125,12 +118,11 @@ public class PartyJoinMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.partyType = reader.read_i8();
-    this.partyLeaderId = reader.read_ui64();
+    this.partyLeaderId = reader.read_vi64();
     this.maxParticipants = reader.read_i8();
 
     int members_length = reader.read_ui16();
@@ -138,8 +130,7 @@ public class PartyJoinMessage
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberInformations
             [members_length];
 
-    for (int i = 0; i < members_length; i++)
-  {
+    for (int i = 0; i < members_length; i++) {
 
       int members_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberInformations
@@ -157,8 +148,7 @@ public class PartyJoinMessage
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations
             [guests_length];
 
-    for (int i = 0; i < guests_length; i++)
-  {
+    for (int i = 0; i < guests_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations
           guests_it =
@@ -173,8 +163,7 @@ public class PartyJoinMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyJoinMessage("
         + "partyId="

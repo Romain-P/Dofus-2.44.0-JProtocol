@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.debug;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class DebugInClientMessage extends NetworkMessage {
   // str
   public java.lang.String message;
 
-  public DebugInClientMessage()
-  {}
+  public DebugInClientMessage() {}
 
-  public DebugInClientMessage(byte level, java.lang.String message)
-  {
+  public DebugInClientMessage(byte level, java.lang.String message) {
     this.level = level;
     this.message = message;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6028;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.level);
     writer.write_str(this.message);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.level = reader.read_i8();
     this.message = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DebugInClientMessage(" + "level=" + this.level + ", message=" + this.message + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,8 +17,7 @@ public class MapRunningFightDetailsExtendedMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam[]
       namedPartyTeams;
 
-  public MapRunningFightDetailsExtendedMessage()
-  {}
+  public MapRunningFightDetailsExtendedMessage() {}
 
   public MapRunningFightDetailsExtendedMessage(
       int fightId,
@@ -27,8 +26,7 @@ public class MapRunningFightDetailsExtendedMessage
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterLightInformations[]
           defenders,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam[]
-          namedPartyTeams)
-  {
+          namedPartyTeams) {
 
     super(fightId, attackers, defenders);
     this.namedPartyTeams = namedPartyTeams;
@@ -46,8 +44,7 @@ public class MapRunningFightDetailsExtendedMessage
           defenders,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam>
-          namedPartyTeams)
-  {
+          namedPartyTeams) {
 
     super(fightId, attackers, defenders);
     this.namedPartyTeams =
@@ -56,28 +53,24 @@ public class MapRunningFightDetailsExtendedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6500;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(namedPartyTeams.length);
 
-    for (int i = 0; i < namedPartyTeams.length; i++)
-  {
+    for (int i = 0; i < namedPartyTeams.length; i++) {
 
       namedPartyTeams[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -86,8 +79,7 @@ public class MapRunningFightDetailsExtendedMessage
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam
             [namedPartyTeams_length];
 
-    for (int i = 0; i < namedPartyTeams_length; i++)
-  {
+    for (int i = 0; i < namedPartyTeams_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam
           namedPartyTeams_it =
@@ -99,8 +91,7 @@ public class MapRunningFightDetailsExtendedMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapRunningFightDetailsExtendedMessage("
         + "fightId="

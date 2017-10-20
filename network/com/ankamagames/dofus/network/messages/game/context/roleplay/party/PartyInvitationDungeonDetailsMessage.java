@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,16 +18,15 @@ public class PartyInvitationDungeonDetailsMessage
   // array,bool
   public boolean[] playersDungeonReady;
 
-  public PartyInvitationDungeonDetailsMessage()
-  {}
+  public PartyInvitationDungeonDetailsMessage() {}
 
   public PartyInvitationDungeonDetailsMessage(
       int partyId,
       byte partyType,
       java.lang.String partyName,
-      java.math.BigInteger fromId,
+      long fromId,
       java.lang.String fromName,
-      java.math.BigInteger leaderId,
+      long leaderId,
       com.ankamagames.dofus.network.types.game.context.roleplay.party
                   .PartyInvitationMemberInformations
               []
@@ -35,8 +34,7 @@ public class PartyInvitationDungeonDetailsMessage
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations[]
           guests,
       short dungeonId,
-      boolean[] playersDungeonReady)
-  {
+      boolean[] playersDungeonReady) {
 
     super(partyId, partyType, partyName, fromId, fromName, leaderId, members, guests);
     this.dungeonId = dungeonId;
@@ -47,9 +45,9 @@ public class PartyInvitationDungeonDetailsMessage
       int partyId,
       byte partyType,
       java.lang.String partyName,
-      java.math.BigInteger fromId,
+      long fromId,
       java.lang.String fromName,
-      java.math.BigInteger leaderId,
+      long leaderId,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party
                   .PartyInvitationMemberInformations>
@@ -59,8 +57,7 @@ public class PartyInvitationDungeonDetailsMessage
                   .PartyGuestInformations>
           guests,
       short dungeonId,
-      boolean[] playersDungeonReady)
-  {
+      boolean[] playersDungeonReady) {
 
     super(partyId, partyType, partyName, fromId, fromName, leaderId, members, guests);
     this.dungeonId = dungeonId;
@@ -68,14 +65,12 @@ public class PartyInvitationDungeonDetailsMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6262;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.dungeonId);
@@ -84,8 +79,7 @@ public class PartyInvitationDungeonDetailsMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.dungeonId = reader.read_vi16();
@@ -95,8 +89,7 @@ public class PartyInvitationDungeonDetailsMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationDungeonDetailsMessage("
         + "partyId="

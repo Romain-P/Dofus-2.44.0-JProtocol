@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ExchangeBuyMessage extends NetworkMessage {
   // vi32
   public int quantity;
 
-  public ExchangeBuyMessage()
-  {}
+  public ExchangeBuyMessage() {}
 
-  public ExchangeBuyMessage(int objectToBuyId, int quantity)
-  {
+  public ExchangeBuyMessage(int objectToBuyId, int quantity) {
     this.objectToBuyId = objectToBuyId;
     this.quantity = quantity;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5774;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.objectToBuyId);
     writer.write_vi32(this.quantity);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objectToBuyId = reader.read_vi32();
     this.quantity = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBuyMessage("
         + "objectToBuyId="

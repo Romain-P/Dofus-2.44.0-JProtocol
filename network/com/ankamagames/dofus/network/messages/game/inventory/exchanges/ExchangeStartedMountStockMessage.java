@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,51 +14,43 @@ public class ExchangeStartedMountStockMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectsInfos;
 
-  public ExchangeStartedMountStockMessage()
-  {}
+  public ExchangeStartedMountStockMessage() {}
 
   public ExchangeStartedMountStockMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectsInfos)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectsInfos) {
     this.objectsInfos = objectsInfos;
   }
 
   public ExchangeStartedMountStockMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
-          objectsInfos)
-  {
+          objectsInfos) {
     this.objectsInfos =
         objectsInfos.toArray(com.ankamagames.dofus.network.types.game.data.items.ObjectItem[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5984;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objectsInfos.length);
 
-    for (int i = 0; i < objectsInfos.length; i++)
-  {
+    for (int i = 0; i < objectsInfos.length; i++) {
 
       objectsInfos[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objectsInfos_length = reader.read_ui16();
     this.objectsInfos =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[objectsInfos_length];
 
-    for (int i = 0; i < objectsInfos_length; i++)
-  {
+    for (int i = 0; i < objectsInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem objectsInfos_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -69,8 +61,7 @@ public class ExchangeStartedMountStockMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartedMountStockMessage("
         + "objectsInfos="

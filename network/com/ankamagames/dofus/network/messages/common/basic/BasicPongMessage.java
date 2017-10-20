@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:21+02:00
 package com.ankamagames.dofus.network.messages.common.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class BasicPongMessage extends NetworkMessage {
   // bool
   public boolean quiet;
 
-  public BasicPongMessage()
-  {}
+  public BasicPongMessage() {}
 
-  public BasicPongMessage(boolean quiet)
-  {
+  public BasicPongMessage(boolean quiet) {
     this.quiet = quiet;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 183;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.quiet);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.quiet = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicPongMessage(" + "quiet=" + this.quiet + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameFightSpectatorJoinMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam[]
       namedPartyTeams;
 
-  public GameFightSpectatorJoinMessage()
-  {}
+  public GameFightSpectatorJoinMessage() {}
 
   public GameFightSpectatorJoinMessage(
       boolean isTeamPhase,
@@ -27,8 +26,7 @@ public class GameFightSpectatorJoinMessage
       short timeMaxBeforeFightStart,
       byte fightType,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam[]
-          namedPartyTeams)
-  {
+          namedPartyTeams) {
 
     super(
         isTeamPhase,
@@ -49,8 +47,7 @@ public class GameFightSpectatorJoinMessage
       byte fightType,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam>
-          namedPartyTeams)
-  {
+          namedPartyTeams) {
 
     super(
         isTeamPhase,
@@ -65,28 +62,24 @@ public class GameFightSpectatorJoinMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6504;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(namedPartyTeams.length);
 
-    for (int i = 0; i < namedPartyTeams.length; i++)
-  {
+    for (int i = 0; i < namedPartyTeams.length; i++) {
 
       namedPartyTeams[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -95,8 +88,7 @@ public class GameFightSpectatorJoinMessage
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam
             [namedPartyTeams_length];
 
-    for (int i = 0; i < namedPartyTeams_length; i++)
-  {
+    for (int i = 0; i < namedPartyTeams_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeam
           namedPartyTeams_it =
@@ -108,8 +100,7 @@ public class GameFightSpectatorJoinMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightSpectatorJoinMessage("
         + "isTeamPhase="

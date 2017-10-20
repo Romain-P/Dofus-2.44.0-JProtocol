@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class QuestActiveDetailedInformations
           []
       objectives;
 
-  public QuestActiveDetailedInformations()
-  {}
+  public QuestActiveDetailedInformations() {}
 
   public QuestActiveDetailedInformations(
       short questId,
       short stepId,
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestObjectiveInformations[]
-          objectives)
-  {
+          objectives) {
 
     super(questId);
     this.stepId = stepId;
@@ -41,8 +39,7 @@ public class QuestActiveDetailedInformations
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.quest
                   .QuestObjectiveInformations>
-          objectives)
-  {
+          objectives) {
 
     super(questId);
     this.stepId = stepId;
@@ -55,21 +52,18 @@ public class QuestActiveDetailedInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 382;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.stepId);
     writer.write_ui16(objectives.length);
 
-    for (int i = 0; i < objectives.length; i++)
-  {
+    for (int i = 0; i < objectives.length; i++) {
 
       writer.write_ui16(objectives[i].getProtocolId());
 
@@ -78,8 +72,7 @@ public class QuestActiveDetailedInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.stepId = reader.read_vi16();
@@ -89,8 +82,7 @@ public class QuestActiveDetailedInformations
         new com.ankamagames.dofus.network.types.game.context.roleplay.quest
                 .QuestObjectiveInformations[objectives_length];
 
-    for (int i = 0; i < objectives_length; i++)
-  {
+    for (int i = 0; i < objectives_length; i++) {
 
       int objectives_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestObjectiveInformations
@@ -105,8 +97,7 @@ public class QuestActiveDetailedInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "QuestActiveDetailedInformations("
         + "questId="

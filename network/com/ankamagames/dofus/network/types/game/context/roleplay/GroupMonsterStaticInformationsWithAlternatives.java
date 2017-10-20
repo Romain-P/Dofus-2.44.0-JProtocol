@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,8 +18,7 @@ public class GroupMonsterStaticInformationsWithAlternatives
           .AlternativeMonstersInGroupLightInformations[]
       alternatives;
 
-  public GroupMonsterStaticInformationsWithAlternatives()
-  {}
+  public GroupMonsterStaticInformationsWithAlternatives() {}
 
   public GroupMonsterStaticInformationsWithAlternatives(
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations
@@ -29,8 +28,7 @@ public class GroupMonsterStaticInformationsWithAlternatives
       com.ankamagames.dofus.network.types.game.context.roleplay
                   .AlternativeMonstersInGroupLightInformations
               []
-          alternatives)
-  {
+          alternatives) {
 
     super(mainCreatureLightInfos, underlings);
     this.alternatives = alternatives;
@@ -45,8 +43,7 @@ public class GroupMonsterStaticInformationsWithAlternatives
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay
                   .AlternativeMonstersInGroupLightInformations>
-          alternatives)
-  {
+          alternatives) {
 
     super(mainCreatureLightInfos, underlings);
     this.alternatives =
@@ -58,28 +55,24 @@ public class GroupMonsterStaticInformationsWithAlternatives
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 396;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(alternatives.length);
 
-    for (int i = 0; i < alternatives.length; i++)
-  {
+    for (int i = 0; i < alternatives.length; i++) {
 
       alternatives[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -88,8 +81,7 @@ public class GroupMonsterStaticInformationsWithAlternatives
         new com.ankamagames.dofus.network.types.game.context.roleplay
                 .AlternativeMonstersInGroupLightInformations[alternatives_length];
 
-    for (int i = 0; i < alternatives_length; i++)
-  {
+    for (int i = 0; i < alternatives_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay
               .AlternativeMonstersInGroupLightInformations
@@ -103,8 +95,7 @@ public class GroupMonsterStaticInformationsWithAlternatives
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GroupMonsterStaticInformationsWithAlternatives("
         + "mainCreatureLightInfos="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class FightOptionsInformations extends NetworkType {
   // flag,_loc2_,3
   public boolean isAskingForHelp;
 
-  public FightOptionsInformations()
-  {}
+  public FightOptionsInformations() {}
 
   public FightOptionsInformations(
       boolean isSecret,
       boolean isRestrictedToPartyOnly,
       boolean isClosed,
-      boolean isAskingForHelp)
-  {
+      boolean isAskingForHelp) {
     this.isSecret = isSecret;
     this.isRestrictedToPartyOnly = isRestrictedToPartyOnly;
     this.isClosed = isClosed;
@@ -36,14 +34,12 @@ public class FightOptionsInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 20;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isSecret, 0);
@@ -54,8 +50,7 @@ public class FightOptionsInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.isSecret = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -65,8 +60,7 @@ public class FightOptionsInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightOptionsInformations("
         + "isSecret="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class MountInformationRequestMessage extends NetworkMessage {
   // f64
   public double time;
 
-  public MountInformationRequestMessage()
-  {}
+  public MountInformationRequestMessage() {}
 
-  public MountInformationRequestMessage(double id, double time)
-  {
+  public MountInformationRequestMessage(double id, double time) {
     this.id = id;
     this.time = time;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5972;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.id);
     writer.write_f64(this.time);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_f64();
     this.time = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountInformationRequestMessage(" + "id=" + this.id + ", time=" + this.time + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.look;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class AccessoryPreviewRequestMessage extends NetworkMessage {
   // array,vi16
   public short[] genericId;
 
-  public AccessoryPreviewRequestMessage()
-  {}
+  public AccessoryPreviewRequestMessage() {}
 
-  public AccessoryPreviewRequestMessage(short[] genericId)
-  {
+  public AccessoryPreviewRequestMessage(short[] genericId) {
     this.genericId = genericId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6518;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(genericId.length);
     writer.write_array_vi16(this.genericId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int genericId_length = reader.read_ui16();
     this.genericId = reader.read_array_vi16(genericId_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AccessoryPreviewRequestMessage("
         + "genericId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class InteractiveElementSkill extends NetworkType {
   // i32
   public int skillInstanceUid;
 
-  public InteractiveElementSkill()
-  {}
+  public InteractiveElementSkill() {}
 
-  public InteractiveElementSkill(int skillId, int skillInstanceUid)
-  {
+  public InteractiveElementSkill(int skillId, int skillInstanceUid) {
     this.skillId = skillId;
     this.skillInstanceUid = skillInstanceUid;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 219;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.skillId);
     writer.write_i32(this.skillInstanceUid);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.skillId = reader.read_vi32();
     this.skillInstanceUid = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveElementSkill("
         + "skillId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class ExchangePodsModifiedMessage
   // vi32
   public int maxWeight;
 
-  public ExchangePodsModifiedMessage()
-  {}
+  public ExchangePodsModifiedMessage() {}
 
-  public ExchangePodsModifiedMessage(boolean remote, int currentWeight, int maxWeight)
-  {
+  public ExchangePodsModifiedMessage(boolean remote, int currentWeight, int maxWeight) {
 
     super(remote);
     this.currentWeight = currentWeight;
@@ -29,14 +27,12 @@ public class ExchangePodsModifiedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6670;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.currentWeight);
@@ -44,8 +40,7 @@ public class ExchangePodsModifiedMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.currentWeight = reader.read_vi32();
@@ -53,8 +48,7 @@ public class ExchangePodsModifiedMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangePodsModifiedMessage("
         + "remote="

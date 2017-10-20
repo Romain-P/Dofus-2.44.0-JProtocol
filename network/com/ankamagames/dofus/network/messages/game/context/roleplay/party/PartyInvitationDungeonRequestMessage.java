@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class PartyInvitationDungeonRequestMessage
   // vi16
   public short dungeonId;
 
-  public PartyInvitationDungeonRequestMessage()
-  {}
+  public PartyInvitationDungeonRequestMessage() {}
 
-  public PartyInvitationDungeonRequestMessage(java.lang.String name, short dungeonId)
-  {
+  public PartyInvitationDungeonRequestMessage(java.lang.String name, short dungeonId) {
 
     super(name);
     this.dungeonId = dungeonId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6245;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.dungeonId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.dungeonId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationDungeonRequestMessage("
         + "name="

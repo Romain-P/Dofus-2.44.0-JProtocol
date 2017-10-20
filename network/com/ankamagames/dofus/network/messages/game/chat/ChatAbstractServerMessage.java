@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class ChatAbstractServerMessage extends NetworkMessage {
   // str
   public java.lang.String fingerprint;
 
-  public ChatAbstractServerMessage()
-  {}
+  public ChatAbstractServerMessage() {}
 
   public ChatAbstractServerMessage(
-      byte channel, java.lang.String content, int timestamp, java.lang.String fingerprint)
-  {
+      byte channel, java.lang.String content, int timestamp, java.lang.String fingerprint) {
     this.channel = channel;
     this.content = content;
     this.timestamp = timestamp;
@@ -33,14 +31,12 @@ public class ChatAbstractServerMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 880;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.channel);
     writer.write_str(this.content);
     writer.write_i32(this.timestamp);
@@ -48,8 +44,7 @@ public class ChatAbstractServerMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.channel = reader.read_i8();
     this.content = reader.read_str();
     this.timestamp = reader.read_i32();
@@ -57,8 +52,7 @@ public class ChatAbstractServerMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatAbstractServerMessage("
         + "channel="

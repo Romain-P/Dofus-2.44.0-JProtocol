@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class InventoryWeightMessage extends NetworkMessage {
   // vi32
   public int weightMax;
 
-  public InventoryWeightMessage()
-  {}
+  public InventoryWeightMessage() {}
 
-  public InventoryWeightMessage(int weight, int weightMax)
-  {
+  public InventoryWeightMessage(int weight, int weightMax) {
     this.weight = weight;
     this.weightMax = weightMax;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3009;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.weight);
     writer.write_vi32(this.weightMax);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.weight = reader.read_vi32();
     this.weightMax = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryWeightMessage("
         + "weight="

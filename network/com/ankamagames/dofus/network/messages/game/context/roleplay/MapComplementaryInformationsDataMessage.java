@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -35,8 +35,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
       fightStartPositions;
 
-  public MapComplementaryInformationsDataMessage()
-  {}
+  public MapComplementaryInformationsDataMessage() {}
 
   public MapComplementaryInformationsDataMessage(
       short subAreaId,
@@ -50,8 +49,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
       com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations[] fights,
       boolean hasAggressiveMonsters,
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
-          fightStartPositions)
-  {
+          fightStartPositions) {
     this.subAreaId = subAreaId;
     this.mapId = mapId;
     this.houses = houses;
@@ -85,8 +83,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
           fights,
       boolean hasAggressiveMonsters,
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
-          fightStartPositions)
-  {
+          fightStartPositions) {
     this.subAreaId = subAreaId;
     this.mapId = mapId;
     this.houses =
@@ -112,20 +109,17 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 226;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.subAreaId);
     writer.write_f64(this.mapId);
     writer.write_ui16(houses.length);
 
-    for (int i = 0; i < houses.length; i++)
-  {
+    for (int i = 0; i < houses.length; i++) {
 
       writer.write_ui16(houses[i].getProtocolId());
 
@@ -133,8 +127,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
     }
     writer.write_ui16(actors.length);
 
-    for (int i = 0; i < actors.length; i++)
-  {
+    for (int i = 0; i < actors.length; i++) {
 
       writer.write_ui16(actors[i].getProtocolId());
 
@@ -142,8 +135,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
     }
     writer.write_ui16(interactiveElements.length);
 
-    for (int i = 0; i < interactiveElements.length; i++)
-  {
+    for (int i = 0; i < interactiveElements.length; i++) {
 
       writer.write_ui16(interactiveElements[i].getProtocolId());
 
@@ -151,22 +143,19 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
     }
     writer.write_ui16(statedElements.length);
 
-    for (int i = 0; i < statedElements.length; i++)
-  {
+    for (int i = 0; i < statedElements.length; i++) {
 
       statedElements[i].serialize(writer);
     }
     writer.write_ui16(obstacles.length);
 
-    for (int i = 0; i < obstacles.length; i++)
-  {
+    for (int i = 0; i < obstacles.length; i++) {
 
       obstacles[i].serialize(writer);
     }
     writer.write_ui16(fights.length);
 
-    for (int i = 0; i < fights.length; i++)
-  {
+    for (int i = 0; i < fights.length; i++) {
 
       fights[i].serialize(writer);
     }
@@ -175,8 +164,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.subAreaId = reader.read_vi16();
     this.mapId = reader.read_f64();
 
@@ -184,8 +172,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
     this.houses =
         new com.ankamagames.dofus.network.types.game.house.HouseInformations[houses_length];
 
-    for (int i = 0; i < houses_length; i++)
-  {
+    for (int i = 0; i < houses_length; i++) {
 
       int houses_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.house.HouseInformations houses_it =
@@ -201,8 +188,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
             [actors_length];
 
-    for (int i = 0; i < actors_length; i++)
-  {
+    for (int i = 0; i < actors_length; i++) {
 
       int actors_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
@@ -220,8 +206,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.interactive.InteractiveElement
             [interactiveElements_length];
 
-    for (int i = 0; i < interactiveElements_length; i++)
-  {
+    for (int i = 0; i < interactiveElements_length; i++) {
 
       int interactiveElements_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElement
@@ -238,8 +223,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.interactive.StatedElement
             [statedElements_length];
 
-    for (int i = 0; i < statedElements_length; i++)
-  {
+    for (int i = 0; i < statedElements_length; i++) {
 
       com.ankamagames.dofus.network.types.game.interactive.StatedElement statedElements_it =
           new com.ankamagames.dofus.network.types.game.interactive.StatedElement();
@@ -252,8 +236,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
     this.obstacles =
         new com.ankamagames.dofus.network.types.game.interactive.MapObstacle[obstacles_length];
 
-    for (int i = 0; i < obstacles_length; i++)
-  {
+    for (int i = 0; i < obstacles_length; i++) {
 
       com.ankamagames.dofus.network.types.game.interactive.MapObstacle obstacles_it =
           new com.ankamagames.dofus.network.types.game.interactive.MapObstacle();
@@ -267,8 +250,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations
             [fights_length];
 
-    for (int i = 0; i < fights_length; i++)
-  {
+    for (int i = 0; i < fights_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations fights_it =
           new com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations();
@@ -283,8 +265,7 @@ public class MapComplementaryInformationsDataMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapComplementaryInformationsDataMessage("
         + "subAreaId="

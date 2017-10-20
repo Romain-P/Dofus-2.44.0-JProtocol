@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -26,8 +26,7 @@ public class TaxCollectorAttackedMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild;
 
-  public TaxCollectorAttackedMessage()
-  {}
+  public TaxCollectorAttackedMessage() {}
 
   public TaxCollectorAttackedMessage(
       short firstNameId,
@@ -36,8 +35,7 @@ public class TaxCollectorAttackedMessage extends NetworkMessage {
       short worldY,
       double mapId,
       short subAreaId,
-      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild) {
     this.firstNameId = firstNameId;
     this.lastNameId = lastNameId;
     this.worldX = worldX;
@@ -48,14 +46,12 @@ public class TaxCollectorAttackedMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5918;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.firstNameId);
     writer.write_vi16(this.lastNameId);
     writer.write_i16(this.worldX);
@@ -66,8 +62,7 @@ public class TaxCollectorAttackedMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.firstNameId = reader.read_vi16();
     this.lastNameId = reader.read_vi16();
     this.worldX = reader.read_i16();
@@ -80,8 +75,7 @@ public class TaxCollectorAttackedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorAttackedMessage("
         + "firstNameId="

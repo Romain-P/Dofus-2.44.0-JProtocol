@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:21+02:00
 package com.ankamagames.dofus.network.messages.common.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class AggregateStatMessage extends NetworkMessage {
   // vi16
   public short statId;
 
-  public AggregateStatMessage()
-  {}
+  public AggregateStatMessage() {}
 
-  public AggregateStatMessage(short statId)
-  {
+  public AggregateStatMessage(short statId) {
     this.statId = statId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6669;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.statId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.statId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AggregateStatMessage(" + "statId=" + this.statId + ')';
   }

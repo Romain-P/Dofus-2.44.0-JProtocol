@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,34 +16,29 @@ public class IgnoredAddedMessage extends NetworkMessage {
   // bool
   public boolean session;
 
-  public IgnoredAddedMessage()
-  {}
+  public IgnoredAddedMessage() {}
 
   public IgnoredAddedMessage(
       com.ankamagames.dofus.network.types.game.friend.IgnoredInformations ignoreAdded,
-      boolean session)
-  {
+      boolean session) {
     this.ignoreAdded = ignoreAdded;
     this.session = session;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5678;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.ignoreAdded.getProtocolId());
     this.ignoreAdded.serialize(writer);
     writer.write_bool(this.session);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int ignoreAdded_typeId = reader.read_ui16();
     this.ignoreAdded =
@@ -54,8 +49,7 @@ public class IgnoredAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IgnoredAddedMessage("
         + "ignoreAdded="

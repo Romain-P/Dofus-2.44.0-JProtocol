@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class GameActionFightChangeLookMessage
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook entityLook;
 
-  public GameActionFightChangeLookMessage()
-  {}
+  public GameActionFightChangeLookMessage() {}
 
   public GameActionFightChangeLookMessage(
       short actionId,
       double sourceId,
       double targetId,
-      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook) {
 
     super(actionId, sourceId);
     this.targetId = targetId;
@@ -33,14 +31,12 @@ public class GameActionFightChangeLookMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5532;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.targetId);
@@ -48,8 +44,7 @@ public class GameActionFightChangeLookMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.targetId = reader.read_f64();
@@ -58,8 +53,7 @@ public class GameActionFightChangeLookMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightChangeLookMessage("
         + "actionId="

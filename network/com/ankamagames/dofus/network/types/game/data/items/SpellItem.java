@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,11 +16,9 @@ public class SpellItem extends com.ankamagames.dofus.network.types.game.data.ite
   // i16
   public short spellLevel;
 
-  public SpellItem()
-  {}
+  public SpellItem() {}
 
-  public SpellItem(int spellId, short spellLevel)
-  {
+  public SpellItem(int spellId, short spellLevel) {
 
     super();
     this.spellId = spellId;
@@ -28,14 +26,12 @@ public class SpellItem extends com.ankamagames.dofus.network.types.game.data.ite
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 49;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.spellId);
@@ -43,8 +39,7 @@ public class SpellItem extends com.ankamagames.dofus.network.types.game.data.ite
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.spellId = reader.read_i32();
@@ -52,8 +47,7 @@ public class SpellItem extends com.ankamagames.dofus.network.types.game.data.ite
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpellItem(" + "spellId=" + this.spellId + ", spellLevel=" + this.spellLevel + ')';
   }

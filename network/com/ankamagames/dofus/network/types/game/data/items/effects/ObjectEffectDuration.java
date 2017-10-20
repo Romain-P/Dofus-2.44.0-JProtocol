@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,9 @@ public class ObjectEffectDuration
   // i8
   public byte minutes;
 
-  public ObjectEffectDuration()
-  {}
+  public ObjectEffectDuration() {}
 
-  public ObjectEffectDuration(short actionId, short days, byte hours, byte minutes)
-  {
+  public ObjectEffectDuration(short actionId, short days, byte hours, byte minutes) {
 
     super(actionId);
     this.days = days;
@@ -32,14 +30,12 @@ public class ObjectEffectDuration
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 75;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.days);
@@ -48,8 +44,7 @@ public class ObjectEffectDuration
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.days = reader.read_vi16();
@@ -58,8 +53,7 @@ public class ObjectEffectDuration
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectDuration("
         + "actionId="

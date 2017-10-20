@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.alignment;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class ActorAlignmentInformations extends NetworkType {
   // f64
   public double characterPower;
 
-  public ActorAlignmentInformations()
-  {}
+  public ActorAlignmentInformations() {}
 
   public ActorAlignmentInformations(
-      byte alignmentSide, byte alignmentValue, byte alignmentGrade, double characterPower)
-  {
+      byte alignmentSide, byte alignmentValue, byte alignmentGrade, double characterPower) {
     this.alignmentSide = alignmentSide;
     this.alignmentValue = alignmentValue;
     this.alignmentGrade = alignmentGrade;
@@ -33,14 +31,12 @@ public class ActorAlignmentInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 201;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.alignmentSide);
     writer.write_i8(this.alignmentValue);
     writer.write_i8(this.alignmentGrade);
@@ -48,8 +44,7 @@ public class ActorAlignmentInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.alignmentSide = reader.read_i8();
     this.alignmentValue = reader.read_i8();
     this.alignmentGrade = reader.read_i8();
@@ -57,8 +52,7 @@ public class ActorAlignmentInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ActorAlignmentInformations("
         + "alignmentSide="

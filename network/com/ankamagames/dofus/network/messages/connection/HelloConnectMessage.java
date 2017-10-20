@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class HelloConnectMessage extends NetworkMessage {
   // array,i8
   public byte[] key;
 
-  public HelloConnectMessage()
-  {}
+  public HelloConnectMessage() {}
 
-  public HelloConnectMessage(java.lang.String salt, byte[] key)
-  {
+  public HelloConnectMessage(java.lang.String salt, byte[] key) {
     this.salt = salt;
     this.key = key;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.salt);
-    writer.write_ui16(key.length);
+    writer.write_vi32(key.length);
     writer.write_array_i8(this.key);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.salt = reader.read_str();
 
-    int key_length = reader.read_ui16();
+    int key_length = reader.read_vi32();
     this.key = reader.read_array_i8(key_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HelloConnectMessage(" + "salt=" + this.salt + ", key=" + +this.key.length + "b" + ')';
   }

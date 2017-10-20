@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class InventoryPresetItemUpdateRequestMessage extends NetworkMessage {
   // vi32
   public int objUid;
 
-  public InventoryPresetItemUpdateRequestMessage()
-  {}
+  public InventoryPresetItemUpdateRequestMessage() {}
 
-  public InventoryPresetItemUpdateRequestMessage(byte presetId, short position, int objUid)
-  {
+  public InventoryPresetItemUpdateRequestMessage(byte presetId, short position, int objUid) {
     this.presetId = presetId;
     this.position = position;
     this.objUid = objUid;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6210;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_ui8(this.position);
     writer.write_vi32(this.objUid);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.position = reader.read_ui8();
     this.objUid = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetItemUpdateRequestMessage("
         + "presetId="

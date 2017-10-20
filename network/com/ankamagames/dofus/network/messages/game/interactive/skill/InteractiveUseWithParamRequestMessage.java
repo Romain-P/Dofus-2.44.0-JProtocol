@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive.skill;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class InteractiveUseWithParamRequestMessage
   // i32
   public int id;
 
-  public InteractiveUseWithParamRequestMessage()
-  {}
+  public InteractiveUseWithParamRequestMessage() {}
 
-  public InteractiveUseWithParamRequestMessage(int elemId, int skillInstanceUid, int id)
-  {
+  public InteractiveUseWithParamRequestMessage(int elemId, int skillInstanceUid, int id) {
 
     super(elemId, skillInstanceUid);
     this.id = id;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6715;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.id);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.id = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveUseWithParamRequestMessage("
         + "elemId="

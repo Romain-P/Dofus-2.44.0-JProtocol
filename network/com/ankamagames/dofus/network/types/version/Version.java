@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.version;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,11 +24,9 @@ public class Version extends NetworkType {
   // i8
   public byte buildType;
 
-  public Version()
-  {}
+  public Version() {}
 
-  public Version(byte major, byte minor, byte release, int revision, byte patch, byte buildType)
-  {
+  public Version(byte major, byte minor, byte release, int revision, byte patch, byte buildType) {
     this.major = major;
     this.minor = minor;
     this.release = release;
@@ -38,14 +36,12 @@ public class Version extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 11;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.major);
     writer.write_i8(this.minor);
     writer.write_i8(this.release);
@@ -55,8 +51,7 @@ public class Version extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.major = reader.read_i8();
     this.minor = reader.read_i8();
     this.release = reader.read_i8();
@@ -66,8 +61,7 @@ public class Version extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "Version("
         + "major="

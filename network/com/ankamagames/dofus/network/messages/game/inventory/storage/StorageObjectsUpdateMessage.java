@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.storage;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,51 +14,43 @@ public class StorageObjectsUpdateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectList;
 
-  public StorageObjectsUpdateMessage()
-  {}
+  public StorageObjectsUpdateMessage() {}
 
   public StorageObjectsUpdateMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectList)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objectList) {
     this.objectList = objectList;
   }
 
   public StorageObjectsUpdateMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
-          objectList)
-  {
+          objectList) {
     this.objectList =
         objectList.toArray(com.ankamagames.dofus.network.types.game.data.items.ObjectItem[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6036;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objectList.length);
 
-    for (int i = 0; i < objectList.length; i++)
-  {
+    for (int i = 0; i < objectList.length; i++) {
 
       objectList[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objectList_length = reader.read_ui16();
     this.objectList =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[objectList_length];
 
-    for (int i = 0; i < objectList_length; i++)
-  {
+    for (int i = 0; i < objectList_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem objectList_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -69,8 +61,7 @@ public class StorageObjectsUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StorageObjectsUpdateMessage("
         + "objectList="

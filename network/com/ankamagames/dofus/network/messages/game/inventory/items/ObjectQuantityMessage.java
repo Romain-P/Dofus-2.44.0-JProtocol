@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ObjectQuantityMessage extends NetworkMessage {
   // vi32
   public int quantity;
 
-  public ObjectQuantityMessage()
-  {}
+  public ObjectQuantityMessage() {}
 
-  public ObjectQuantityMessage(int objectUID, int quantity)
-  {
+  public ObjectQuantityMessage(int objectUID, int quantity) {
     this.objectUID = objectUID;
     this.quantity = quantity;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3023;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.objectUID);
     writer.write_vi32(this.quantity);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objectUID = reader.read_vi32();
     this.quantity = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectQuantityMessage("
         + "objectUID="

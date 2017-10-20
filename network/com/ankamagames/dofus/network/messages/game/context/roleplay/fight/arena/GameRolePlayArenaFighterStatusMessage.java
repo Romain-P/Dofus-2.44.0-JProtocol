@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class GameRolePlayArenaFighterStatusMessage extends NetworkMessage {
   // bool
   public boolean accepted;
 
-  public GameRolePlayArenaFighterStatusMessage()
-  {}
+  public GameRolePlayArenaFighterStatusMessage() {}
 
-  public GameRolePlayArenaFighterStatusMessage(int fightId, int playerId, boolean accepted)
-  {
+  public GameRolePlayArenaFighterStatusMessage(int fightId, int playerId, boolean accepted) {
     this.fightId = fightId;
     this.playerId = playerId;
     this.accepted = accepted;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6281;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.fightId);
     writer.write_i32(this.playerId);
     writer.write_bool(this.accepted);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i32();
     this.playerId = reader.read_i32();
     this.accepted = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayArenaFighterStatusMessage("
         + "fightId="

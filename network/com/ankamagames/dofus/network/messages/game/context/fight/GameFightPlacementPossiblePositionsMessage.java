@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,26 +18,22 @@ public class GameFightPlacementPossiblePositionsMessage extends NetworkMessage {
   // i8
   public byte teamNumber;
 
-  public GameFightPlacementPossiblePositionsMessage()
-  {}
+  public GameFightPlacementPossiblePositionsMessage() {}
 
   public GameFightPlacementPossiblePositionsMessage(
-      short[] positionsForChallengers, short[] positionsForDefenders, byte teamNumber)
-  {
+      short[] positionsForChallengers, short[] positionsForDefenders, byte teamNumber) {
     this.positionsForChallengers = positionsForChallengers;
     this.positionsForDefenders = positionsForDefenders;
     this.teamNumber = teamNumber;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 703;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(positionsForChallengers.length);
     writer.write_array_vi16(this.positionsForChallengers);
     writer.write_ui16(positionsForDefenders.length);
@@ -46,8 +42,7 @@ public class GameFightPlacementPossiblePositionsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int positionsForChallengers_length = reader.read_ui16();
     this.positionsForChallengers = reader.read_array_vi16(positionsForChallengers_length);
@@ -58,8 +53,7 @@ public class GameFightPlacementPossiblePositionsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightPlacementPossiblePositionsMessage("
         + "positionsForChallengers="

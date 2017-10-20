@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,53 +14,45 @@ public class ExchangeStartOkMountWithOutPaddockMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.mount.MountClientData
   public com.ankamagames.dofus.network.types.game.mount.MountClientData[] stabledMountsDescription;
 
-  public ExchangeStartOkMountWithOutPaddockMessage()
-  {}
+  public ExchangeStartOkMountWithOutPaddockMessage() {}
 
   public ExchangeStartOkMountWithOutPaddockMessage(
-      com.ankamagames.dofus.network.types.game.mount.MountClientData[] stabledMountsDescription)
-  {
+      com.ankamagames.dofus.network.types.game.mount.MountClientData[] stabledMountsDescription) {
     this.stabledMountsDescription = stabledMountsDescription;
   }
 
   public ExchangeStartOkMountWithOutPaddockMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.mount.MountClientData>
-          stabledMountsDescription)
-  {
+          stabledMountsDescription) {
     this.stabledMountsDescription =
         stabledMountsDescription.toArray(
             com.ankamagames.dofus.network.types.game.mount.MountClientData[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5991;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(stabledMountsDescription.length);
 
-    for (int i = 0; i < stabledMountsDescription.length; i++)
-  {
+    for (int i = 0; i < stabledMountsDescription.length; i++) {
 
       stabledMountsDescription[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int stabledMountsDescription_length = reader.read_ui16();
     this.stabledMountsDescription =
         new com.ankamagames.dofus.network.types.game.mount.MountClientData
             [stabledMountsDescription_length];
 
-    for (int i = 0; i < stabledMountsDescription_length; i++)
-  {
+    for (int i = 0; i < stabledMountsDescription_length; i++) {
 
       com.ankamagames.dofus.network.types.game.mount.MountClientData stabledMountsDescription_it =
           new com.ankamagames.dofus.network.types.game.mount.MountClientData();
@@ -71,8 +63,7 @@ public class ExchangeStartOkMountWithOutPaddockMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkMountWithOutPaddockMessage("
         + "stabledMountsDescription="

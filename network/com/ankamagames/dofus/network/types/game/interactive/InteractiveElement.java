@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,16 +24,14 @@ public class InteractiveElement extends NetworkType {
   // bool
   public boolean onCurrentMap;
 
-  public InteractiveElement()
-  {}
+  public InteractiveElement() {}
 
   public InteractiveElement(
       int elementId,
       int elementTypeId,
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill[] enabledSkills,
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill[] disabledSkills,
-      boolean onCurrentMap)
-  {
+      boolean onCurrentMap) {
     this.elementId = elementId;
     this.elementTypeId = elementTypeId;
     this.enabledSkills = enabledSkills;
@@ -50,8 +48,7 @@ public class InteractiveElement extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill>
           disabledSkills,
-      boolean onCurrentMap)
-  {
+      boolean onCurrentMap) {
     this.elementId = elementId;
     this.elementTypeId = elementTypeId;
     this.enabledSkills =
@@ -64,20 +61,17 @@ public class InteractiveElement extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 80;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.elementId);
     writer.write_i32(this.elementTypeId);
     writer.write_ui16(enabledSkills.length);
 
-    for (int i = 0; i < enabledSkills.length; i++)
-  {
+    for (int i = 0; i < enabledSkills.length; i++) {
 
       writer.write_ui16(enabledSkills[i].getProtocolId());
 
@@ -85,8 +79,7 @@ public class InteractiveElement extends NetworkType {
     }
     writer.write_ui16(disabledSkills.length);
 
-    for (int i = 0; i < disabledSkills.length; i++)
-  {
+    for (int i = 0; i < disabledSkills.length; i++) {
 
       writer.write_ui16(disabledSkills[i].getProtocolId());
 
@@ -96,8 +89,7 @@ public class InteractiveElement extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.elementId = reader.read_i32();
     this.elementTypeId = reader.read_i32();
 
@@ -106,8 +98,7 @@ public class InteractiveElement extends NetworkType {
         new com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill
             [enabledSkills_length];
 
-    for (int i = 0; i < enabledSkills_length; i++)
-  {
+    for (int i = 0; i < enabledSkills_length; i++) {
 
       int enabledSkills_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill
@@ -124,8 +115,7 @@ public class InteractiveElement extends NetworkType {
         new com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill
             [disabledSkills_length];
 
-    for (int i = 0; i < disabledSkills_length; i++)
-  {
+    for (int i = 0; i < disabledSkills_length; i++) {
 
       int disabledSkills_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill
@@ -140,8 +130,7 @@ public class InteractiveElement extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveElement("
         + "elementId="

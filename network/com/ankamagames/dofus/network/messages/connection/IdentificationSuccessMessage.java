@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -34,8 +34,7 @@ public class IdentificationSuccessMessage extends NetworkMessage {
   // ui8
   public short havenbagAvailableRoom;
 
-  public IdentificationSuccessMessage()
-  {}
+  public IdentificationSuccessMessage() {}
 
   public IdentificationSuccessMessage(
       boolean hasRights,
@@ -48,8 +47,7 @@ public class IdentificationSuccessMessage extends NetworkMessage {
       double accountCreation,
       double subscriptionElapsedDuration,
       double subscriptionEndDate,
-      short havenbagAvailableRoom)
-  {
+      short havenbagAvailableRoom) {
     this.hasRights = hasRights;
     this.wasAlreadyConnected = wasAlreadyConnected;
     this.login = login;
@@ -64,14 +62,12 @@ public class IdentificationSuccessMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 22;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.hasRights, 0);
@@ -89,8 +85,7 @@ public class IdentificationSuccessMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.hasRights = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -107,8 +102,7 @@ public class IdentificationSuccessMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationSuccessMessage("
         + "hasRights="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class FightTeamMemberMonsterInformations
   // i8
   public byte grade;
 
-  public FightTeamMemberMonsterInformations()
-  {}
+  public FightTeamMemberMonsterInformations() {}
 
-  public FightTeamMemberMonsterInformations(double id, int monsterId, byte grade)
-  {
+  public FightTeamMemberMonsterInformations(double id, int monsterId, byte grade) {
 
     super(id);
     this.monsterId = monsterId;
@@ -29,14 +27,12 @@ public class FightTeamMemberMonsterInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.monsterId);
@@ -44,8 +40,7 @@ public class FightTeamMemberMonsterInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.monsterId = reader.read_i32();
@@ -53,8 +48,7 @@ public class FightTeamMemberMonsterInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTeamMemberMonsterInformations("
         + "id="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.script;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class URLOpenMessage extends NetworkMessage {
   // i8
   public byte urlId;
 
-  public URLOpenMessage()
-  {}
+  public URLOpenMessage() {}
 
-  public URLOpenMessage(byte urlId)
-  {
+  public URLOpenMessage(byte urlId) {
     this.urlId = urlId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6266;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.urlId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.urlId = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "URLOpenMessage(" + "urlId=" + this.urlId + ')';
   }

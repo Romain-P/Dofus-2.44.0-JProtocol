@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class CharacterSelectedForceMessage extends NetworkMessage {
   // i32
   public int id;
 
-  public CharacterSelectedForceMessage()
-  {}
+  public CharacterSelectedForceMessage() {}
 
-  public CharacterSelectedForceMessage(int id)
-  {
+  public CharacterSelectedForceMessage(int id) {
     this.id = id;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6068;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.id);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterSelectedForceMessage(" + "id=" + this.id + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class MountXpRatioMessage extends NetworkMessage {
   // i8
   public byte ratio;
 
-  public MountXpRatioMessage()
-  {}
+  public MountXpRatioMessage() {}
 
-  public MountXpRatioMessage(byte ratio)
-  {
+  public MountXpRatioMessage(byte ratio) {
     this.ratio = ratio;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5970;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.ratio);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.ratio = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountXpRatioMessage(" + "ratio=" + this.ratio + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildPaddockTeleportRequestMessage extends NetworkMessage {
   // f64
   public double paddockId;
 
-  public GuildPaddockTeleportRequestMessage()
-  {}
+  public GuildPaddockTeleportRequestMessage() {}
 
-  public GuildPaddockTeleportRequestMessage(double paddockId)
-  {
+  public GuildPaddockTeleportRequestMessage(double paddockId) {
     this.paddockId = paddockId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5957;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.paddockId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.paddockId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildPaddockTeleportRequestMessage(" + "paddockId=" + this.paddockId + ')';
   }

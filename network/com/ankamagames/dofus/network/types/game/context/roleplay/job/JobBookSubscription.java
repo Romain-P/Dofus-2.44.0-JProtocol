@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class JobBookSubscription extends NetworkType {
   // bool
   public boolean subscribed;
 
-  public JobBookSubscription()
-  {}
+  public JobBookSubscription() {}
 
-  public JobBookSubscription(byte jobId, boolean subscribed)
-  {
+  public JobBookSubscription(byte jobId, boolean subscribed) {
     this.jobId = jobId;
     this.subscribed = subscribed;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 500;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.jobId);
     writer.write_bool(this.subscribed);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.jobId = reader.read_i8();
     this.subscribed = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobBookSubscription(" + "jobId=" + this.jobId + ", subscribed=" + this.subscribed + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class HouseOnMapInformations
   // array,com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations
   public com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations[] houseInstances;
 
-  public HouseOnMapInformations()
-  {}
+  public HouseOnMapInformations() {}
 
   public HouseOnMapInformations(
       int houseId,
       short modelId,
       int[] doorsOnMap,
-      com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations[] houseInstances)
-  {
+      com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations[] houseInstances) {
 
     super(houseId, modelId);
     this.doorsOnMap = doorsOnMap;
@@ -38,8 +36,7 @@ public class HouseOnMapInformations
       int[] doorsOnMap,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations>
-          houseInstances)
-  {
+          houseInstances) {
 
     super(houseId, modelId);
     this.doorsOnMap = doorsOnMap;
@@ -49,30 +46,26 @@ public class HouseOnMapInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 510;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(doorsOnMap.length);
     writer.write_array_i32(this.doorsOnMap);
     writer.write_ui16(houseInstances.length);
 
-    for (int i = 0; i < houseInstances.length; i++)
-  {
+    for (int i = 0; i < houseInstances.length; i++) {
 
       houseInstances[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -84,8 +77,7 @@ public class HouseOnMapInformations
         new com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations
             [houseInstances_length];
 
-    for (int i = 0; i < houseInstances_length; i++)
-  {
+    for (int i = 0; i < houseInstances_length; i++) {
 
       com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations houseInstances_it =
           new com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations();
@@ -96,8 +88,7 @@ public class HouseOnMapInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseOnMapInformations("
         + "houseId="

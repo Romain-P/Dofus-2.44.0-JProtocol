@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,16 +21,14 @@ public class GameFightResumeSlaveInfo extends NetworkType {
   // i8
   public byte bombCount;
 
-  public GameFightResumeSlaveInfo()
-  {}
+  public GameFightResumeSlaveInfo() {}
 
   public GameFightResumeSlaveInfo(
       double slaveId,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown[]
           spellCooldowns,
       byte summonCount,
-      byte bombCount)
-  {
+      byte bombCount) {
     this.slaveId = slaveId;
     this.spellCooldowns = spellCooldowns;
     this.summonCount = summonCount;
@@ -43,8 +41,7 @@ public class GameFightResumeSlaveInfo extends NetworkType {
               com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown>
           spellCooldowns,
       byte summonCount,
-      byte bombCount)
-  {
+      byte bombCount) {
     this.slaveId = slaveId;
     this.spellCooldowns =
         spellCooldowns.toArray(
@@ -54,19 +51,16 @@ public class GameFightResumeSlaveInfo extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 364;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.slaveId);
     writer.write_ui16(spellCooldowns.length);
 
-    for (int i = 0; i < spellCooldowns.length; i++)
-  {
+    for (int i = 0; i < spellCooldowns.length; i++) {
 
       spellCooldowns[i].serialize(writer);
     }
@@ -75,8 +69,7 @@ public class GameFightResumeSlaveInfo extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.slaveId = reader.read_f64();
 
     int spellCooldowns_length = reader.read_ui16();
@@ -84,8 +77,7 @@ public class GameFightResumeSlaveInfo extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown
             [spellCooldowns_length];
 
-    for (int i = 0; i < spellCooldowns_length; i++)
-  {
+    for (int i = 0; i < spellCooldowns_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown
           spellCooldowns_it =
@@ -99,8 +91,7 @@ public class GameFightResumeSlaveInfo extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightResumeSlaveInfo("
         + "slaveId="

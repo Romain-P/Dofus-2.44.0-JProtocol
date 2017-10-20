@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,21 +15,18 @@ public class GameFightSynchronizeMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations[]
       fighters;
 
-  public GameFightSynchronizeMessage()
-  {}
+  public GameFightSynchronizeMessage() {}
 
   public GameFightSynchronizeMessage(
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations[]
-          fighters)
-  {
+          fighters) {
     this.fighters = fighters;
   }
 
   public GameFightSynchronizeMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations>
-          fighters)
-  {
+          fighters) {
     this.fighters =
         fighters.toArray(
             com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations[]
@@ -37,18 +34,15 @@ public class GameFightSynchronizeMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5921;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(fighters.length);
 
-    for (int i = 0; i < fighters.length; i++)
-  {
+    for (int i = 0; i < fighters.length; i++) {
 
       writer.write_ui16(fighters[i].getProtocolId());
 
@@ -57,16 +51,14 @@ public class GameFightSynchronizeMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int fighters_length = reader.read_ui16();
     this.fighters =
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations
             [fighters_length];
 
-    for (int i = 0; i < fighters_length; i++)
-  {
+    for (int i = 0; i < fighters_length; i++) {
 
       int fighters_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations
@@ -80,8 +72,7 @@ public class GameFightSynchronizeMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightSynchronizeMessage("
         + "fighters="

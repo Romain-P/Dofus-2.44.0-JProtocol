@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeObjectMessage extends NetworkMessage {
   // bool
   public boolean remote;
 
-  public ExchangeObjectMessage()
-  {}
+  public ExchangeObjectMessage() {}
 
-  public ExchangeObjectMessage(boolean remote)
-  {
+  public ExchangeObjectMessage(boolean remote) {
     this.remote = remote;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5515;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.remote);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.remote = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeObjectMessage(" + "remote=" + this.remote + ')';
   }

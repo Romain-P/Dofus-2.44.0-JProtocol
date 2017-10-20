@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ExchangeIsReadyMessage extends NetworkMessage {
   // bool
   public boolean ready;
 
-  public ExchangeIsReadyMessage()
-  {}
+  public ExchangeIsReadyMessage() {}
 
-  public ExchangeIsReadyMessage(double id, boolean ready)
-  {
+  public ExchangeIsReadyMessage(double id, boolean ready) {
     this.id = id;
     this.ready = ready;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5509;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.id);
     writer.write_bool(this.ready);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_f64();
     this.ready = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeIsReadyMessage(" + "id=" + this.id + ", ready=" + this.ready + ')';
   }

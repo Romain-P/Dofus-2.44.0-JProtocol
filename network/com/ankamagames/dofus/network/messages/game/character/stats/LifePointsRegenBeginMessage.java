@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class LifePointsRegenBeginMessage extends NetworkMessage {
   // ui8
   public short regenRate;
 
-  public LifePointsRegenBeginMessage()
-  {}
+  public LifePointsRegenBeginMessage() {}
 
-  public LifePointsRegenBeginMessage(short regenRate)
-  {
+  public LifePointsRegenBeginMessage(short regenRate) {
     this.regenRate = regenRate;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5684;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.regenRate);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.regenRate = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LifePointsRegenBeginMessage(" + "regenRate=" + this.regenRate + ')';
   }

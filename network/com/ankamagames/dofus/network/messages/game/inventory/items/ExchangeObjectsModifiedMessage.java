@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,12 +15,10 @@ public class ExchangeObjectsModifiedMessage
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object;
 
-  public ExchangeObjectsModifiedMessage()
-  {}
+  public ExchangeObjectsModifiedMessage() {}
 
   public ExchangeObjectsModifiedMessage(
-      boolean remote, com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object)
-  {
+      boolean remote, com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object) {
 
     super(remote);
     this.object = object;
@@ -29,8 +27,7 @@ public class ExchangeObjectsModifiedMessage
   public ExchangeObjectsModifiedMessage(
       boolean remote,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
-          object)
-  {
+          object) {
 
     super(remote);
     this.object =
@@ -38,36 +35,31 @@ public class ExchangeObjectsModifiedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6533;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(object.length);
 
-    for (int i = 0; i < object.length; i++)
-  {
+    for (int i = 0; i < object.length; i++) {
 
       object[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
     int object_length = reader.read_ui16();
     this.object = new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[object_length];
 
-    for (int i = 0; i < object_length; i++)
-  {
+    for (int i = 0; i < object_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem object_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -78,8 +70,7 @@ public class ExchangeObjectsModifiedMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeObjectsModifiedMessage("
         + "remote="

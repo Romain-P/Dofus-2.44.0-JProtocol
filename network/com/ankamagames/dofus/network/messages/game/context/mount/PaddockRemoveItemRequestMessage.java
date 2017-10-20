@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class PaddockRemoveItemRequestMessage extends NetworkMessage {
   // vi16
   public short cellId;
 
-  public PaddockRemoveItemRequestMessage()
-  {}
+  public PaddockRemoveItemRequestMessage() {}
 
-  public PaddockRemoveItemRequestMessage(short cellId)
-  {
+  public PaddockRemoveItemRequestMessage(short cellId) {
     this.cellId = cellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5958;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.cellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cellId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockRemoveItemRequestMessage(" + "cellId=" + this.cellId + ')';
   }

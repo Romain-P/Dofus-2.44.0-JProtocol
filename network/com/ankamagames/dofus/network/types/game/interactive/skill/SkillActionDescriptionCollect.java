@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive.skill;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class SkillActionDescriptionCollect
   // vi16
   public short max;
 
-  public SkillActionDescriptionCollect()
-  {}
+  public SkillActionDescriptionCollect() {}
 
-  public SkillActionDescriptionCollect(short skillId, short time, short min, short max)
-  {
+  public SkillActionDescriptionCollect(short skillId, short time, short min, short max) {
 
     super(skillId, time);
     this.min = min;
@@ -29,14 +27,12 @@ public class SkillActionDescriptionCollect
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 99;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.min);
@@ -44,8 +40,7 @@ public class SkillActionDescriptionCollect
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.min = reader.read_vi16();
@@ -53,8 +48,7 @@ public class SkillActionDescriptionCollect
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SkillActionDescriptionCollect("
         + "skillId="

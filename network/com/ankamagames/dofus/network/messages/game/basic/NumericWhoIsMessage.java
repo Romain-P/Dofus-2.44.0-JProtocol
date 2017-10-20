@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,43 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class NumericWhoIsMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6297;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // i32
   public int accountId;
 
-  public NumericWhoIsMessage()
-  {}
+  public NumericWhoIsMessage() {}
 
-  public NumericWhoIsMessage(java.math.BigInteger playerId, int accountId)
-  {
+  public NumericWhoIsMessage(long playerId, int accountId) {
     this.playerId = playerId;
     this.accountId = accountId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6297;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.playerId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.playerId);
     writer.write_i32(this.accountId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.playerId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.playerId = reader.read_vi64();
     this.accountId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NumericWhoIsMessage("
         + "playerId="

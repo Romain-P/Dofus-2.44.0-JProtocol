@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,44 +13,38 @@ public class PartyStopFollowRequestMessage
     extends com.ankamagames.dofus.network.messages.game.context.roleplay.party
         .AbstractPartyMessage {
   public static final int PROTOCOL_ID = 5574;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public PartyStopFollowRequestMessage()
-  {}
+  public PartyStopFollowRequestMessage() {}
 
-  public PartyStopFollowRequestMessage(int partyId, java.math.BigInteger playerId)
-  {
+  public PartyStopFollowRequestMessage(int partyId, long playerId) {
 
     super(partyId);
     this.playerId = playerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5574;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyStopFollowRequestMessage("
         + "partyId="

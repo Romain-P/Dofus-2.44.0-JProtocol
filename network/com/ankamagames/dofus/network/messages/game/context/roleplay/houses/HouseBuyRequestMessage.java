@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class HouseBuyRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5738;
-  // ui64
-  public java.math.BigInteger proposedPrice;
+  // vi64
+  public long proposedPrice;
 
-  public HouseBuyRequestMessage()
-  {}
+  public HouseBuyRequestMessage() {}
 
-  public HouseBuyRequestMessage(java.math.BigInteger proposedPrice)
-  {
+  public HouseBuyRequestMessage(long proposedPrice) {
     this.proposedPrice = proposedPrice;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5738;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.proposedPrice);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.proposedPrice);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.proposedPrice = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.proposedPrice = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseBuyRequestMessage(" + "proposedPrice=" + this.proposedPrice + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,34 +12,28 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class QuestListRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5623;
 
-  public QuestListRequestMessage()
-  {}
+  public QuestListRequestMessage() {}
 
   public static final QuestListRequestMessage i = new QuestListRequestMessage();
 
   @Override
-  public boolean isAlwaysEmpty()
-  {
+  public boolean isAlwaysEmpty() {
     return true;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5623;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "QuestListRequestMessage";
   }

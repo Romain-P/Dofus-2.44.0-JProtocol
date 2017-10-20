@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,17 +13,14 @@ public class ExchangeRequestedTradeMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.exchanges
         .ExchangeRequestedMessage {
   public static final int PROTOCOL_ID = 5523;
-  // ui64
-  public java.math.BigInteger source;
-  // ui64
-  public java.math.BigInteger target;
+  // vi64
+  public long source;
+  // vi64
+  public long target;
 
-  public ExchangeRequestedTradeMessage()
-  {}
+  public ExchangeRequestedTradeMessage() {}
 
-  public ExchangeRequestedTradeMessage(
-      byte exchangeType, java.math.BigInteger source, java.math.BigInteger target)
-  {
+  public ExchangeRequestedTradeMessage(byte exchangeType, long source, long target) {
 
     super(exchangeType);
     this.source = source;
@@ -31,32 +28,28 @@ public class ExchangeRequestedTradeMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5523;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.source);
-    writer.write_ui64(this.target);
+    writer.write_vi64(this.source);
+    writer.write_vi64(this.target);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.source = reader.read_ui64();
-    this.target = reader.read_ui64();
+    this.source = reader.read_vi64();
+    this.target = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeRequestedTradeMessage("
         + "exchangeType="

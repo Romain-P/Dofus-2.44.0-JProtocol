@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ShortcutObjectPreset
   // i8
   public byte presetId;
 
-  public ShortcutObjectPreset()
-  {}
+  public ShortcutObjectPreset() {}
 
-  public ShortcutObjectPreset(byte slot, byte presetId)
-  {
+  public ShortcutObjectPreset(byte slot, byte presetId) {
 
     super(slot);
     this.presetId = presetId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 370;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.presetId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.presetId = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutObjectPreset(" + "slot=" + this.slot + ", presetId=" + this.presetId + ')';
   }

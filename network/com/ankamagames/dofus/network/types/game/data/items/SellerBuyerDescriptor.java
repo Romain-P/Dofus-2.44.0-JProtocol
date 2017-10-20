@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -28,8 +28,7 @@ public class SellerBuyerDescriptor extends NetworkType {
   // vi16
   public short unsoldDelay;
 
-  public SellerBuyerDescriptor()
-  {}
+  public SellerBuyerDescriptor() {}
 
   public SellerBuyerDescriptor(
       int[] quantities,
@@ -39,8 +38,7 @@ public class SellerBuyerDescriptor extends NetworkType {
       short maxItemLevel,
       int maxItemPerAccount,
       int npcContextualId,
-      short unsoldDelay)
-  {
+      short unsoldDelay) {
     this.quantities = quantities;
     this.types = types;
     this.taxPercentage = taxPercentage;
@@ -52,14 +50,12 @@ public class SellerBuyerDescriptor extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 121;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(quantities.length);
     writer.write_array_vi32(this.quantities);
     writer.write_ui16(types.length);
@@ -73,8 +69,7 @@ public class SellerBuyerDescriptor extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int quantities_length = reader.read_ui16();
     this.quantities = reader.read_array_vi32(quantities_length);
@@ -90,8 +85,7 @@ public class SellerBuyerDescriptor extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SellerBuyerDescriptor("
         + "quantities="

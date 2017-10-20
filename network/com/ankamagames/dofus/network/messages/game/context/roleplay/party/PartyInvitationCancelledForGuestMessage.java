@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,44 +13,38 @@ public class PartyInvitationCancelledForGuestMessage
     extends com.ankamagames.dofus.network.messages.game.context.roleplay.party
         .AbstractPartyMessage {
   public static final int PROTOCOL_ID = 6256;
-  // ui64
-  public java.math.BigInteger cancelerId;
+  // vi64
+  public long cancelerId;
 
-  public PartyInvitationCancelledForGuestMessage()
-  {}
+  public PartyInvitationCancelledForGuestMessage() {}
 
-  public PartyInvitationCancelledForGuestMessage(int partyId, java.math.BigInteger cancelerId)
-  {
+  public PartyInvitationCancelledForGuestMessage(int partyId, long cancelerId) {
 
     super(partyId);
     this.cancelerId = cancelerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6256;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.cancelerId);
+    writer.write_vi64(this.cancelerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.cancelerId = reader.read_ui64();
+    this.cancelerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationCancelledForGuestMessage("
         + "partyId="

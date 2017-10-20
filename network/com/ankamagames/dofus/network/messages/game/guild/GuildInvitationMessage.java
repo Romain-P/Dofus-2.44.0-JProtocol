@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GuildInvitationMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5551;
-  // ui64
-  public java.math.BigInteger targetId;
+  // vi64
+  public long targetId;
 
-  public GuildInvitationMessage()
-  {}
+  public GuildInvitationMessage() {}
 
-  public GuildInvitationMessage(java.math.BigInteger targetId)
-  {
+  public GuildInvitationMessage(long targetId) {
     this.targetId = targetId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5551;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.targetId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.targetId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.targetId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.targetId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInvitationMessage(" + "targetId=" + this.targetId + ')';
   }

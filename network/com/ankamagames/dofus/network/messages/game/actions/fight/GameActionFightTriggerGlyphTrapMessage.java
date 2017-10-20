@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,16 +19,14 @@ public class GameActionFightTriggerGlyphTrapMessage
   // vi16
   public short triggeredSpellId;
 
-  public GameActionFightTriggerGlyphTrapMessage()
-  {}
+  public GameActionFightTriggerGlyphTrapMessage() {}
 
   public GameActionFightTriggerGlyphTrapMessage(
       short actionId,
       double sourceId,
       short markId,
       double triggeringCharacterId,
-      short triggeredSpellId)
-  {
+      short triggeredSpellId) {
 
     super(actionId, sourceId);
     this.markId = markId;
@@ -37,14 +35,12 @@ public class GameActionFightTriggerGlyphTrapMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5741;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.markId);
@@ -53,8 +49,7 @@ public class GameActionFightTriggerGlyphTrapMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.markId = reader.read_i16();
@@ -63,8 +58,7 @@ public class GameActionFightTriggerGlyphTrapMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightTriggerGlyphTrapMessage("
         + "actionId="

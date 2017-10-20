@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class HavenBagFurnitureInformation extends NetworkType {
   // i8
   public byte orientation;
 
-  public HavenBagFurnitureInformation()
-  {}
+  public HavenBagFurnitureInformation() {}
 
-  public HavenBagFurnitureInformation(short cellId, int funitureId, byte orientation)
-  {
+  public HavenBagFurnitureInformation(short cellId, int funitureId, byte orientation) {
     this.cellId = cellId;
     this.funitureId = funitureId;
     this.orientation = orientation;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 498;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.cellId);
     writer.write_i32(this.funitureId);
     writer.write_i8(this.orientation);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cellId = reader.read_vi16();
     this.funitureId = reader.read_i32();
     this.orientation = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HavenBagFurnitureInformation("
         + "cellId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GuildKickRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5887;
-  // ui64
-  public java.math.BigInteger kickedId;
+  // vi64
+  public long kickedId;
 
-  public GuildKickRequestMessage()
-  {}
+  public GuildKickRequestMessage() {}
 
-  public GuildKickRequestMessage(java.math.BigInteger kickedId)
-  {
+  public GuildKickRequestMessage(long kickedId) {
     this.kickedId = kickedId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5887;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.kickedId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.kickedId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.kickedId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.kickedId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildKickRequestMessage(" + "kickedId=" + this.kickedId + ')';
   }

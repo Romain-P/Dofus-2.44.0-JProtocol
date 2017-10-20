@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,33 @@ public class TaxCollectorStaticExtendedInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations
       allianceIdentity;
 
-  public TaxCollectorStaticExtendedInformations()
-  {}
+  public TaxCollectorStaticExtendedInformations() {}
 
   public TaxCollectorStaticExtendedInformations(
       short firstNameId,
       short lastNameId,
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildIdentity,
       com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations
-          allianceIdentity)
-  {
+          allianceIdentity) {
 
     super(firstNameId, lastNameId, guildIdentity);
     this.allianceIdentity = allianceIdentity;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 440;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.allianceIdentity.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.allianceIdentity =
@@ -56,8 +51,7 @@ public class TaxCollectorStaticExtendedInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorStaticExtendedInformations("
         + "firstNameId="

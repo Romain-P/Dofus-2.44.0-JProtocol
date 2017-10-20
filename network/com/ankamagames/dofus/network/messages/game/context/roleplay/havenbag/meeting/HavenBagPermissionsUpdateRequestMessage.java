@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class HavenBagPermissionsUpdateRequestMessage extends NetworkMessage {
   // i32
   public int permissions;
 
-  public HavenBagPermissionsUpdateRequestMessage()
-  {}
+  public HavenBagPermissionsUpdateRequestMessage() {}
 
-  public HavenBagPermissionsUpdateRequestMessage(int permissions)
-  {
+  public HavenBagPermissionsUpdateRequestMessage(int permissions) {
     this.permissions = permissions;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6714;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.permissions);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.permissions = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HavenBagPermissionsUpdateRequestMessage(" + "permissions=" + this.permissions + ')';
   }

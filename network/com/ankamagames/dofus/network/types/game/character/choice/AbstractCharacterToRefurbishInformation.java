@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,12 +17,9 @@ public class AbstractCharacterToRefurbishInformation
   // vi32
   public int cosmeticId;
 
-  public AbstractCharacterToRefurbishInformation()
-  {}
+  public AbstractCharacterToRefurbishInformation() {}
 
-  public AbstractCharacterToRefurbishInformation(
-      java.math.BigInteger id, int[] colors, int cosmeticId)
-  {
+  public AbstractCharacterToRefurbishInformation(long id, int[] colors, int cosmeticId) {
 
     super(id);
     this.colors = colors;
@@ -30,14 +27,12 @@ public class AbstractCharacterToRefurbishInformation
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 475;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(colors.length);
@@ -46,8 +41,7 @@ public class AbstractCharacterToRefurbishInformation
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -57,8 +51,7 @@ public class AbstractCharacterToRefurbishInformation
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractCharacterToRefurbishInformation("
         + "id="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,51 +14,43 @@ public class MapObstacleUpdateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.interactive.MapObstacle
   public com.ankamagames.dofus.network.types.game.interactive.MapObstacle[] obstacles;
 
-  public MapObstacleUpdateMessage()
-  {}
+  public MapObstacleUpdateMessage() {}
 
   public MapObstacleUpdateMessage(
-      com.ankamagames.dofus.network.types.game.interactive.MapObstacle[] obstacles)
-  {
+      com.ankamagames.dofus.network.types.game.interactive.MapObstacle[] obstacles) {
     this.obstacles = obstacles;
   }
 
   public MapObstacleUpdateMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.interactive.MapObstacle>
-          obstacles)
-  {
+          obstacles) {
     this.obstacles =
         obstacles.toArray(com.ankamagames.dofus.network.types.game.interactive.MapObstacle[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6051;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(obstacles.length);
 
-    for (int i = 0; i < obstacles.length; i++)
-  {
+    for (int i = 0; i < obstacles.length; i++) {
 
       obstacles[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int obstacles_length = reader.read_ui16();
     this.obstacles =
         new com.ankamagames.dofus.network.types.game.interactive.MapObstacle[obstacles_length];
 
-    for (int i = 0; i < obstacles_length; i++)
-  {
+    for (int i = 0; i < obstacles_length; i++) {
 
       com.ankamagames.dofus.network.types.game.interactive.MapObstacle obstacles_it =
           new com.ankamagames.dofus.network.types.game.interactive.MapObstacle();
@@ -69,8 +61,7 @@ public class MapObstacleUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapObstacleUpdateMessage("
         + "obstacles="

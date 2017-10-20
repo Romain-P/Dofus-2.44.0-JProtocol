@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.startup;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class StartupActionAddMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject
   public com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject newAction;
 
-  public StartupActionAddMessage()
-  {}
+  public StartupActionAddMessage() {}
 
   public StartupActionAddMessage(
-      com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject newAction)
-  {
+      com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject newAction) {
     this.newAction = newAction;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6538;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.newAction.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.newAction = new com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject();
     this.newAction.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StartupActionAddMessage(" + "newAction=" + this.newAction + ')';
   }

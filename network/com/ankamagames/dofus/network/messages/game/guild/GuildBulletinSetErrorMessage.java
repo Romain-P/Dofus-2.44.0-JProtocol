@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,38 +13,32 @@ public class GuildBulletinSetErrorMessage
     extends com.ankamagames.dofus.network.messages.game.social.SocialNoticeSetErrorMessage {
   public static final int PROTOCOL_ID = 6691;
 
-  public GuildBulletinSetErrorMessage()
-  {}
+  public GuildBulletinSetErrorMessage() {}
 
-  public GuildBulletinSetErrorMessage(byte reason)
-  {
+  public GuildBulletinSetErrorMessage(byte reason) {
 
     super(reason);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6691;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildBulletinSetErrorMessage(" + "reason=" + this.reason + ')';
   }

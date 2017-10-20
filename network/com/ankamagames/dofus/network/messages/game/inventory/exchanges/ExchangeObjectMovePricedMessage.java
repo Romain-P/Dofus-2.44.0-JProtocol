@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,44 +13,38 @@ public class ExchangeObjectMovePricedMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.exchanges
         .ExchangeObjectMoveMessage {
   public static final int PROTOCOL_ID = 5514;
-  // ui64
-  public java.math.BigInteger price;
+  // vi64
+  public long price;
 
-  public ExchangeObjectMovePricedMessage()
-  {}
+  public ExchangeObjectMovePricedMessage() {}
 
-  public ExchangeObjectMovePricedMessage(int objectUID, int quantity, java.math.BigInteger price)
-  {
+  public ExchangeObjectMovePricedMessage(int objectUID, int quantity, long price) {
 
     super(objectUID, quantity);
     this.price = price;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5514;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.price);
+    writer.write_vi64(this.price);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.price = reader.read_ui64();
+    this.price = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeObjectMovePricedMessage("
         + "objectUID="

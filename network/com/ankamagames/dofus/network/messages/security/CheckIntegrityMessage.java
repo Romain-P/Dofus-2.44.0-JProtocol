@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.security;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class CheckIntegrityMessage extends NetworkMessage {
   // array,i8
   public byte[] data;
 
-  public CheckIntegrityMessage()
-  {}
+  public CheckIntegrityMessage() {}
 
-  public CheckIntegrityMessage(byte[] data)
-  {
+  public CheckIntegrityMessage(byte[] data) {
     this.data = data;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6372;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui16(data.length);
+  public void serialize(DataWriter writer) {
+    writer.write_vi32(data.length);
     writer.write_array_i8(this.data);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
-    int data_length = reader.read_ui16();
+    int data_length = reader.read_vi32();
     this.data = reader.read_array_i8(data_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CheckIntegrityMessage(" + "data=" + +this.data.length + "b" + ')';
   }

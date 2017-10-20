@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.startup;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class StartupActionFinishedMessage extends NetworkMessage {
   // i32
   public int actionId;
 
-  public StartupActionFinishedMessage()
-  {}
+  public StartupActionFinishedMessage() {}
 
-  public StartupActionFinishedMessage(boolean success, boolean automaticAction, int actionId)
-  {
+  public StartupActionFinishedMessage(boolean success, boolean automaticAction, int actionId) {
     this.success = success;
     this.automaticAction = automaticAction;
     this.actionId = actionId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1304;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.success, 0);
@@ -46,8 +42,7 @@ public class StartupActionFinishedMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.success = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -56,8 +51,7 @@ public class StartupActionFinishedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StartupActionFinishedMessage("
         + "success="

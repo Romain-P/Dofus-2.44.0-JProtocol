@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,26 +18,22 @@ public class LivingObjectMessageRequestMessage extends NetworkMessage {
   // vi32
   public int livingObject;
 
-  public LivingObjectMessageRequestMessage()
-  {}
+  public LivingObjectMessageRequestMessage() {}
 
   public LivingObjectMessageRequestMessage(
-      short msgId, java.lang.String[] parameters, int livingObject)
-  {
+      short msgId, java.lang.String[] parameters, int livingObject) {
     this.msgId = msgId;
     this.parameters = parameters;
     this.livingObject = livingObject;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6066;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.msgId);
     writer.write_ui16(parameters.length);
     writer.write_array_str(this.parameters);
@@ -45,8 +41,7 @@ public class LivingObjectMessageRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.msgId = reader.read_vi16();
 
     int parameters_length = reader.read_ui16();
@@ -55,8 +50,7 @@ public class LivingObjectMessageRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LivingObjectMessageRequestMessage("
         + "msgId="

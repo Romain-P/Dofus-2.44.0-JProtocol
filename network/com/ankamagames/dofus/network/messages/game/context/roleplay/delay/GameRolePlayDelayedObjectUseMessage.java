@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.delay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,42 +16,36 @@ public class GameRolePlayDelayedObjectUseMessage
   // vi16
   public short objectGID;
 
-  public GameRolePlayDelayedObjectUseMessage()
-  {}
+  public GameRolePlayDelayedObjectUseMessage() {}
 
   public GameRolePlayDelayedObjectUseMessage(
-      double delayedCharacterId, byte delayTypeId, double delayEndTime, short objectGID)
-  {
+      double delayedCharacterId, byte delayTypeId, double delayEndTime, short objectGID) {
 
     super(delayedCharacterId, delayTypeId, delayEndTime);
     this.objectGID = objectGID;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6425;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.objectGID);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.objectGID = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayDelayedObjectUseMessage("
         + "delayedCharacterId="

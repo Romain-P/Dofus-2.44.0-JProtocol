@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.approach;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,35 +12,29 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class AuthenticationTicketRefusedMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 112;
 
-  public AuthenticationTicketRefusedMessage()
-  {}
+  public AuthenticationTicketRefusedMessage() {}
 
   public static final AuthenticationTicketRefusedMessage i =
       new AuthenticationTicketRefusedMessage();
 
   @Override
-  public boolean isAlwaysEmpty()
-  {
+  public boolean isAlwaysEmpty() {
     return true;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 112;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AuthenticationTicketRefusedMessage";
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,40 +16,34 @@ public class GameContextRefreshEntityLookMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook look;
 
-  public GameContextRefreshEntityLookMessage()
-  {}
+  public GameContextRefreshEntityLookMessage() {}
 
   public GameContextRefreshEntityLookMessage(
-      double id, com.ankamagames.dofus.network.types.game.look.EntityLook look)
-  {
+      double id, com.ankamagames.dofus.network.types.game.look.EntityLook look) {
     this.id = id;
     this.look = look;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5637;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.id);
     this.look.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_f64();
     this.look = new com.ankamagames.dofus.network.types.game.look.EntityLook();
     this.look.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameContextRefreshEntityLookMessage(" + "id=" + this.id + ", look=" + this.look + ')';
   }

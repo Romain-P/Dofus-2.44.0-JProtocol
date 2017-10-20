@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,16 +17,14 @@ public class FightResultFighterListEntry
   // bool
   public boolean alive;
 
-  public FightResultFighterListEntry()
-  {}
+  public FightResultFighterListEntry() {}
 
   public FightResultFighterListEntry(
       short outcome,
       byte wave,
       com.ankamagames.dofus.network.types.game.context.fight.FightLoot rewards,
       double id,
-      boolean alive)
-  {
+      boolean alive) {
 
     super(outcome, wave, rewards);
     this.id = id;
@@ -34,14 +32,12 @@ public class FightResultFighterListEntry
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 189;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.id);
@@ -49,8 +45,7 @@ public class FightResultFighterListEntry
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.id = reader.read_f64();
@@ -58,8 +53,7 @@ public class FightResultFighterListEntry
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultFighterListEntry("
         + "outcome="

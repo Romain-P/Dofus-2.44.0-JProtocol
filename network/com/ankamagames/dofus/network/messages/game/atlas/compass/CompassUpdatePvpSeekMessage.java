@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.atlas.compass;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,20 +12,18 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class CompassUpdatePvpSeekMessage
     extends com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdateMessage {
   public static final int PROTOCOL_ID = 6013;
-  // ui64
-  public java.math.BigInteger memberId;
+  // vi64
+  public long memberId;
   // str
   public java.lang.String memberName;
 
-  public CompassUpdatePvpSeekMessage()
-  {}
+  public CompassUpdatePvpSeekMessage() {}
 
   public CompassUpdatePvpSeekMessage(
       byte type,
       com.ankamagames.dofus.network.types.game.context.MapCoordinates coords,
-      java.math.BigInteger memberId,
-      java.lang.String memberName)
-  {
+      long memberId,
+      java.lang.String memberName) {
 
     super(type, coords);
     this.memberId = memberId;
@@ -33,32 +31,28 @@ public class CompassUpdatePvpSeekMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6013;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.memberId);
+    writer.write_vi64(this.memberId);
     writer.write_str(this.memberName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.memberId = reader.read_ui64();
+    this.memberId = reader.read_vi64();
     this.memberName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CompassUpdatePvpSeekMessage("
         + "type="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class PartyFollowStatusUpdateMessage
   public boolean success;
   // flag,_loc2_,1
   public boolean isFollowed;
-  // ui64
-  public java.math.BigInteger followedId;
+  // vi64
+  public long followedId;
 
-  public PartyFollowStatusUpdateMessage()
-  {}
+  public PartyFollowStatusUpdateMessage() {}
 
   public PartyFollowStatusUpdateMessage(
-      int partyId, boolean success, boolean isFollowed, java.math.BigInteger followedId)
-  {
+      int partyId, boolean success, boolean isFollowed, long followedId) {
 
     super(partyId);
     this.success = success;
@@ -34,14 +32,12 @@ public class PartyFollowStatusUpdateMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5581;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -49,24 +45,22 @@ public class PartyFollowStatusUpdateMessage
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.success, 0);
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isFollowed, 1);
     writer.write_i8(_loc2_);
-    writer.write_ui64(this.followedId);
+    writer.write_vi64(this.followedId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
     int _loc2_ = reader.read_i8();
     this.success = BooleanByteWrapper.getFlag(_loc2_, 0);
     this.isFollowed = BooleanByteWrapper.getFlag(_loc2_, 1);
-    this.followedId = reader.read_ui64();
+    this.followedId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyFollowStatusUpdateMessage("
         + "partyId="

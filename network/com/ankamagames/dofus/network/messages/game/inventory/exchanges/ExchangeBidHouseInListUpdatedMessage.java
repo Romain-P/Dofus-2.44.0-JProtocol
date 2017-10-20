@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,15 +14,13 @@ public class ExchangeBidHouseInListUpdatedMessage
         .ExchangeBidHouseInListAddedMessage {
   public static final int PROTOCOL_ID = 6337;
 
-  public ExchangeBidHouseInListUpdatedMessage()
-  {}
+  public ExchangeBidHouseInListUpdatedMessage() {}
 
   public ExchangeBidHouseInListUpdatedMessage(
       int itemUID,
       int objGenericId,
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] effects,
-      java.math.BigInteger[] prices)
-  {
+      long[] prices) {
 
     super(itemUID, objGenericId, effects, prices);
   }
@@ -33,35 +31,30 @@ public class ExchangeBidHouseInListUpdatedMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect>
           effects,
-      java.math.BigInteger[] prices)
-  {
+      long[] prices) {
 
     super(itemUID, objGenericId, effects, prices);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6337;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseInListUpdatedMessage("
         + "itemUID="

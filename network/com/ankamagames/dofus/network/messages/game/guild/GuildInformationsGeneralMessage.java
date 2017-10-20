@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,12 +15,12 @@ public class GuildInformationsGeneralMessage extends NetworkMessage {
   public boolean abandonnedPaddock;
   // ui8
   public short level;
-  // ui64
-  public java.math.BigInteger expLevelFloor;
-  // ui64
-  public java.math.BigInteger experience;
-  // ui64
-  public java.math.BigInteger expNextLevelFloor;
+  // vi64
+  public long expLevelFloor;
+  // vi64
+  public long experience;
+  // vi64
+  public long expNextLevelFloor;
   // i32
   public int creationDate;
   // vi16
@@ -28,19 +28,17 @@ public class GuildInformationsGeneralMessage extends NetworkMessage {
   // vi16
   public short nbConnectedMembers;
 
-  public GuildInformationsGeneralMessage()
-  {}
+  public GuildInformationsGeneralMessage() {}
 
   public GuildInformationsGeneralMessage(
       boolean abandonnedPaddock,
       short level,
-      java.math.BigInteger expLevelFloor,
-      java.math.BigInteger experience,
-      java.math.BigInteger expNextLevelFloor,
+      long expLevelFloor,
+      long experience,
+      long expNextLevelFloor,
       int creationDate,
       short nbTotalMembers,
-      short nbConnectedMembers)
-  {
+      short nbConnectedMembers) {
     this.abandonnedPaddock = abandonnedPaddock;
     this.level = level;
     this.expLevelFloor = expLevelFloor;
@@ -52,40 +50,36 @@ public class GuildInformationsGeneralMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5557;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.abandonnedPaddock);
     writer.write_ui8(this.level);
-    writer.write_ui64(this.expLevelFloor);
-    writer.write_ui64(this.experience);
-    writer.write_ui64(this.expNextLevelFloor);
+    writer.write_vi64(this.expLevelFloor);
+    writer.write_vi64(this.experience);
+    writer.write_vi64(this.expNextLevelFloor);
     writer.write_i32(this.creationDate);
     writer.write_vi16(this.nbTotalMembers);
     writer.write_vi16(this.nbConnectedMembers);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.abandonnedPaddock = reader.read_bool();
     this.level = reader.read_ui8();
-    this.expLevelFloor = reader.read_ui64();
-    this.experience = reader.read_ui64();
-    this.expNextLevelFloor = reader.read_ui64();
+    this.expLevelFloor = reader.read_vi64();
+    this.experience = reader.read_vi64();
+    this.expNextLevelFloor = reader.read_vi64();
     this.creationDate = reader.read_i32();
     this.nbTotalMembers = reader.read_vi16();
     this.nbConnectedMembers = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInformationsGeneralMessage("
         + "abandonnedPaddock="

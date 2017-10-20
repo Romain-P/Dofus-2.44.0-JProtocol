@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.creation;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,12 +22,10 @@ public class CharacterCreationRequestMessage extends NetworkMessage {
   // vi16
   public short cosmeticId;
 
-  public CharacterCreationRequestMessage()
-  {}
+  public CharacterCreationRequestMessage() {}
 
   public CharacterCreationRequestMessage(
-      java.lang.String name, byte breed, boolean sex, int[] colors, short cosmeticId)
-  {
+      java.lang.String name, byte breed, boolean sex, int[] colors, short cosmeticId) {
     this.name = name;
     this.breed = breed;
     this.sex = sex;
@@ -36,14 +34,12 @@ public class CharacterCreationRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 160;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
     writer.write_i8(this.breed);
     writer.write_bool(this.sex);
@@ -52,8 +48,7 @@ public class CharacterCreationRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
     this.breed = reader.read_i8();
     this.sex = reader.read_bool();
@@ -64,8 +59,7 @@ public class CharacterCreationRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterCreationRequestMessage("
         + "name="

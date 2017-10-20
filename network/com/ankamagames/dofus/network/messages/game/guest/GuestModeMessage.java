@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guest;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuestModeMessage extends NetworkMessage {
   // bool
   public boolean active;
 
-  public GuestModeMessage()
-  {}
+  public GuestModeMessage() {}
 
-  public GuestModeMessage(boolean active)
-  {
+  public GuestModeMessage(boolean active) {
     this.active = active;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6505;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.active);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.active = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuestModeMessage(" + "active=" + this.active + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class InteractiveElementWithAgeBonus
   // i16
   public short ageBonus;
 
-  public InteractiveElementWithAgeBonus()
-  {}
+  public InteractiveElementWithAgeBonus() {}
 
   public InteractiveElementWithAgeBonus(
       int elementId,
@@ -24,8 +23,7 @@ public class InteractiveElementWithAgeBonus
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill[] enabledSkills,
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill[] disabledSkills,
       boolean onCurrentMap,
-      short ageBonus)
-  {
+      short ageBonus) {
 
     super(elementId, elementTypeId, enabledSkills, disabledSkills, onCurrentMap);
     this.ageBonus = ageBonus;
@@ -41,38 +39,33 @@ public class InteractiveElementWithAgeBonus
               com.ankamagames.dofus.network.types.game.interactive.InteractiveElementSkill>
           disabledSkills,
       boolean onCurrentMap,
-      short ageBonus)
-  {
+      short ageBonus) {
 
     super(elementId, elementTypeId, enabledSkills, disabledSkills, onCurrentMap);
     this.ageBonus = ageBonus;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 398;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.ageBonus);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.ageBonus = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveElementWithAgeBonus("
         + "elementId="

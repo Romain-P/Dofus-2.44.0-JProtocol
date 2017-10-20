@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,8 +21,7 @@ public class FightTriggeredEffect
   // i16
   public short delay;
 
-  public FightTriggeredEffect()
-  {}
+  public FightTriggeredEffect() {}
 
   public FightTriggeredEffect(
       int uid,
@@ -35,8 +34,7 @@ public class FightTriggeredEffect
       int param1,
       int param2,
       int param3,
-      short delay)
-  {
+      short delay) {
 
     super(uid, targetId, turnDuration, dispelable, spellId, effectId, parentBoostUid);
     this.param1 = param1;
@@ -46,14 +44,12 @@ public class FightTriggeredEffect
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 210;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.param1);
@@ -63,8 +59,7 @@ public class FightTriggeredEffect
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.param1 = reader.read_i32();
@@ -74,8 +69,7 @@ public class FightTriggeredEffect
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTriggeredEffect("
         + "uid="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,36 +20,31 @@ public class JobCrafterDirectoryListEntry extends NetworkType {
           .JobCrafterDirectoryEntryJobInfo
       jobInfo;
 
-  public JobCrafterDirectoryListEntry()
-  {}
+  public JobCrafterDirectoryListEntry() {}
 
   public JobCrafterDirectoryListEntry(
       com.ankamagames.dofus.network.types.game.context.roleplay.job
               .JobCrafterDirectoryEntryPlayerInfo
           playerInfo,
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobCrafterDirectoryEntryJobInfo
-          jobInfo)
-  {
+          jobInfo) {
     this.playerInfo = playerInfo;
     this.jobInfo = jobInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 196;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.playerInfo.serialize(writer);
     this.jobInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.playerInfo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job
             .JobCrafterDirectoryEntryPlayerInfo();
@@ -61,8 +56,7 @@ public class JobCrafterDirectoryListEntry extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryListEntry("
         + "playerInfo="

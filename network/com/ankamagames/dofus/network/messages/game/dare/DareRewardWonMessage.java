@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,36 +14,30 @@ public class DareRewardWonMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.dare.DareReward
   public com.ankamagames.dofus.network.types.game.dare.DareReward reward;
 
-  public DareRewardWonMessage()
-  {}
+  public DareRewardWonMessage() {}
 
-  public DareRewardWonMessage(com.ankamagames.dofus.network.types.game.dare.DareReward reward)
-  {
+  public DareRewardWonMessage(com.ankamagames.dofus.network.types.game.dare.DareReward reward) {
     this.reward = reward;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6678;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.reward.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.reward = new com.ankamagames.dofus.network.types.game.dare.DareReward();
     this.reward.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareRewardWonMessage(" + "reward=" + this.reward + ')';
   }

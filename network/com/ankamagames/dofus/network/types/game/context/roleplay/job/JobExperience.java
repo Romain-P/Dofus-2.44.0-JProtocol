@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,23 +15,17 @@ public class JobExperience extends NetworkType {
   public byte jobId;
   // ui8
   public short jobLevel;
-  // ui64
-  public java.math.BigInteger jobXP;
-  // ui64
-  public java.math.BigInteger jobXpLevelFloor;
-  // ui64
-  public java.math.BigInteger jobXpNextLevelFloor;
+  // vi64
+  public long jobXP;
+  // vi64
+  public long jobXpLevelFloor;
+  // vi64
+  public long jobXpNextLevelFloor;
 
-  public JobExperience()
-  {}
+  public JobExperience() {}
 
   public JobExperience(
-      byte jobId,
-      short jobLevel,
-      java.math.BigInteger jobXP,
-      java.math.BigInteger jobXpLevelFloor,
-      java.math.BigInteger jobXpNextLevelFloor)
-  {
+      byte jobId, short jobLevel, long jobXP, long jobXpLevelFloor, long jobXpNextLevelFloor) {
     this.jobId = jobId;
     this.jobLevel = jobLevel;
     this.jobXP = jobXP;
@@ -40,34 +34,30 @@ public class JobExperience extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 98;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.jobId);
     writer.write_ui8(this.jobLevel);
-    writer.write_ui64(this.jobXP);
-    writer.write_ui64(this.jobXpLevelFloor);
-    writer.write_ui64(this.jobXpNextLevelFloor);
+    writer.write_vi64(this.jobXP);
+    writer.write_vi64(this.jobXpLevelFloor);
+    writer.write_vi64(this.jobXpNextLevelFloor);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.jobId = reader.read_i8();
     this.jobLevel = reader.read_ui8();
-    this.jobXP = reader.read_ui64();
-    this.jobXpLevelFloor = reader.read_ui64();
-    this.jobXpNextLevelFloor = reader.read_ui64();
+    this.jobXP = reader.read_vi64();
+    this.jobXpLevelFloor = reader.read_vi64();
+    this.jobXpNextLevelFloor = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobExperience("
         + "jobId="

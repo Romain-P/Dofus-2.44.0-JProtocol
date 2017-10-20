@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,9 @@ public class BasicGuildInformations
   // ui8
   public short guildLevel;
 
-  public BasicGuildInformations()
-  {}
+  public BasicGuildInformations() {}
 
-  public BasicGuildInformations(int guildId, java.lang.String guildName, short guildLevel)
-  {
+  public BasicGuildInformations(int guildId, java.lang.String guildName, short guildLevel) {
 
     super();
     this.guildId = guildId;
@@ -32,14 +30,12 @@ public class BasicGuildInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 365;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.guildId);
@@ -48,8 +44,7 @@ public class BasicGuildInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.guildId = reader.read_vi32();
@@ -58,8 +53,7 @@ public class BasicGuildInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicGuildInformations("
         + "guildId="

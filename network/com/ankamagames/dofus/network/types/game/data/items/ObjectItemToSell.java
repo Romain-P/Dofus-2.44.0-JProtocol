@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,19 +19,17 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
   public int objectUID;
   // vi32
   public int quantity;
-  // ui64
-  public java.math.BigInteger objectPrice;
+  // vi64
+  public long objectPrice;
 
-  public ObjectItemToSell()
-  {}
+  public ObjectItemToSell() {}
 
   public ObjectItemToSell(
       short objectGID,
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] effects,
       int objectUID,
       int quantity,
-      java.math.BigInteger objectPrice)
-  {
+      long objectPrice) {
 
     super();
     this.objectGID = objectGID;
@@ -48,8 +46,7 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
           effects,
       int objectUID,
       int quantity,
-      java.math.BigInteger objectPrice)
-  {
+      long objectPrice) {
 
     super();
     this.objectGID = objectGID;
@@ -62,21 +59,18 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 120;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.objectGID);
     writer.write_ui16(effects.length);
 
-    for (int i = 0; i < effects.length; i++)
-  {
+    for (int i = 0; i < effects.length; i++) {
 
       writer.write_ui16(effects[i].getProtocolId());
 
@@ -84,12 +78,11 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
     }
     writer.write_vi32(this.objectUID);
     writer.write_vi32(this.quantity);
-    writer.write_ui64(this.objectPrice);
+    writer.write_vi64(this.objectPrice);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.objectGID = reader.read_vi16();
@@ -99,8 +92,7 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
         new com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
             [effects_length];
 
-    for (int i = 0; i < effects_length; i++)
-  {
+    for (int i = 0; i < effects_length; i++) {
 
       int effects_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect effects_it =
@@ -112,12 +104,11 @@ public class ObjectItemToSell extends com.ankamagames.dofus.network.types.game.d
     }
     this.objectUID = reader.read_vi32();
     this.quantity = reader.read_vi32();
-    this.objectPrice = reader.read_ui64();
+    this.objectPrice = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectItemToSell("
         + "objectGID="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class FightTeamInformations
   public com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations[]
       teamMembers;
 
-  public FightTeamInformations()
-  {}
+  public FightTeamInformations() {}
 
   public FightTeamInformations(
       byte teamId,
@@ -26,8 +25,7 @@ public class FightTeamInformations
       byte teamTypeId,
       byte nbWaves,
       com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations[]
-          teamMembers)
-  {
+          teamMembers) {
 
     super(teamId, leaderId, teamSide, teamTypeId, nbWaves);
     this.teamMembers = teamMembers;
@@ -41,8 +39,7 @@ public class FightTeamInformations
       byte nbWaves,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations>
-          teamMembers)
-  {
+          teamMembers) {
 
     super(teamId, leaderId, teamSide, teamTypeId, nbWaves);
     this.teamMembers =
@@ -52,20 +49,17 @@ public class FightTeamInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 33;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(teamMembers.length);
 
-    for (int i = 0; i < teamMembers.length; i++)
-  {
+    for (int i = 0; i < teamMembers.length; i++) {
 
       writer.write_ui16(teamMembers[i].getProtocolId());
 
@@ -74,8 +68,7 @@ public class FightTeamInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -84,8 +77,7 @@ public class FightTeamInformations
         new com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations
             [teamMembers_length];
 
-    for (int i = 0; i < teamMembers_length; i++)
-  {
+    for (int i = 0; i < teamMembers_length; i++) {
 
       int teamMembers_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.FightTeamMemberInformations
@@ -99,8 +91,7 @@ public class FightTeamInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTeamInformations("
         + "teamId="

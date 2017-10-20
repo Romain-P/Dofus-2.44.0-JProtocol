@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class AccountHouseInformations
   // vi16
   public short subAreaId;
 
-  public AccountHouseInformations()
-  {}
+  public AccountHouseInformations() {}
 
   public AccountHouseInformations(
       int houseId,
@@ -33,8 +32,7 @@ public class AccountHouseInformations
       short worldX,
       short worldY,
       double mapId,
-      short subAreaId)
-  {
+      short subAreaId) {
 
     super(houseId, modelId);
     this.houseInfos = houseInfos;
@@ -45,14 +43,12 @@ public class AccountHouseInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 390;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(this.houseInfos.getProtocolId());
@@ -64,8 +60,7 @@ public class AccountHouseInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -81,8 +76,7 @@ public class AccountHouseInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AccountHouseInformations("
         + "houseId="

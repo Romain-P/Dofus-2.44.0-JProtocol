@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class AbstractPartyEventMessage
         .AbstractPartyMessage {
   public static final int PROTOCOL_ID = 6273;
 
-  public AbstractPartyEventMessage()
-  {}
+  public AbstractPartyEventMessage() {}
 
-  public AbstractPartyEventMessage(int partyId)
-  {
+  public AbstractPartyEventMessage(int partyId) {
 
     super(partyId);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6273;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractPartyEventMessage(" + "partyId=" + this.partyId + ')';
   }

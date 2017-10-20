@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,14 +18,12 @@ public class SetUpdateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
   public com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] setEffects;
 
-  public SetUpdateMessage()
-  {}
+  public SetUpdateMessage() {}
 
   public SetUpdateMessage(
       short setId,
       short[] setObjects,
-      com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] setEffects)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] setEffects) {
     this.setId = setId;
     this.setObjects = setObjects;
     this.setEffects = setEffects;
@@ -36,8 +34,7 @@ public class SetUpdateMessage extends NetworkMessage {
       short[] setObjects,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect>
-          setEffects)
-  {
+          setEffects) {
     this.setId = setId;
     this.setObjects = setObjects;
     this.setEffects =
@@ -46,21 +43,18 @@ public class SetUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5503;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.setId);
     writer.write_ui16(setObjects.length);
     writer.write_array_vi16(this.setObjects);
     writer.write_ui16(setEffects.length);
 
-    for (int i = 0; i < setEffects.length; i++)
-  {
+    for (int i = 0; i < setEffects.length; i++) {
 
       writer.write_ui16(setEffects[i].getProtocolId());
 
@@ -69,8 +63,7 @@ public class SetUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.setId = reader.read_vi16();
 
     int setObjects_length = reader.read_ui16();
@@ -81,8 +74,7 @@ public class SetUpdateMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
             [setEffects_length];
 
-    for (int i = 0; i < setEffects_length; i++)
-  {
+    for (int i = 0; i < setEffects_length; i++) {
 
       int setEffects_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect setEffects_it =
@@ -95,8 +87,7 @@ public class SetUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SetUpdateMessage("
         + "setId="

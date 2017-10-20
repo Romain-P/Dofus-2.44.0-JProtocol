@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildGetInformationsMessage extends NetworkMessage {
   // i8
   public byte infoType;
 
-  public GuildGetInformationsMessage()
-  {}
+  public GuildGetInformationsMessage() {}
 
-  public GuildGetInformationsMessage(byte infoType)
-  {
+  public GuildGetInformationsMessage(byte infoType) {
     this.infoType = infoType;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5550;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.infoType);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.infoType = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildGetInformationsMessage(" + "infoType=" + this.infoType + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,8 +19,7 @@ public class ChatServerMessage
   // i32
   public int senderAccountId;
 
-  public ChatServerMessage()
-  {}
+  public ChatServerMessage() {}
 
   public ChatServerMessage(
       byte channel,
@@ -29,8 +28,7 @@ public class ChatServerMessage
       java.lang.String fingerprint,
       double senderId,
       java.lang.String senderName,
-      int senderAccountId)
-  {
+      int senderAccountId) {
 
     super(channel, content, timestamp, fingerprint);
     this.senderId = senderId;
@@ -39,14 +37,12 @@ public class ChatServerMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 881;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.senderId);
@@ -55,8 +51,7 @@ public class ChatServerMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.senderId = reader.read_f64();
@@ -65,8 +60,7 @@ public class ChatServerMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatServerMessage("
         + "channel="

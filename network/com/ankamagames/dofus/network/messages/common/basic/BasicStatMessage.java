@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.common.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class BasicStatMessage extends NetworkMessage {
   // vi16
   public short statId;
 
-  public BasicStatMessage()
-  {}
+  public BasicStatMessage() {}
 
-  public BasicStatMessage(double timeSpent, short statId)
-  {
+  public BasicStatMessage(double timeSpent, short statId) {
     this.timeSpent = timeSpent;
     this.statId = statId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6530;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.timeSpent);
     writer.write_vi16(this.statId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.timeSpent = reader.read_f64();
     this.statId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicStatMessage(" + "timeSpent=" + this.timeSpent + ", statId=" + this.statId + ')';
   }

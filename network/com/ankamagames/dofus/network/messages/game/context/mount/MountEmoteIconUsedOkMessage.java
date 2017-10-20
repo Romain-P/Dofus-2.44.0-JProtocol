@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class MountEmoteIconUsedOkMessage extends NetworkMessage {
   // i8
   public byte reactionType;
 
-  public MountEmoteIconUsedOkMessage()
-  {}
+  public MountEmoteIconUsedOkMessage() {}
 
-  public MountEmoteIconUsedOkMessage(int mountId, byte reactionType)
-  {
+  public MountEmoteIconUsedOkMessage(int mountId, byte reactionType) {
     this.mountId = mountId;
     this.reactionType = reactionType;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5978;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.mountId);
     writer.write_i8(this.reactionType);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mountId = reader.read_vi32();
     this.reactionType = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountEmoteIconUsedOkMessage("
         + "mountId="

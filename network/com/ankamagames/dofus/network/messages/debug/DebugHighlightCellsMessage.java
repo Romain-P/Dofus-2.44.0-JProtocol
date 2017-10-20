@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.debug;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,32 +16,27 @@ public class DebugHighlightCellsMessage extends NetworkMessage {
   // array,vi16
   public short[] cells;
 
-  public DebugHighlightCellsMessage()
-  {}
+  public DebugHighlightCellsMessage() {}
 
-  public DebugHighlightCellsMessage(double color, short[] cells)
-  {
+  public DebugHighlightCellsMessage(double color, short[] cells) {
     this.color = color;
     this.cells = cells;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 2001;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.color);
     writer.write_ui16(cells.length);
     writer.write_array_vi16(this.cells);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.color = reader.read_f64();
 
     int cells_length = reader.read_ui16();
@@ -49,8 +44,7 @@ public class DebugHighlightCellsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DebugHighlightCellsMessage("
         + "color="

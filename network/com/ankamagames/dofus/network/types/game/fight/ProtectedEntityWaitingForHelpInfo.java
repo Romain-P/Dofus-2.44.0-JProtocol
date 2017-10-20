@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,42 +18,36 @@ public class ProtectedEntityWaitingForHelpInfo extends NetworkType {
   // i8
   public byte nbPositionForDefensors;
 
-  public ProtectedEntityWaitingForHelpInfo()
-  {}
+  public ProtectedEntityWaitingForHelpInfo() {}
 
   public ProtectedEntityWaitingForHelpInfo(
-      int timeLeftBeforeFight, int waitTimeForPlacement, byte nbPositionForDefensors)
-  {
+      int timeLeftBeforeFight, int waitTimeForPlacement, byte nbPositionForDefensors) {
     this.timeLeftBeforeFight = timeLeftBeforeFight;
     this.waitTimeForPlacement = waitTimeForPlacement;
     this.nbPositionForDefensors = nbPositionForDefensors;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 186;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.timeLeftBeforeFight);
     writer.write_i32(this.waitTimeForPlacement);
     writer.write_i8(this.nbPositionForDefensors);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.timeLeftBeforeFight = reader.read_i32();
     this.waitTimeForPlacement = reader.read_i32();
     this.nbPositionForDefensors = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ProtectedEntityWaitingForHelpInfo("
         + "timeLeftBeforeFight="

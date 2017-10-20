@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class JobCrafterDirectoryListRequestMessage extends NetworkMessage {
   // i8
   public byte jobId;
 
-  public JobCrafterDirectoryListRequestMessage()
-  {}
+  public JobCrafterDirectoryListRequestMessage() {}
 
-  public JobCrafterDirectoryListRequestMessage(byte jobId)
-  {
+  public JobCrafterDirectoryListRequestMessage(byte jobId) {
     this.jobId = jobId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6047;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.jobId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.jobId = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryListRequestMessage(" + "jobId=" + this.jobId + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,12 +15,10 @@ public class HumanOptionFollowers
   // array,com.ankamagames.dofus.network.types.game.look.IndexedEntityLook
   public com.ankamagames.dofus.network.types.game.look.IndexedEntityLook[] followingCharactersLook;
 
-  public HumanOptionFollowers()
-  {}
+  public HumanOptionFollowers() {}
 
   public HumanOptionFollowers(
-      com.ankamagames.dofus.network.types.game.look.IndexedEntityLook[] followingCharactersLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.IndexedEntityLook[] followingCharactersLook) {
 
     super();
     this.followingCharactersLook = followingCharactersLook;
@@ -28,8 +26,7 @@ public class HumanOptionFollowers
 
   public HumanOptionFollowers(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.look.IndexedEntityLook>
-          followingCharactersLook)
-  {
+          followingCharactersLook) {
 
     super();
     this.followingCharactersLook =
@@ -38,28 +35,24 @@ public class HumanOptionFollowers
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 410;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(followingCharactersLook.length);
 
-    for (int i = 0; i < followingCharactersLook.length; i++)
-  {
+    for (int i = 0; i < followingCharactersLook.length; i++) {
 
       followingCharactersLook[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -68,8 +61,7 @@ public class HumanOptionFollowers
         new com.ankamagames.dofus.network.types.game.look.IndexedEntityLook
             [followingCharactersLook_length];
 
-    for (int i = 0; i < followingCharactersLook_length; i++)
-  {
+    for (int i = 0; i < followingCharactersLook_length; i++) {
 
       com.ankamagames.dofus.network.types.game.look.IndexedEntityLook followingCharactersLook_it =
           new com.ankamagames.dofus.network.types.game.look.IndexedEntityLook();
@@ -80,8 +72,7 @@ public class HumanOptionFollowers
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionFollowers("
         + "followingCharactersLook="

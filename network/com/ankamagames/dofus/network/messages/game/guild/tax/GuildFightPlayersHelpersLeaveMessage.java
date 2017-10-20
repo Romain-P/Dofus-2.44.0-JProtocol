@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,41 +13,35 @@ public class GuildFightPlayersHelpersLeaveMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5719;
   // f64
   public double fightId;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public GuildFightPlayersHelpersLeaveMessage()
-  {}
+  public GuildFightPlayersHelpersLeaveMessage() {}
 
-  public GuildFightPlayersHelpersLeaveMessage(double fightId, java.math.BigInteger playerId)
-  {
+  public GuildFightPlayersHelpersLeaveMessage(double fightId, long playerId) {
     this.fightId = fightId;
     this.playerId = playerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5719;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.fightId);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_f64();
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFightPlayersHelpersLeaveMessage("
         + "fightId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,17 +18,15 @@ public class CharacterBaseInformations
   // bool
   public boolean sex;
 
-  public CharacterBaseInformations()
-  {}
+  public CharacterBaseInformations() {}
 
   public CharacterBaseInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
       byte breed,
-      boolean sex)
-  {
+      boolean sex) {
 
     super(id, name, level, entityLook);
     this.breed = breed;
@@ -36,14 +34,12 @@ public class CharacterBaseInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 45;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.breed);
@@ -51,8 +47,7 @@ public class CharacterBaseInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.breed = reader.read_i8();
@@ -60,8 +55,7 @@ public class CharacterBaseInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterBaseInformations("
         + "id="

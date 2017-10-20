@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.status;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,44 +13,39 @@ public class PlayerStatusUpdateMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6386;
   // i32
   public int accountId;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // com.ankamagames.dofus.network.types.game.character.status.PlayerStatus
   public com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status;
 
-  public PlayerStatusUpdateMessage()
-  {}
+  public PlayerStatusUpdateMessage() {}
 
   public PlayerStatusUpdateMessage(
       int accountId,
-      java.math.BigInteger playerId,
-      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status)
-  {
+      long playerId,
+      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status) {
     this.accountId = accountId;
     this.playerId = playerId;
     this.status = status;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6386;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.accountId);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
     writer.write_ui16(this.status.getProtocolId());
     this.status.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.accountId = reader.read_i32();
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
 
     int status_typeId = reader.read_ui16();
     this.status =
@@ -60,8 +55,7 @@ public class PlayerStatusUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PlayerStatusUpdateMessage("
         + "accountId="

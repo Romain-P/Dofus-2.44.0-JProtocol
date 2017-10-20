@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class IdolsPresetUseMessage extends NetworkMessage {
   // bool
   public boolean party;
 
-  public IdolsPresetUseMessage()
-  {}
+  public IdolsPresetUseMessage() {}
 
-  public IdolsPresetUseMessage(byte presetId, boolean party)
-  {
+  public IdolsPresetUseMessage(byte presetId, boolean party) {
     this.presetId = presetId;
     this.party = party;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6615;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_bool(this.party);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.party = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolsPresetUseMessage(" + "presetId=" + this.presetId + ", party=" + this.party + ')';
   }

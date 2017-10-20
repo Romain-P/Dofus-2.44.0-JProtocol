@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class TextInformationMessage extends NetworkMessage {
   // array,str
   public java.lang.String[] parameters;
 
-  public TextInformationMessage()
-  {}
+  public TextInformationMessage() {}
 
-  public TextInformationMessage(byte msgType, short msgId, java.lang.String[] parameters)
-  {
+  public TextInformationMessage(byte msgType, short msgId, java.lang.String[] parameters) {
     this.msgType = msgType;
     this.msgId = msgId;
     this.parameters = parameters;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 780;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.msgType);
     writer.write_vi16(this.msgId);
     writer.write_ui16(parameters.length);
@@ -44,8 +40,7 @@ public class TextInformationMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.msgType = reader.read_i8();
     this.msgId = reader.read_vi16();
 
@@ -54,8 +49,7 @@ public class TextInformationMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TextInformationMessage("
         + "msgType="

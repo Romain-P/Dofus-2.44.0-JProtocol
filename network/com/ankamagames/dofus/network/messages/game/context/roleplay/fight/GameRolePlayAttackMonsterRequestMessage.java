@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GameRolePlayAttackMonsterRequestMessage extends NetworkMessage {
   // f64
   public double monsterGroupId;
 
-  public GameRolePlayAttackMonsterRequestMessage()
-  {}
+  public GameRolePlayAttackMonsterRequestMessage() {}
 
-  public GameRolePlayAttackMonsterRequestMessage(double monsterGroupId)
-  {
+  public GameRolePlayAttackMonsterRequestMessage(double monsterGroupId) {
     this.monsterGroupId = monsterGroupId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6191;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.monsterGroupId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.monsterGroupId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayAttackMonsterRequestMessage("
         + "monsterGroupId="

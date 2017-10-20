@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class FightStartingPositions extends NetworkType {
   // array,vi16
   public short[] positionsForDefenders;
 
-  public FightStartingPositions()
-  {}
+  public FightStartingPositions() {}
 
-  public FightStartingPositions(short[] positionsForChallengers, short[] positionsForDefenders)
-  {
+  public FightStartingPositions(short[] positionsForChallengers, short[] positionsForDefenders) {
     this.positionsForChallengers = positionsForChallengers;
     this.positionsForDefenders = positionsForDefenders;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 513;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(positionsForChallengers.length);
     writer.write_array_vi16(this.positionsForChallengers);
     writer.write_ui16(positionsForDefenders.length);
@@ -41,8 +37,7 @@ public class FightStartingPositions extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int positionsForChallengers_length = reader.read_ui16();
     this.positionsForChallengers = reader.read_array_vi16(positionsForChallengers_length);
@@ -52,8 +47,7 @@ public class FightStartingPositions extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightStartingPositions("
         + "positionsForChallengers="

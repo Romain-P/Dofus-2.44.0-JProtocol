@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,42 +13,33 @@ public class GuildMotdMessage
     extends com.ankamagames.dofus.network.messages.game.social.SocialNoticeMessage {
   public static final int PROTOCOL_ID = 6590;
 
-  public GuildMotdMessage()
-  {}
+  public GuildMotdMessage() {}
 
   public GuildMotdMessage(
-      java.lang.String content,
-      int timestamp,
-      java.math.BigInteger memberId,
-      java.lang.String memberName)
-  {
+      java.lang.String content, int timestamp, long memberId, java.lang.String memberName) {
 
     super(content, timestamp, memberId, memberName);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6590;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildMotdMessage("
         + "content="

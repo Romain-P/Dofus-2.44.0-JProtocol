@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.idol;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class IdolPartyLostMessage extends NetworkMessage {
   // vi16
   public short idolId;
 
-  public IdolPartyLostMessage()
-  {}
+  public IdolPartyLostMessage() {}
 
-  public IdolPartyLostMessage(short idolId)
-  {
+  public IdolPartyLostMessage(short idolId) {
     this.idolId = idolId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6580;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.idolId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.idolId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolPartyLostMessage(" + "idolId=" + this.idolId + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,20 +16,18 @@ public class TaxCollectorMovementMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations
   public com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations
       basicInfos;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // str
   public java.lang.String playerName;
 
-  public TaxCollectorMovementMessage()
-  {}
+  public TaxCollectorMovementMessage() {}
 
   public TaxCollectorMovementMessage(
       byte movementType,
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations basicInfos,
-      java.math.BigInteger playerId,
-      java.lang.String playerName)
-  {
+      long playerId,
+      java.lang.String playerName) {
     this.movementType = movementType;
     this.basicInfos = basicInfos;
     this.playerId = playerId;
@@ -37,34 +35,30 @@ public class TaxCollectorMovementMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5633;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.movementType);
     this.basicInfos.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
     writer.write_str(this.playerName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.movementType = reader.read_i8();
     this.basicInfos =
         new com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations();
     this.basicInfos.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
     this.playerName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorMovementMessage("
         + "movementType="

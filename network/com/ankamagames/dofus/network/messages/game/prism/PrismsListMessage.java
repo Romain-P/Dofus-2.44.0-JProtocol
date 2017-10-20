@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,36 +14,30 @@ public class PrismsListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo
   public com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms;
 
-  public PrismsListMessage()
-  {}
+  public PrismsListMessage() {}
 
   public PrismsListMessage(
-      com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms)
-  {
+      com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms) {
     this.prisms = prisms;
   }
 
   public PrismsListMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo>
-          prisms)
-  {
+          prisms) {
     this.prisms =
         prisms.toArray(com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6440;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(prisms.length);
 
-    for (int i = 0; i < prisms.length; i++)
-  {
+    for (int i = 0; i < prisms.length; i++) {
 
       writer.write_ui16(prisms[i].getProtocolId());
 
@@ -52,15 +46,13 @@ public class PrismsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int prisms_length = reader.read_ui16();
     this.prisms =
         new com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[prisms_length];
 
-    for (int i = 0; i < prisms_length; i++)
-  {
+    for (int i = 0; i < prisms_length; i++) {
 
       int prisms_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo prisms_it =
@@ -73,8 +65,7 @@ public class PrismsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismsListMessage(" + "prisms=" + java.util.Arrays.toString(this.prisms) + ')';
   }

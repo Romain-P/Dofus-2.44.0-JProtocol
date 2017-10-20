@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,31 +14,26 @@ public class FriendAddedMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.friend.FriendInformations
   public com.ankamagames.dofus.network.types.game.friend.FriendInformations friendAdded;
 
-  public FriendAddedMessage()
-  {}
+  public FriendAddedMessage() {}
 
   public FriendAddedMessage(
-      com.ankamagames.dofus.network.types.game.friend.FriendInformations friendAdded)
-  {
+      com.ankamagames.dofus.network.types.game.friend.FriendInformations friendAdded) {
     this.friendAdded = friendAdded;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5599;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.friendAdded.getProtocolId());
     this.friendAdded.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int friendAdded_typeId = reader.read_ui16();
     this.friendAdded =
@@ -48,8 +43,7 @@ public class FriendAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendAddedMessage(" + "friendAdded=" + this.friendAdded + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,38 +13,32 @@ public class AllianceMotdSetErrorMessage
     extends com.ankamagames.dofus.network.messages.game.social.SocialNoticeSetErrorMessage {
   public static final int PROTOCOL_ID = 6683;
 
-  public AllianceMotdSetErrorMessage()
-  {}
+  public AllianceMotdSetErrorMessage() {}
 
-  public AllianceMotdSetErrorMessage(byte reason)
-  {
+  public AllianceMotdSetErrorMessage(byte reason) {
 
     super(reason);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6683;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceMotdSetErrorMessage(" + "reason=" + this.reason + ')';
   }

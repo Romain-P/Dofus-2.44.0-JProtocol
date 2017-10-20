@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.game.ui;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ClientUIOpenedMessage extends NetworkMessage {
   // i8
   public byte type;
 
-  public ClientUIOpenedMessage()
-  {}
+  public ClientUIOpenedMessage() {}
 
-  public ClientUIOpenedMessage(byte type)
-  {
+  public ClientUIOpenedMessage(byte type) {
     this.type = type;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6459;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.type);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.type = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ClientUIOpenedMessage(" + "type=" + this.type + ')';
   }

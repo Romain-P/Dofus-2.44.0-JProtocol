@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,12 +16,10 @@ public class ShortcutBarContentMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.shortcut.Shortcut
   public com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts;
 
-  public ShortcutBarContentMessage()
-  {}
+  public ShortcutBarContentMessage() {}
 
   public ShortcutBarContentMessage(
-      byte barType, com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts)
-  {
+      byte barType, com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts) {
     this.barType = barType;
     this.shortcuts = shortcuts;
   }
@@ -29,27 +27,23 @@ public class ShortcutBarContentMessage extends NetworkMessage {
   public ShortcutBarContentMessage(
       byte barType,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.shortcut.Shortcut>
-          shortcuts)
-  {
+          shortcuts) {
     this.barType = barType;
     this.shortcuts =
         shortcuts.toArray(com.ankamagames.dofus.network.types.game.shortcut.Shortcut[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6231;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.barType);
     writer.write_ui16(shortcuts.length);
 
-    for (int i = 0; i < shortcuts.length; i++)
-  {
+    for (int i = 0; i < shortcuts.length; i++) {
 
       writer.write_ui16(shortcuts[i].getProtocolId());
 
@@ -58,16 +52,14 @@ public class ShortcutBarContentMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.barType = reader.read_i8();
 
     int shortcuts_length = reader.read_ui16();
     this.shortcuts =
         new com.ankamagames.dofus.network.types.game.shortcut.Shortcut[shortcuts_length];
 
-    for (int i = 0; i < shortcuts_length; i++)
-  {
+    for (int i = 0; i < shortcuts_length; i++) {
 
       int shortcuts_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.shortcut.Shortcut shortcuts_it =
@@ -80,8 +72,7 @@ public class ShortcutBarContentMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutBarContentMessage("
         + "barType="

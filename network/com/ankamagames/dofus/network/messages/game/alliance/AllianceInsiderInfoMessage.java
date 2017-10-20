@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,14 +19,12 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo
   public com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms;
 
-  public AllianceInsiderInfoMessage()
-  {}
+  public AllianceInsiderInfoMessage() {}
 
   public AllianceInsiderInfoMessage(
       com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations allianceInfos,
       com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations[] guilds,
-      com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms)
-  {
+      com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[] prisms) {
     this.allianceInfos = allianceInfos;
     this.guilds = guilds;
     this.prisms = prisms;
@@ -38,8 +36,7 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations>
           guilds,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo>
-          prisms)
-  {
+          prisms) {
     this.allianceInfos = allianceInfos;
     this.guilds =
         guilds.toArray(
@@ -50,26 +47,22 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6403;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.allianceInfos.serialize(writer);
     writer.write_ui16(guilds.length);
 
-    for (int i = 0; i < guilds.length; i++)
-  {
+    for (int i = 0; i < guilds.length; i++) {
 
       guilds[i].serialize(writer);
     }
     writer.write_ui16(prisms.length);
 
-    for (int i = 0; i < prisms.length; i++)
-  {
+    for (int i = 0; i < prisms.length; i++) {
 
       writer.write_ui16(prisms[i].getProtocolId());
 
@@ -78,8 +71,7 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.allianceInfos =
         new com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations();
     this.allianceInfos.deserialize(reader);
@@ -89,8 +81,7 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations
             [guilds_length];
 
-    for (int i = 0; i < guilds_length; i++)
-  {
+    for (int i = 0; i < guilds_length; i++) {
 
       com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations guilds_it =
           new com.ankamagames.dofus.network.types.game.social.GuildInsiderFactSheetInformations();
@@ -103,8 +94,7 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
     this.prisms =
         new com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo[prisms_length];
 
-    for (int i = 0; i < prisms_length; i++)
-  {
+    for (int i = 0; i < prisms_length; i++) {
 
       int prisms_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.prism.PrismSubareaEmptyInfo prisms_it =
@@ -117,8 +107,7 @@ public class AllianceInsiderInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceInsiderInfoMessage("
         + "allianceInfos="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,12 +17,10 @@ public class GameActionFightPointsVariationMessage
   // i16
   public short delta;
 
-  public GameActionFightPointsVariationMessage()
-  {}
+  public GameActionFightPointsVariationMessage() {}
 
   public GameActionFightPointsVariationMessage(
-      short actionId, double sourceId, double targetId, short delta)
-  {
+      short actionId, double sourceId, double targetId, short delta) {
 
     super(actionId, sourceId);
     this.targetId = targetId;
@@ -30,14 +28,12 @@ public class GameActionFightPointsVariationMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1030;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.targetId);
@@ -45,8 +41,7 @@ public class GameActionFightPointsVariationMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.targetId = reader.read_f64();
@@ -54,8 +49,7 @@ public class GameActionFightPointsVariationMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightPointsVariationMessage("
         + "actionId="

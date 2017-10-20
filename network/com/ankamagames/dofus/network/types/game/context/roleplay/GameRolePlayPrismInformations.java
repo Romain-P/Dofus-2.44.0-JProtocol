@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,29 +16,25 @@ public class GameRolePlayPrismInformations
   // com.ankamagames.dofus.network.types.game.prism.PrismInformation
   public com.ankamagames.dofus.network.types.game.prism.PrismInformation prism;
 
-  public GameRolePlayPrismInformations()
-  {}
+  public GameRolePlayPrismInformations() {}
 
   public GameRolePlayPrismInformations(
       double contextualId,
       com.ankamagames.dofus.network.types.game.look.EntityLook look,
       com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition,
-      com.ankamagames.dofus.network.types.game.prism.PrismInformation prism)
-  {
+      com.ankamagames.dofus.network.types.game.prism.PrismInformation prism) {
 
     super(contextualId, look, disposition);
     this.prism = prism;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 161;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(this.prism.getProtocolId());
@@ -46,8 +42,7 @@ public class GameRolePlayPrismInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -59,8 +54,7 @@ public class GameRolePlayPrismInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayPrismInformations("
         + "contextualId="

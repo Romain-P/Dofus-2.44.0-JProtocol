@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,44 +12,38 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ExchangePlayerRequestMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeRequestMessage {
   public static final int PROTOCOL_ID = 5773;
-  // ui64
-  public java.math.BigInteger target;
+  // vi64
+  public long target;
 
-  public ExchangePlayerRequestMessage()
-  {}
+  public ExchangePlayerRequestMessage() {}
 
-  public ExchangePlayerRequestMessage(byte exchangeType, java.math.BigInteger target)
-  {
+  public ExchangePlayerRequestMessage(byte exchangeType, long target) {
 
     super(exchangeType);
     this.target = target;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5773;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.target);
+    writer.write_vi64(this.target);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.target = reader.read_ui64();
+    this.target = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangePlayerRequestMessage("
         + "exchangeType="

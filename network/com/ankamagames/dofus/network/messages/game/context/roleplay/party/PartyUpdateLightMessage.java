@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,8 +13,8 @@ public class PartyUpdateLightMessage
     extends com.ankamagames.dofus.network.messages.game.context.roleplay.party
         .AbstractPartyEventMessage {
   public static final int PROTOCOL_ID = 6054;
-  // ui64
-  public java.math.BigInteger id;
+  // vi64
+  public long id;
   // vi32
   public int lifePoints;
   // vi32
@@ -24,17 +24,10 @@ public class PartyUpdateLightMessage
   // ui8
   public short regenRate;
 
-  public PartyUpdateLightMessage()
-  {}
+  public PartyUpdateLightMessage() {}
 
   public PartyUpdateLightMessage(
-      int partyId,
-      java.math.BigInteger id,
-      int lifePoints,
-      int maxLifePoints,
-      short prospecting,
-      short regenRate)
-  {
+      int partyId, long id, int lifePoints, int maxLifePoints, short prospecting, short regenRate) {
 
     super(partyId);
     this.id = id;
@@ -45,17 +38,15 @@ public class PartyUpdateLightMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6054;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.id);
+    writer.write_vi64(this.id);
     writer.write_vi32(this.lifePoints);
     writer.write_vi32(this.maxLifePoints);
     writer.write_vi16(this.prospecting);
@@ -63,11 +54,10 @@ public class PartyUpdateLightMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.id = reader.read_ui64();
+    this.id = reader.read_vi64();
     this.lifePoints = reader.read_vi32();
     this.maxLifePoints = reader.read_vi32();
     this.prospecting = reader.read_vi16();
@@ -75,8 +65,7 @@ public class PartyUpdateLightMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyUpdateLightMessage("
         + "partyId="

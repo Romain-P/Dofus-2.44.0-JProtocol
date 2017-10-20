@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class GuildInformationsPaddocksMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations[]
       paddocksInformations;
 
-  public GuildInformationsPaddocksMessage()
-  {}
+  public GuildInformationsPaddocksMessage() {}
 
   public GuildInformationsPaddocksMessage(
       byte nbPaddockMax,
       com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations[]
-          paddocksInformations)
-  {
+          paddocksInformations) {
     this.nbPaddockMax = nbPaddockMax;
     this.paddocksInformations = paddocksInformations;
   }
@@ -33,8 +31,7 @@ public class GuildInformationsPaddocksMessage extends NetworkMessage {
       byte nbPaddockMax,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations>
-          paddocksInformations)
-  {
+          paddocksInformations) {
     this.nbPaddockMax = nbPaddockMax;
     this.paddocksInformations =
         paddocksInformations.toArray(
@@ -42,27 +39,23 @@ public class GuildInformationsPaddocksMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5959;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.nbPaddockMax);
     writer.write_ui16(paddocksInformations.length);
 
-    for (int i = 0; i < paddocksInformations.length; i++)
-  {
+    for (int i = 0; i < paddocksInformations.length; i++) {
 
       paddocksInformations[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.nbPaddockMax = reader.read_i8();
 
     int paddocksInformations_length = reader.read_ui16();
@@ -70,8 +63,7 @@ public class GuildInformationsPaddocksMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations
             [paddocksInformations_length];
 
-    for (int i = 0; i < paddocksInformations_length; i++)
-  {
+    for (int i = 0; i < paddocksInformations_length; i++) {
 
       com.ankamagames.dofus.network.types.game.paddock.PaddockContentInformations
           paddocksInformations_it =
@@ -83,8 +75,7 @@ public class GuildInformationsPaddocksMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInformationsPaddocksMessage("
         + "nbPaddockMax="

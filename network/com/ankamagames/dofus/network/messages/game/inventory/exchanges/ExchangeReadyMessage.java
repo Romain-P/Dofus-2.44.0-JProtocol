@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ExchangeReadyMessage extends NetworkMessage {
   // vi16
   public short step;
 
-  public ExchangeReadyMessage()
-  {}
+  public ExchangeReadyMessage() {}
 
-  public ExchangeReadyMessage(boolean ready, short step)
-  {
+  public ExchangeReadyMessage(boolean ready, short step) {
     this.ready = ready;
     this.step = step;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5511;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.ready);
     writer.write_vi16(this.step);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.ready = reader.read_bool();
     this.step = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeReadyMessage(" + "ready=" + this.ready + ", step=" + this.step + ')';
   }

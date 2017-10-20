@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class Preset extends NetworkType {
   // array,com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem
   public com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem[] objects;
 
-  public Preset()
-  {}
+  public Preset() {}
 
   public Preset(
       byte presetId,
       byte symbolId,
       boolean mount,
-      com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem[] objects)
-  {
+      com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem[] objects) {
     this.presetId = presetId;
     this.symbolId = symbolId;
     this.mount = mount;
@@ -40,8 +38,7 @@ public class Preset extends NetworkType {
       byte symbolId,
       boolean mount,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem>
-          objects)
-  {
+          objects) {
     this.presetId = presetId;
     this.symbolId = symbolId;
     this.mount = mount;
@@ -51,29 +48,25 @@ public class Preset extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 355;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_i8(this.symbolId);
     writer.write_bool(this.mount);
     writer.write_ui16(objects.length);
 
-    for (int i = 0; i < objects.length; i++)
-  {
+    for (int i = 0; i < objects.length; i++) {
 
       objects[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.symbolId = reader.read_i8();
     this.mount = reader.read_bool();
@@ -82,8 +75,7 @@ public class Preset extends NetworkType {
     this.objects =
         new com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem[objects_length];
 
-    for (int i = 0; i < objects_length; i++)
-  {
+    for (int i = 0; i < objects_length; i++) {
 
       com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem objects_it =
           new com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem();
@@ -94,8 +86,7 @@ public class Preset extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "Preset("
         + "presetId="

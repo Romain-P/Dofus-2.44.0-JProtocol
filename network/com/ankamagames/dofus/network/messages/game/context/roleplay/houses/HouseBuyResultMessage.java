@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,19 +19,13 @@ public class HouseBuyResultMessage extends NetworkMessage {
   public int houseId;
   // i32
   public int instanceId;
-  // ui64
-  public java.math.BigInteger realPrice;
+  // vi64
+  public long realPrice;
 
-  public HouseBuyResultMessage()
-  {}
+  public HouseBuyResultMessage() {}
 
   public HouseBuyResultMessage(
-      boolean secondHand,
-      boolean bought,
-      int houseId,
-      int instanceId,
-      java.math.BigInteger realPrice)
-  {
+      boolean secondHand, boolean bought, int houseId, int instanceId, long realPrice) {
     this.secondHand = secondHand;
     this.bought = bought;
     this.houseId = houseId;
@@ -40,14 +34,12 @@ public class HouseBuyResultMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5735;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.secondHand, 0);
@@ -55,24 +47,22 @@ public class HouseBuyResultMessage extends NetworkMessage {
     writer.write_i8(_loc2_);
     writer.write_vi32(this.houseId);
     writer.write_i32(this.instanceId);
-    writer.write_ui64(this.realPrice);
+    writer.write_vi64(this.realPrice);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.secondHand = BooleanByteWrapper.getFlag(_loc2_, 0);
     this.bought = BooleanByteWrapper.getFlag(_loc2_, 1);
     this.houseId = reader.read_vi32();
     this.instanceId = reader.read_i32();
-    this.realPrice = reader.read_ui64();
+    this.realPrice = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseBuyResultMessage("
         + "secondHand="

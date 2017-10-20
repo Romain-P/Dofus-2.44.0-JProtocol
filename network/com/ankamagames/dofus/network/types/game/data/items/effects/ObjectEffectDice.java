@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,9 @@ public class ObjectEffectDice
   // vi16
   public short diceConst;
 
-  public ObjectEffectDice()
-  {}
+  public ObjectEffectDice() {}
 
-  public ObjectEffectDice(short actionId, short diceNum, short diceSide, short diceConst)
-  {
+  public ObjectEffectDice(short actionId, short diceNum, short diceSide, short diceConst) {
 
     super(actionId);
     this.diceNum = diceNum;
@@ -32,14 +30,12 @@ public class ObjectEffectDice
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 73;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.diceNum);
@@ -48,8 +44,7 @@ public class ObjectEffectDice
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.diceNum = reader.read_vi16();
@@ -58,8 +53,7 @@ public class ObjectEffectDice
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectDice("
         + "actionId="

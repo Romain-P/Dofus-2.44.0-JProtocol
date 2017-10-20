@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,37 +15,32 @@ public class GuildInformations
   // com.ankamagames.dofus.network.types.game.guild.GuildEmblem
   public com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem;
 
-  public GuildInformations()
-  {}
+  public GuildInformations() {}
 
   public GuildInformations(
       int guildId,
       java.lang.String guildName,
       short guildLevel,
-      com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem)
-  {
+      com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem) {
 
     super(guildId, guildName, guildLevel);
     this.guildEmblem = guildEmblem;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 127;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.guildEmblem.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.guildEmblem = new com.ankamagames.dofus.network.types.game.guild.GuildEmblem();
@@ -53,8 +48,7 @@ public class GuildInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInformations("
         + "guildId="

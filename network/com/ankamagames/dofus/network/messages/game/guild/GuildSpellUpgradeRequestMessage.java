@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildSpellUpgradeRequestMessage extends NetworkMessage {
   // i32
   public int spellId;
 
-  public GuildSpellUpgradeRequestMessage()
-  {}
+  public GuildSpellUpgradeRequestMessage() {}
 
-  public GuildSpellUpgradeRequestMessage(int spellId)
-  {
+  public GuildSpellUpgradeRequestMessage(int spellId) {
     this.spellId = spellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5699;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.spellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildSpellUpgradeRequestMessage(" + "spellId=" + this.spellId + ')';
   }

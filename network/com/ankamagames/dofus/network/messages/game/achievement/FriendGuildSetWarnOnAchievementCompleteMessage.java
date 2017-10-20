@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class FriendGuildSetWarnOnAchievementCompleteMessage extends NetworkMessa
   // bool
   public boolean enable;
 
-  public FriendGuildSetWarnOnAchievementCompleteMessage()
-  {}
+  public FriendGuildSetWarnOnAchievementCompleteMessage() {}
 
-  public FriendGuildSetWarnOnAchievementCompleteMessage(boolean enable)
-  {
+  public FriendGuildSetWarnOnAchievementCompleteMessage(boolean enable) {
     this.enable = enable;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6382;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.enable);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.enable = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendGuildSetWarnOnAchievementCompleteMessage(" + "enable=" + this.enable + ')';
   }

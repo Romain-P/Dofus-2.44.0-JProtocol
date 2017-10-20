@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class MountRenameRequestMessage extends NetworkMessage {
   // vi32
   public int mountId;
 
-  public MountRenameRequestMessage()
-  {}
+  public MountRenameRequestMessage() {}
 
-  public MountRenameRequestMessage(java.lang.String name, int mountId)
-  {
+  public MountRenameRequestMessage(java.lang.String name, int mountId) {
     this.name = name;
     this.mountId = mountId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5987;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
     writer.write_vi32(this.mountId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
     this.mountId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountRenameRequestMessage(" + "name=" + this.name + ", mountId=" + this.mountId + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class DareSubscribedListMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations[]
       daresVersatilesInfos;
 
-  public DareSubscribedListMessage()
-  {}
+  public DareSubscribedListMessage() {}
 
   public DareSubscribedListMessage(
       com.ankamagames.dofus.network.types.game.dare.DareInformations[] daresFixedInfos,
       com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations[]
-          daresVersatilesInfos)
-  {
+          daresVersatilesInfos) {
     this.daresFixedInfos = daresFixedInfos;
     this.daresVersatilesInfos = daresVersatilesInfos;
   }
@@ -34,8 +32,7 @@ public class DareSubscribedListMessage extends NetworkMessage {
           daresFixedInfos,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations>
-          daresVersatilesInfos)
-  {
+          daresVersatilesInfos) {
     this.daresFixedInfos =
         daresFixedInfos.toArray(
             com.ankamagames.dofus.network.types.game.dare.DareInformations[]::new);
@@ -45,40 +42,34 @@ public class DareSubscribedListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6658;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(daresFixedInfos.length);
 
-    for (int i = 0; i < daresFixedInfos.length; i++)
-  {
+    for (int i = 0; i < daresFixedInfos.length; i++) {
 
       daresFixedInfos[i].serialize(writer);
     }
     writer.write_ui16(daresVersatilesInfos.length);
 
-    for (int i = 0; i < daresVersatilesInfos.length; i++)
-  {
+    for (int i = 0; i < daresVersatilesInfos.length; i++) {
 
       daresVersatilesInfos[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int daresFixedInfos_length = reader.read_ui16();
     this.daresFixedInfos =
         new com.ankamagames.dofus.network.types.game.dare.DareInformations[daresFixedInfos_length];
 
-    for (int i = 0; i < daresFixedInfos_length; i++)
-  {
+    for (int i = 0; i < daresFixedInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.dare.DareInformations daresFixedInfos_it =
           new com.ankamagames.dofus.network.types.game.dare.DareInformations();
@@ -92,8 +83,7 @@ public class DareSubscribedListMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations
             [daresVersatilesInfos_length];
 
-    for (int i = 0; i < daresVersatilesInfos_length; i++)
-  {
+    for (int i = 0; i < daresVersatilesInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations
           daresVersatilesInfos_it =
@@ -105,8 +95,7 @@ public class DareSubscribedListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareSubscribedListMessage("
         + "daresFixedInfos="

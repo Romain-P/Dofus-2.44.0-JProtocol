@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.pvp;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class UpdateSelfAgressableStatusMessage extends NetworkMessage {
   // i32
   public int probationTime;
 
-  public UpdateSelfAgressableStatusMessage()
-  {}
+  public UpdateSelfAgressableStatusMessage() {}
 
-  public UpdateSelfAgressableStatusMessage(byte status, int probationTime)
-  {
+  public UpdateSelfAgressableStatusMessage(byte status, int probationTime) {
     this.status = status;
     this.probationTime = probationTime;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6456;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.status);
     writer.write_i32(this.probationTime);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.status = reader.read_i8();
     this.probationTime = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "UpdateSelfAgressableStatusMessage("
         + "status="

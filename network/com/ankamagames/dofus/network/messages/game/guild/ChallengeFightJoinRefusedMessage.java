@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,43 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class ChallengeFightJoinRefusedMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5908;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // i8
   public byte reason;
 
-  public ChallengeFightJoinRefusedMessage()
-  {}
+  public ChallengeFightJoinRefusedMessage() {}
 
-  public ChallengeFightJoinRefusedMessage(java.math.BigInteger playerId, byte reason)
-  {
+  public ChallengeFightJoinRefusedMessage(long playerId, byte reason) {
     this.playerId = playerId;
     this.reason = reason;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5908;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.playerId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.playerId);
     writer.write_i8(this.reason);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.playerId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.playerId = reader.read_vi64();
     this.reason = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChallengeFightJoinRefusedMessage("
         + "playerId="

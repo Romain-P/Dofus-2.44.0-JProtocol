@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.enums;
 
 import java.util.Optional;
@@ -23,17 +23,13 @@ public enum GuestLimitationEnum {
 
   public final byte value;
 
-  private GuestLimitationEnum(byte value)
-  {
+  private GuestLimitationEnum(byte value) {
     this.value = value;
   }
 
-  public static Optional<GuestLimitationEnum> valueOf(byte value)
-  {
-    for (GuestLimitationEnum it : values())
-  {
-      if (it.value == value)
-  {
+  public static Optional<GuestLimitationEnum> valueOf(byte value) {
+    for (GuestLimitationEnum it : values()) {
+      if (it.value == value) {
         return Optional.of(it);
       }
     }

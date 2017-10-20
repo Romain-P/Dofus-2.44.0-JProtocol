@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameFightResumeWithSlavesMessage
   public com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo[]
       slavesInfo;
 
-  public GameFightResumeWithSlavesMessage()
-  {}
+  public GameFightResumeWithSlavesMessage() {}
 
   public GameFightResumeWithSlavesMessage(
       com.ankamagames.dofus.network.types.game.action.fight
@@ -33,8 +32,7 @@ public class GameFightResumeWithSlavesMessage
       byte summonCount,
       byte bombCount,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo[]
-          slavesInfo)
-  {
+          slavesInfo) {
 
     super(effects, marks, gameTurn, fightStart, idols, spellCooldowns, summonCount, bombCount);
     this.slavesInfo = slavesInfo;
@@ -57,8 +55,7 @@ public class GameFightResumeWithSlavesMessage
       byte bombCount,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo>
-          slavesInfo)
-  {
+          slavesInfo) {
 
     super(effects, marks, gameTurn, fightStart, idols, spellCooldowns, summonCount, bombCount);
     this.slavesInfo =
@@ -67,28 +64,24 @@ public class GameFightResumeWithSlavesMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6215;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(slavesInfo.length);
 
-    for (int i = 0; i < slavesInfo.length; i++)
-  {
+    for (int i = 0; i < slavesInfo.length; i++) {
 
       slavesInfo[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -97,8 +90,7 @@ public class GameFightResumeWithSlavesMessage
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo
             [slavesInfo_length];
 
-    for (int i = 0; i < slavesInfo_length; i++)
-  {
+    for (int i = 0; i < slavesInfo_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.GameFightResumeSlaveInfo
           slavesInfo_it =
@@ -110,8 +102,7 @@ public class GameFightResumeWithSlavesMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightResumeWithSlavesMessage("
         + "effects="

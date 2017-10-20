@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat.smiley;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class ChatSmileyExtraPackListMessage extends NetworkMessage {
   // array,i8
   public byte[] packIds;
 
-  public ChatSmileyExtraPackListMessage()
-  {}
+  public ChatSmileyExtraPackListMessage() {}
 
-  public ChatSmileyExtraPackListMessage(byte[] packIds)
-  {
+  public ChatSmileyExtraPackListMessage(byte[] packIds) {
     this.packIds = packIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6596;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(packIds.length);
     writer.write_array_i8(this.packIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int packIds_length = reader.read_ui16();
     this.packIds = reader.read_array_i8(packIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatSmileyExtraPackListMessage(" + "packIds=" + +this.packIds.length + "b" + ')';
   }

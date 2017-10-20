@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,8 +11,8 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class DungeonPartyFinderPlayer extends NetworkType {
   public static final int PROTOCOL_ID = 373;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // str
   public java.lang.String playerName;
   // i8
@@ -22,16 +22,10 @@ public class DungeonPartyFinderPlayer extends NetworkType {
   // ui8
   public short level;
 
-  public DungeonPartyFinderPlayer()
-  {}
+  public DungeonPartyFinderPlayer() {}
 
   public DungeonPartyFinderPlayer(
-      java.math.BigInteger playerId,
-      java.lang.String playerName,
-      byte breed,
-      boolean sex,
-      short level)
-  {
+      long playerId, java.lang.String playerName, byte breed, boolean sex, short level) {
     this.playerId = playerId;
     this.playerName = playerName;
     this.breed = breed;
@@ -40,15 +34,13 @@ public class DungeonPartyFinderPlayer extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 373;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.playerId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.playerId);
     writer.write_str(this.playerName);
     writer.write_i8(this.breed);
     writer.write_bool(this.sex);
@@ -56,9 +48,8 @@ public class DungeonPartyFinderPlayer extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.playerId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.playerId = reader.read_vi64();
     this.playerName = reader.read_str();
     this.breed = reader.read_i8();
     this.sex = reader.read_bool();
@@ -66,8 +57,7 @@ public class DungeonPartyFinderPlayer extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonPartyFinderPlayer("
         + "playerId="

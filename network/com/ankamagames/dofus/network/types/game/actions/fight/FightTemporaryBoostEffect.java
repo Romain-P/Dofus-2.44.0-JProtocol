@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class FightTemporaryBoostEffect
   // i16
   public short delta;
 
-  public FightTemporaryBoostEffect()
-  {}
+  public FightTemporaryBoostEffect() {}
 
   public FightTemporaryBoostEffect(
       int uid,
@@ -26,38 +25,33 @@ public class FightTemporaryBoostEffect
       short spellId,
       int effectId,
       int parentBoostUid,
-      short delta)
-  {
+      short delta) {
 
     super(uid, targetId, turnDuration, dispelable, spellId, effectId, parentBoostUid);
     this.delta = delta;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 209;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.delta);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.delta = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTemporaryBoostEffect("
         + "uid="

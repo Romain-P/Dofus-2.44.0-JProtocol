@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class AlternativeMonstersInGroupLightInformations extends NetworkType {
   public com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations[]
       monsters;
 
-  public AlternativeMonstersInGroupLightInformations()
-  {}
+  public AlternativeMonstersInGroupLightInformations() {}
 
   public AlternativeMonstersInGroupLightInformations(
       int playerCount,
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations[]
-          monsters)
-  {
+          monsters) {
     this.playerCount = playerCount;
     this.monsters = monsters;
   }
@@ -34,8 +32,7 @@ public class AlternativeMonstersInGroupLightInformations extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay
                   .MonsterInGroupLightInformations>
-          monsters)
-  {
+          monsters) {
     this.playerCount = playerCount;
     this.monsters =
         monsters.toArray(
@@ -46,27 +43,23 @@ public class AlternativeMonstersInGroupLightInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 394;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.playerCount);
     writer.write_ui16(monsters.length);
 
-    for (int i = 0; i < monsters.length; i++)
-  {
+    for (int i = 0; i < monsters.length; i++) {
 
       monsters[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.playerCount = reader.read_i32();
 
     int monsters_length = reader.read_ui16();
@@ -74,8 +67,7 @@ public class AlternativeMonstersInGroupLightInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.roleplay
                 .MonsterInGroupLightInformations[monsters_length];
 
-    for (int i = 0; i < monsters_length; i++)
-  {
+    for (int i = 0; i < monsters_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations
           monsters_it =
@@ -88,8 +80,7 @@ public class AlternativeMonstersInGroupLightInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AlternativeMonstersInGroupLightInformations("
         + "playerCount="

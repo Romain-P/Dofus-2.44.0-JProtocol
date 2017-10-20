@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,39 +15,33 @@ public class InteractiveMapUpdateMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.interactive.InteractiveElement[]
       interactiveElements;
 
-  public InteractiveMapUpdateMessage()
-  {}
+  public InteractiveMapUpdateMessage() {}
 
   public InteractiveMapUpdateMessage(
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElement[]
-          interactiveElements)
-  {
+          interactiveElements) {
     this.interactiveElements = interactiveElements;
   }
 
   public InteractiveMapUpdateMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.interactive.InteractiveElement>
-          interactiveElements)
-  {
+          interactiveElements) {
     this.interactiveElements =
         interactiveElements.toArray(
             com.ankamagames.dofus.network.types.game.interactive.InteractiveElement[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5002;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(interactiveElements.length);
 
-    for (int i = 0; i < interactiveElements.length; i++)
-  {
+    for (int i = 0; i < interactiveElements.length; i++) {
 
       writer.write_ui16(interactiveElements[i].getProtocolId());
 
@@ -56,16 +50,14 @@ public class InteractiveMapUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int interactiveElements_length = reader.read_ui16();
     this.interactiveElements =
         new com.ankamagames.dofus.network.types.game.interactive.InteractiveElement
             [interactiveElements_length];
 
-    for (int i = 0; i < interactiveElements_length; i++)
-  {
+    for (int i = 0; i < interactiveElements_length; i++) {
 
       int interactiveElements_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.interactive.InteractiveElement
@@ -79,8 +71,7 @@ public class InteractiveMapUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveMapUpdateMessage("
         + "interactiveElements="

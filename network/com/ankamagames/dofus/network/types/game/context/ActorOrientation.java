@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ActorOrientation extends NetworkType {
   // i8
   public byte direction;
 
-  public ActorOrientation()
-  {}
+  public ActorOrientation() {}
 
-  public ActorOrientation(double id, byte direction)
-  {
+  public ActorOrientation(double id, byte direction) {
     this.id = id;
     this.direction = direction;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 353;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.id);
     writer.write_i8(this.direction);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_f64();
     this.direction = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ActorOrientation(" + "id=" + this.id + ", direction=" + this.direction + ')';
   }

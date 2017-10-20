@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage extends Netw
   // bool
   public boolean allow;
 
-  public ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage()
-  {}
+  public ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage() {}
 
-  public ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage(boolean allow)
-  {
+  public ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage(boolean allow) {
     this.allow = allow;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6021;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.allow);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.allow = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage(" + "allow=" + this.allow + ')';
   }

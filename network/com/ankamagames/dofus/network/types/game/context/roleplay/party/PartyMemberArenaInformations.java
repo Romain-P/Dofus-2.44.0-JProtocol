@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,11 +16,10 @@ public class PartyMemberArenaInformations
   // vi16
   public short rank;
 
-  public PartyMemberArenaInformations()
-  {}
+  public PartyMemberArenaInformations() {}
 
   public PartyMemberArenaInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -41,8 +40,7 @@ public class PartyMemberArenaInformations
                   .PartyCompanionMemberInformations
               []
           companions,
-      short rank)
-  {
+      short rank) {
 
     super(
         id,
@@ -67,7 +65,7 @@ public class PartyMemberArenaInformations
   }
 
   public PartyMemberArenaInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -88,8 +86,7 @@ public class PartyMemberArenaInformations
               com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionMemberInformations>
           companions,
-      short rank)
-  {
+      short rank) {
 
     super(
         id,
@@ -114,30 +111,26 @@ public class PartyMemberArenaInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 391;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.rank);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.rank = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyMemberArenaInformations("
         + "id="

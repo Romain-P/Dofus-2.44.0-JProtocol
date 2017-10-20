@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,16 +19,14 @@ public class FriendInformations
   // i32
   public int achievementPoints;
 
-  public FriendInformations()
-  {}
+  public FriendInformations() {}
 
   public FriendInformations(
       int accountId,
       java.lang.String accountName,
       byte playerState,
       short lastConnection,
-      int achievementPoints)
-  {
+      int achievementPoints) {
 
     super(accountId, accountName);
     this.playerState = playerState;
@@ -37,14 +35,12 @@ public class FriendInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 78;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.playerState);
@@ -53,8 +49,7 @@ public class FriendInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.playerState = reader.read_i8();
@@ -63,8 +58,7 @@ public class FriendInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendInformations("
         + "accountId="

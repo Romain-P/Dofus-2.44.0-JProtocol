@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class QuestStepInfoRequestMessage extends NetworkMessage {
   // vi16
   public short questId;
 
-  public QuestStepInfoRequestMessage()
-  {}
+  public QuestStepInfoRequestMessage() {}
 
-  public QuestStepInfoRequestMessage(short questId)
-  {
+  public QuestStepInfoRequestMessage(short questId) {
     this.questId = questId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5622;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.questId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.questId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "QuestStepInfoRequestMessage(" + "questId=" + this.questId + ')';
   }

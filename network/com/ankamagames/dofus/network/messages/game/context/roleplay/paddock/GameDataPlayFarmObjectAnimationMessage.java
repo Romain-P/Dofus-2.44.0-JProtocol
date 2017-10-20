@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class GameDataPlayFarmObjectAnimationMessage extends NetworkMessage {
   // array,vi16
   public short[] cellId;
 
-  public GameDataPlayFarmObjectAnimationMessage()
-  {}
+  public GameDataPlayFarmObjectAnimationMessage() {}
 
-  public GameDataPlayFarmObjectAnimationMessage(short[] cellId)
-  {
+  public GameDataPlayFarmObjectAnimationMessage(short[] cellId) {
     this.cellId = cellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6026;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(cellId.length);
     writer.write_array_vi16(this.cellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int cellId_length = reader.read_ui16();
     this.cellId = reader.read_array_vi16(cellId_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameDataPlayFarmObjectAnimationMessage("
         + "cellId="

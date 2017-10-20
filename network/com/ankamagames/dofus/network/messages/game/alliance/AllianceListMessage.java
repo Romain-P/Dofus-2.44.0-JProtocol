@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,54 +14,46 @@ public class AllianceListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations
   public com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[] alliances;
 
-  public AllianceListMessage()
-  {}
+  public AllianceListMessage() {}
 
   public AllianceListMessage(
-      com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[] alliances)
-  {
+      com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[] alliances) {
     this.alliances = alliances;
   }
 
   public AllianceListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations>
-          alliances)
-  {
+          alliances) {
     this.alliances =
         alliances.toArray(
             com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6408;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(alliances.length);
 
-    for (int i = 0; i < alliances.length; i++)
-  {
+    for (int i = 0; i < alliances.length; i++) {
 
       alliances[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int alliances_length = reader.read_ui16();
     this.alliances =
         new com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations
             [alliances_length];
 
-    for (int i = 0; i < alliances_length; i++)
-  {
+    for (int i = 0; i < alliances_length; i++) {
 
       com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations alliances_it =
           new com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations();
@@ -72,8 +64,7 @@ public class AllianceListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceListMessage(" + "alliances=" + java.util.Arrays.toString(this.alliances) + ')';
   }

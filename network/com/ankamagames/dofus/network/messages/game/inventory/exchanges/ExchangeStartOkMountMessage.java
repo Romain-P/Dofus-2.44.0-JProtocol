@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,13 +17,11 @@ public class ExchangeStartOkMountMessage
   public com.ankamagames.dofus.network.types.game.mount.MountClientData[]
       paddockedMountsDescription;
 
-  public ExchangeStartOkMountMessage()
-  {}
+  public ExchangeStartOkMountMessage() {}
 
   public ExchangeStartOkMountMessage(
       com.ankamagames.dofus.network.types.game.mount.MountClientData[] stabledMountsDescription,
-      com.ankamagames.dofus.network.types.game.mount.MountClientData[] paddockedMountsDescription)
-  {
+      com.ankamagames.dofus.network.types.game.mount.MountClientData[] paddockedMountsDescription) {
 
     super(stabledMountsDescription);
     this.paddockedMountsDescription = paddockedMountsDescription;
@@ -33,8 +31,7 @@ public class ExchangeStartOkMountMessage
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.mount.MountClientData>
           stabledMountsDescription,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.mount.MountClientData>
-          paddockedMountsDescription)
-  {
+          paddockedMountsDescription) {
 
     super(stabledMountsDescription);
     this.paddockedMountsDescription =
@@ -43,28 +40,24 @@ public class ExchangeStartOkMountMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5979;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(paddockedMountsDescription.length);
 
-    for (int i = 0; i < paddockedMountsDescription.length; i++)
-  {
+    for (int i = 0; i < paddockedMountsDescription.length; i++) {
 
       paddockedMountsDescription[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -73,8 +66,7 @@ public class ExchangeStartOkMountMessage
         new com.ankamagames.dofus.network.types.game.mount.MountClientData
             [paddockedMountsDescription_length];
 
-    for (int i = 0; i < paddockedMountsDescription_length; i++)
-  {
+    for (int i = 0; i < paddockedMountsDescription_length; i++) {
 
       com.ankamagames.dofus.network.types.game.mount.MountClientData paddockedMountsDescription_it =
           new com.ankamagames.dofus.network.types.game.mount.MountClientData();
@@ -85,8 +77,7 @@ public class ExchangeStartOkMountMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkMountMessage("
         + "stabledMountsDescription="

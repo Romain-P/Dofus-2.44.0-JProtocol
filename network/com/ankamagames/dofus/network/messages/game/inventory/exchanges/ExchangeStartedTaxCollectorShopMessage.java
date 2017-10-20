@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,16 +13,13 @@ public class ExchangeStartedTaxCollectorShopMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6664;
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objects;
-  // ui64
-  public java.math.BigInteger kamas;
+  // vi64
+  public long kamas;
 
-  public ExchangeStartedTaxCollectorShopMessage()
-  {}
+  public ExchangeStartedTaxCollectorShopMessage() {}
 
   public ExchangeStartedTaxCollectorShopMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objects,
-      java.math.BigInteger kamas)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objects, long kamas) {
     this.objects = objects;
     this.kamas = kamas;
   }
@@ -30,42 +27,36 @@ public class ExchangeStartedTaxCollectorShopMessage extends NetworkMessage {
   public ExchangeStartedTaxCollectorShopMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
           objects,
-      java.math.BigInteger kamas)
-  {
+      long kamas) {
     this.objects =
         objects.toArray(com.ankamagames.dofus.network.types.game.data.items.ObjectItem[]::new);
     this.kamas = kamas;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6664;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objects.length);
 
-    for (int i = 0; i < objects.length; i++)
-  {
+    for (int i = 0; i < objects.length; i++) {
 
       objects[i].serialize(writer);
     }
-    writer.write_ui64(this.kamas);
+    writer.write_vi64(this.kamas);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objects_length = reader.read_ui16();
     this.objects =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[objects_length];
 
-    for (int i = 0; i < objects_length; i++)
-  {
+    for (int i = 0; i < objects_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem objects_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -73,12 +64,11 @@ public class ExchangeStartedTaxCollectorShopMessage extends NetworkMessage {
       objects_it.deserialize(reader);
       this.objects[i] = objects_it;
     }
-    this.kamas = reader.read_ui64();
+    this.kamas = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartedTaxCollectorShopMessage("
         + "objects="

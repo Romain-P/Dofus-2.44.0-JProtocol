@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class InventoryPresetItemUpdateMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem
   public com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem presetItem;
 
-  public InventoryPresetItemUpdateMessage()
-  {}
+  public InventoryPresetItemUpdateMessage() {}
 
   public InventoryPresetItemUpdateMessage(
       byte presetId,
-      com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem presetItem)
-  {
+      com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem presetItem) {
     this.presetId = presetId;
     this.presetItem = presetItem;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6168;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     this.presetItem.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.presetItem = new com.ankamagames.dofus.network.types.game.inventory.preset.PresetItem();
     this.presetItem.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetItemUpdateMessage("
         + "presetId="

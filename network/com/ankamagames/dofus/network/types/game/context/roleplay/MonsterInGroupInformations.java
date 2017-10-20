@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,36 +16,31 @@ public class MonsterInGroupInformations
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook look;
 
-  public MonsterInGroupInformations()
-  {}
+  public MonsterInGroupInformations() {}
 
   public MonsterInGroupInformations(
       int creatureGenericId,
       byte grade,
-      com.ankamagames.dofus.network.types.game.look.EntityLook look)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook look) {
 
     super(creatureGenericId, grade);
     this.look = look;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 144;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.look.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.look = new com.ankamagames.dofus.network.types.game.look.EntityLook();
@@ -53,8 +48,7 @@ public class MonsterInGroupInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MonsterInGroupInformations("
         + "creatureGenericId="

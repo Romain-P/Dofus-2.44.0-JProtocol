@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.common.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,14 +15,12 @@ public class BasicStatWithDataMessage
   // array,com.ankamagames.dofus.network.types.common.basic.StatisticData
   public com.ankamagames.dofus.network.types.common.basic.StatisticData[] datas;
 
-  public BasicStatWithDataMessage()
-  {}
+  public BasicStatWithDataMessage() {}
 
   public BasicStatWithDataMessage(
       double timeSpent,
       short statId,
-      com.ankamagames.dofus.network.types.common.basic.StatisticData[] datas)
-  {
+      com.ankamagames.dofus.network.types.common.basic.StatisticData[] datas) {
 
     super(timeSpent, statId);
     this.datas = datas;
@@ -32,8 +30,7 @@ public class BasicStatWithDataMessage
       double timeSpent,
       short statId,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.common.basic.StatisticData>
-          datas)
-  {
+          datas) {
 
     super(timeSpent, statId);
     this.datas =
@@ -41,20 +38,17 @@ public class BasicStatWithDataMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6573;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(datas.length);
 
-    for (int i = 0; i < datas.length; i++)
-  {
+    for (int i = 0; i < datas.length; i++) {
 
       writer.write_ui16(datas[i].getProtocolId());
 
@@ -63,16 +57,14 @@ public class BasicStatWithDataMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
     int datas_length = reader.read_ui16();
     this.datas = new com.ankamagames.dofus.network.types.common.basic.StatisticData[datas_length];
 
-    for (int i = 0; i < datas_length; i++)
-  {
+    for (int i = 0; i < datas_length; i++) {
 
       int datas_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.common.basic.StatisticData datas_it =
@@ -85,8 +77,7 @@ public class BasicStatWithDataMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicStatWithDataMessage("
         + "timeSpent="

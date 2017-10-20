@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,10 +11,10 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class PartyGuestInformations extends NetworkType {
   public static final int PROTOCOL_ID = 374;
-  // ui64
-  public java.math.BigInteger guestId;
-  // ui64
-  public java.math.BigInteger hostId;
+  // vi64
+  public long guestId;
+  // vi64
+  public long hostId;
   // str
   public java.lang.String name;
   // com.ankamagames.dofus.network.types.game.look.EntityLook
@@ -30,12 +30,11 @@ public class PartyGuestInformations extends NetworkType {
           .PartyCompanionBaseInformations[]
       companions;
 
-  public PartyGuestInformations()
-  {}
+  public PartyGuestInformations() {}
 
   public PartyGuestInformations(
-      java.math.BigInteger guestId,
-      java.math.BigInteger hostId,
+      long guestId,
+      long hostId,
       java.lang.String name,
       com.ankamagames.dofus.network.types.game.look.EntityLook guestLook,
       byte breed,
@@ -44,8 +43,7 @@ public class PartyGuestInformations extends NetworkType {
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionBaseInformations
               []
-          companions)
-  {
+          companions) {
     this.guestId = guestId;
     this.hostId = hostId;
     this.name = name;
@@ -57,8 +55,8 @@ public class PartyGuestInformations extends NetworkType {
   }
 
   public PartyGuestInformations(
-      java.math.BigInteger guestId,
-      java.math.BigInteger hostId,
+      long guestId,
+      long hostId,
       java.lang.String name,
       com.ankamagames.dofus.network.types.game.look.EntityLook guestLook,
       byte breed,
@@ -67,8 +65,7 @@ public class PartyGuestInformations extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionBaseInformations>
-          companions)
-  {
+          companions) {
     this.guestId = guestId;
     this.hostId = hostId;
     this.name = name;
@@ -85,16 +82,14 @@ public class PartyGuestInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 374;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.guestId);
-    writer.write_ui64(this.hostId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.guestId);
+    writer.write_vi64(this.hostId);
     writer.write_str(this.name);
     this.guestLook.serialize(writer);
     writer.write_i8(this.breed);
@@ -103,18 +98,16 @@ public class PartyGuestInformations extends NetworkType {
     this.status.serialize(writer);
     writer.write_ui16(companions.length);
 
-    for (int i = 0; i < companions.length; i++)
-  {
+    for (int i = 0; i < companions.length; i++) {
 
       companions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.guestId = reader.read_ui64();
-    this.hostId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.guestId = reader.read_vi64();
+    this.hostId = reader.read_vi64();
     this.name = reader.read_str();
     this.guestLook = new com.ankamagames.dofus.network.types.game.look.EntityLook();
     this.guestLook.deserialize(reader);
@@ -132,8 +125,7 @@ public class PartyGuestInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                 .PartyCompanionBaseInformations[companions_length];
 
-    for (int i = 0; i < companions_length; i++)
-  {
+    for (int i = 0; i < companions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
               .PartyCompanionBaseInformations
@@ -147,8 +139,7 @@ public class PartyGuestInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyGuestInformations("
         + "guestId="

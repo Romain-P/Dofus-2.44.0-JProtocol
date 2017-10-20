@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,43 +13,37 @@ public class AllianceBulletinMessage
     extends com.ankamagames.dofus.network.messages.game.social.BulletinMessage {
   public static final int PROTOCOL_ID = 6690;
 
-  public AllianceBulletinMessage()
-  {}
+  public AllianceBulletinMessage() {}
 
   public AllianceBulletinMessage(
       java.lang.String content,
       int timestamp,
-      java.math.BigInteger memberId,
+      long memberId,
       java.lang.String memberName,
-      int lastNotifiedTimestamp)
-  {
+      int lastNotifiedTimestamp) {
 
     super(content, timestamp, memberId, memberName, lastNotifiedTimestamp);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6690;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceBulletinMessage("
         + "content="

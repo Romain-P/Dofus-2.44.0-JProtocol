@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,45 +12,38 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ContactLookRequestByIdMessage
     extends com.ankamagames.dofus.network.messages.game.social.ContactLookRequestMessage {
   public static final int PROTOCOL_ID = 5935;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public ContactLookRequestByIdMessage()
-  {}
+  public ContactLookRequestByIdMessage() {}
 
-  public ContactLookRequestByIdMessage(
-      short requestId, byte contactType, java.math.BigInteger playerId)
-  {
+  public ContactLookRequestByIdMessage(short requestId, byte contactType, long playerId) {
 
     super(requestId, contactType);
     this.playerId = playerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5935;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ContactLookRequestByIdMessage("
         + "requestId="

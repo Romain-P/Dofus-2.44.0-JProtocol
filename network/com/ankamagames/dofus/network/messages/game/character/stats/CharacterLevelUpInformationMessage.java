@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,15 +14,12 @@ public class CharacterLevelUpInformationMessage
   public static final int PROTOCOL_ID = 6076;
   // str
   public java.lang.String name;
-  // ui64
-  public java.math.BigInteger id;
+  // vi64
+  public long id;
 
-  public CharacterLevelUpInformationMessage()
-  {}
+  public CharacterLevelUpInformationMessage() {}
 
-  public CharacterLevelUpInformationMessage(
-      short newLevel, java.lang.String name, java.math.BigInteger id)
-  {
+  public CharacterLevelUpInformationMessage(short newLevel, java.lang.String name, long id) {
 
     super(newLevel);
     this.name = name;
@@ -30,32 +27,28 @@ public class CharacterLevelUpInformationMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6076;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.name);
-    writer.write_ui64(this.id);
+    writer.write_vi64(this.id);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.name = reader.read_str();
-    this.id = reader.read_ui64();
+    this.id = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterLevelUpInformationMessage("
         + "newLevel="

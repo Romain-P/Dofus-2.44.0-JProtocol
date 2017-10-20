@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class AbstractGameActionWithAckMessage
   // i16
   public short waitAckId;
 
-  public AbstractGameActionWithAckMessage()
-  {}
+  public AbstractGameActionWithAckMessage() {}
 
-  public AbstractGameActionWithAckMessage(short actionId, double sourceId, short waitAckId)
-  {
+  public AbstractGameActionWithAckMessage(short actionId, double sourceId, short waitAckId) {
 
     super(actionId, sourceId);
     this.waitAckId = waitAckId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1001;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.waitAckId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.waitAckId = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractGameActionWithAckMessage("
         + "actionId="

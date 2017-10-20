@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,35 +16,30 @@ public class HumanOptionGuild
   public com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations
       guildInformations;
 
-  public HumanOptionGuild()
-  {}
+  public HumanOptionGuild() {}
 
   public HumanOptionGuild(
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations
-          guildInformations)
-  {
+          guildInformations) {
 
     super();
     this.guildInformations = guildInformations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 409;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.guildInformations.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.guildInformations =
@@ -53,8 +48,7 @@ public class HumanOptionGuild
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionGuild(" + "guildInformations=" + this.guildInformations + ')';
   }

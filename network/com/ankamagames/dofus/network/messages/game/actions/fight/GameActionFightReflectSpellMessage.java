@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class GameActionFightReflectSpellMessage
   // f64
   public double targetId;
 
-  public GameActionFightReflectSpellMessage()
-  {}
+  public GameActionFightReflectSpellMessage() {}
 
-  public GameActionFightReflectSpellMessage(short actionId, double sourceId, double targetId)
-  {
+  public GameActionFightReflectSpellMessage(short actionId, double sourceId, double targetId) {
 
     super(actionId, sourceId);
     this.targetId = targetId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5531;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.targetId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.targetId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightReflectSpellMessage("
         + "actionId="

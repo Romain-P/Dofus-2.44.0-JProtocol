@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,29 +19,25 @@ public class PrismFightDefenderAddMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
       defender;
 
-  public PrismFightDefenderAddMessage()
-  {}
+  public PrismFightDefenderAddMessage() {}
 
   public PrismFightDefenderAddMessage(
       short subAreaId,
       short fightId,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
-          defender)
-  {
+          defender) {
     this.subAreaId = subAreaId;
     this.fightId = fightId;
     this.defender = defender;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5895;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.subAreaId);
     writer.write_vi16(this.fightId);
     writer.write_ui16(this.defender.getProtocolId());
@@ -49,8 +45,7 @@ public class PrismFightDefenderAddMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.subAreaId = reader.read_vi16();
     this.fightId = reader.read_vi16();
 
@@ -62,8 +57,7 @@ public class PrismFightDefenderAddMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismFightDefenderAddMessage("
         + "subAreaId="

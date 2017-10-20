@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -30,8 +30,7 @@ public class TreasureHuntMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntFlag[]
       flags;
 
-  public TreasureHuntMessage()
-  {}
+  public TreasureHuntMessage() {}
 
   public TreasureHuntMessage(
       byte questType,
@@ -43,8 +42,7 @@ public class TreasureHuntMessage extends NetworkMessage {
       int checkPointTotal,
       int availableRetryCount,
       com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntFlag[]
-          flags)
-  {
+          flags) {
     this.questType = questType;
     this.startMapId = startMapId;
     this.knownStepsList = knownStepsList;
@@ -83,8 +81,7 @@ public class TreasureHuntMessage extends NetworkMessage {
                   .roleplay
                   .treasureHunt
                   .TreasureHuntFlag>
-          flags)
-  {
+          flags) {
     this.questType = questType;
     this.startMapId = startMapId;
     this.knownStepsList =
@@ -104,20 +101,17 @@ public class TreasureHuntMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6486;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.questType);
     writer.write_f64(this.startMapId);
     writer.write_ui16(knownStepsList.length);
 
-    for (int i = 0; i < knownStepsList.length; i++)
-  {
+    for (int i = 0; i < knownStepsList.length; i++) {
 
       writer.write_ui16(knownStepsList[i].getProtocolId());
 
@@ -129,16 +123,14 @@ public class TreasureHuntMessage extends NetworkMessage {
     writer.write_i32(this.availableRetryCount);
     writer.write_ui16(flags.length);
 
-    for (int i = 0; i < flags.length; i++)
-  {
+    for (int i = 0; i < flags.length; i++) {
 
       flags[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.questType = reader.read_i8();
     this.startMapId = reader.read_f64();
 
@@ -147,8 +139,7 @@ public class TreasureHuntMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntStep
             [knownStepsList_length];
 
-    for (int i = 0; i < knownStepsList_length; i++)
-  {
+    for (int i = 0; i < knownStepsList_length; i++) {
 
       int knownStepsList_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntStep
@@ -177,8 +168,7 @@ public class TreasureHuntMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntFlag
             [flags_length];
 
-    for (int i = 0; i < flags_length; i++)
-  {
+    for (int i = 0; i < flags_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt.TreasureHuntFlag
           flags_it =
@@ -198,8 +188,7 @@ public class TreasureHuntMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntMessage("
         + "questType="

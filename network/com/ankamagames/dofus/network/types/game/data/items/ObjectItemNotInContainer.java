@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,15 +21,13 @@ public class ObjectItemNotInContainer
   // vi32
   public int quantity;
 
-  public ObjectItemNotInContainer()
-  {}
+  public ObjectItemNotInContainer() {}
 
   public ObjectItemNotInContainer(
       short objectGID,
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] effects,
       int objectUID,
-      int quantity)
-  {
+      int quantity) {
 
     super();
     this.objectGID = objectGID;
@@ -44,8 +42,7 @@ public class ObjectItemNotInContainer
               com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect>
           effects,
       int objectUID,
-      int quantity)
-  {
+      int quantity) {
 
     super();
     this.objectGID = objectGID;
@@ -57,21 +54,18 @@ public class ObjectItemNotInContainer
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 134;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.objectGID);
     writer.write_ui16(effects.length);
 
-    for (int i = 0; i < effects.length; i++)
-  {
+    for (int i = 0; i < effects.length; i++) {
 
       writer.write_ui16(effects[i].getProtocolId());
 
@@ -82,8 +76,7 @@ public class ObjectItemNotInContainer
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.objectGID = reader.read_vi16();
@@ -93,8 +86,7 @@ public class ObjectItemNotInContainer
         new com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
             [effects_length];
 
-    for (int i = 0; i < effects_length; i++)
-  {
+    for (int i = 0; i < effects_length; i++) {
 
       int effects_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect effects_it =
@@ -109,8 +101,7 @@ public class ObjectItemNotInContainer
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectItemNotInContainer("
         + "objectGID="

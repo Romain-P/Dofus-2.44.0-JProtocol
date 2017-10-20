@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,20 +15,15 @@ public class SocialNoticeMessage extends NetworkMessage {
   public java.lang.String content;
   // i32
   public int timestamp;
-  // ui64
-  public java.math.BigInteger memberId;
+  // vi64
+  public long memberId;
   // str
   public java.lang.String memberName;
 
-  public SocialNoticeMessage()
-  {}
+  public SocialNoticeMessage() {}
 
   public SocialNoticeMessage(
-      java.lang.String content,
-      int timestamp,
-      java.math.BigInteger memberId,
-      java.lang.String memberName)
-  {
+      java.lang.String content, int timestamp, long memberId, java.lang.String memberName) {
     this.content = content;
     this.timestamp = timestamp;
     this.memberId = memberId;
@@ -36,32 +31,28 @@ public class SocialNoticeMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6688;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.content);
     writer.write_i32(this.timestamp);
-    writer.write_ui64(this.memberId);
+    writer.write_vi64(this.memberId);
     writer.write_str(this.memberName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.content = reader.read_str();
     this.timestamp = reader.read_i32();
-    this.memberId = reader.read_ui64();
+    this.memberId = reader.read_vi64();
     this.memberName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SocialNoticeMessage("
         + "content="

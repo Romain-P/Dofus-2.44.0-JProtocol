@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.updater;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ContentPart extends NetworkType {
   // i8
   public byte state;
 
-  public ContentPart()
-  {}
+  public ContentPart() {}
 
-  public ContentPart(java.lang.String id, byte state)
-  {
+  public ContentPart(java.lang.String id, byte state) {
     this.id = id;
     this.state = state;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 350;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.id);
     writer.write_i8(this.state);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_str();
     this.state = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ContentPart(" + "id=" + this.id + ", state=" + this.state + ')';
   }

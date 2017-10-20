@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildFactsErrorMessage extends NetworkMessage {
   // vi32
   public int guildId;
 
-  public GuildFactsErrorMessage()
-  {}
+  public GuildFactsErrorMessage() {}
 
-  public GuildFactsErrorMessage(int guildId)
-  {
+  public GuildFactsErrorMessage(int guildId) {
     this.guildId = guildId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6424;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.guildId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.guildId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFactsErrorMessage(" + "guildId=" + this.guildId + ')';
   }

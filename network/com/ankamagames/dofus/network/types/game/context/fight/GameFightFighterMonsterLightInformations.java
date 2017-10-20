@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameFightFighterMonsterLightInformations
   // vi16
   public short creatureGenericId;
 
-  public GameFightFighterMonsterLightInformations()
-  {}
+  public GameFightFighterMonsterLightInformations() {}
 
   public GameFightFighterMonsterLightInformations(
       boolean sex,
@@ -26,38 +25,33 @@ public class GameFightFighterMonsterLightInformations
       byte wave,
       short level,
       byte breed,
-      short creatureGenericId)
-  {
+      short creatureGenericId) {
 
     super(sex, alive, id, wave, level, breed);
     this.creatureGenericId = creatureGenericId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 455;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.creatureGenericId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.creatureGenericId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterMonsterLightInformations("
         + "sex="

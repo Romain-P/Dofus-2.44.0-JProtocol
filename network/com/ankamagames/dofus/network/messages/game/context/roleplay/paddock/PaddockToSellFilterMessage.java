@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class PaddockToSellFilterMessage extends NetworkMessage {
   public byte atLeastNbMount;
   // i8
   public byte atLeastNbMachine;
-  // ui64
-  public java.math.BigInteger maxPrice;
+  // vi64
+  public long maxPrice;
 
-  public PaddockToSellFilterMessage()
-  {}
+  public PaddockToSellFilterMessage() {}
 
   public PaddockToSellFilterMessage(
-      int areaId, byte atLeastNbMount, byte atLeastNbMachine, java.math.BigInteger maxPrice)
-  {
+      int areaId, byte atLeastNbMount, byte atLeastNbMachine, long maxPrice) {
     this.areaId = areaId;
     this.atLeastNbMount = atLeastNbMount;
     this.atLeastNbMachine = atLeastNbMachine;
@@ -33,32 +31,28 @@ public class PaddockToSellFilterMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6161;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.areaId);
     writer.write_i8(this.atLeastNbMount);
     writer.write_i8(this.atLeastNbMachine);
-    writer.write_ui64(this.maxPrice);
+    writer.write_vi64(this.maxPrice);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.areaId = reader.read_i32();
     this.atLeastNbMount = reader.read_i8();
     this.atLeastNbMachine = reader.read_i8();
-    this.maxPrice = reader.read_ui64();
+    this.maxPrice = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockToSellFilterMessage("
         + "areaId="

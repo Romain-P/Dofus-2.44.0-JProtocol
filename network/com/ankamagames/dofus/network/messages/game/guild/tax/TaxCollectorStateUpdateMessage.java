@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class TaxCollectorStateUpdateMessage extends NetworkMessage {
   // i8
   public byte state;
 
-  public TaxCollectorStateUpdateMessage()
-  {}
+  public TaxCollectorStateUpdateMessage() {}
 
-  public TaxCollectorStateUpdateMessage(double uniqueId, byte state)
-  {
+  public TaxCollectorStateUpdateMessage(double uniqueId, byte state) {
     this.uniqueId = uniqueId;
     this.state = state;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6455;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.uniqueId);
     writer.write_i8(this.state);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.uniqueId = reader.read_f64();
     this.state = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorStateUpdateMessage("
         + "uniqueId="

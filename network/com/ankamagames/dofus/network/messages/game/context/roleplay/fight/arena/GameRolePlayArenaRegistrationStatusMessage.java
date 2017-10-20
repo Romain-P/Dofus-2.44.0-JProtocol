@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class GameRolePlayArenaRegistrationStatusMessage extends NetworkMessage {
   // i32
   public int battleMode;
 
-  public GameRolePlayArenaRegistrationStatusMessage()
-  {}
+  public GameRolePlayArenaRegistrationStatusMessage() {}
 
-  public GameRolePlayArenaRegistrationStatusMessage(boolean registered, byte step, int battleMode)
-  {
+  public GameRolePlayArenaRegistrationStatusMessage(boolean registered, byte step, int battleMode) {
     this.registered = registered;
     this.step = step;
     this.battleMode = battleMode;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6284;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.registered);
     writer.write_i8(this.step);
     writer.write_i32(this.battleMode);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.registered = reader.read_bool();
     this.step = reader.read_i8();
     this.battleMode = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayArenaRegistrationStatusMessage("
         + "registered="

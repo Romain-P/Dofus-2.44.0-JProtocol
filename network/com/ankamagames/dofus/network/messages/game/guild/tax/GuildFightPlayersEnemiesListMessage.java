@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class GuildFightPlayersEnemiesListMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
       playerInfo;
 
-  public GuildFightPlayersEnemiesListMessage()
-  {}
+  public GuildFightPlayersEnemiesListMessage() {}
 
   public GuildFightPlayersEnemiesListMessage(
       double fightId,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
-          playerInfo)
-  {
+          playerInfo) {
     this.fightId = fightId;
     this.playerInfo = playerInfo;
   }
@@ -34,8 +32,7 @@ public class GuildFightPlayersEnemiesListMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character
                   .CharacterMinimalPlusLookInformations>
-          playerInfo)
-  {
+          playerInfo) {
     this.fightId = fightId;
     this.playerInfo =
         playerInfo.toArray(
@@ -45,27 +42,23 @@ public class GuildFightPlayersEnemiesListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5928;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.fightId);
     writer.write_ui16(playerInfo.length);
 
-    for (int i = 0; i < playerInfo.length; i++)
-  {
+    for (int i = 0; i < playerInfo.length; i++) {
 
       playerInfo[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_f64();
 
     int playerInfo_length = reader.read_ui16();
@@ -73,8 +66,7 @@ public class GuildFightPlayersEnemiesListMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
             [playerInfo_length];
 
-    for (int i = 0; i < playerInfo_length; i++)
-  {
+    for (int i = 0; i < playerInfo_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
           playerInfo_it =
@@ -87,8 +79,7 @@ public class GuildFightPlayersEnemiesListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFightPlayersEnemiesListMessage("
         + "fightId="

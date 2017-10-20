@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeBidHouseGenericItemAddedMessage extends NetworkMessage {
   // vi16
   public short objGenericId;
 
-  public ExchangeBidHouseGenericItemAddedMessage()
-  {}
+  public ExchangeBidHouseGenericItemAddedMessage() {}
 
-  public ExchangeBidHouseGenericItemAddedMessage(short objGenericId)
-  {
+  public ExchangeBidHouseGenericItemAddedMessage(short objGenericId) {
     this.objGenericId = objGenericId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5947;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.objGenericId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objGenericId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseGenericItemAddedMessage(" + "objGenericId=" + this.objGenericId + ')';
   }

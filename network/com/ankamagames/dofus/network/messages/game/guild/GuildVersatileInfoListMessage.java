@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class GuildVersatileInfoListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations
   public com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations[] guilds;
 
-  public GuildVersatileInfoListMessage()
-  {}
+  public GuildVersatileInfoListMessage() {}
 
   public GuildVersatileInfoListMessage(
-      com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations[] guilds)
-  {
+      com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations[] guilds) {
     this.guilds = guilds;
   }
 
   public GuildVersatileInfoListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations>
-          guilds)
-  {
+          guilds) {
     this.guilds =
         guilds.toArray(
             com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6435;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(guilds.length);
 
-    for (int i = 0; i < guilds.length; i++)
-  {
+    for (int i = 0; i < guilds.length; i++) {
 
       writer.write_ui16(guilds[i].getProtocolId());
 
@@ -54,16 +48,14 @@ public class GuildVersatileInfoListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int guilds_length = reader.read_ui16();
     this.guilds =
         new com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations
             [guilds_length];
 
-    for (int i = 0; i < guilds_length; i++)
-  {
+    for (int i = 0; i < guilds_length; i++) {
 
       int guilds_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.social.GuildVersatileInformations guilds_it =
@@ -76,8 +68,7 @@ public class GuildVersatileInfoListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildVersatileInfoListMessage("
         + "guilds="

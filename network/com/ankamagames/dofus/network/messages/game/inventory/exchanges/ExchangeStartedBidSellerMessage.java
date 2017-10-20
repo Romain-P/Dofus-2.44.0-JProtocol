@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,13 +16,11 @@ public class ExchangeStartedBidSellerMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid[] objectsInfos;
 
-  public ExchangeStartedBidSellerMessage()
-  {}
+  public ExchangeStartedBidSellerMessage() {}
 
   public ExchangeStartedBidSellerMessage(
       com.ankamagames.dofus.network.types.game.data.items.SellerBuyerDescriptor sellerDescriptor,
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid[] objectsInfos)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid[] objectsInfos) {
     this.sellerDescriptor = sellerDescriptor;
     this.objectsInfos = objectsInfos;
   }
@@ -31,8 +29,7 @@ public class ExchangeStartedBidSellerMessage extends NetworkMessage {
       com.ankamagames.dofus.network.types.game.data.items.SellerBuyerDescriptor sellerDescriptor,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid>
-          objectsInfos)
-  {
+          objectsInfos) {
     this.sellerDescriptor = sellerDescriptor;
     this.objectsInfos =
         objectsInfos.toArray(
@@ -40,27 +37,23 @@ public class ExchangeStartedBidSellerMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5905;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.sellerDescriptor.serialize(writer);
     writer.write_ui16(objectsInfos.length);
 
-    for (int i = 0; i < objectsInfos.length; i++)
-  {
+    for (int i = 0; i < objectsInfos.length; i++) {
 
       objectsInfos[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.sellerDescriptor =
         new com.ankamagames.dofus.network.types.game.data.items.SellerBuyerDescriptor();
     this.sellerDescriptor.deserialize(reader);
@@ -70,8 +63,7 @@ public class ExchangeStartedBidSellerMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid
             [objectsInfos_length];
 
-    for (int i = 0; i < objectsInfos_length; i++)
-  {
+    for (int i = 0; i < objectsInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid objectsInfos_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid();
@@ -82,8 +74,7 @@ public class ExchangeStartedBidSellerMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartedBidSellerMessage("
         + "sellerDescriptor="

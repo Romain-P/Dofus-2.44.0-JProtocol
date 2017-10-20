@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,32 +16,27 @@ public class EntityMovementInformations extends NetworkType {
   // array,i8
   public byte[] steps;
 
-  public EntityMovementInformations()
-  {}
+  public EntityMovementInformations() {}
 
-  public EntityMovementInformations(int id, byte[] steps)
-  {
+  public EntityMovementInformations(int id, byte[] steps) {
     this.id = id;
     this.steps = steps;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 63;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.id);
     writer.write_ui16(steps.length);
     writer.write_array_i8(this.steps);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_i32();
 
     int steps_length = reader.read_ui16();
@@ -49,8 +44,7 @@ public class EntityMovementInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EntityMovementInformations("
         + "id="

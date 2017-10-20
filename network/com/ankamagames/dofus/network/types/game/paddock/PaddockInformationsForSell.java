@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,11 +23,10 @@ public class PaddockInformationsForSell extends NetworkType {
   public byte nbMount;
   // i8
   public byte nbObject;
-  // ui64
-  public java.math.BigInteger price;
+  // vi64
+  public long price;
 
-  public PaddockInformationsForSell()
-  {}
+  public PaddockInformationsForSell() {}
 
   public PaddockInformationsForSell(
       java.lang.String guildOwner,
@@ -36,8 +35,7 @@ public class PaddockInformationsForSell extends NetworkType {
       short subAreaId,
       byte nbMount,
       byte nbObject,
-      java.math.BigInteger price)
-  {
+      long price) {
     this.guildOwner = guildOwner;
     this.worldX = worldX;
     this.worldY = worldY;
@@ -48,38 +46,34 @@ public class PaddockInformationsForSell extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 222;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.guildOwner);
     writer.write_i16(this.worldX);
     writer.write_i16(this.worldY);
     writer.write_vi16(this.subAreaId);
     writer.write_i8(this.nbMount);
     writer.write_i8(this.nbObject);
-    writer.write_ui64(this.price);
+    writer.write_vi64(this.price);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.guildOwner = reader.read_str();
     this.worldX = reader.read_i16();
     this.worldY = reader.read_i16();
     this.subAreaId = reader.read_vi16();
     this.nbMount = reader.read_i8();
     this.nbObject = reader.read_i8();
-    this.price = reader.read_ui64();
+    this.price = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockInformationsForSell("
         + "guildOwner="

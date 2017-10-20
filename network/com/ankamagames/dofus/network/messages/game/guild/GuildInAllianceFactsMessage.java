@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GuildInAllianceFactsMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
       allianceInfos;
 
-  public GuildInAllianceFactsMessage()
-  {}
+  public GuildInAllianceFactsMessage() {}
 
   public GuildInAllianceFactsMessage(
       com.ankamagames.dofus.network.types.game.social.GuildFactSheetInformations infos,
@@ -25,8 +24,7 @@ public class GuildInAllianceFactsMessage
       short nbTaxCollectors,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations[] members,
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
-          allianceInfos)
-  {
+          allianceInfos) {
 
     super(infos, creationDate, nbTaxCollectors, members);
     this.allianceInfos = allianceInfos;
@@ -40,30 +38,26 @@ public class GuildInAllianceFactsMessage
               com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations>
           members,
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
-          allianceInfos)
-  {
+          allianceInfos) {
 
     super(infos, creationDate, nbTaxCollectors, members);
     this.allianceInfos = allianceInfos;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6422;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.allianceInfos.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.allianceInfos =
@@ -73,8 +67,7 @@ public class GuildInAllianceFactsMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInAllianceFactsMessage("
         + "infos="

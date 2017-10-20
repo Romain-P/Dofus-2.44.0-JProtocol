@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,22 +18,20 @@ public class AllianceFactsMessage extends NetworkMessage {
       guilds;
   // array,vi16
   public short[] controlledSubareaIds;
-  // ui64
-  public java.math.BigInteger leaderCharacterId;
+  // vi64
+  public long leaderCharacterId;
   // str
   public java.lang.String leaderCharacterName;
 
-  public AllianceFactsMessage()
-  {}
+  public AllianceFactsMessage() {}
 
   public AllianceFactsMessage(
       com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations infos,
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInAllianceInformations[]
           guilds,
       short[] controlledSubareaIds,
-      java.math.BigInteger leaderCharacterId,
-      java.lang.String leaderCharacterName)
-  {
+      long leaderCharacterId,
+      java.lang.String leaderCharacterName) {
     this.infos = infos;
     this.guilds = guilds;
     this.controlledSubareaIds = controlledSubareaIds;
@@ -47,9 +45,8 @@ public class AllianceFactsMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.context.roleplay.GuildInAllianceInformations>
           guilds,
       short[] controlledSubareaIds,
-      java.math.BigInteger leaderCharacterId,
-      java.lang.String leaderCharacterName)
-  {
+      long leaderCharacterId,
+      java.lang.String leaderCharacterName) {
     this.infos = infos;
     this.guilds =
         guilds.toArray(
@@ -61,32 +58,28 @@ public class AllianceFactsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6414;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.infos.getProtocolId());
     this.infos.serialize(writer);
     writer.write_ui16(guilds.length);
 
-    for (int i = 0; i < guilds.length; i++)
-  {
+    for (int i = 0; i < guilds.length; i++) {
 
       guilds[i].serialize(writer);
     }
     writer.write_ui16(controlledSubareaIds.length);
     writer.write_array_vi16(this.controlledSubareaIds);
-    writer.write_ui64(this.leaderCharacterId);
+    writer.write_vi64(this.leaderCharacterId);
     writer.write_str(this.leaderCharacterName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int infos_typeId = reader.read_ui16();
     this.infos =
@@ -99,8 +92,7 @@ public class AllianceFactsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.GuildInAllianceInformations
             [guilds_length];
 
-    for (int i = 0; i < guilds_length; i++)
-  {
+    for (int i = 0; i < guilds_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInAllianceInformations
           guilds_it =
@@ -113,13 +105,12 @@ public class AllianceFactsMessage extends NetworkMessage {
 
     int controlledSubareaIds_length = reader.read_ui16();
     this.controlledSubareaIds = reader.read_array_vi16(controlledSubareaIds_length);
-    this.leaderCharacterId = reader.read_ui64();
+    this.leaderCharacterId = reader.read_vi64();
     this.leaderCharacterName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceFactsMessage("
         + "infos="

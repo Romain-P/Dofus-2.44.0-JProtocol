@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameActionFightCloseCombatMessage
   // vi16
   public short weaponGenericId;
 
-  public GameActionFightCloseCombatMessage()
-  {}
+  public GameActionFightCloseCombatMessage() {}
 
   public GameActionFightCloseCombatMessage(
       short actionId,
@@ -27,38 +26,33 @@ public class GameActionFightCloseCombatMessage
       double targetId,
       short destinationCellId,
       byte critical,
-      short weaponGenericId)
-  {
+      short weaponGenericId) {
 
     super(actionId, sourceId, silentCast, verboseCast, targetId, destinationCellId, critical);
     this.weaponGenericId = weaponGenericId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6116;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.weaponGenericId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.weaponGenericId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightCloseCombatMessage("
         + "actionId="

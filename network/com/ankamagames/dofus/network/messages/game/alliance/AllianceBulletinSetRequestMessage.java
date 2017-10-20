@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class AllianceBulletinSetRequestMessage
   // bool
   public boolean notifyMembers;
 
-  public AllianceBulletinSetRequestMessage()
-  {}
+  public AllianceBulletinSetRequestMessage() {}
 
-  public AllianceBulletinSetRequestMessage(java.lang.String content, boolean notifyMembers)
-  {
+  public AllianceBulletinSetRequestMessage(java.lang.String content, boolean notifyMembers) {
 
     super();
     this.content = content;
@@ -29,14 +27,12 @@ public class AllianceBulletinSetRequestMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6693;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.content);
@@ -44,8 +40,7 @@ public class AllianceBulletinSetRequestMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.content = reader.read_str();
@@ -53,8 +48,7 @@ public class AllianceBulletinSetRequestMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceBulletinSetRequestMessage("
         + "content="

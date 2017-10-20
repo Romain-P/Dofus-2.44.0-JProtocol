@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class HouseGuildRightsViewMessage extends NetworkMessage {
   // i32
   public int instanceId;
 
-  public HouseGuildRightsViewMessage()
-  {}
+  public HouseGuildRightsViewMessage() {}
 
-  public HouseGuildRightsViewMessage(int houseId, int instanceId)
-  {
+  public HouseGuildRightsViewMessage(int houseId, int instanceId) {
     this.houseId = houseId;
     this.instanceId = instanceId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5700;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.houseId);
     writer.write_i32(this.instanceId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.houseId = reader.read_vi32();
     this.instanceId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseGuildRightsViewMessage("
         + "houseId="

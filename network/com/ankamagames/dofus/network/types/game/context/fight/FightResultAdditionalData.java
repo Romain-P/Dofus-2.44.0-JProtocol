@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,26 +12,21 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class FightResultAdditionalData extends NetworkType {
   public static final int PROTOCOL_ID = 191;
 
-  public FightResultAdditionalData()
-  {}
+  public FightResultAdditionalData() {}
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 191;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultAdditionalData";
   }

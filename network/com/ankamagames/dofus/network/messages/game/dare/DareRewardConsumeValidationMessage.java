@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class DareRewardConsumeValidationMessage extends NetworkMessage {
   // i8
   public byte type;
 
-  public DareRewardConsumeValidationMessage()
-  {}
+  public DareRewardConsumeValidationMessage() {}
 
-  public DareRewardConsumeValidationMessage(double dareId, byte type)
-  {
+  public DareRewardConsumeValidationMessage(double dareId, byte type) {
     this.dareId = dareId;
     this.type = type;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6675;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.dareId);
     writer.write_i8(this.type);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dareId = reader.read_f64();
     this.type = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareRewardConsumeValidationMessage("
         + "dareId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat.community;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ChatCommunityChannelSetCommunityRequestMessage extends NetworkMessa
   // i16
   public short communityId;
 
-  public ChatCommunityChannelSetCommunityRequestMessage()
-  {}
+  public ChatCommunityChannelSetCommunityRequestMessage() {}
 
-  public ChatCommunityChannelSetCommunityRequestMessage(short communityId)
-  {
+  public ChatCommunityChannelSetCommunityRequestMessage(short communityId) {
     this.communityId = communityId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6729;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i16(this.communityId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.communityId = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatCommunityChannelSetCommunityRequestMessage("
         + "communityId="

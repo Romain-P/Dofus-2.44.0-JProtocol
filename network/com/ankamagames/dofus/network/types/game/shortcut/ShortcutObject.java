@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,38 +12,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ShortcutObject extends com.ankamagames.dofus.network.types.game.shortcut.Shortcut {
   public static final int PROTOCOL_ID = 367;
 
-  public ShortcutObject()
-  {}
+  public ShortcutObject() {}
 
-  public ShortcutObject(byte slot)
-  {
+  public ShortcutObject(byte slot) {
 
     super(slot);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 367;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutObject(" + "slot=" + this.slot + ')';
   }

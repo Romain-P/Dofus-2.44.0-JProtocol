@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.emote;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class EmoteListMessage extends NetworkMessage {
   // array,ui8
   public short[] emoteIds;
 
-  public EmoteListMessage()
-  {}
+  public EmoteListMessage() {}
 
-  public EmoteListMessage(short[] emoteIds)
-  {
+  public EmoteListMessage(short[] emoteIds) {
     this.emoteIds = emoteIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5689;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(emoteIds.length);
     writer.write_array_ui8(this.emoteIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int emoteIds_length = reader.read_ui16();
     this.emoteIds = reader.read_array_ui8(emoteIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EmoteListMessage(" + "emoteIds=" + java.util.Arrays.toString(this.emoteIds) + ')';
   }

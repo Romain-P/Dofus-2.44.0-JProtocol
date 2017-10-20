@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -31,8 +31,7 @@ public class HouseInformationsForGuild
   // vi32
   public int guildshareParams;
 
-  public HouseInformationsForGuild()
-  {}
+  public HouseInformationsForGuild() {}
 
   public HouseInformationsForGuild(
       int houseId,
@@ -45,8 +44,7 @@ public class HouseInformationsForGuild
       double mapId,
       short subAreaId,
       int[] skillListIds,
-      int guildshareParams)
-  {
+      int guildshareParams) {
 
     super(houseId, modelId);
     this.instanceId = instanceId;
@@ -61,14 +59,12 @@ public class HouseInformationsForGuild
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 170;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.instanceId);
@@ -84,8 +80,7 @@ public class HouseInformationsForGuild
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.instanceId = reader.read_i32();
@@ -102,8 +97,7 @@ public class HouseInformationsForGuild
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseInformationsForGuild("
         + "houseId="

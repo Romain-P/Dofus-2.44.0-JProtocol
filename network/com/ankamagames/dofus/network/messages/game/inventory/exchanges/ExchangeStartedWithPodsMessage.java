@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -25,8 +25,7 @@ public class ExchangeStartedWithPodsMessage
   // vi32
   public int secondCharacterMaxWeight;
 
-  public ExchangeStartedWithPodsMessage()
-  {}
+  public ExchangeStartedWithPodsMessage() {}
 
   public ExchangeStartedWithPodsMessage(
       byte exchangeType,
@@ -35,8 +34,7 @@ public class ExchangeStartedWithPodsMessage
       int firstCharacterMaxWeight,
       double secondCharacterId,
       int secondCharacterCurrentWeight,
-      int secondCharacterMaxWeight)
-  {
+      int secondCharacterMaxWeight) {
 
     super(exchangeType);
     this.firstCharacterId = firstCharacterId;
@@ -48,14 +46,12 @@ public class ExchangeStartedWithPodsMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6129;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.firstCharacterId);
@@ -67,8 +63,7 @@ public class ExchangeStartedWithPodsMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.firstCharacterId = reader.read_f64();
@@ -80,8 +75,7 @@ public class ExchangeStartedWithPodsMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartedWithPodsMessage("
         + "exchangeType="

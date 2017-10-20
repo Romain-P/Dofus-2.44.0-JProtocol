@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class BasicDateMessage extends NetworkMessage {
   // i16
   public short year;
 
-  public BasicDateMessage()
-  {}
+  public BasicDateMessage() {}
 
-  public BasicDateMessage(byte day, byte month, short year)
-  {
+  public BasicDateMessage(byte day, byte month, short year) {
     this.day = day;
     this.month = month;
     this.year = year;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 177;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.day);
     writer.write_i8(this.month);
     writer.write_i16(this.year);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.day = reader.read_i8();
     this.month = reader.read_i8();
     this.year = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicDateMessage("
         + "day="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.secure;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class TrustStatusMessage extends NetworkMessage {
   // flag,_loc2_,1
   public boolean certified;
 
-  public TrustStatusMessage()
-  {}
+  public TrustStatusMessage() {}
 
-  public TrustStatusMessage(boolean trusted, boolean certified)
-  {
+  public TrustStatusMessage(boolean trusted, boolean certified) {
     this.trusted = trusted;
     this.certified = certified;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6267;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.trusted, 0);
@@ -42,8 +38,7 @@ public class TrustStatusMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.trusted = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -51,8 +46,7 @@ public class TrustStatusMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TrustStatusMessage("
         + "trusted="

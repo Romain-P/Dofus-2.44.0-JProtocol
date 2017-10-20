@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class MapComplementaryInformationsDataInHouseMessage
   // com.ankamagames.dofus.network.types.game.house.HouseInformationsInside
   public com.ankamagames.dofus.network.types.game.house.HouseInformationsInside currentHouse;
 
-  public MapComplementaryInformationsDataInHouseMessage()
-  {}
+  public MapComplementaryInformationsDataInHouseMessage() {}
 
   public MapComplementaryInformationsDataInHouseMessage(
       short subAreaId,
@@ -32,8 +31,7 @@ public class MapComplementaryInformationsDataInHouseMessage
       boolean hasAggressiveMonsters,
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
           fightStartPositions,
-      com.ankamagames.dofus.network.types.game.house.HouseInformationsInside currentHouse)
-  {
+      com.ankamagames.dofus.network.types.game.house.HouseInformationsInside currentHouse) {
 
     super(
         subAreaId,
@@ -71,8 +69,7 @@ public class MapComplementaryInformationsDataInHouseMessage
       boolean hasAggressiveMonsters,
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
           fightStartPositions,
-      com.ankamagames.dofus.network.types.game.house.HouseInformationsInside currentHouse)
-  {
+      com.ankamagames.dofus.network.types.game.house.HouseInformationsInside currentHouse) {
 
     super(
         subAreaId,
@@ -89,22 +86,19 @@ public class MapComplementaryInformationsDataInHouseMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6130;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.currentHouse.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.currentHouse =
@@ -113,8 +107,7 @@ public class MapComplementaryInformationsDataInHouseMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapComplementaryInformationsDataInHouseMessage("
         + "subAreaId="

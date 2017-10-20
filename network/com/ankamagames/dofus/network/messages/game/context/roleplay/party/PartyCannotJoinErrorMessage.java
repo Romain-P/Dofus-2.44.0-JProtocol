@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class PartyCannotJoinErrorMessage
   // i8
   public byte reason;
 
-  public PartyCannotJoinErrorMessage()
-  {}
+  public PartyCannotJoinErrorMessage() {}
 
-  public PartyCannotJoinErrorMessage(int partyId, byte reason)
-  {
+  public PartyCannotJoinErrorMessage(int partyId, byte reason) {
 
     super(partyId);
     this.reason = reason;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5583;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.reason);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.reason = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyCannotJoinErrorMessage("
         + "partyId="

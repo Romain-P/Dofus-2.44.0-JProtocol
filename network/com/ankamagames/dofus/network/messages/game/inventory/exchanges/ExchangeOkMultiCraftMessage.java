@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,49 +11,42 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class ExchangeOkMultiCraftMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5768;
-  // ui64
-  public java.math.BigInteger initiatorId;
-  // ui64
-  public java.math.BigInteger otherId;
+  // vi64
+  public long initiatorId;
+  // vi64
+  public long otherId;
   // i8
   public byte role;
 
-  public ExchangeOkMultiCraftMessage()
-  {}
+  public ExchangeOkMultiCraftMessage() {}
 
-  public ExchangeOkMultiCraftMessage(
-      java.math.BigInteger initiatorId, java.math.BigInteger otherId, byte role)
-  {
+  public ExchangeOkMultiCraftMessage(long initiatorId, long otherId, byte role) {
     this.initiatorId = initiatorId;
     this.otherId = otherId;
     this.role = role;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5768;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.initiatorId);
-    writer.write_ui64(this.otherId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.initiatorId);
+    writer.write_vi64(this.otherId);
     writer.write_i8(this.role);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.initiatorId = reader.read_ui64();
-    this.otherId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.initiatorId = reader.read_vi64();
+    this.otherId = reader.read_vi64();
     this.role = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeOkMultiCraftMessage("
         + "initiatorId="

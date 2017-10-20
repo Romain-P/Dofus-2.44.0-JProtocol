@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,8 +11,8 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
   public static final int PROTOCOL_ID = 194;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // str
   public java.lang.String playerName;
   // i8
@@ -34,11 +34,10 @@ public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
   // com.ankamagames.dofus.network.types.game.character.status.PlayerStatus
   public com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status;
 
-  public JobCrafterDirectoryEntryPlayerInfo()
-  {}
+  public JobCrafterDirectoryEntryPlayerInfo() {}
 
   public JobCrafterDirectoryEntryPlayerInfo(
-      java.math.BigInteger playerId,
+      long playerId,
       java.lang.String playerName,
       byte alignmentSide,
       byte breed,
@@ -48,8 +47,7 @@ public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
       short worldY,
       double mapId,
       short subAreaId,
-      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status)
-  {
+      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status) {
     this.playerId = playerId;
     this.playerName = playerName;
     this.alignmentSide = alignmentSide;
@@ -64,15 +62,13 @@ public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 194;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.playerId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.playerId);
     writer.write_str(this.playerName);
     writer.write_i8(this.alignmentSide);
     writer.write_i8(this.breed);
@@ -87,9 +83,8 @@ public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.playerId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.playerId = reader.read_vi64();
     this.playerName = reader.read_str();
     this.alignmentSide = reader.read_i8();
     this.breed = reader.read_i8();
@@ -108,8 +103,7 @@ public class JobCrafterDirectoryEntryPlayerInfo extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryEntryPlayerInfo("
         + "playerId="

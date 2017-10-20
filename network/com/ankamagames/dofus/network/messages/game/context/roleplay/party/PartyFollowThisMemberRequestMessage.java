@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,42 +16,35 @@ public class PartyFollowThisMemberRequestMessage
   // bool
   public boolean enabled;
 
-  public PartyFollowThisMemberRequestMessage()
-  {}
+  public PartyFollowThisMemberRequestMessage() {}
 
-  public PartyFollowThisMemberRequestMessage(
-      int partyId, java.math.BigInteger playerId, boolean enabled)
-  {
+  public PartyFollowThisMemberRequestMessage(int partyId, long playerId, boolean enabled) {
 
     super(partyId, playerId);
     this.enabled = enabled;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5588;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.enabled);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.enabled = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyFollowThisMemberRequestMessage("
         + "partyId="

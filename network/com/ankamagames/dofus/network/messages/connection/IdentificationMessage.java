@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -30,8 +30,7 @@ public class IdentificationMessage extends NetworkMessage {
   // array,vi16
   public short[] failedAttempts;
 
-  public IdentificationMessage()
-  {}
+  public IdentificationMessage() {}
 
   public IdentificationMessage(
       boolean autoconnect,
@@ -42,8 +41,7 @@ public class IdentificationMessage extends NetworkMessage {
       byte[] credentials,
       short serverId,
       long sessionOptionalSalt,
-      short[] failedAttempts)
-  {
+      short[] failedAttempts) {
     this.autoconnect = autoconnect;
     this.useCertificate = useCertificate;
     this.useLoginToken = useLoginToken;
@@ -56,14 +54,12 @@ public class IdentificationMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 4;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.autoconnect, 0);
@@ -72,7 +68,7 @@ public class IdentificationMessage extends NetworkMessage {
     writer.write_i8(_loc2_);
     this.version.serialize(writer);
     writer.write_str(this.lang);
-    writer.write_ui16(credentials.length);
+    writer.write_vi32(credentials.length);
     writer.write_array_i8(this.credentials);
     writer.write_i16(this.serverId);
     writer.write_vi64(this.sessionOptionalSalt);
@@ -81,8 +77,7 @@ public class IdentificationMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.autoconnect = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -92,7 +87,7 @@ public class IdentificationMessage extends NetworkMessage {
     this.version.deserialize(reader);
     this.lang = reader.read_str();
 
-    int credentials_length = reader.read_ui16();
+    int credentials_length = reader.read_vi32();
     this.credentials = reader.read_array_i8(credentials_length);
     this.serverId = reader.read_i16();
     this.sessionOptionalSalt = reader.read_vi64();
@@ -102,8 +97,7 @@ public class IdentificationMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationMessage("
         + "autoconnect="

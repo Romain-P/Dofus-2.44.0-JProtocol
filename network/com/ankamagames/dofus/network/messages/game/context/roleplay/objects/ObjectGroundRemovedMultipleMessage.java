@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.objects;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class ObjectGroundRemovedMultipleMessage extends NetworkMessage {
   // array,vi16
   public short[] cells;
 
-  public ObjectGroundRemovedMultipleMessage()
-  {}
+  public ObjectGroundRemovedMultipleMessage() {}
 
-  public ObjectGroundRemovedMultipleMessage(short[] cells)
-  {
+  public ObjectGroundRemovedMultipleMessage(short[] cells) {
     this.cells = cells;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5944;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(cells.length);
     writer.write_array_vi16(this.cells);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int cells_length = reader.read_ui16();
     this.cells = reader.read_array_vi16(cells_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectGroundRemovedMultipleMessage("
         + "cells="

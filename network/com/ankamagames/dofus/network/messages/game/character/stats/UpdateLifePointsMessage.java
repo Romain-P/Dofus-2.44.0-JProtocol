@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class UpdateLifePointsMessage extends NetworkMessage {
   // vi32
   public int maxLifePoints;
 
-  public UpdateLifePointsMessage()
-  {}
+  public UpdateLifePointsMessage() {}
 
-  public UpdateLifePointsMessage(int lifePoints, int maxLifePoints)
-  {
+  public UpdateLifePointsMessage(int lifePoints, int maxLifePoints) {
     this.lifePoints = lifePoints;
     this.maxLifePoints = maxLifePoints;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5658;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.lifePoints);
     writer.write_vi32(this.maxLifePoints);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.lifePoints = reader.read_vi32();
     this.maxLifePoints = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "UpdateLifePointsMessage("
         + "lifePoints="

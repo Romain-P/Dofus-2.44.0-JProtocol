@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.enums;
 
 import java.util.Optional;
@@ -13,17 +13,13 @@ public enum FightSpellCastCriticalEnum {
 
   public final byte value;
 
-  private FightSpellCastCriticalEnum(byte value)
-  {
+  private FightSpellCastCriticalEnum(byte value) {
     this.value = value;
   }
 
-  public static Optional<FightSpellCastCriticalEnum> valueOf(byte value)
-  {
-    for (FightSpellCastCriticalEnum it : values())
-  {
-      if (it.value == value)
-  {
+  public static Optional<FightSpellCastCriticalEnum> valueOf(byte value) {
+    for (FightSpellCastCriticalEnum it : values()) {
+      if (it.value == value) {
         return Optional.of(it);
       }
     }

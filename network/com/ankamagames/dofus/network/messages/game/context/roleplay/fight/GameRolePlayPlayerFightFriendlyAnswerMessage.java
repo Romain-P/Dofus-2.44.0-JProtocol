@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class GameRolePlayPlayerFightFriendlyAnswerMessage extends NetworkMessage
   // bool
   public boolean accept;
 
-  public GameRolePlayPlayerFightFriendlyAnswerMessage()
-  {}
+  public GameRolePlayPlayerFightFriendlyAnswerMessage() {}
 
-  public GameRolePlayPlayerFightFriendlyAnswerMessage(int fightId, boolean accept)
-  {
+  public GameRolePlayPlayerFightFriendlyAnswerMessage(int fightId, boolean accept) {
     this.fightId = fightId;
     this.accept = accept;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5732;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.fightId);
     writer.write_bool(this.accept);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i32();
     this.accept = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayPlayerFightFriendlyAnswerMessage("
         + "fightId="

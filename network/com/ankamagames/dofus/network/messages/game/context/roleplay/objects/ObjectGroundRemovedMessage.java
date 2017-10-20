@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.objects;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ObjectGroundRemovedMessage extends NetworkMessage {
   // vi16
   public short cell;
 
-  public ObjectGroundRemovedMessage()
-  {}
+  public ObjectGroundRemovedMessage() {}
 
-  public ObjectGroundRemovedMessage(short cell)
-  {
+  public ObjectGroundRemovedMessage(short cell) {
     this.cell = cell;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3014;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.cell);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cell = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectGroundRemovedMessage(" + "cell=" + this.cell + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,12 +17,10 @@ public class GameActionFightDodgePointLossMessage
   // vi16
   public short amount;
 
-  public GameActionFightDodgePointLossMessage()
-  {}
+  public GameActionFightDodgePointLossMessage() {}
 
   public GameActionFightDodgePointLossMessage(
-      short actionId, double sourceId, double targetId, short amount)
-  {
+      short actionId, double sourceId, double targetId, short amount) {
 
     super(actionId, sourceId);
     this.targetId = targetId;
@@ -30,14 +28,12 @@ public class GameActionFightDodgePointLossMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5828;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.targetId);
@@ -45,8 +41,7 @@ public class GameActionFightDodgePointLossMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.targetId = reader.read_f64();
@@ -54,8 +49,7 @@ public class GameActionFightDodgePointLossMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightDodgePointLossMessage("
         + "actionId="

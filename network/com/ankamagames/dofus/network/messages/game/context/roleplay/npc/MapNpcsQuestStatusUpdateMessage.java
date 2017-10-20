@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,16 +21,14 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
   // array,i32
   public int[] npcsIdsWithoutQuest;
 
-  public MapNpcsQuestStatusUpdateMessage()
-  {}
+  public MapNpcsQuestStatusUpdateMessage() {}
 
   public MapNpcsQuestStatusUpdateMessage(
       double mapId,
       int[] npcsIdsWithQuest,
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.GameRolePlayNpcQuestFlag[]
           questFlags,
-      int[] npcsIdsWithoutQuest)
-  {
+      int[] npcsIdsWithoutQuest) {
     this.mapId = mapId;
     this.npcsIdsWithQuest = npcsIdsWithQuest;
     this.questFlags = questFlags;
@@ -44,8 +42,7 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.context.roleplay.quest
                   .GameRolePlayNpcQuestFlag>
           questFlags,
-      int[] npcsIdsWithoutQuest)
-  {
+      int[] npcsIdsWithoutQuest) {
     this.mapId = mapId;
     this.npcsIdsWithQuest = npcsIdsWithQuest;
     this.questFlags =
@@ -57,21 +54,18 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5642;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.mapId);
     writer.write_ui16(npcsIdsWithQuest.length);
     writer.write_array_i32(this.npcsIdsWithQuest);
     writer.write_ui16(questFlags.length);
 
-    for (int i = 0; i < questFlags.length; i++)
-  {
+    for (int i = 0; i < questFlags.length; i++) {
 
       questFlags[i].serialize(writer);
     }
@@ -80,8 +74,7 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mapId = reader.read_f64();
 
     int npcsIdsWithQuest_length = reader.read_ui16();
@@ -92,8 +85,7 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.quest.GameRolePlayNpcQuestFlag
             [questFlags_length];
 
-    for (int i = 0; i < questFlags_length; i++)
-  {
+    for (int i = 0; i < questFlags_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.GameRolePlayNpcQuestFlag
           questFlags_it =
@@ -109,8 +101,7 @@ public class MapNpcsQuestStatusUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapNpcsQuestStatusUpdateMessage("
         + "mapId="

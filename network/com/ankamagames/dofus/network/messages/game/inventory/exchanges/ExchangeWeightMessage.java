@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ExchangeWeightMessage extends NetworkMessage {
   // vi32
   public int maxWeight;
 
-  public ExchangeWeightMessage()
-  {}
+  public ExchangeWeightMessage() {}
 
-  public ExchangeWeightMessage(int currentWeight, int maxWeight)
-  {
+  public ExchangeWeightMessage(int currentWeight, int maxWeight) {
     this.currentWeight = currentWeight;
     this.maxWeight = maxWeight;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5793;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.currentWeight);
     writer.write_vi32(this.maxWeight);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.currentWeight = reader.read_vi32();
     this.maxWeight = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeWeightMessage("
         + "currentWeight="

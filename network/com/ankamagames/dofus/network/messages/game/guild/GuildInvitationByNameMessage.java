@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildInvitationByNameMessage extends NetworkMessage {
   // str
   public java.lang.String name;
 
-  public GuildInvitationByNameMessage()
-  {}
+  public GuildInvitationByNameMessage() {}
 
-  public GuildInvitationByNameMessage(java.lang.String name)
-  {
+  public GuildInvitationByNameMessage(java.lang.String name) {
     this.name = name;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6115;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInvitationByNameMessage(" + "name=" + this.name + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party.companion;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,8 +24,7 @@ public class PartyCompanionMemberInformations
   // ui8
   public short regenRate;
 
-  public PartyCompanionMemberInformations()
-  {}
+  public PartyCompanionMemberInformations() {}
 
   public PartyCompanionMemberInformations(
       byte indexId,
@@ -35,8 +34,7 @@ public class PartyCompanionMemberInformations
       int lifePoints,
       int maxLifePoints,
       short prospecting,
-      short regenRate)
-  {
+      short regenRate) {
 
     super(indexId, companionGenericId, entityLook);
     this.initiative = initiative;
@@ -47,14 +45,12 @@ public class PartyCompanionMemberInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 452;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.initiative);
@@ -65,8 +61,7 @@ public class PartyCompanionMemberInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.initiative = reader.read_vi16();
@@ -77,8 +72,7 @@ public class PartyCompanionMemberInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyCompanionMemberInformations("
         + "indexId="

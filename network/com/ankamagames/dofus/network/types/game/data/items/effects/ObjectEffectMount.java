@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,9 @@ public class ObjectEffectMount
   // vi16
   public short modelId;
 
-  public ObjectEffectMount()
-  {}
+  public ObjectEffectMount() {}
 
-  public ObjectEffectMount(short actionId, int mountId, double date, short modelId)
-  {
+  public ObjectEffectMount(short actionId, int mountId, double date, short modelId) {
 
     super(actionId);
     this.mountId = mountId;
@@ -32,14 +30,12 @@ public class ObjectEffectMount
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 179;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.mountId);
@@ -48,8 +44,7 @@ public class ObjectEffectMount
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.mountId = reader.read_i32();
@@ -58,8 +53,7 @@ public class ObjectEffectMount
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectMount("
         + "actionId="

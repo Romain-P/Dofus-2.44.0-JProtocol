@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ObjectUseOnCellMessage
   // vi16
   public short cells;
 
-  public ObjectUseOnCellMessage()
-  {}
+  public ObjectUseOnCellMessage() {}
 
-  public ObjectUseOnCellMessage(int objectUID, short cells)
-  {
+  public ObjectUseOnCellMessage(int objectUID, short cells) {
 
     super(objectUID);
     this.cells = cells;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3013;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.cells);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.cells = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectUseOnCellMessage("
         + "objectUID="

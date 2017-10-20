@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class AchievementStartedObjective
   // vi16
   public short value;
 
-  public AchievementStartedObjective()
-  {}
+  public AchievementStartedObjective() {}
 
-  public AchievementStartedObjective(int id, short maxValue, short value)
-  {
+  public AchievementStartedObjective(int id, short maxValue, short value) {
 
     super(id, maxValue);
     this.value = value;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 402;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.value);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.value = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementStartedObjective("
         + "id="

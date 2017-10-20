@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,35 +16,30 @@ public class ExchangeCraftResultWithObjectDescMessage
   // com.ankamagames.dofus.network.types.game.data.items.ObjectItemNotInContainer
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemNotInContainer objectInfo;
 
-  public ExchangeCraftResultWithObjectDescMessage()
-  {}
+  public ExchangeCraftResultWithObjectDescMessage() {}
 
   public ExchangeCraftResultWithObjectDescMessage(
       byte craftResult,
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItemNotInContainer objectInfo)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItemNotInContainer objectInfo) {
 
     super(craftResult);
     this.objectInfo = objectInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5999;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.objectInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.objectInfo =
@@ -53,8 +48,7 @@ public class ExchangeCraftResultWithObjectDescMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeCraftResultWithObjectDescMessage("
         + "craftResult="

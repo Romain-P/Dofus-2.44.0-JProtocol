@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.idol;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class IdolSelectErrorMessage extends NetworkMessage {
   // vi16
   public short idolId;
 
-  public IdolSelectErrorMessage()
-  {}
+  public IdolSelectErrorMessage() {}
 
-  public IdolSelectErrorMessage(boolean activate, boolean party, byte reason, short idolId)
-  {
+  public IdolSelectErrorMessage(boolean activate, boolean party, byte reason, short idolId) {
     this.activate = activate;
     this.party = party;
     this.reason = reason;
@@ -32,14 +30,12 @@ public class IdolSelectErrorMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6584;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.activate, 0);
@@ -50,8 +46,7 @@ public class IdolSelectErrorMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.activate = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -61,8 +56,7 @@ public class IdolSelectErrorMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolSelectErrorMessage("
         + "activate="

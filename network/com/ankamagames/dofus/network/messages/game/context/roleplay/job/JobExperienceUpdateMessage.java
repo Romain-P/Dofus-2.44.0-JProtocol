@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,39 +15,33 @@ public class JobExperienceUpdateMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience
       experiencesUpdate;
 
-  public JobExperienceUpdateMessage()
-  {}
+  public JobExperienceUpdateMessage() {}
 
   public JobExperienceUpdateMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience
-          experiencesUpdate)
-  {
+          experiencesUpdate) {
     this.experiencesUpdate = experiencesUpdate;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5654;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.experiencesUpdate.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.experiencesUpdate =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience();
     this.experiencesUpdate.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobExperienceUpdateMessage(" + "experiencesUpdate=" + this.experiencesUpdate + ')';
   }

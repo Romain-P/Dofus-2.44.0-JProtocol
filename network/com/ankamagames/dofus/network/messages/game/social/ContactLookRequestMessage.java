@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ContactLookRequestMessage extends NetworkMessage {
   // i8
   public byte contactType;
 
-  public ContactLookRequestMessage()
-  {}
+  public ContactLookRequestMessage() {}
 
-  public ContactLookRequestMessage(short requestId, byte contactType)
-  {
+  public ContactLookRequestMessage(short requestId, byte contactType) {
     this.requestId = requestId;
     this.contactType = contactType;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5932;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.requestId);
     writer.write_i8(this.contactType);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.requestId = reader.read_ui8();
     this.contactType = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ContactLookRequestMessage("
         + "requestId="

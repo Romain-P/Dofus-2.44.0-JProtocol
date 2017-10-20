@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class InventoryPresetUseResultMessage extends NetworkMessage {
   // array,ui8
   public short[] unlinkedPosition;
 
-  public InventoryPresetUseResultMessage()
-  {}
+  public InventoryPresetUseResultMessage() {}
 
-  public InventoryPresetUseResultMessage(byte presetId, byte code, short[] unlinkedPosition)
-  {
+  public InventoryPresetUseResultMessage(byte presetId, byte code, short[] unlinkedPosition) {
     this.presetId = presetId;
     this.code = code;
     this.unlinkedPosition = unlinkedPosition;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6163;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_i8(this.code);
     writer.write_ui16(unlinkedPosition.length);
@@ -44,8 +40,7 @@ public class InventoryPresetUseResultMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.code = reader.read_i8();
 
@@ -54,8 +49,7 @@ public class InventoryPresetUseResultMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetUseResultMessage("
         + "presetId="

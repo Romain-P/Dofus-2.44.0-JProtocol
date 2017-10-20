@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.delay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,42 +18,36 @@ public class GameRolePlayDelayedActionMessage extends NetworkMessage {
   // f64
   public double delayEndTime;
 
-  public GameRolePlayDelayedActionMessage()
-  {}
+  public GameRolePlayDelayedActionMessage() {}
 
   public GameRolePlayDelayedActionMessage(
-      double delayedCharacterId, byte delayTypeId, double delayEndTime)
-  {
+      double delayedCharacterId, byte delayTypeId, double delayEndTime) {
     this.delayedCharacterId = delayedCharacterId;
     this.delayTypeId = delayTypeId;
     this.delayEndTime = delayEndTime;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6153;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.delayedCharacterId);
     writer.write_i8(this.delayTypeId);
     writer.write_f64(this.delayEndTime);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.delayedCharacterId = reader.read_f64();
     this.delayTypeId = reader.read_i8();
     this.delayEndTime = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayDelayedActionMessage("
         + "delayedCharacterId="

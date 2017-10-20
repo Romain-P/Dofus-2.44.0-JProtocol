@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class CurrentServerStatusUpdateMessage extends NetworkMessage {
   // i8
   public byte status;
 
-  public CurrentServerStatusUpdateMessage()
-  {}
+  public CurrentServerStatusUpdateMessage() {}
 
-  public CurrentServerStatusUpdateMessage(byte status)
-  {
+  public CurrentServerStatusUpdateMessage(byte status) {
     this.status = status;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6525;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.status);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.status = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CurrentServerStatusUpdateMessage(" + "status=" + this.status + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.notification;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class NotificationListMessage extends NetworkMessage {
   // array,vi32
   public int[] flags;
 
-  public NotificationListMessage()
-  {}
+  public NotificationListMessage() {}
 
-  public NotificationListMessage(int[] flags)
-  {
+  public NotificationListMessage(int[] flags) {
     this.flags = flags;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6087;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(flags.length);
     writer.write_array_vi32(this.flags);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int flags_length = reader.read_ui16();
     this.flags = reader.read_array_vi32(flags_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NotificationListMessage(" + "flags=" + java.util.Arrays.toString(this.flags) + ')';
   }

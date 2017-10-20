@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.creation;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class CharacterNameSuggestionSuccessMessage extends NetworkMessage {
   // str
   public java.lang.String suggestion;
 
-  public CharacterNameSuggestionSuccessMessage()
-  {}
+  public CharacterNameSuggestionSuccessMessage() {}
 
-  public CharacterNameSuggestionSuccessMessage(java.lang.String suggestion)
-  {
+  public CharacterNameSuggestionSuccessMessage(java.lang.String suggestion) {
     this.suggestion = suggestion;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5544;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.suggestion);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.suggestion = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterNameSuggestionSuccessMessage(" + "suggestion=" + this.suggestion + ')';
   }

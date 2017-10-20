@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dialog;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class LeaveDialogMessage extends NetworkMessage {
   // i8
   public byte dialogType;
 
-  public LeaveDialogMessage()
-  {}
+  public LeaveDialogMessage() {}
 
-  public LeaveDialogMessage(byte dialogType)
-  {
+  public LeaveDialogMessage(byte dialogType) {
     this.dialogType = dialogType;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5502;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.dialogType);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dialogType = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LeaveDialogMessage(" + "dialogType=" + this.dialogType + ')';
   }

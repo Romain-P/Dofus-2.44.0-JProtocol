@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class ExchangeStartOkJobIndexMessage extends NetworkMessage {
   // array,vi32
   public int[] jobs;
 
-  public ExchangeStartOkJobIndexMessage()
-  {}
+  public ExchangeStartOkJobIndexMessage() {}
 
-  public ExchangeStartOkJobIndexMessage(int[] jobs)
-  {
+  public ExchangeStartOkJobIndexMessage(int[] jobs) {
     this.jobs = jobs;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5819;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(jobs.length);
     writer.write_array_vi32(this.jobs);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int jobs_length = reader.read_ui16();
     this.jobs = reader.read_array_vi32(jobs_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkJobIndexMessage(" + "jobs=" + java.util.Arrays.toString(this.jobs) + ')';
   }

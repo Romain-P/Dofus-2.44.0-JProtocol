@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class AllianceGuildLeavingMessage extends NetworkMessage {
   // vi32
   public int guildId;
 
-  public AllianceGuildLeavingMessage()
-  {}
+  public AllianceGuildLeavingMessage() {}
 
-  public AllianceGuildLeavingMessage(boolean kicked, int guildId)
-  {
+  public AllianceGuildLeavingMessage(boolean kicked, int guildId) {
     this.kicked = kicked;
     this.guildId = guildId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6399;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.kicked);
     writer.write_vi32(this.guildId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.kicked = reader.read_bool();
     this.guildId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceGuildLeavingMessage("
         + "kicked="

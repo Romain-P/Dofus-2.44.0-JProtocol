@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class RefreshCharacterStatsMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats
   public com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats stats;
 
-  public RefreshCharacterStatsMessage()
-  {}
+  public RefreshCharacterStatsMessage() {}
 
   public RefreshCharacterStatsMessage(
       double fighterId,
-      com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats stats)
-  {
+      com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats stats) {
     this.fighterId = fighterId;
     this.stats = stats;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6699;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.fighterId);
     this.stats.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fighterId = reader.read_f64();
     this.stats = new com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats();
     this.stats.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "RefreshCharacterStatsMessage("
         + "fighterId="

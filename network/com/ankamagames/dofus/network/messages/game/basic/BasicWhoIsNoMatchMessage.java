@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class BasicWhoIsNoMatchMessage extends NetworkMessage {
   // str
   public java.lang.String search;
 
-  public BasicWhoIsNoMatchMessage()
-  {}
+  public BasicWhoIsNoMatchMessage() {}
 
-  public BasicWhoIsNoMatchMessage(java.lang.String search)
-  {
+  public BasicWhoIsNoMatchMessage(java.lang.String search) {
     this.search = search;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 179;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.search);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.search = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicWhoIsNoMatchMessage(" + "search=" + this.search + ')';
   }

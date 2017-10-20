@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ShowCellSpectatorMessage
   // str
   public java.lang.String playerName;
 
-  public ShowCellSpectatorMessage()
-  {}
+  public ShowCellSpectatorMessage() {}
 
-  public ShowCellSpectatorMessage(double sourceId, short cellId, java.lang.String playerName)
-  {
+  public ShowCellSpectatorMessage(double sourceId, short cellId, java.lang.String playerName) {
 
     super(sourceId, cellId);
     this.playerName = playerName;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6158;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.playerName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.playerName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShowCellSpectatorMessage("
         + "sourceId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.characteristic;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,16 +11,16 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class CharacterCharacteristicsInformations extends NetworkType {
   public static final int PROTOCOL_ID = 8;
-  // ui64
-  public java.math.BigInteger experience;
-  // ui64
-  public java.math.BigInteger experienceLevelFloor;
-  // ui64
-  public java.math.BigInteger experienceNextLevelFloor;
-  // ui64
-  public java.math.BigInteger experienceBonusLimit;
-  // ui64
-  public java.math.BigInteger kamas;
+  // vi64
+  public long experience;
+  // vi64
+  public long experienceLevelFloor;
+  // vi64
+  public long experienceNextLevelFloor;
+  // vi64
+  public long experienceBonusLimit;
+  // vi64
+  public long kamas;
   // vi16
   public short statsPoints;
   // vi16
@@ -320,15 +320,14 @@ public class CharacterCharacteristicsInformations extends NetworkType {
   // i32
   public int probationTime;
 
-  public CharacterCharacteristicsInformations()
-  {}
+  public CharacterCharacteristicsInformations() {}
 
   public CharacterCharacteristicsInformations(
-      java.math.BigInteger experience,
-      java.math.BigInteger experienceLevelFloor,
-      java.math.BigInteger experienceNextLevelFloor,
-      java.math.BigInteger experienceBonusLimit,
-      java.math.BigInteger kamas,
+      long experience,
+      long experienceLevelFloor,
+      long experienceNextLevelFloor,
+      long experienceBonusLimit,
+      long kamas,
       short statsPoints,
       short additionnalPoints,
       short spellsPoints,
@@ -478,8 +477,7 @@ public class CharacterCharacteristicsInformations extends NetworkType {
           spellDamageReceivedPercent,
       com.ankamagames.dofus.network.types.game.character.characteristic.CharacterSpellModification[]
           spellModifications,
-      int probationTime)
-  {
+      int probationTime) {
     this.experience = experience;
     this.experienceLevelFloor = experienceLevelFloor;
     this.experienceNextLevelFloor = experienceNextLevelFloor;
@@ -568,11 +566,11 @@ public class CharacterCharacteristicsInformations extends NetworkType {
   }
 
   public CharacterCharacteristicsInformations(
-      java.math.BigInteger experience,
-      java.math.BigInteger experienceLevelFloor,
-      java.math.BigInteger experienceNextLevelFloor,
-      java.math.BigInteger experienceBonusLimit,
-      java.math.BigInteger kamas,
+      long experience,
+      long experienceLevelFloor,
+      long experienceNextLevelFloor,
+      long experienceBonusLimit,
+      long kamas,
       short statsPoints,
       short additionnalPoints,
       short spellsPoints,
@@ -724,8 +722,7 @@ public class CharacterCharacteristicsInformations extends NetworkType {
               com.ankamagames.dofus.network.types.game.character.characteristic
                   .CharacterSpellModification>
           spellModifications,
-      int probationTime)
-  {
+      int probationTime) {
     this.experience = experience;
     this.experienceLevelFloor = experienceLevelFloor;
     this.experienceNextLevelFloor = experienceNextLevelFloor;
@@ -819,19 +816,17 @@ public class CharacterCharacteristicsInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 8;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.experience);
-    writer.write_ui64(this.experienceLevelFloor);
-    writer.write_ui64(this.experienceNextLevelFloor);
-    writer.write_ui64(this.experienceBonusLimit);
-    writer.write_ui64(this.kamas);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.experience);
+    writer.write_vi64(this.experienceLevelFloor);
+    writer.write_vi64(this.experienceNextLevelFloor);
+    writer.write_vi64(this.experienceBonusLimit);
+    writer.write_vi64(this.kamas);
     writer.write_vi16(this.statsPoints);
     writer.write_vi16(this.additionnalPoints);
     writer.write_vi16(this.spellsPoints);
@@ -912,8 +907,7 @@ public class CharacterCharacteristicsInformations extends NetworkType {
     this.spellDamageReceivedPercent.serialize(writer);
     writer.write_ui16(spellModifications.length);
 
-    for (int i = 0; i < spellModifications.length; i++)
-  {
+    for (int i = 0; i < spellModifications.length; i++) {
 
       spellModifications[i].serialize(writer);
     }
@@ -921,13 +915,12 @@ public class CharacterCharacteristicsInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.experience = reader.read_ui64();
-    this.experienceLevelFloor = reader.read_ui64();
-    this.experienceNextLevelFloor = reader.read_ui64();
-    this.experienceBonusLimit = reader.read_ui64();
-    this.kamas = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.experience = reader.read_vi64();
+    this.experienceLevelFloor = reader.read_vi64();
+    this.experienceNextLevelFloor = reader.read_vi64();
+    this.experienceBonusLimit = reader.read_vi64();
+    this.kamas = reader.read_vi64();
     this.statsPoints = reader.read_vi16();
     this.additionnalPoints = reader.read_vi16();
     this.spellsPoints = reader.read_vi16();
@@ -1216,8 +1209,7 @@ public class CharacterCharacteristicsInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.character.characteristic
                 .CharacterSpellModification[spellModifications_length];
 
-    for (int i = 0; i < spellModifications_length; i++)
-  {
+    for (int i = 0; i < spellModifications_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.characteristic.CharacterSpellModification
           spellModifications_it =
@@ -1231,8 +1223,7 @@ public class CharacterCharacteristicsInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterCharacteristicsInformations("
         + "experience="

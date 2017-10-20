@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.secure;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class TrustCertificate extends NetworkType {
   // str
   public java.lang.String hash;
 
-  public TrustCertificate()
-  {}
+  public TrustCertificate() {}
 
-  public TrustCertificate(int id, java.lang.String hash)
-  {
+  public TrustCertificate(int id, java.lang.String hash) {
     this.id = id;
     this.hash = hash;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 377;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.id);
     writer.write_str(this.hash);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_i32();
     this.hash = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TrustCertificate(" + "id=" + this.id + ", hash=" + this.hash + ')';
   }

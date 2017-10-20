@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class GameFightOptionStateUpdateMessage extends NetworkMessage {
   // bool
   public boolean state;
 
-  public GameFightOptionStateUpdateMessage()
-  {}
+  public GameFightOptionStateUpdateMessage() {}
 
-  public GameFightOptionStateUpdateMessage(short fightId, byte teamId, byte option, boolean state)
-  {
+  public GameFightOptionStateUpdateMessage(short fightId, byte teamId, byte option, boolean state) {
     this.fightId = fightId;
     this.teamId = teamId;
     this.option = option;
@@ -32,14 +30,12 @@ public class GameFightOptionStateUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5927;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i16(this.fightId);
     writer.write_i8(this.teamId);
     writer.write_i8(this.option);
@@ -47,8 +43,7 @@ public class GameFightOptionStateUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i16();
     this.teamId = reader.read_i8();
     this.option = reader.read_i8();
@@ -56,8 +51,7 @@ public class GameFightOptionStateUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightOptionStateUpdateMessage("
         + "fightId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class GuildFightTakePlaceRequestMessage
   // i32
   public int replacedCharacterId;
 
-  public GuildFightTakePlaceRequestMessage()
-  {}
+  public GuildFightTakePlaceRequestMessage() {}
 
-  public GuildFightTakePlaceRequestMessage(double taxCollectorId, int replacedCharacterId)
-  {
+  public GuildFightTakePlaceRequestMessage(double taxCollectorId, int replacedCharacterId) {
 
     super(taxCollectorId);
     this.replacedCharacterId = replacedCharacterId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6235;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.replacedCharacterId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.replacedCharacterId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFightTakePlaceRequestMessage("
         + "taxCollectorId="

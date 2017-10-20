@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,38 +15,32 @@ public class GuildHouseUpdateInformationMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild
       housesInformations;
 
-  public GuildHouseUpdateInformationMessage()
-  {}
+  public GuildHouseUpdateInformationMessage() {}
 
   public GuildHouseUpdateInformationMessage(
-      com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild housesInformations)
-  {
+      com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild housesInformations) {
     this.housesInformations = housesInformations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6181;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.housesInformations.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.housesInformations =
         new com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild();
     this.housesInformations.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildHouseUpdateInformationMessage("
         + "housesInformations="

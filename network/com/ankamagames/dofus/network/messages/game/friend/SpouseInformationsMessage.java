@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,31 +14,26 @@ public class SpouseInformationsMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.friend.FriendSpouseInformations
   public com.ankamagames.dofus.network.types.game.friend.FriendSpouseInformations spouse;
 
-  public SpouseInformationsMessage()
-  {}
+  public SpouseInformationsMessage() {}
 
   public SpouseInformationsMessage(
-      com.ankamagames.dofus.network.types.game.friend.FriendSpouseInformations spouse)
-  {
+      com.ankamagames.dofus.network.types.game.friend.FriendSpouseInformations spouse) {
     this.spouse = spouse;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6356;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.spouse.getProtocolId());
     this.spouse.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int spouse_typeId = reader.read_ui16();
     this.spouse =
@@ -48,8 +43,7 @@ public class SpouseInformationsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpouseInformationsMessage(" + "spouse=" + this.spouse + ')';
   }

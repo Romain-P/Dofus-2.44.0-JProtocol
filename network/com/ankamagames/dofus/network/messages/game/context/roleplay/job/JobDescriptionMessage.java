@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,55 +15,47 @@ public class JobDescriptionMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription[]
       jobsDescription;
 
-  public JobDescriptionMessage()
-  {}
+  public JobDescriptionMessage() {}
 
   public JobDescriptionMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription[]
-          jobsDescription)
-  {
+          jobsDescription) {
     this.jobsDescription = jobsDescription;
   }
 
   public JobDescriptionMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription>
-          jobsDescription)
-  {
+          jobsDescription) {
     this.jobsDescription =
         jobsDescription.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5655;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(jobsDescription.length);
 
-    for (int i = 0; i < jobsDescription.length; i++)
-  {
+    for (int i = 0; i < jobsDescription.length; i++) {
 
       jobsDescription[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int jobsDescription_length = reader.read_ui16();
     this.jobsDescription =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription
             [jobsDescription_length];
 
-    for (int i = 0; i < jobsDescription_length; i++)
-  {
+    for (int i = 0; i < jobsDescription_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription
           jobsDescription_it =
@@ -75,8 +67,7 @@ public class JobDescriptionMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobDescriptionMessage("
         + "jobsDescription="

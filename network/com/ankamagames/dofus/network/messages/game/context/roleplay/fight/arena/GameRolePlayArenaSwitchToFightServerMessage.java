@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,48 +18,42 @@ public class GameRolePlayArenaSwitchToFightServerMessage extends NetworkMessage 
   // array,i8
   public byte[] ticket;
 
-  public GameRolePlayArenaSwitchToFightServerMessage()
-  {}
+  public GameRolePlayArenaSwitchToFightServerMessage() {}
 
   public GameRolePlayArenaSwitchToFightServerMessage(
-      java.lang.String address, int[] ports, byte[] ticket)
-  {
+      java.lang.String address, int[] ports, byte[] ticket) {
     this.address = address;
     this.ports = ports;
     this.ticket = ticket;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6575;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.address);
     writer.write_ui16(ports.length);
     writer.write_array_ui16(this.ports);
-    writer.write_ui16(ticket.length);
+    writer.write_vi32(ticket.length);
     writer.write_array_i8(this.ticket);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.address = reader.read_str();
 
     int ports_length = reader.read_ui16();
     this.ports = reader.read_array_ui16(ports_length);
 
-    int ticket_length = reader.read_ui16();
+    int ticket_length = reader.read_vi32();
     this.ticket = reader.read_array_i8(ticket_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayArenaSwitchToFightServerMessage("
         + "address="

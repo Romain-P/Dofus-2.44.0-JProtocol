@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,15 +18,13 @@ public class GroupMonsterStaticInformations extends NetworkType {
   public com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations[]
       underlings;
 
-  public GroupMonsterStaticInformations()
-  {}
+  public GroupMonsterStaticInformations() {}
 
   public GroupMonsterStaticInformations(
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupLightInformations
           mainCreatureLightInfos,
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations[]
-          underlings)
-  {
+          underlings) {
     this.mainCreatureLightInfos = mainCreatureLightInfos;
     this.underlings = underlings;
   }
@@ -36,8 +34,7 @@ public class GroupMonsterStaticInformations extends NetworkType {
           mainCreatureLightInfos,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations>
-          underlings)
-  {
+          underlings) {
     this.mainCreatureLightInfos = mainCreatureLightInfos;
     this.underlings =
         underlings.toArray(
@@ -46,27 +43,23 @@ public class GroupMonsterStaticInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 140;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.mainCreatureLightInfos.serialize(writer);
     writer.write_ui16(underlings.length);
 
-    for (int i = 0; i < underlings.length; i++)
-  {
+    for (int i = 0; i < underlings.length; i++) {
 
       underlings[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mainCreatureLightInfos =
         new com.ankamagames.dofus.network.types.game.context.roleplay
             .MonsterInGroupLightInformations();
@@ -77,8 +70,7 @@ public class GroupMonsterStaticInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations
             [underlings_length];
 
-    for (int i = 0; i < underlings_length; i++)
-  {
+    for (int i = 0; i < underlings_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterInGroupInformations
           underlings_it =
@@ -91,8 +83,7 @@ public class GroupMonsterStaticInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GroupMonsterStaticInformations("
         + "mainCreatureLightInfos="

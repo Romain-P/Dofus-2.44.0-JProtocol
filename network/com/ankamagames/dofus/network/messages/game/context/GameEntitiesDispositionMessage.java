@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,13 +15,11 @@ public class GameEntitiesDispositionMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations[]
       dispositions;
 
-  public GameEntitiesDispositionMessage()
-  {}
+  public GameEntitiesDispositionMessage() {}
 
   public GameEntitiesDispositionMessage(
       com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations[]
-          dispositions)
-  {
+          dispositions) {
     this.dispositions = dispositions;
   }
 
@@ -29,8 +27,7 @@ public class GameEntitiesDispositionMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context
                   .IdentifiedEntityDispositionInformations>
-          dispositions)
-  {
+          dispositions) {
     this.dispositions =
         dispositions.toArray(
             com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations
@@ -39,34 +36,29 @@ public class GameEntitiesDispositionMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5696;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(dispositions.length);
 
-    for (int i = 0; i < dispositions.length; i++)
-  {
+    for (int i = 0; i < dispositions.length; i++) {
 
       dispositions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int dispositions_length = reader.read_ui16();
     this.dispositions =
         new com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations
             [dispositions_length];
 
-    for (int i = 0; i < dispositions_length; i++)
-  {
+    for (int i = 0; i < dispositions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations
           dispositions_it =
@@ -79,8 +71,7 @@ public class GameEntitiesDispositionMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameEntitiesDispositionMessage("
         + "dispositions="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,38 +13,32 @@ public class IgnoredInformations
     extends com.ankamagames.dofus.network.types.game.friend.AbstractContactInformations {
   public static final int PROTOCOL_ID = 106;
 
-  public IgnoredInformations()
-  {}
+  public IgnoredInformations() {}
 
-  public IgnoredInformations(int accountId, java.lang.String accountName)
-  {
+  public IgnoredInformations(int accountId, java.lang.String accountName) {
 
     super(accountId, accountName);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 106;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IgnoredInformations("
         + "accountId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,46 +15,40 @@ public class GuildInAllianceInformations
   // ui8
   public short nbMembers;
 
-  public GuildInAllianceInformations()
-  {}
+  public GuildInAllianceInformations() {}
 
   public GuildInAllianceInformations(
       int guildId,
       java.lang.String guildName,
       short guildLevel,
       com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem,
-      short nbMembers)
-  {
+      short nbMembers) {
 
     super(guildId, guildName, guildLevel, guildEmblem);
     this.nbMembers = nbMembers;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 420;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.nbMembers);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.nbMembers = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInAllianceInformations("
         + "guildId="

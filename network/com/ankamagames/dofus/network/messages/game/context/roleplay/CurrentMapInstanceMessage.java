@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,42 +15,36 @@ public class CurrentMapInstanceMessage
   // f64
   public double instantiatedMapId;
 
-  public CurrentMapInstanceMessage()
-  {}
+  public CurrentMapInstanceMessage() {}
 
   public CurrentMapInstanceMessage(
-      double mapId, java.lang.String mapKey, double instantiatedMapId)
-  {
+      double mapId, java.lang.String mapKey, double instantiatedMapId) {
 
     super(mapId, mapKey);
     this.instantiatedMapId = instantiatedMapId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6738;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.instantiatedMapId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.instantiatedMapId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CurrentMapInstanceMessage("
         + "mapId="

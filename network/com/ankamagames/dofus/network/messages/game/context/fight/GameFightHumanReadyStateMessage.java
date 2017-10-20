@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,43 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GameFightHumanReadyStateMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 740;
-  // ui64
-  public java.math.BigInteger characterId;
+  // vi64
+  public long characterId;
   // bool
   public boolean isReady;
 
-  public GameFightHumanReadyStateMessage()
-  {}
+  public GameFightHumanReadyStateMessage() {}
 
-  public GameFightHumanReadyStateMessage(java.math.BigInteger characterId, boolean isReady)
-  {
+  public GameFightHumanReadyStateMessage(long characterId, boolean isReady) {
     this.characterId = characterId;
     this.isReady = isReady;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 740;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.characterId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.characterId);
     writer.write_bool(this.isReady);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.characterId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.characterId = reader.read_vi64();
     this.isReady = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightHumanReadyStateMessage("
         + "characterId="

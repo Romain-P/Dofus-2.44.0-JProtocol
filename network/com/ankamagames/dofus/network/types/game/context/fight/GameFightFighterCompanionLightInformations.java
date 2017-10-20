@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,8 +18,7 @@ public class GameFightFighterCompanionLightInformations
   // f64
   public double masterId;
 
-  public GameFightFighterCompanionLightInformations()
-  {}
+  public GameFightFighterCompanionLightInformations() {}
 
   public GameFightFighterCompanionLightInformations(
       boolean sex,
@@ -29,8 +28,7 @@ public class GameFightFighterCompanionLightInformations
       short level,
       byte breed,
       byte companionId,
-      double masterId)
-  {
+      double masterId) {
 
     super(sex, alive, id, wave, level, breed);
     this.companionId = companionId;
@@ -38,14 +36,12 @@ public class GameFightFighterCompanionLightInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 454;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.companionId);
@@ -53,8 +49,7 @@ public class GameFightFighterCompanionLightInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.companionId = reader.read_i8();
@@ -62,8 +57,7 @@ public class GameFightFighterCompanionLightInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterCompanionLightInformations("
         + "sex="

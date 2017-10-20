@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,8 +20,8 @@ public class GuildMember
   public byte breed;
   // vi16
   public short rank;
-  // ui64
-  public java.math.BigInteger givenExperience;
+  // vi64
+  public long givenExperience;
   // i8
   public byte experienceGivenPercent;
   // vi32
@@ -41,18 +41,17 @@ public class GuildMember
   // com.ankamagames.dofus.network.types.game.character.status.PlayerStatus
   public com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status;
 
-  public GuildMember()
-  {}
+  public GuildMember() {}
 
   public GuildMember(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       boolean sex,
       boolean havenBagShared,
       byte breed,
       short rank,
-      java.math.BigInteger givenExperience,
+      long givenExperience,
       byte experienceGivenPercent,
       int rights,
       byte connected,
@@ -61,8 +60,7 @@ public class GuildMember
       short moodSmileyId,
       int accountId,
       int achievementPoints,
-      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status)
-  {
+      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status) {
 
     super(id, name, level);
     this.sex = sex;
@@ -82,14 +80,12 @@ public class GuildMember
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 88;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -99,7 +95,7 @@ public class GuildMember
     writer.write_i8(_loc2_);
     writer.write_i8(this.breed);
     writer.write_vi16(this.rank);
-    writer.write_ui64(this.givenExperience);
+    writer.write_vi64(this.givenExperience);
     writer.write_i8(this.experienceGivenPercent);
     writer.write_vi32(this.rights);
     writer.write_i8(this.connected);
@@ -113,8 +109,7 @@ public class GuildMember
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -123,7 +118,7 @@ public class GuildMember
     this.havenBagShared = BooleanByteWrapper.getFlag(_loc2_, 1);
     this.breed = reader.read_i8();
     this.rank = reader.read_vi16();
-    this.givenExperience = reader.read_ui64();
+    this.givenExperience = reader.read_vi64();
     this.experienceGivenPercent = reader.read_i8();
     this.rights = reader.read_vi32();
     this.connected = reader.read_i8();
@@ -141,8 +136,7 @@ public class GuildMember
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildMember("
         + "id="

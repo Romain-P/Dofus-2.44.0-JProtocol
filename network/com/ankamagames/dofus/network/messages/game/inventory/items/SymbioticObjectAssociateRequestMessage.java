@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class SymbioticObjectAssociateRequestMessage extends NetworkMessage {
   // ui8
   public short hostPos;
 
-  public SymbioticObjectAssociateRequestMessage()
-  {}
+  public SymbioticObjectAssociateRequestMessage() {}
 
   public SymbioticObjectAssociateRequestMessage(
-      int symbioteUID, short symbiotePos, int hostUID, short hostPos)
-  {
+      int symbioteUID, short symbiotePos, int hostUID, short hostPos) {
     this.symbioteUID = symbioteUID;
     this.symbiotePos = symbiotePos;
     this.hostUID = hostUID;
@@ -33,14 +31,12 @@ public class SymbioticObjectAssociateRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6522;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.symbioteUID);
     writer.write_ui8(this.symbiotePos);
     writer.write_vi32(this.hostUID);
@@ -48,8 +44,7 @@ public class SymbioticObjectAssociateRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.symbioteUID = reader.read_vi32();
     this.symbiotePos = reader.read_ui8();
     this.hostUID = reader.read_vi32();
@@ -57,8 +52,7 @@ public class SymbioticObjectAssociateRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SymbioticObjectAssociateRequestMessage("
         + "symbioteUID="

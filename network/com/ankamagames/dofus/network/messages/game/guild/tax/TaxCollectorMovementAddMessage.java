@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,31 +14,26 @@ public class TaxCollectorMovementAddMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations
   public com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations informations;
 
-  public TaxCollectorMovementAddMessage()
-  {}
+  public TaxCollectorMovementAddMessage() {}
 
   public TaxCollectorMovementAddMessage(
-      com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations informations)
-  {
+      com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations informations) {
     this.informations = informations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5917;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.informations.getProtocolId());
     this.informations.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int informations_typeId = reader.read_ui16();
     this.informations =
@@ -48,8 +43,7 @@ public class TaxCollectorMovementAddMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorMovementAddMessage(" + "informations=" + this.informations + ')';
   }

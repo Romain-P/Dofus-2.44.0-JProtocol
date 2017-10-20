@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GameFightLeaveMessage extends NetworkMessage {
   // f64
   public double charId;
 
-  public GameFightLeaveMessage()
-  {}
+  public GameFightLeaveMessage() {}
 
-  public GameFightLeaveMessage(double charId)
-  {
+  public GameFightLeaveMessage(double charId) {
     this.charId = charId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 721;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.charId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.charId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightLeaveMessage(" + "charId=" + this.charId + ')';
   }

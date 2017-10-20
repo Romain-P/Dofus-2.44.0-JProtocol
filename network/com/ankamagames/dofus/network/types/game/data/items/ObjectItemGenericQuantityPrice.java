@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,44 +12,38 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ObjectItemGenericQuantityPrice
     extends com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity {
   public static final int PROTOCOL_ID = 494;
-  // ui64
-  public java.math.BigInteger price;
+  // vi64
+  public long price;
 
-  public ObjectItemGenericQuantityPrice()
-  {}
+  public ObjectItemGenericQuantityPrice() {}
 
-  public ObjectItemGenericQuantityPrice(short objectGID, int quantity, java.math.BigInteger price)
-  {
+  public ObjectItemGenericQuantityPrice(short objectGID, int quantity, long price) {
 
     super(objectGID, quantity);
     this.price = price;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 494;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.price);
+    writer.write_vi64(this.price);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.price = reader.read_ui64();
+    this.price = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectItemGenericQuantityPrice("
         + "objectGID="

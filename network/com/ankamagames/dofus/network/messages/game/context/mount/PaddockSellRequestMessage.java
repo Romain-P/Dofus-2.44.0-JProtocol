@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,43 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class PaddockSellRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5953;
-  // ui64
-  public java.math.BigInteger price;
+  // vi64
+  public long price;
   // bool
   public boolean forSale;
 
-  public PaddockSellRequestMessage()
-  {}
+  public PaddockSellRequestMessage() {}
 
-  public PaddockSellRequestMessage(java.math.BigInteger price, boolean forSale)
-  {
+  public PaddockSellRequestMessage(long price, boolean forSale) {
     this.price = price;
     this.forSale = forSale;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5953;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.price);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.price);
     writer.write_bool(this.forSale);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.price = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.price = reader.read_vi64();
     this.forSale = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockSellRequestMessage(" + "price=" + this.price + ", forSale=" + this.forSale + ')';
   }

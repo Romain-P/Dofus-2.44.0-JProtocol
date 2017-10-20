@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeBidHouseTypeMessage extends NetworkMessage {
   // vi32
   public int type;
 
-  public ExchangeBidHouseTypeMessage()
-  {}
+  public ExchangeBidHouseTypeMessage() {}
 
-  public ExchangeBidHouseTypeMessage(int type)
-  {
+  public ExchangeBidHouseTypeMessage(int type) {
     this.type = type;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5803;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.type);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.type = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseTypeMessage(" + "type=" + this.type + ')';
   }

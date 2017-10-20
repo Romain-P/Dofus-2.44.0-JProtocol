@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,16 +20,14 @@ public class TaxCollectorFightersInformation extends NetworkType {
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
       enemyCharactersInformations;
 
-  public TaxCollectorFightersInformation()
-  {}
+  public TaxCollectorFightersInformation() {}
 
   public TaxCollectorFightersInformation(
       double collectorId,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
           allyCharactersInformations,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
-          enemyCharactersInformations)
-  {
+          enemyCharactersInformations) {
     this.collectorId = collectorId;
     this.allyCharactersInformations = allyCharactersInformations;
     this.enemyCharactersInformations = enemyCharactersInformations;
@@ -44,8 +42,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character
                   .CharacterMinimalPlusLookInformations>
-          enemyCharactersInformations)
-  {
+          enemyCharactersInformations) {
     this.collectorId = collectorId;
     this.allyCharactersInformations =
         allyCharactersInformations.toArray(
@@ -60,19 +57,16 @@ public class TaxCollectorFightersInformation extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 169;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.collectorId);
     writer.write_ui16(allyCharactersInformations.length);
 
-    for (int i = 0; i < allyCharactersInformations.length; i++)
-  {
+    for (int i = 0; i < allyCharactersInformations.length; i++) {
 
       writer.write_ui16(allyCharactersInformations[i].getProtocolId());
 
@@ -80,8 +74,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
     }
     writer.write_ui16(enemyCharactersInformations.length);
 
-    for (int i = 0; i < enemyCharactersInformations.length; i++)
-  {
+    for (int i = 0; i < enemyCharactersInformations.length; i++) {
 
       writer.write_ui16(enemyCharactersInformations[i].getProtocolId());
 
@@ -90,8 +83,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.collectorId = reader.read_f64();
 
     int allyCharactersInformations_length = reader.read_ui16();
@@ -99,8 +91,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
             [allyCharactersInformations_length];
 
-    for (int i = 0; i < allyCharactersInformations_length; i++)
-  {
+    for (int i = 0; i < allyCharactersInformations_length; i++) {
 
       int allyCharactersInformations_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
@@ -118,8 +109,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
             [enemyCharactersInformations_length];
 
-    for (int i = 0; i < enemyCharactersInformations_length; i++)
-  {
+    for (int i = 0; i < enemyCharactersInformations_length; i++) {
 
       int enemyCharactersInformations_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
@@ -134,8 +124,7 @@ public class TaxCollectorFightersInformation extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorFightersInformation("
         + "collectorId="

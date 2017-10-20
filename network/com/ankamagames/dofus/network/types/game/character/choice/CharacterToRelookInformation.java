@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class CharacterToRelookInformation
         .AbstractCharacterToRefurbishInformation {
   public static final int PROTOCOL_ID = 399;
 
-  public CharacterToRelookInformation()
-  {}
+  public CharacterToRelookInformation() {}
 
-  public CharacterToRelookInformation(java.math.BigInteger id, int[] colors, int cosmeticId)
-  {
+  public CharacterToRelookInformation(long id, int[] colors, int cosmeticId) {
 
     super(id, colors, cosmeticId);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 399;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterToRelookInformation("
         + "id="

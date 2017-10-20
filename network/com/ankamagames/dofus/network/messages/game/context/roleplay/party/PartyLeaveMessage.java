@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class PartyLeaveMessage
         .AbstractPartyMessage {
   public static final int PROTOCOL_ID = 5594;
 
-  public PartyLeaveMessage()
-  {}
+  public PartyLeaveMessage() {}
 
-  public PartyLeaveMessage(int partyId)
-  {
+  public PartyLeaveMessage(int partyId) {
 
     super(partyId);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5594;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyLeaveMessage(" + "partyId=" + this.partyId + ')';
   }

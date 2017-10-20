@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,40 +13,34 @@ public class GuildMembershipMessage
     extends com.ankamagames.dofus.network.messages.game.guild.GuildJoinedMessage {
   public static final int PROTOCOL_ID = 5835;
 
-  public GuildMembershipMessage()
-  {}
+  public GuildMembershipMessage() {}
 
   public GuildMembershipMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo,
-      int memberRights)
-  {
+      int memberRights) {
 
     super(guildInfo, memberRights);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5835;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildMembershipMessage("
         + "guildInfo="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,18 +15,13 @@ public class ExchangeBidPriceForSellerMessage
   public static final int PROTOCOL_ID = 6464;
   // bool
   public boolean allIdentical;
-  // array,ui64
-  public java.math.BigInteger[] minimalPrices;
+  // array,vi64
+  public long[] minimalPrices;
 
-  public ExchangeBidPriceForSellerMessage()
-  {}
+  public ExchangeBidPriceForSellerMessage() {}
 
   public ExchangeBidPriceForSellerMessage(
-      short genericId,
-      long averagePrice,
-      boolean allIdentical,
-      java.math.BigInteger[] minimalPrices)
-  {
+      short genericId, long averagePrice, boolean allIdentical, long[] minimalPrices) {
 
     super(genericId, averagePrice);
     this.allIdentical = allIdentical;
@@ -34,35 +29,31 @@ public class ExchangeBidPriceForSellerMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6464;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.allIdentical);
     writer.write_ui16(minimalPrices.length);
-    writer.write_array_ui64(this.minimalPrices);
+    writer.write_array_vi64(this.minimalPrices);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.allIdentical = reader.read_bool();
 
     int minimalPrices_length = reader.read_ui16();
-    this.minimalPrices = reader.read_array_ui64(minimalPrices_length);
+    this.minimalPrices = reader.read_array_vi64(minimalPrices_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidPriceForSellerMessage("
         + "genericId="

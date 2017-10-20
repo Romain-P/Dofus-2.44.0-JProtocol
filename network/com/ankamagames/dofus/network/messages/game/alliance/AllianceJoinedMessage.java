@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,36 +19,31 @@ public class AllianceJoinedMessage extends NetworkMessage {
   // vi32
   public int leadingGuildId;
 
-  public AllianceJoinedMessage()
-  {}
+  public AllianceJoinedMessage() {}
 
   public AllianceJoinedMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations allianceInfo,
       boolean enabled,
-      int leadingGuildId)
-  {
+      int leadingGuildId) {
     this.allianceInfo = allianceInfo;
     this.enabled = enabled;
     this.leadingGuildId = leadingGuildId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6402;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.allianceInfo.serialize(writer);
     writer.write_bool(this.enabled);
     writer.write_vi32(this.leadingGuildId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.allianceInfo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations();
     this.allianceInfo.deserialize(reader);
@@ -57,8 +52,7 @@ public class AllianceJoinedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceJoinedMessage("
         + "allianceInfo="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.action.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,29 +19,25 @@ public class FightDispellableEffectExtendedInformations extends NetworkType {
   public com.ankamagames.dofus.network.types.game.actions.fight.AbstractFightDispellableEffect
       effect;
 
-  public FightDispellableEffectExtendedInformations()
-  {}
+  public FightDispellableEffectExtendedInformations() {}
 
   public FightDispellableEffectExtendedInformations(
       short actionId,
       double sourceId,
       com.ankamagames.dofus.network.types.game.actions.fight.AbstractFightDispellableEffect
-          effect)
-  {
+          effect) {
     this.actionId = actionId;
     this.sourceId = sourceId;
     this.effect = effect;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 208;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.actionId);
     writer.write_f64(this.sourceId);
     writer.write_ui16(this.effect.getProtocolId());
@@ -49,8 +45,7 @@ public class FightDispellableEffectExtendedInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.actionId = reader.read_vi16();
     this.sourceId = reader.read_f64();
 
@@ -62,8 +57,7 @@ public class FightDispellableEffectExtendedInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightDispellableEffectExtendedInformations("
         + "actionId="

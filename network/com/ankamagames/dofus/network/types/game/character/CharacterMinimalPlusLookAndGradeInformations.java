@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,46 +16,40 @@ public class CharacterMinimalPlusLookAndGradeInformations
   // vi32
   public int grade;
 
-  public CharacterMinimalPlusLookAndGradeInformations()
-  {}
+  public CharacterMinimalPlusLookAndGradeInformations() {}
 
   public CharacterMinimalPlusLookAndGradeInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
-      int grade)
-  {
+      int grade) {
 
     super(id, name, level, entityLook);
     this.grade = grade;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 193;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.grade);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.grade = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterMinimalPlusLookAndGradeInformations("
         + "id="

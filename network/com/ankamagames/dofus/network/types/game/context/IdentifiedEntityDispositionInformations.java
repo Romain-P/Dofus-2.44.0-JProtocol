@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class IdentifiedEntityDispositionInformations
   // f64
   public double id;
 
-  public IdentifiedEntityDispositionInformations()
-  {}
+  public IdentifiedEntityDispositionInformations() {}
 
-  public IdentifiedEntityDispositionInformations(short cellId, byte direction, double id)
-  {
+  public IdentifiedEntityDispositionInformations(short cellId, byte direction, double id) {
 
     super(cellId, direction);
     this.id = id;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 107;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.id);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.id = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentifiedEntityDispositionInformations("
         + "cellId="

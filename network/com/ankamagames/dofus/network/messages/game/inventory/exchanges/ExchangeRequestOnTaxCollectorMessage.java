@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeRequestOnTaxCollectorMessage extends NetworkMessage {
   // f64
   public double taxCollectorId;
 
-  public ExchangeRequestOnTaxCollectorMessage()
-  {}
+  public ExchangeRequestOnTaxCollectorMessage() {}
 
-  public ExchangeRequestOnTaxCollectorMessage(double taxCollectorId)
-  {
+  public ExchangeRequestOnTaxCollectorMessage(double taxCollectorId) {
     this.taxCollectorId = taxCollectorId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5779;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.taxCollectorId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.taxCollectorId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeRequestOnTaxCollectorMessage(" + "taxCollectorId=" + this.taxCollectorId + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class DareWonListMessage extends NetworkMessage {
   // array,f64
   public double[] dareId;
 
-  public DareWonListMessage()
-  {}
+  public DareWonListMessage() {}
 
-  public DareWonListMessage(double[] dareId)
-  {
+  public DareWonListMessage(double[] dareId) {
     this.dareId = dareId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6682;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(dareId.length);
     writer.write_array_f64(this.dareId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int dareId_length = reader.read_ui16();
     this.dareId = reader.read_array_f64(dareId_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareWonListMessage(" + "dareId=" + java.util.Arrays.toString(this.dareId) + ')';
   }

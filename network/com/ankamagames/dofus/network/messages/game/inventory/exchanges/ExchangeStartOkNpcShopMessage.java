@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,15 +19,13 @@ public class ExchangeStartOkNpcShopMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInNpcShop[]
       objectsInfos;
 
-  public ExchangeStartOkNpcShopMessage()
-  {}
+  public ExchangeStartOkNpcShopMessage() {}
 
   public ExchangeStartOkNpcShopMessage(
       double npcSellerId,
       short tokenId,
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInNpcShop[]
-          objectsInfos)
-  {
+          objectsInfos) {
     this.npcSellerId = npcSellerId;
     this.tokenId = tokenId;
     this.objectsInfos = objectsInfos;
@@ -38,8 +36,7 @@ public class ExchangeStartOkNpcShopMessage extends NetworkMessage {
       short tokenId,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInNpcShop>
-          objectsInfos)
-  {
+          objectsInfos) {
     this.npcSellerId = npcSellerId;
     this.tokenId = tokenId;
     this.objectsInfos =
@@ -48,28 +45,24 @@ public class ExchangeStartOkNpcShopMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5761;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.npcSellerId);
     writer.write_vi16(this.tokenId);
     writer.write_ui16(objectsInfos.length);
 
-    for (int i = 0; i < objectsInfos.length; i++)
-  {
+    for (int i = 0; i < objectsInfos.length; i++) {
 
       objectsInfos[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.npcSellerId = reader.read_f64();
     this.tokenId = reader.read_vi16();
 
@@ -78,8 +71,7 @@ public class ExchangeStartOkNpcShopMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInNpcShop
             [objectsInfos_length];
 
-    for (int i = 0; i < objectsInfos_length; i++)
-  {
+    for (int i = 0; i < objectsInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInNpcShop
           objectsInfos_it =
@@ -91,8 +83,7 @@ public class ExchangeStartOkNpcShopMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkNpcShopMessage("
         + "npcSellerId="

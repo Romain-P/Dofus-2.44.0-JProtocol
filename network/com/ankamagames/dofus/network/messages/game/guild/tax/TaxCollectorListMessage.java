@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,15 +18,13 @@ public class TaxCollectorListMessage
   public com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorFightersInformation[]
       fightersInformations;
 
-  public TaxCollectorListMessage()
-  {}
+  public TaxCollectorListMessage() {}
 
   public TaxCollectorListMessage(
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations[] informations,
       byte nbcollectorMax,
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorFightersInformation[]
-          fightersInformations)
-  {
+          fightersInformations) {
 
     super(informations);
     this.nbcollectorMax = nbcollectorMax;
@@ -40,8 +38,7 @@ public class TaxCollectorListMessage
       byte nbcollectorMax,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorFightersInformation>
-          fightersInformations)
-  {
+          fightersInformations) {
 
     super(informations);
     this.nbcollectorMax = nbcollectorMax;
@@ -52,29 +49,25 @@ public class TaxCollectorListMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5930;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.nbcollectorMax);
     writer.write_ui16(fightersInformations.length);
 
-    for (int i = 0; i < fightersInformations.length; i++)
-  {
+    for (int i = 0; i < fightersInformations.length; i++) {
 
       fightersInformations[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.nbcollectorMax = reader.read_i8();
@@ -84,8 +77,7 @@ public class TaxCollectorListMessage
         new com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorFightersInformation
             [fightersInformations_length];
 
-    for (int i = 0; i < fightersInformations_length; i++)
-  {
+    for (int i = 0; i < fightersInformations_length; i++) {
 
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorFightersInformation
           fightersInformations_it =
@@ -98,8 +90,7 @@ public class TaxCollectorListMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorListMessage("
         + "informations="

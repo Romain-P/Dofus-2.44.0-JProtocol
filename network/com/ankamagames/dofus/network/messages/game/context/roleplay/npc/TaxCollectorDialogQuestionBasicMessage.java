@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class TaxCollectorDialogQuestionBasicMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo;
 
-  public TaxCollectorDialogQuestionBasicMessage()
-  {}
+  public TaxCollectorDialogQuestionBasicMessage() {}
 
   public TaxCollectorDialogQuestionBasicMessage(
-      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo) {
     this.guildInfo = guildInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5619;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.guildInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.guildInfo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations();
     this.guildInfo.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorDialogQuestionBasicMessage(" + "guildInfo=" + this.guildInfo + ')';
   }

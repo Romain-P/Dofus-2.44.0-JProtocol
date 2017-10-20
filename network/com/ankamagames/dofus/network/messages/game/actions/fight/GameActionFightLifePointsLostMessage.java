@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,12 +19,10 @@ public class GameActionFightLifePointsLostMessage
   // vi32
   public int permanentDamages;
 
-  public GameActionFightLifePointsLostMessage()
-  {}
+  public GameActionFightLifePointsLostMessage() {}
 
   public GameActionFightLifePointsLostMessage(
-      short actionId, double sourceId, double targetId, int loss, int permanentDamages)
-  {
+      short actionId, double sourceId, double targetId, int loss, int permanentDamages) {
 
     super(actionId, sourceId);
     this.targetId = targetId;
@@ -33,14 +31,12 @@ public class GameActionFightLifePointsLostMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6312;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.targetId);
@@ -49,8 +45,7 @@ public class GameActionFightLifePointsLostMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.targetId = reader.read_f64();
@@ -59,8 +54,7 @@ public class GameActionFightLifePointsLostMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightLifePointsLostMessage("
         + "actionId="

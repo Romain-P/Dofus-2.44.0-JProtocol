@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,55 +15,47 @@ public class GuildHousesInformationMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild[]
       housesInformations;
 
-  public GuildHousesInformationMessage()
-  {}
+  public GuildHousesInformationMessage() {}
 
   public GuildHousesInformationMessage(
       com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild[]
-          housesInformations)
-  {
+          housesInformations) {
     this.housesInformations = housesInformations;
   }
 
   public GuildHousesInformationMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild>
-          housesInformations)
-  {
+          housesInformations) {
     this.housesInformations =
         housesInformations.toArray(
             com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5919;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(housesInformations.length);
 
-    for (int i = 0; i < housesInformations.length; i++)
-  {
+    for (int i = 0; i < housesInformations.length; i++) {
 
       housesInformations[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int housesInformations_length = reader.read_ui16();
     this.housesInformations =
         new com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild
             [housesInformations_length];
 
-    for (int i = 0; i < housesInformations_length; i++)
-  {
+    for (int i = 0; i < housesInformations_length; i++) {
 
       com.ankamagames.dofus.network.types.game.house.HouseInformationsForGuild
           housesInformations_it =
@@ -75,8 +67,7 @@ public class GuildHousesInformationMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildHousesInformationMessage("
         + "housesInformations="

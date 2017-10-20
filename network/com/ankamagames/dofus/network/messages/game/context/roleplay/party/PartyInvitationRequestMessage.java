@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class PartyInvitationRequestMessage extends NetworkMessage {
   // str
   public java.lang.String name;
 
-  public PartyInvitationRequestMessage()
-  {}
+  public PartyInvitationRequestMessage() {}
 
-  public PartyInvitationRequestMessage(java.lang.String name)
-  {
+  public PartyInvitationRequestMessage(java.lang.String name) {
     this.name = name;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5585;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationRequestMessage(" + "name=" + this.name + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,24 +13,18 @@ public class TaxCollectorLootInformations
     extends com.ankamagames.dofus.network.types.game.guild.tax
         .TaxCollectorComplementaryInformations {
   public static final int PROTOCOL_ID = 372;
-  // ui64
-  public java.math.BigInteger kamas;
-  // ui64
-  public java.math.BigInteger experience;
+  // vi64
+  public long kamas;
+  // vi64
+  public long experience;
   // vi32
   public int pods;
-  // ui64
-  public java.math.BigInteger itemsValue;
+  // vi64
+  public long itemsValue;
 
-  public TaxCollectorLootInformations()
-  {}
+  public TaxCollectorLootInformations() {}
 
-  public TaxCollectorLootInformations(
-      java.math.BigInteger kamas,
-      java.math.BigInteger experience,
-      int pods,
-      java.math.BigInteger itemsValue)
-  {
+  public TaxCollectorLootInformations(long kamas, long experience, int pods, long itemsValue) {
 
     super();
     this.kamas = kamas;
@@ -40,36 +34,32 @@ public class TaxCollectorLootInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 372;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.kamas);
-    writer.write_ui64(this.experience);
+    writer.write_vi64(this.kamas);
+    writer.write_vi64(this.experience);
     writer.write_vi32(this.pods);
-    writer.write_ui64(this.itemsValue);
+    writer.write_vi64(this.itemsValue);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.kamas = reader.read_ui64();
-    this.experience = reader.read_ui64();
+    this.kamas = reader.read_vi64();
+    this.experience = reader.read_vi64();
     this.pods = reader.read_vi32();
-    this.itemsValue = reader.read_ui64();
+    this.itemsValue = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorLootInformations("
         + "kamas="

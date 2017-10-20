@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight.challenge;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class ChallengeTargetsListMessage extends NetworkMessage {
   // array,i16
   public short[] targetCells;
 
-  public ChallengeTargetsListMessage()
-  {}
+  public ChallengeTargetsListMessage() {}
 
-  public ChallengeTargetsListMessage(double[] targetIds, short[] targetCells)
-  {
+  public ChallengeTargetsListMessage(double[] targetIds, short[] targetCells) {
     this.targetIds = targetIds;
     this.targetCells = targetCells;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5613;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(targetIds.length);
     writer.write_array_f64(this.targetIds);
     writer.write_ui16(targetCells.length);
@@ -41,8 +37,7 @@ public class ChallengeTargetsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int targetIds_length = reader.read_ui16();
     this.targetIds = reader.read_array_f64(targetIds_length);
@@ -52,8 +47,7 @@ public class ChallengeTargetsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChallengeTargetsListMessage("
         + "targetIds="

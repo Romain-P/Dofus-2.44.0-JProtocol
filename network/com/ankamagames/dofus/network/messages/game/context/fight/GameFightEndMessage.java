@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class GameFightEndMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeamWithOutcome[]
       namedPartyTeamsOutcomes;
 
-  public GameFightEndMessage()
-  {}
+  public GameFightEndMessage() {}
 
   public GameFightEndMessage(
       int duration,
@@ -32,8 +31,7 @@ public class GameFightEndMessage extends NetworkMessage {
       short lootShareLimitMalus,
       com.ankamagames.dofus.network.types.game.context.fight.FightResultListEntry[] results,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeamWithOutcome[]
-          namedPartyTeamsOutcomes)
-  {
+          namedPartyTeamsOutcomes) {
     this.duration = duration;
     this.ageBonus = ageBonus;
     this.lootShareLimitMalus = lootShareLimitMalus;
@@ -51,8 +49,7 @@ public class GameFightEndMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party
                   .NamedPartyTeamWithOutcome>
-          namedPartyTeamsOutcomes)
-  {
+          namedPartyTeamsOutcomes) {
     this.duration = duration;
     this.ageBonus = ageBonus;
     this.lootShareLimitMalus = lootShareLimitMalus;
@@ -68,21 +65,18 @@ public class GameFightEndMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 720;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.duration);
     writer.write_i16(this.ageBonus);
     writer.write_i16(this.lootShareLimitMalus);
     writer.write_ui16(results.length);
 
-    for (int i = 0; i < results.length; i++)
-  {
+    for (int i = 0; i < results.length; i++) {
 
       writer.write_ui16(results[i].getProtocolId());
 
@@ -90,16 +84,14 @@ public class GameFightEndMessage extends NetworkMessage {
     }
     writer.write_ui16(namedPartyTeamsOutcomes.length);
 
-    for (int i = 0; i < namedPartyTeamsOutcomes.length; i++)
-  {
+    for (int i = 0; i < namedPartyTeamsOutcomes.length; i++) {
 
       namedPartyTeamsOutcomes[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.duration = reader.read_i32();
     this.ageBonus = reader.read_i16();
     this.lootShareLimitMalus = reader.read_i16();
@@ -109,8 +101,7 @@ public class GameFightEndMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.fight.FightResultListEntry
             [results_length];
 
-    for (int i = 0; i < results_length; i++)
-  {
+    for (int i = 0; i < results_length; i++) {
 
       int results_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.FightResultListEntry results_it =
@@ -126,8 +117,7 @@ public class GameFightEndMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.party
                 .NamedPartyTeamWithOutcome[namedPartyTeamsOutcomes_length];
 
-    for (int i = 0; i < namedPartyTeamsOutcomes_length; i++)
-  {
+    for (int i = 0; i < namedPartyTeamsOutcomes_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.NamedPartyTeamWithOutcome
           namedPartyTeamsOutcomes_it =
@@ -140,8 +130,7 @@ public class GameFightEndMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightEndMessage("
         + "duration="

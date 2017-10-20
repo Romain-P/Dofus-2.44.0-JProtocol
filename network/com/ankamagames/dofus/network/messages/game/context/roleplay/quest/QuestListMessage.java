@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,16 +21,14 @@ public class QuestListMessage extends NetworkMessage {
   // array,vi16
   public short[] reinitDoneQuestsIds;
 
-  public QuestListMessage()
-  {}
+  public QuestListMessage() {}
 
   public QuestListMessage(
       short[] finishedQuestsIds,
       short[] finishedQuestsCounts,
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestActiveInformations[]
           activeQuests,
-      short[] reinitDoneQuestsIds)
-  {
+      short[] reinitDoneQuestsIds) {
     this.finishedQuestsIds = finishedQuestsIds;
     this.finishedQuestsCounts = finishedQuestsCounts;
     this.activeQuests = activeQuests;
@@ -44,8 +42,7 @@ public class QuestListMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.context.roleplay.quest
                   .QuestActiveInformations>
           activeQuests,
-      short[] reinitDoneQuestsIds)
-  {
+      short[] reinitDoneQuestsIds) {
     this.finishedQuestsIds = finishedQuestsIds;
     this.finishedQuestsCounts = finishedQuestsCounts;
     this.activeQuests =
@@ -57,22 +54,19 @@ public class QuestListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5626;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(finishedQuestsIds.length);
     writer.write_array_vi16(this.finishedQuestsIds);
     writer.write_ui16(finishedQuestsCounts.length);
     writer.write_array_vi16(this.finishedQuestsCounts);
     writer.write_ui16(activeQuests.length);
 
-    for (int i = 0; i < activeQuests.length; i++)
-  {
+    for (int i = 0; i < activeQuests.length; i++) {
 
       writer.write_ui16(activeQuests[i].getProtocolId());
 
@@ -83,8 +77,7 @@ public class QuestListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int finishedQuestsIds_length = reader.read_ui16();
     this.finishedQuestsIds = reader.read_array_vi16(finishedQuestsIds_length);
@@ -97,8 +90,7 @@ public class QuestListMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestActiveInformations
             [activeQuests_length];
 
-    for (int i = 0; i < activeQuests_length; i++)
-  {
+    for (int i = 0; i < activeQuests_length; i++) {
 
       int activeQuests_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.quest.QuestActiveInformations
@@ -116,8 +108,7 @@ public class QuestListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "QuestListMessage("
         + "finishedQuestsIds="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,46 +13,40 @@ public class JobExperienceOtherPlayerUpdateMessage
     extends com.ankamagames.dofus.network.messages.game.context.roleplay.job
         .JobExperienceUpdateMessage {
   public static final int PROTOCOL_ID = 6599;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public JobExperienceOtherPlayerUpdateMessage()
-  {}
+  public JobExperienceOtherPlayerUpdateMessage() {}
 
   public JobExperienceOtherPlayerUpdateMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience experiencesUpdate,
-      java.math.BigInteger playerId)
-  {
+      long playerId) {
 
     super(experiencesUpdate);
     this.playerId = playerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6599;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobExperienceOtherPlayerUpdateMessage("
         + "experiencesUpdate="

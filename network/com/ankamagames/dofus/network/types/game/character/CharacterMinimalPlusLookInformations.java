@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,37 +15,32 @@ public class CharacterMinimalPlusLookInformations
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook entityLook;
 
-  public CharacterMinimalPlusLookInformations()
-  {}
+  public CharacterMinimalPlusLookInformations() {}
 
   public CharacterMinimalPlusLookInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
-      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook) {
 
     super(id, name, level);
     this.entityLook = entityLook;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 163;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.entityLook.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.entityLook = new com.ankamagames.dofus.network.types.game.look.EntityLook();
@@ -53,8 +48,7 @@ public class CharacterMinimalPlusLookInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterMinimalPlusLookInformations("
         + "id="

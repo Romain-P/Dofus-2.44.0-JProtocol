@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.atlas.compass;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,33 +16,28 @@ public class CompassUpdateMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.MapCoordinates
   public com.ankamagames.dofus.network.types.game.context.MapCoordinates coords;
 
-  public CompassUpdateMessage()
-  {}
+  public CompassUpdateMessage() {}
 
   public CompassUpdateMessage(
-      byte type, com.ankamagames.dofus.network.types.game.context.MapCoordinates coords)
-  {
+      byte type, com.ankamagames.dofus.network.types.game.context.MapCoordinates coords) {
     this.type = type;
     this.coords = coords;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5591;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.type);
     writer.write_ui16(this.coords.getProtocolId());
     this.coords.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.type = reader.read_i8();
 
     int coords_typeId = reader.read_ui16();
@@ -53,8 +48,7 @@ public class CompassUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CompassUpdateMessage(" + "type=" + this.type + ", coords=" + this.coords + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,44 +11,39 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GuildInvitedMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5552;
-  // ui64
-  public java.math.BigInteger recruterId;
+  // vi64
+  public long recruterId;
   // str
   public java.lang.String recruterName;
   // com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo;
 
-  public GuildInvitedMessage()
-  {}
+  public GuildInvitedMessage() {}
 
   public GuildInvitedMessage(
-      java.math.BigInteger recruterId,
+      long recruterId,
       java.lang.String recruterName,
-      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo) {
     this.recruterId = recruterId;
     this.recruterName = recruterName;
     this.guildInfo = guildInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5552;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.recruterId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.recruterId);
     writer.write_str(this.recruterName);
     this.guildInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.recruterId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.recruterId = reader.read_vi64();
     this.recruterName = reader.read_str();
     this.guildInfo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations();
@@ -56,8 +51,7 @@ public class GuildInvitedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInvitedMessage("
         + "recruterId="

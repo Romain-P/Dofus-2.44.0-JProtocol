@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class DungeonPartyFinderAvailableDungeonsMessage extends NetworkMessage {
   // array,vi16
   public short[] dungeonIds;
 
-  public DungeonPartyFinderAvailableDungeonsMessage()
-  {}
+  public DungeonPartyFinderAvailableDungeonsMessage() {}
 
-  public DungeonPartyFinderAvailableDungeonsMessage(short[] dungeonIds)
-  {
+  public DungeonPartyFinderAvailableDungeonsMessage(short[] dungeonIds) {
     this.dungeonIds = dungeonIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6242;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(dungeonIds.length);
     writer.write_array_vi16(this.dungeonIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int dungeonIds_length = reader.read_ui16();
     this.dungeonIds = reader.read_array_vi16(dungeonIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonPartyFinderAvailableDungeonsMessage("
         + "dungeonIds="

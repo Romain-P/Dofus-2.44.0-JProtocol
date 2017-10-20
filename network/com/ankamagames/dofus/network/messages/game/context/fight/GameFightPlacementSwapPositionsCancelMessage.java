@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GameFightPlacementSwapPositionsCancelMessage extends NetworkMessage
   // i32
   public int requestId;
 
-  public GameFightPlacementSwapPositionsCancelMessage()
-  {}
+  public GameFightPlacementSwapPositionsCancelMessage() {}
 
-  public GameFightPlacementSwapPositionsCancelMessage(int requestId)
-  {
+  public GameFightPlacementSwapPositionsCancelMessage(int requestId) {
     this.requestId = requestId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6543;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.requestId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.requestId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightPlacementSwapPositionsCancelMessage(" + "requestId=" + this.requestId + ')';
   }

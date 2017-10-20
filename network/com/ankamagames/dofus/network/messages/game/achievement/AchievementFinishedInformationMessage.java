@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,15 +14,13 @@ public class AchievementFinishedInformationMessage
   public static final int PROTOCOL_ID = 6381;
   // str
   public java.lang.String name;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public AchievementFinishedInformationMessage()
-  {}
+  public AchievementFinishedInformationMessage() {}
 
   public AchievementFinishedInformationMessage(
-      short id, short finishedlevel, java.lang.String name, java.math.BigInteger playerId)
-  {
+      short id, short finishedlevel, java.lang.String name, long playerId) {
 
     super(id, finishedlevel);
     this.name = name;
@@ -30,32 +28,28 @@ public class AchievementFinishedInformationMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6381;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.name);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.name = reader.read_str();
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementFinishedInformationMessage("
         + "id="

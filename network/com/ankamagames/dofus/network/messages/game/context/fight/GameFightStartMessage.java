@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,47 +14,39 @@ public class GameFightStartMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.idol.Idol
   public com.ankamagames.dofus.network.types.game.idol.Idol[] idols;
 
-  public GameFightStartMessage()
-  {}
+  public GameFightStartMessage() {}
 
-  public GameFightStartMessage(com.ankamagames.dofus.network.types.game.idol.Idol[] idols)
-  {
+  public GameFightStartMessage(com.ankamagames.dofus.network.types.game.idol.Idol[] idols) {
     this.idols = idols;
   }
 
   public GameFightStartMessage(
-      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.idol.Idol> idols)
-  {
+      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.idol.Idol> idols) {
     this.idols = idols.toArray(com.ankamagames.dofus.network.types.game.idol.Idol[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 712;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(idols.length);
 
-    for (int i = 0; i < idols.length; i++)
-  {
+    for (int i = 0; i < idols.length; i++) {
 
       idols[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int idols_length = reader.read_ui16();
     this.idols = new com.ankamagames.dofus.network.types.game.idol.Idol[idols_length];
 
-    for (int i = 0; i < idols_length; i++)
-  {
+    for (int i = 0; i < idols_length; i++) {
 
       com.ankamagames.dofus.network.types.game.idol.Idol idols_it =
           new com.ankamagames.dofus.network.types.game.idol.Idol();
@@ -65,8 +57,7 @@ public class GameFightStartMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightStartMessage(" + "idols=" + java.util.Arrays.toString(this.idols) + ')';
   }

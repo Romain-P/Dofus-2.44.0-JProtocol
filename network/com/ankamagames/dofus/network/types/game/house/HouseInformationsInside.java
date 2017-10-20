@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,16 +19,14 @@ public class HouseInformationsInside
   // i16
   public short worldY;
 
-  public HouseInformationsInside()
-  {}
+  public HouseInformationsInside() {}
 
   public HouseInformationsInside(
       int houseId,
       short modelId,
       com.ankamagames.dofus.network.types.game.house.HouseInstanceInformations houseInfos,
       short worldX,
-      short worldY)
-  {
+      short worldY) {
 
     super(houseId, modelId);
     this.houseInfos = houseInfos;
@@ -37,14 +35,12 @@ public class HouseInformationsInside
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 218;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(this.houseInfos.getProtocolId());
@@ -54,8 +50,7 @@ public class HouseInformationsInside
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -69,8 +64,7 @@ public class HouseInformationsInside
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseInformationsInside("
         + "houseId="

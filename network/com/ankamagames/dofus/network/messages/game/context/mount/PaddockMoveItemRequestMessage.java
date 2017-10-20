@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class PaddockMoveItemRequestMessage extends NetworkMessage {
   // vi16
   public short newCellId;
 
-  public PaddockMoveItemRequestMessage()
-  {}
+  public PaddockMoveItemRequestMessage() {}
 
-  public PaddockMoveItemRequestMessage(short oldCellId, short newCellId)
-  {
+  public PaddockMoveItemRequestMessage(short oldCellId, short newCellId) {
     this.oldCellId = oldCellId;
     this.newCellId = newCellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6052;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.oldCellId);
     writer.write_vi16(this.newCellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.oldCellId = reader.read_vi16();
     this.newCellId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockMoveItemRequestMessage("
         + "oldCellId="

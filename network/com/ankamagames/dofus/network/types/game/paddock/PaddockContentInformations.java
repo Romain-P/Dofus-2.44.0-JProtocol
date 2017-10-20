@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -28,8 +28,7 @@ public class PaddockContentInformations
   public com.ankamagames.dofus.network.types.game.paddock.MountInformationsForPaddock[]
       mountsInformations;
 
-  public PaddockContentInformations()
-  {}
+  public PaddockContentInformations() {}
 
   public PaddockContentInformations(
       short maxOutdoorMount,
@@ -41,8 +40,7 @@ public class PaddockContentInformations
       short subAreaId,
       boolean abandonned,
       com.ankamagames.dofus.network.types.game.paddock.MountInformationsForPaddock[]
-          mountsInformations)
-  {
+          mountsInformations) {
 
     super(maxOutdoorMount, maxItems);
     this.paddockId = paddockId;
@@ -65,8 +63,7 @@ public class PaddockContentInformations
       boolean abandonned,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.paddock.MountInformationsForPaddock>
-          mountsInformations)
-  {
+          mountsInformations) {
 
     super(maxOutdoorMount, maxItems);
     this.paddockId = paddockId;
@@ -81,14 +78,12 @@ public class PaddockContentInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 183;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.paddockId);
@@ -99,16 +94,14 @@ public class PaddockContentInformations
     writer.write_bool(this.abandonned);
     writer.write_ui16(mountsInformations.length);
 
-    for (int i = 0; i < mountsInformations.length; i++)
-  {
+    for (int i = 0; i < mountsInformations.length; i++) {
 
       mountsInformations[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.paddockId = reader.read_f64();
@@ -123,8 +116,7 @@ public class PaddockContentInformations
         new com.ankamagames.dofus.network.types.game.paddock.MountInformationsForPaddock
             [mountsInformations_length];
 
-    for (int i = 0; i < mountsInformations_length; i++)
-  {
+    for (int i = 0; i < mountsInformations_length; i++) {
 
       com.ankamagames.dofus.network.types.game.paddock.MountInformationsForPaddock
           mountsInformations_it =
@@ -136,8 +128,7 @@ public class PaddockContentInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockContentInformations("
         + "maxOutdoorMount="

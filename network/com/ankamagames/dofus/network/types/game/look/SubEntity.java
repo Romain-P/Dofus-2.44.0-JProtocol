@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.look;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,36 +18,31 @@ public class SubEntity extends NetworkType {
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook subEntityLook;
 
-  public SubEntity()
-  {}
+  public SubEntity() {}
 
   public SubEntity(
       byte bindingPointCategory,
       byte bindingPointIndex,
-      com.ankamagames.dofus.network.types.game.look.EntityLook subEntityLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook subEntityLook) {
     this.bindingPointCategory = bindingPointCategory;
     this.bindingPointIndex = bindingPointIndex;
     this.subEntityLook = subEntityLook;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 54;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.bindingPointCategory);
     writer.write_i8(this.bindingPointIndex);
     this.subEntityLook.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.bindingPointCategory = reader.read_i8();
     this.bindingPointIndex = reader.read_i8();
     this.subEntityLook = new com.ankamagames.dofus.network.types.game.look.EntityLook();
@@ -55,8 +50,7 @@ public class SubEntity extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SubEntity("
         + "bindingPointCategory="

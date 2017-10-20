@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class IdolsPresetUpdateMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset
   public com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset idolsPreset;
 
-  public IdolsPresetUpdateMessage()
-  {}
+  public IdolsPresetUpdateMessage() {}
 
   public IdolsPresetUpdateMessage(
-      com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset idolsPreset)
-  {
+      com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset idolsPreset) {
     this.idolsPreset = idolsPreset;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6606;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.idolsPreset.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.idolsPreset = new com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset();
     this.idolsPreset.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolsPresetUpdateMessage(" + "idolsPreset=" + this.idolsPreset + ')';
   }

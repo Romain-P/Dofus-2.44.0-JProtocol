@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class AchievementDetailsMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.achievement.Achievement
   public com.ankamagames.dofus.network.types.game.achievement.Achievement achievement;
 
-  public AchievementDetailsMessage()
-  {}
+  public AchievementDetailsMessage() {}
 
   public AchievementDetailsMessage(
-      com.ankamagames.dofus.network.types.game.achievement.Achievement achievement)
-  {
+      com.ankamagames.dofus.network.types.game.achievement.Achievement achievement) {
     this.achievement = achievement;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6378;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.achievement.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.achievement = new com.ankamagames.dofus.network.types.game.achievement.Achievement();
     this.achievement.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementDetailsMessage(" + "achievement=" + this.achievement + ')';
   }

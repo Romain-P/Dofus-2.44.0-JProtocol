@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,21 +15,18 @@ public class JobBookSubscriptionMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription[]
       subscriptions;
 
-  public JobBookSubscriptionMessage()
-  {}
+  public JobBookSubscriptionMessage() {}
 
   public JobBookSubscriptionMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription[]
-          subscriptions)
-  {
+          subscriptions) {
     this.subscriptions = subscriptions;
   }
 
   public JobBookSubscriptionMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription>
-          subscriptions)
-  {
+          subscriptions) {
     this.subscriptions =
         subscriptions.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription[]
@@ -37,34 +34,29 @@ public class JobBookSubscriptionMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6593;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(subscriptions.length);
 
-    for (int i = 0; i < subscriptions.length; i++)
-  {
+    for (int i = 0; i < subscriptions.length; i++) {
 
       subscriptions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int subscriptions_length = reader.read_ui16();
     this.subscriptions =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription
             [subscriptions_length];
 
-    for (int i = 0; i < subscriptions_length; i++)
-  {
+    for (int i = 0; i < subscriptions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobBookSubscription
           subscriptions_it =
@@ -77,8 +69,7 @@ public class JobBookSubscriptionMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobBookSubscriptionMessage("
         + "subscriptions="

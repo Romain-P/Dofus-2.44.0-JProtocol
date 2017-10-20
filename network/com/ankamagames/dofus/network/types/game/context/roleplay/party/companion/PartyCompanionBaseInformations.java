@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party.companion;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,36 +18,31 @@ public class PartyCompanionBaseInformations extends NetworkType {
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook entityLook;
 
-  public PartyCompanionBaseInformations()
-  {}
+  public PartyCompanionBaseInformations() {}
 
   public PartyCompanionBaseInformations(
       byte indexId,
       byte companionGenericId,
-      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook entityLook) {
     this.indexId = indexId;
     this.companionGenericId = companionGenericId;
     this.entityLook = entityLook;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 453;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.indexId);
     writer.write_i8(this.companionGenericId);
     this.entityLook.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.indexId = reader.read_i8();
     this.companionGenericId = reader.read_i8();
     this.entityLook = new com.ankamagames.dofus.network.types.game.look.EntityLook();
@@ -55,8 +50,7 @@ public class PartyCompanionBaseInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyCompanionBaseInformations("
         + "indexId="

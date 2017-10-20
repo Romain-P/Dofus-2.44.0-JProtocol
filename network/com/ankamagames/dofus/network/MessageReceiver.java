@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:17+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network;
 
 import org.heat.dofus.network.SimpleNetworkComponentFactory;
@@ -8,25 +8,24 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessage> {
-  public MessageReceiver()
-  {
+  public MessageReceiver() {
     super(createNewRegister());
   }
 
-  public static MessageReceiver createNewReceiver()
-  {
+  public static MessageReceiver createNewReceiver() {
     return new MessageReceiver();
   }
 
   /** A register filled with default messages. This field is auto-generated via a code generator. */
-  public static Map<Integer, Supplier<NetworkMessage>> createNewRegister()
-  {
+  public static Map<Integer, Supplier<NetworkMessage>> createNewRegister() {
     Map<Integer, Supplier<NetworkMessage>> res = new HashMap<Integer, Supplier<NetworkMessage>>();
 
     res.put(
-        5535,
-        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightStealKamaMessage
+        3003,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectUseOnCharacterMessage
             ::new);
+
+    res.put(6585, com.ankamagames.dofus.network.messages.game.idol.IdolListMessage::new);
 
     res.put(6590, com.ankamagames.dofus.network.messages.game.guild.GuildMotdMessage::new);
 
@@ -40,6 +39,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(6680, com.ankamagames.dofus.network.messages.game.dare.DareCancelRequestMessage::new);
 
+    res.put(
+        852,
+        com.ankamagames.dofus.network.messages.game.chat.ChatClientPrivateWithObjectMessage::new);
+
     res.put(5853, () -> com.ankamagames.dofus.network.messages.game.prism.PrismInfoCloseMessage.i);
 
     res.put(
@@ -52,15 +55,22 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6247,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .DungeonPartyFinderRoomContentMessage
+        252,
+        com.ankamagames.dofus.network.messages.game.context.GameContextRemoveMultipleElementsMessage
             ::new);
 
     res.put(
-        6574,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
-                .GameRolePlayArenaSwitchToGameServerMessage
+        5767,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeStartOkHumanVendorMessage
+            ::new);
+
+    res.put(6413, com.ankamagames.dofus.network.messages.game.guild.GuildListMessage::new);
+
+    res.put(
+        5762,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeGuildTaxCollectorGetMessage
             ::new);
 
     res.put(
@@ -86,13 +96,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5774,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeBuyMessage::new);
 
-    res.put(6180, com.ankamagames.dofus.network.messages.game.guild.GuildHouseRemoveMessage::new);
-
-    res.put(3, com.ankamagames.dofus.network.messages.connection.HelloConnectMessage::new);
+    res.put(
+        6251,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyCancelInvitationNotificationMessage
+            ::new);
 
     res.put(
-        5892,
-        com.ankamagames.dofus.network.messages.game.prism.PrismFightDefenderLeaveMessage::new);
+        5738,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyRequestMessage
+            ::new);
+
+    res.put(6180, com.ankamagames.dofus.network.messages.game.guild.GuildHouseRemoveMessage::new);
+
+    res.put(
+        6500,
+        com.ankamagames.dofus.network.messages.game.context.roleplay
+                .MapRunningFightDetailsExtendedMessage
+            ::new);
 
     res.put(
         6697,
@@ -101,11 +122,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        5697,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseSellRequestMessage
+            ::new);
+
+    res.put(
         6065,
         com.ankamagames.dofus.network.messages.game.inventory.items.LivingObjectMessageMessage
             ::new);
 
-    res.put(6297, com.ankamagames.dofus.network.messages.game.basic.NumericWhoIsMessage::new);
+    res.put(
+        6127, com.ankamagames.dofus.network.messages.authorized.ConsoleCommandsListMessage::new);
 
     res.put(6438, com.ankamagames.dofus.network.messages.game.prism.PrismsListUpdateMessage::new);
 
@@ -116,17 +143,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5932, com.ankamagames.dofus.network.messages.game.social.ContactLookRequestMessage::new);
 
-    res.put(
-        6416,
-        com.ankamagames.dofus.network.messages.game.context
-                .GameContextRemoveMultipleElementsWithEventsMessage
-            ::new);
-
     res.put(6689, com.ankamagames.dofus.network.messages.game.guild.GuildBulletinMessage::new);
 
     res.put(
         5628,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeLeaveMessage::new);
+
+    res.put(
+        6205, com.ankamagames.dofus.network.messages.game.achievement.AchievementListMessage::new);
 
     res.put(
         6112,
@@ -143,14 +167,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6728,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
-                .GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage
+        5910,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeShopStockStartedMessage
             ::new);
 
     res.put(
-        6036,
-        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageObjectsUpdateMessage
+        6728,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
+                .GameRolePlayArenaUpdatePlayerInfosAllQueuesMessage
             ::new);
 
     res.put(
@@ -166,11 +191,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5579,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberRemoveMessage
-            ::new);
-
-    res.put(
         5513,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeErrorMessage::new);
 
@@ -180,10 +200,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .AllianceModificationNameAndTagValidMessage
             ::new);
 
+    res.put(
+        5653,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobCrafterDirectoryRemoveMessage
+            ::new);
+
     res.put(6100, com.ankamagames.dofus.network.messages.queues.QueueStatusMessage::new);
 
     res.put(
-        6231, com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarContentMessage::new);
+        6066,
+        com.ankamagames.dofus.network.messages.game.inventory.items
+                .LivingObjectMessageRequestMessage
+            ::new);
 
     res.put(
         6425,
@@ -203,13 +232,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             com.ankamagames.dofus.network.messages.game.character.choice
                 .CharactersListRequestMessage.i);
 
-    res.put(
-        6704, com.ankamagames.dofus.network.messages.game.finishmoves.FinishMoveListMessage::new);
-
-    res.put(
-        740,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightHumanReadyStateMessage
-            ::new);
+    res.put(3, com.ankamagames.dofus.network.messages.connection.HelloConnectMessage::new);
 
     res.put(6012, com.ankamagames.dofus.network.messages.game.dialog.PauseDialogMessage::new);
 
@@ -231,12 +254,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             com.ankamagames.dofus.network.messages.game.interactive.zaap
                 .ZaapRespawnSaveRequestMessage.i);
 
-    res.put(801, com.ankamagames.dofus.network.messages.game.chat.smiley.ChatSmileyMessage::new);
-
     res.put(
-        5768,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeOkMultiCraftMessage
+        6454,
+        com.ankamagames.dofus.network.messages.game.pvp.UpdateMapPlayersAgressableStatusMessage
             ::new);
+
+    res.put(801, com.ankamagames.dofus.network.messages.game.chat.smiley.ChatSmileyMessage::new);
 
     res.put(
         5527,
@@ -245,14 +268,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6076,
+        com.ankamagames.dofus.network.messages.game.character.stats
+                .CharacterLevelUpInformationMessage
+            ::new);
+
+    res.put(
         301,
         com.ankamagames.dofus.network.messages.game.context.roleplay.fight
                 .GameRolePlayShowChallengeMessage
             ::new);
-
-    res.put(
-        5557,
-        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsGeneralMessage::new);
 
     res.put(
         6132,
@@ -265,9 +290,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6262,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyInvitationDungeonDetailsMessage
+        6574,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
+                .GameRolePlayArenaSwitchToGameServerMessage
+            ::new);
+
+    res.put(
+        226,
+        com.ankamagames.dofus.network.messages.game.context.roleplay
+                .MapComplementaryInformationsDataMessage
             ::new);
 
     res.put(
@@ -285,17 +316,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6436,
+        com.ankamagames.dofus.network.messages.game.alliance.AllianceVersatileInfoListMessage::new);
+
+    res.put(
         6605,
         com.ankamagames.dofus.network.messages.game.inventory.preset.IdolsPresetDeleteResultMessage
             ::new);
-
-    res.put(
-        5951,
-        com.ankamagames.dofus.network.messages.game.context.mount.PaddockBuyRequestMessage::new);
-
-    res.put(
-        5921,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSynchronizeMessage::new);
 
     res.put(
         5630,
@@ -304,8 +331,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(5605, com.ankamagames.dofus.network.messages.game.friend.FriendJoinRequestMessage::new);
 
     res.put(
-        6299,
-        com.ankamagames.dofus.network.messages.game.context.dungeon.DungeonKeyRingMessage::new);
+        6342,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberInFightMessage
+            ::new);
 
     res.put(
         6525,
@@ -318,8 +346,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5979,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkMountMessage
+        6592,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .JobBookSubscribeRequestMessage
+            ::new);
+
+    res.put(
+        6161,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
+                .PaddockToSellFilterMessage
             ::new);
 
     res.put(
@@ -331,6 +366,11 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(176, () -> com.ankamagames.dofus.network.messages.game.basic.BasicNoOperationMessage.i);
 
     res.put(851, com.ankamagames.dofus.network.messages.game.chat.ChatClientPrivateMessage::new);
+
+    res.put(
+        6163,
+        com.ankamagames.dofus.network.messages.game.inventory.preset.InventoryPresetUseResultMessage
+            ::new);
 
     res.put(
         5517,
@@ -348,6 +388,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .EditHavenBagFinishedMessage.i);
 
     res.put(
+        6250,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .DungeonPartyFinderRoomContentUpdateMessage
+            ::new);
+
+    res.put(
         6021,
         com.ankamagames.dofus.network.messages.game.inventory.items
                 .ExchangeMultiCraftSetCrafterCanUseHisRessourcesMessage
@@ -358,7 +404,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.interactive.zaap.TeleportRequestMessage::new);
 
     res.put(
-        6298, com.ankamagames.dofus.network.messages.game.basic.NumericWhoIsRequestMessage::new);
+        6612,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeBidHouseUnsoldItemsMessage
+            ::new);
 
     res.put(
         5884,
@@ -396,10 +445,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6712,
-        com.ankamagames.dofus.network.messages.game.context.roleplay
-                .GameRolePlayShowMultipleActorsMessage
-            ::new);
+        5921,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSynchronizeMessage::new);
 
     res.put(
         6385,
@@ -426,15 +473,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () -> com.ankamagames.dofus.network.messages.game.friend.SpouseGetInformationsMessage.i);
 
     res.put(
-        6613,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeOfflineSoldItemsMessage
-            ::new);
-
-    res.put(
         6543,
         com.ankamagames.dofus.network.messages.game.context.fight
                 .GameFightPlacementSwapPositionsCancelMessage
+            ::new);
+
+    res.put(
+        5928,
+        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersEnemiesListMessage
             ::new);
 
     res.put(
@@ -447,6 +493,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6367,
+        com.ankamagames.dofus.network.messages.game.tinsel.TitlesAndOrnamentsListMessage::new);
+
+    res.put(
         5741,
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightTriggerGlyphTrapMessage
@@ -457,6 +507,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         6228,
         com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarRemoveRequestMessage::new);
+
+    res.put(6414, com.ankamagames.dofus.network.messages.game.alliance.AllianceFactsMessage::new);
 
     res.put(
         5670,
@@ -480,15 +532,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5596,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyRefuseInvitationNotificationMessage
-            ::new);
-
-    res.put(
         6644,
         com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
                 .HavenBagDailyLoteryMessage
+            ::new);
+
+    res.put(
+        5804,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeBidHouseBuyMessage
             ::new);
 
     res.put(
@@ -503,11 +554,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(4001, () -> com.ankamagames.dofus.network.messages.game.friend.FriendsGetListMessage.i);
 
+    res.put(5551, com.ankamagames.dofus.network.messages.game.guild.GuildInvitationMessage::new);
+
     res.put(
         6631,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
                 .ExitHavenBagRequestMessage.i);
+
+    res.put(
+        6043,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobCrafterDirectoryEntryRequestMessage
+            ::new);
 
     res.put(
         5826,
@@ -519,8 +578,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6197,
         com.ankamagames.dofus.network.messages.game.context.roleplay.ErrorMapNotFoundMessage::new);
 
-    res.put(5552, com.ankamagames.dofus.network.messages.game.guild.GuildInvitedMessage::new);
-
     res.put(
         6472,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.companion
@@ -530,39 +587,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6668, com.ankamagames.dofus.network.messages.game.dare.DareCreatedMessage::new);
 
     res.put(
-        1010,
-        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightSpellCastMessage
-            ::new);
-
-    res.put(
         6240,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.party
                 .DungeonPartyFinderAvailableDungeonsRequestMessage.i);
 
     res.put(
+        6018,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
+                .PaddockSellBuyDialogMessage
+            ::new);
+
+    res.put(
         6316,
         () -> com.ankamagames.dofus.network.messages.game.basic.SequenceNumberRequestMessage.i);
 
     res.put(
-        5689,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmoteListMessage::new);
-
-    res.put(
-        5645,
-        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageKamasUpdateMessage
-            ::new);
-
-    res.put(5934, com.ankamagames.dofus.network.messages.game.social.ContactLookMessage::new);
-
-    res.put(
         6687,
         com.ankamagames.dofus.network.messages.game.alliance.AllianceMotdSetRequestMessage::new);
-
-    res.put(
-        6303,
-        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyCloseMessage
-            ::new);
 
     res.put(175, com.ankamagames.dofus.network.messages.game.basic.BasicTimeMessage::new);
 
@@ -572,6 +614,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        5574,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyStopFollowRequestMessage
+            ::new);
+
+    res.put(6665, com.ankamagames.dofus.network.messages.game.dare.DareCreationRequestMessage::new);
+
+    res.put(
         5587,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party
                 .PartyLocateMembersRequestMessage
@@ -579,31 +629,18 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(6453, com.ankamagames.dofus.network.messages.game.prism.PrismFightRemovedMessage::new);
 
+    res.put(4002, com.ankamagames.dofus.network.messages.game.friend.FriendsListMessage::new);
+
     res.put(
         6632,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
                 .EditHavenBagStartMessage.i);
 
-    res.put(6665, com.ankamagames.dofus.network.messages.game.dare.DareCreationRequestMessage::new);
-
     res.put(
         5720,
         com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersHelpersJoinMessage
             ::new);
-
-    res.put(
-        6454,
-        com.ankamagames.dofus.network.messages.game.pvp.UpdateMapPlayersAgressableStatusMessage
-            ::new);
-
-    res.put(
-        5959,
-        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsPaddocksMessage::new);
-
-    res.put(
-        5715,
-        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightLeaveRequestMessage::new);
 
     res.put(
         6269,
@@ -617,24 +654,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(76, com.ankamagames.dofus.network.messages.authorized.AdminCommandMessage::new);
 
     res.put(
-        165,
-        com.ankamagames.dofus.network.messages.game.character.deletion
-                .CharacterDeletionRequestMessage
-            ::new);
-
-    res.put(
         6645,
         com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting
                 .InviteInHavenBagClosedMessage
             ::new);
 
     res.put(6317, com.ankamagames.dofus.network.messages.game.basic.SequenceNumberMessage::new);
-
-    res.put(
-        6727,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses
-                .HouseSellingUpdateMessage
-            ::new);
 
     res.put(
         5909,
@@ -674,17 +699,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeBidHouseGenericItemAddedMessage
             ::new);
 
-    res.put(6451, com.ankamagames.dofus.network.messages.game.prism.PrismsInfoValidMessage::new);
-
     res.put(
-        6179,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.UpdateMountBoostMessage
-            ::new);
+        5908,
+        com.ankamagames.dofus.network.messages.game.guild.ChallengeFightJoinRefusedMessage::new);
 
     res.put(
         5975,
         com.ankamagames.dofus.network.messages.game.context.mount
                 .MountInformationInPaddockRequestMessage
+            ::new);
+
+    res.put(
+        6504,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSpectatorJoinMessage
             ::new);
 
     res.put(
@@ -696,19 +723,27 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(5676, () -> com.ankamagames.dofus.network.messages.game.friend.IgnoredGetListMessage.i);
 
     res.put(
+        6636,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
+                .EnterHavenBagRequestMessage
+            ::new);
+
+    res.put(
         746,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.death
                 .GameRolePlayGameOverMessage.i);
 
     res.put(
-        5574,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyStopFollowRequestMessage
-            ::new);
+        6539, com.ankamagames.dofus.network.messages.game.approach.ReloginTokenStatusMessage::new);
 
     res.put(
         5893, com.ankamagames.dofus.network.messages.game.prism.PrismFightAttackerAddMessage::new);
+
+    res.put(
+        1010,
+        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightSpellCastMessage
+            ::new);
 
     res.put(
         6548,
@@ -717,38 +752,33 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .GameFightPlacementSwapPositionsErrorMessage.i);
 
     res.put(
-        5635,
-        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorAttackedResultMessage
+        165,
+        com.ankamagames.dofus.network.messages.game.character.deletion
+                .CharacterDeletionRequestMessage
             ::new);
 
     res.put(
-        6539, com.ankamagames.dofus.network.messages.game.approach.ReloginTokenStatusMessage::new);
+        5635,
+        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorAttackedResultMessage
+            ::new);
 
     res.put(
         5584, com.ankamagames.dofus.network.messages.game.atlas.compass.CompassResetMessage::new);
 
     res.put(5973, com.ankamagames.dofus.network.messages.game.context.mount.MountDataMessage::new);
 
-    res.put(5551, com.ankamagames.dofus.network.messages.game.guild.GuildInvitationMessage::new);
+    res.put(
+        6518, com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewRequestMessage::new);
 
     res.put(
-        5960,
-        com.ankamagames.dofus.network.messages.game.interactive.zaap.TeleportDestinationsListMessage
-            ::new);
-
-    res.put(
-        6110,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.npc.EntityTalkMessage::new);
+        5689,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmoteListMessage::new);
 
     res.put(
         5594,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLeaveMessage::new);
 
-    res.put(
-        5935,
-        com.ankamagames.dofus.network.messages.game.social.ContactLookRequestByIdMessage::new);
-
-    res.put(951, com.ankamagames.dofus.network.messages.game.context.GameMapMovementMessage::new);
+    res.put(6658, com.ankamagames.dofus.network.messages.game.dare.DareSubscribedListMessage::new);
 
     res.put(
         6670,
@@ -756,10 +786,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5765,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeTypesExchangerDescriptionForUserMessage
-            ::new);
+        5745, com.ankamagames.dofus.network.messages.game.interactive.InteractiveUsedMessage::new);
 
     res.put(
         952,
@@ -768,6 +795,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5978,
         com.ankamagames.dofus.network.messages.game.context.mount.MountEmoteIconUsedOkMessage::new);
+
+    res.put(
+        6562,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeHandleMountsStableMessage
+            ::new);
 
     res.put(
         6588, com.ankamagames.dofus.network.messages.game.guild.GuildMotdSetRequestMessage::new);
@@ -794,8 +827,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6475,
-        com.ankamagames.dofus.network.messages.game.character.choice.BasicCharactersListMessage
+        6498,
+        com.ankamagames
+                .dofus
+                .network
+                .messages
+                .game
+                .context
+                .roleplay
+                .treasureHunt
+                .TreasureHuntShowLegendaryUIMessage
             ::new);
 
     res.put(
@@ -820,16 +861,18 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        5615,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.npc
+                .TaxCollectorDialogQuestionExtendedMessage
+            ::new);
+
+    res.put(
         5957,
         com.ankamagames.dofus.network.messages.game.guild.GuildPaddockTeleportRequestMessage::new);
 
     res.put(
         5709,
         com.ankamagames.dofus.network.messages.game.interactive.StatedElementUpdatedMessage::new);
-
-    res.put(
-        6568,
-        com.ankamagames.dofus.network.messages.game.guild.tax.AbstractTaxCollectorListMessage::new);
 
     res.put(
         6260,
@@ -843,25 +886,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6033, com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsAddedMessage::new);
-
-    res.put(
         6448,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.npc
                 .AlliancePrismDialogQuestionMessage.i);
 
     res.put(
-        6498,
-        com.ankamagames
-                .dofus
-                .network
-                .messages
-                .game
-                .context
-                .roleplay
-                .treasureHunt
-                .TreasureHuntShowLegendaryUIMessage
+        6241,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .DungeonPartyFinderRegisterSuccessMessage
             ::new);
 
     res.put(954, com.ankamagames.dofus.network.messages.game.context.GameMapNoMovementMessage::new);
@@ -873,11 +906,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5717,
         com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightJoinRequestMessage::new);
-
-    res.put(
-        6589,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStoppedMessage
-            ::new);
 
     res.put(
         5725,
@@ -894,8 +922,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5821,
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightInvisibilityMessage
             ::new);
-
-    res.put(6585, com.ankamagames.dofus.network.messages.game.idol.IdolListMessage::new);
 
     res.put(
         6123,
@@ -914,39 +940,33 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5601, com.ankamagames.dofus.network.messages.game.friend.FriendDeleteResultMessage::new);
 
-    res.put(42, com.ankamagames.dofus.network.messages.connection.SelectedServerDataMessage::new);
+    res.put(
+        5002,
+        com.ankamagames.dofus.network.messages.game.interactive.InteractiveMapUpdateMessage::new);
 
     res.put(
         5531,
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightReflectSpellMessage
             ::new);
 
-    res.put(6413, com.ankamagames.dofus.network.messages.game.guild.GuildListMessage::new);
-
     res.put(
         5001,
         com.ankamagames.dofus.network.messages.game.interactive.InteractiveUseRequestMessage::new);
 
-    res.put(
-        6038,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeShopStockMultiMovementUpdatedMessage
-            ::new);
+    res.put(42, com.ankamagames.dofus.network.messages.connection.SelectedServerDataMessage::new);
 
     res.put(
         6159,
         com.ankamagames.dofus.network.messages.game.friend.GuildMemberSetWarnOnConnectionMessage
             ::new);
 
+    res.put(
+        6305,
+        com.ankamagames.dofus.network.messages.game.approach.ServerOptionalFeaturesMessage::new);
+
     res.put(6424, com.ankamagames.dofus.network.messages.game.guild.GuildFactsErrorMessage::new);
 
     res.put(5662, com.ankamagames.dofus.network.messages.authorized.AdminQuietCommandMessage::new);
-
-    res.put(
-        6634,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
-                .HavenBagFurnituresMessage
-            ::new);
 
     res.put(
         5783,
@@ -955,19 +975,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeShowVendorTaxMessage.i);
 
     res.put(
-        6137,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseToSellFilterMessage
+        6556,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeMountsStableRemoveMessage
             ::new);
-
-    res.put(6661, com.ankamagames.dofus.network.messages.game.dare.DareListMessage::new);
 
     res.put(870, com.ankamagames.dofus.network.messages.game.chat.ChatErrorMessage::new);
-
-    res.put(
-        5581,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyFollowStatusUpdateMessage
-            ::new);
 
     res.put(
         6309,
@@ -976,9 +989,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5928,
-        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersEnemiesListMessage
+        6315,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.AccountHouseMessage
             ::new);
+
+    res.put(
+        5576,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyJoinMessage::new);
 
     res.put(
         6325,
@@ -1001,44 +1018,34 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.AbstractPresetDeleteMessage::new);
 
     res.put(
-        5731,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
-                .GameRolePlayPlayerFightRequestMessage
-            ::new);
-
-    res.put(
         711,
         com.ankamagames.dofus.network.messages.game.context.fight.GameFightRemoveTeamMemberMessage
             ::new);
 
     res.put(
-        5653,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobCrafterDirectoryRemoveMessage
-            ::new);
+        5919, com.ankamagames.dofus.network.messages.game.guild.GuildHousesInformationMessage::new);
+
+    res.put(5887, com.ankamagames.dofus.network.messages.game.guild.GuildKickRequestMessage::new);
 
     res.put(1503, com.ankamagames.dofus.network.messages.updater.parts.DownloadPartMessage::new);
 
     res.put(
-        5642,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.npc
-                .MapNpcsQuestStatusUpdateMessage
+        5535,
+        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightStealKamaMessage
             ::new);
-
-    res.put(
-        6103,
-        com.ankamagames.dofus.network.messages.game.context.notification.NotificationByServerMessage
-            ::new);
-
-    res.put(
-        6230,
-        com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarSwapRequestMessage::new);
 
     res.put(
         5809,
         com.ankamagames.dofus.network.messages.game.context.roleplay.job
                 .JobExperienceMultiUpdateMessage
             ::new);
+
+    res.put(
+        6403, com.ankamagames.dofus.network.messages.game.alliance.AllianceInsiderInfoMessage::new);
+
+    res.put(
+        6230,
+        com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarSwapRequestMessage::new);
 
     res.put(
         6115, com.ankamagames.dofus.network.messages.game.guild.GuildInvitationByNameMessage::new);
@@ -1055,18 +1062,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6535,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectsAddedMessage
-            ::new);
-
-    res.put(6688, com.ankamagames.dofus.network.messages.game.social.SocialNoticeMessage::new);
-
-    res.put(
-        6593,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobBookSubscriptionMessage
-            ::new);
-
-    res.put(
         6683,
         com.ankamagames.dofus.network.messages.game.alliance.AllianceMotdSetErrorMessage::new);
 
@@ -1077,24 +1072,21 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5794,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeCraftInformationObjectMessage
-            ::new);
-
-    res.put(
         5982, () -> com.ankamagames.dofus.network.messages.game.context.mount.MountUnSetMessage.i);
 
     res.put(
-        5929,
-        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersEnemyRemoveMessage
+        5691,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmotePlayMassiveMessage
             ::new);
-
-    res.put(5537, com.ankamagames.dofus.network.messages.game.inventory.KamasUpdateMessage::new);
 
     res.put(
         5540,
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightMarkCellsMessage
+            ::new);
+
+    res.put(
+        6537,
+        com.ankamagames.dofus.network.messages.game.startup.StartupActionsAllAttributionMessage
             ::new);
 
     res.put(
@@ -1108,11 +1100,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5578,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLeaderUpdateMessage
-            ::new);
-
-    res.put(6397, com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitedMessage::new);
+        6067,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightResumeMessage::new);
 
     res.put(
         5647,
@@ -1121,6 +1110,11 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(
         6308, com.ankamagames.dofus.network.messages.game.context.mount.MountReleasedMessage::new);
+
+    res.put(
+        6140,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseToSellListMessage
+            ::new);
 
     res.put(
         6070,
@@ -1137,16 +1131,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6538, com.ankamagames.dofus.network.messages.game.startup.StartupActionAddMessage::new);
 
     res.put(
-        862,
-        com.ankamagames.dofus.network.messages.game.chat.ChatClientMultiWithObjectMessage::new);
-
-    res.put(
         5977,
         com.ankamagames.dofus.network.messages.game.context.mount.MountSterilizedMessage::new);
 
     res.put(
         5532,
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightChangeLookMessage
+            ::new);
+
+    res.put(
+        6252,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberEjectedMessage
             ::new);
 
     res.put(
@@ -1163,9 +1158,18 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6618,
+        com.ankamagames.dofus.network.messages.game.context.GameRefreshMonsterBoostsMessage::new);
+
+    res.put(
         6221,
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightSpellImmunityMessage
+            ::new);
+
+    res.put(
+        152,
+        com.ankamagames.dofus.network.messages.game.character.choice.CharacterSelectionMessage
             ::new);
 
     res.put(5502, com.ankamagames.dofus.network.messages.game.dialog.LeaveDialogMessage::new);
@@ -1175,14 +1179,21 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.alliance.AllianceModificationEmblemValidMessage
             ::new);
 
+    res.put(
+        5930, com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorListMessage::new);
+
     res.put(5968, com.ankamagames.dofus.network.messages.game.context.mount.MountSetMessage::new);
 
     res.put(
         110, com.ankamagames.dofus.network.messages.game.approach.AuthenticationTicketMessage::new);
 
-    res.put(6079, com.ankamagames.dofus.network.messages.game.report.CharacterReportMessage::new);
-
     res.put(880, com.ankamagames.dofus.network.messages.game.chat.ChatAbstractServerMessage::new);
+
+    res.put(
+        5772,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeOnHumanVendorRequestMessage
+            ::new);
 
     res.put(
         162,
@@ -1191,13 +1202,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .CharacterNameSuggestionRequestMessage.i);
 
     res.put(
-        5901, com.ankamagames.dofus.network.messages.game.prism.PrismFightSwapRequestMessage::new);
-
-    res.put(
         6311,
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightLifePointsGainMessage
             ::new);
+
+    res.put(
+        712, com.ankamagames.dofus.network.messages.game.context.fight.GameFightStartMessage::new);
 
     res.put(
         5550, com.ankamagames.dofus.network.messages.game.guild.GuildGetInformationsMessage::new);
@@ -1209,7 +1220,20 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .i);
 
     res.put(
+        6087,
+        com.ankamagames.dofus.network.messages.game.context.notification.NotificationListMessage
+            ::new);
+
+    res.put(6731, com.ankamagames.dofus.network.messages.connection.MigratedServerListMessage::new);
+
+    res.put(
         6390, com.ankamagames.dofus.network.messages.game.alliance.AllianceMembershipMessage::new);
+
+    res.put(
+        5739,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.purchasable
+                .PurchasableDialogMessage
+            ::new);
 
     res.put(
         6238,
@@ -1224,6 +1248,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(6371, com.ankamagames.dofus.network.messages.game.tinsel.TitleLostMessage::new);
+
+    res.put(
+        6435, com.ankamagames.dofus.network.messages.game.guild.GuildVersatileInfoListMessage::new);
 
     res.put(
         3029,
@@ -1251,12 +1278,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.fight.GameFightTurnFinishMessage::new);
 
     res.put(
-        5937,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
-                .GameRolePlayPlayerFightFriendlyRequestedMessage
-            ::new);
-
-    res.put(
         5976,
         () ->
             com.ankamagames.dofus.network.messages.game.context.mount
@@ -1275,10 +1296,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6662,
-        com.ankamagames.dofus.network.messages.common.basic.AggregateStatWithDataMessage::new);
-
-    res.put(
         5544,
         com.ankamagames.dofus.network.messages.game.character.creation
                 .CharacterNameSuggestionSuccessMessage
@@ -1295,19 +1312,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () -> com.ankamagames.dofus.network.messages.game.guild.GuildCreationStartedMessage.i);
 
     res.put(
+        5503, com.ankamagames.dofus.network.messages.game.inventory.items.SetUpdateMessage::new);
+
+    res.put(
+        5751,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.MapRunningFightDetailsMessage
+            ::new);
+
+    res.put(
         6097,
         com.ankamagames.dofus.network.messages.game.context.roleplay.quest.QuestValidatedMessage
-            ::new);
-
-    res.put(
-        6561,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeMountsPaddockAddMessage
-            ::new);
-
-    res.put(
-        5825,
-        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightSummonMessage
             ::new);
 
     res.put(
@@ -1315,15 +1329,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.roleplay.quest.QuestStartedMessage
             ::new);
 
-    res.put(6677, com.ankamagames.dofus.network.messages.game.dare.DareRewardsListMessage::new);
+    res.put(
+        6535,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectsAddedMessage
+            ::new);
 
     res.put(
         5699,
         com.ankamagames.dofus.network.messages.game.guild.GuildSpellUpgradeRequestMessage::new);
 
     res.put(
-        254,
-        com.ankamagames.dofus.network.messages.game.context.GameContextMoveMultipleElementsMessage
+        703,
+        com.ankamagames.dofus.network.messages.game.context.fight
+                .GameFightPlacementPossiblePositionsMessage
             ::new);
 
     res.put(
@@ -1342,10 +1360,18 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6667, com.ankamagames.dofus.network.messages.game.dare.DareErrorMessage::new);
 
     res.put(
+        5696,
+        com.ankamagames.dofus.network.messages.game.context.GameEntitiesDispositionMessage::new);
+
+    res.put(
         6284,
         com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
                 .GameRolePlayArenaRegistrationStatusMessage
             ::new);
+
+    res.put(
+        6469,
+        com.ankamagames.dofus.network.messages.connection.SelectedServerDataExtendedMessage::new);
 
     res.put(5678, com.ankamagames.dofus.network.messages.game.friend.IgnoredAddedMessage::new);
 
@@ -1363,19 +1389,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.items.ObtainedItemWithBonusMessage
             ::new);
 
+    res.put(2001, com.ankamagames.dofus.network.messages.debug.DebugHighlightCellsMessage::new);
+
     res.put(
         5648,
         com.ankamagames.dofus.network.messages.game.inventory.storage.StorageObjectRemoveMessage
             ::new);
-
-    res.put(
-        5523,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeRequestedTradeMessage
-            ::new);
-
-    res.put(
-        720, com.ankamagames.dofus.network.messages.game.context.fight.GameFightEndMessage::new);
 
     res.put(
         6124,
@@ -1384,12 +1403,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .StopToListenRunningFightRequestMessage.i);
 
     res.put(6045, com.ankamagames.dofus.network.messages.game.social.ContactLookErrorMessage::new);
-
-    res.put(
-        5762,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeGuildTaxCollectorGetMessage
-            ::new);
 
     res.put(
         1002, () -> com.ankamagames.dofus.network.messages.game.actions.GameActionNoopMessage.i);
@@ -1402,8 +1415,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorStateUpdateMessage::new);
 
     res.put(
-        5002,
-        com.ankamagames.dofus.network.messages.game.interactive.InteractiveMapUpdateMessage::new);
+        6533,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeObjectsModifiedMessage
+            ::new);
 
     res.put(
         6739,
@@ -1418,49 +1432,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6041, com.ankamagames.dofus.network.messages.game.prism.PrismUseRequestMessage::new);
 
     res.put(
-        6287,
-        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyOfferMessage
-            ::new);
+        5892,
+        com.ankamagames.dofus.network.messages.game.prism.PrismFightDefenderLeaveMessage::new);
 
     res.put(75, com.ankamagames.dofus.network.messages.authorized.ConsoleMessage::new);
 
-    res.put(6439, com.ankamagames.dofus.network.messages.game.alliance.KohUpdateMessage::new);
-
     res.put(
-        1004,
-        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightTackledMessage
-            ::new);
-
-    res.put(
-        5734,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HousePropertiesMessage
-            ::new);
-
-    res.put(
-        5738,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyRequestMessage
-            ::new);
-
-    res.put(
-        5586,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyInvitationMessage
-            ::new);
-
-    res.put(
-        5910,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeShopStockStartedMessage
-            ::new);
-
-    res.put(
-        1303,
-        com.ankamagames.dofus.network.messages.game.startup.StartupActionsObjetAttributionMessage
-            ::new);
+        5633,
+        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementMessage::new);
 
     res.put(
         5610,
         com.ankamagames.dofus.network.messages.game.context.roleplay.stats
                 .StatsUpgradeRequestMessage
+            ::new);
+
+    res.put(
+        6596,
+        com.ankamagames.dofus.network.messages.game.chat.smiley.ChatSmileyExtraPackListMessage
             ::new);
 
     res.put(
@@ -1480,25 +1469,41 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .LockableStateUpdateHouseDoorMessage
             ::new);
 
+    res.put(
+        6555,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeMountsStableAddMessage
+            ::new);
+
     res.put(6053, com.ankamagames.dofus.network.messages.game.script.CinematicMessage::new);
 
     res.put(6402, com.ankamagames.dofus.network.messages.game.alliance.AllianceJoinedMessage::new);
+
+    res.put(
+        5734,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HousePropertiesMessage
+            ::new);
 
     res.put(
         6378,
         com.ankamagames.dofus.network.messages.game.achievement.AchievementDetailsMessage::new);
 
     res.put(
+        6249,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .DungeonPartyFinderRegisterRequestMessage
+            ::new);
+
+    res.put(
         6307,
         com.ankamagames.dofus.network.messages.game.context.fight.GameFightTurnResumeMessage::new);
 
-    res.put(10, com.ankamagames.dofus.network.messages.queues.LoginQueueStatusMessage::new);
-
     res.put(
-        703,
-        com.ankamagames.dofus.network.messages.game.context.fight
-                .GameFightPlacementPossiblePositionsMessage
+        5595,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLocateMembersMessage
             ::new);
+
+    res.put(10, com.ankamagames.dofus.network.messages.queues.LoginQueueStatusMessage::new);
 
     res.put(
         6626,
@@ -1508,6 +1513,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(
         5895, com.ankamagames.dofus.network.messages.game.prism.PrismFightDefenderAddMessage::new);
+
+    res.put(
+        6254,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyCancelInvitationMessage
+            ::new);
 
     res.put(
         6314,
@@ -1545,7 +1556,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.alliance.AllianceGuildLeavingMessage::new);
 
     res.put(
-        1301, com.ankamagames.dofus.network.messages.game.startup.StartupActionsListMessage::new);
+        6242,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .DungeonPartyFinderAvailableDungeonsMessage
+            ::new);
+
+    res.put(
+        6395, com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitationMessage::new);
 
     res.put(
         6675,
@@ -1561,12 +1578,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             com.ankamagames.dofus.network.messages.game.finishmoves.FinishMoveListRequestMessage.i);
 
     res.put(
-        5984,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartedMountStockMessage
-            ::new);
-
-    res.put(
         5688,
         com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmotePlayErrorMessage
             ::new);
@@ -1576,6 +1587,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeItemAutoCraftStopedMessage
             ::new);
+
+    res.put(
+        6214,
+        com.ankamagames.dofus.network.messages.game.context.fight.SlaveSwitchContextMessage::new);
 
     res.put(
         6485,
@@ -1588,18 +1603,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .roleplay
                 .treasureHunt
                 .TreasureHuntDigRequestMessage
-            ::new);
-
-    res.put(
-        6076,
-        com.ankamagames.dofus.network.messages.game.character.stats
-                .CharacterLevelUpInformationMessage
-            ::new);
-
-    res.put(
-        6043,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobCrafterDirectoryEntryRequestMessage
             ::new);
 
     res.put(
@@ -1624,7 +1627,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5745, com.ankamagames.dofus.network.messages.game.interactive.InteractiveUsedMessage::new);
+        5944,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.objects
+                .ObjectGroundRemovedMultipleMessage
+            ::new);
+
+    res.put(1502, com.ankamagames.dofus.network.messages.updater.parts.PartsListMessage::new);
 
     res.put(
         6497,
@@ -1641,6 +1649,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .HavenBagPermissionsUpdateRequestMessage
             ::new);
 
+    res.put(
+        5579,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberRemoveMessage
+            ::new);
+
+    res.put(6663, com.ankamagames.dofus.network.messages.game.dare.DareCreatedListMessage::new);
+
+    res.put(
+        5652,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobCrafterDirectorySettingsMessage
+            ::new);
+
     res.put(6581, com.ankamagames.dofus.network.messages.game.idol.IdolSelectedMessage::new);
 
     res.put(
@@ -1653,30 +1674,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () -> com.ankamagames.dofus.network.messages.game.social.SocialNoticeSetRequestMessage.i);
 
     res.put(
-        6046,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobCrafterDirectoryListMessage
-            ::new);
-
-    res.put(
         5685,
         com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmotePlayRequestMessage
             ::new);
 
     res.put(
-        6018,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
-                .PaddockSellBuyDialogMessage
-            ::new);
-
-    res.put(
-        6140,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseToSellListMessage
-            ::new);
-
-    res.put(
-        6717,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.quest.FollowedQuestsMessage
+        6114,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.visual
+                .GameRolePlaySpellAnimMessage
             ::new);
 
     res.put(
@@ -1684,18 +1689,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.items.ObjectMovementMessage::new);
 
     res.put(
-        226,
-        com.ankamagames.dofus.network.messages.game.context.roleplay
-                .MapComplementaryInformationsDataMessage
+        5698,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseKickRequestMessage
             ::new);
 
     res.put(
         5656,
         com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobLevelUpMessage::new);
-
-    res.put(
-        6034,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsDeletedMessage::new);
 
     res.put(
         6078,
@@ -1721,21 +1721,20 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5905,
+        5715,
+        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightLeaveRequestMessage::new);
+
+    res.put(6657, com.ankamagames.dofus.network.messages.game.dare.DareVersatileListMessage::new);
+
+    res.put(
+        6037,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartedBidSellerMessage
+                .ExchangeShopStockMultiMovementRemovedMessage
             ::new);
 
     res.put(
-        6652,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
-                .KickHavenBagRequestMessage
-            ::new);
-
-    res.put(
-        6183,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeObjectTransfertListFromInvMessage
+        5979,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStartOkMountMessage
             ::new);
 
     res.put(
@@ -1750,9 +1749,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5644,
         com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmoteAddMessage::new);
 
-    res.put(
-        6469,
-        com.ankamagames.dofus.network.messages.connection.SelectedServerDataExtendedMessage::new);
+    res.put(5934, com.ankamagames.dofus.network.messages.game.social.ContactLookMessage::new);
 
     res.put(
         6512,
@@ -1764,6 +1761,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightDodgePointLossMessage
             ::new);
+
+    res.put(
+        6474,
+        com.ankamagames.dofus.network.messages.game.context.fight
+                .GameFightSpectatePlayerRequestMessage
+            ::new);
+
+    res.put(6408, com.ankamagames.dofus.network.messages.game.alliance.AllianceListMessage::new);
 
     res.put(
         6707,
@@ -1785,10 +1790,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitationAnswerMessage::new);
 
     res.put(
-        6586,
-        com.ankamagames.dofus.network.messages.game.idol.IdolFightPreparationUpdateMessage::new);
-
-    res.put(
         5817,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeStartOkMulticraftCustomerMessage
@@ -1804,16 +1805,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.guild.GuildInvitationStateRecrutedMessage::new);
 
     res.put(
-        5804,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeBidHouseBuyMessage
+        5825,
+        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightSummonMessage
             ::new);
 
-    res.put(6657, com.ankamagames.dofus.network.messages.game.dare.DareVersatileListMessage::new);
-
     res.put(
-        6579,
+        5787,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeCraftPaymentModificationRequestMessage
+                .ExchangeReplyTaxVendorMessage
             ::new);
 
     res.put(
@@ -1849,6 +1848,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6400, com.ankamagames.dofus.network.messages.game.alliance.AllianceKickRequestMessage::new);
 
     res.put(
+        6051,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.MapObstacleUpdateMessage::new);
+
+    res.put(
+        6033, com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsAddedMessage::new);
+
+    res.put(
         1302,
         () -> com.ankamagames.dofus.network.messages.game.startup.StartupActionsExecuteMessage.i);
 
@@ -1864,9 +1870,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.actions.AbstractGameActionWithAckMessage::new);
 
     res.put(
-        160,
-        com.ankamagames.dofus.network.messages.game.character.creation
-                .CharacterCreationRequestMessage
+        5645,
+        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageKamasUpdateMessage
+            ::new);
+
+    res.put(
+        6298, com.ankamagames.dofus.network.messages.game.basic.NumericWhoIsRequestMessage::new);
+
+    res.put(
+        5596,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyRefuseInvitationNotificationMessage
             ::new);
 
     res.put(
@@ -1878,34 +1892,29 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(850, com.ankamagames.dofus.network.messages.game.chat.ChatAbstractClientMessage::new);
 
     res.put(
-        6138,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
-                .PaddockToSellListMessage
-            ::new);
-
-    res.put(
         5609,
         com.ankamagames.dofus.network.messages.game.context.roleplay.stats.StatsUpgradeResultMessage
             ::new);
 
     res.put(
-        5503, com.ankamagames.dofus.network.messages.game.inventory.items.SetUpdateMessage::new);
+        3016,
+        com.ankamagames.dofus.network.messages.game.inventory.items.InventoryContentMessage::new);
 
     res.put(
         6024,
         () -> com.ankamagames.dofus.network.messages.game.context.GameContextCreateErrorMessage.i);
 
     res.put(
-        6206,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsQuantityMessage::new);
+        6727,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses
+                .HouseSellingUpdateMessage
+            ::new);
 
     res.put(
         6344,
         () ->
             com.ankamagames.dofus.network.messages.web.krosmaster.KrosmasterInventoryRequestMessage
                 .i);
-
-    res.put(5674, com.ankamagames.dofus.network.messages.game.friend.IgnoredListMessage::new);
 
     res.put(
         6655,
@@ -1936,7 +1945,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5591, com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdateMessage::new);
 
     res.put(
-        1200, com.ankamagames.dofus.network.messages.game.inventory.spells.SpellListMessage::new);
+        5655,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobDescriptionMessage
+            ::new);
 
     res.put(
         6383,
@@ -1952,10 +1963,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(
         221, com.ankamagames.dofus.network.messages.game.context.roleplay.ChangeMapMessage::new);
-
-    res.put(
-        6436,
-        com.ankamagames.dofus.network.messages.game.alliance.AllianceVersatileInfoListMessage::new);
 
     res.put(
         5525,
@@ -1976,22 +1983,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5747,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobMultiCraftAvailableSkillsMessage
-            ::new);
-
-    res.put(
-        6486,
-        com.ankamagames
-                .dofus
-                .network
-                .messages
-                .game
-                .context
-                .roleplay
-                .treasureHunt
-                .TreasureHuntMessage
+        5577,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyFollowMemberRequestMessage
             ::new);
 
     res.put(
@@ -2003,6 +1997,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.dare.DareRewardConsumeRequestMessage::new);
 
     res.put(
+        6652,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
+                .KickHavenBagRequestMessage
+            ::new);
+
+    res.put(
         6113,
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightDispellEffectMessage
@@ -2012,6 +2012,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5963,
         com.ankamagames.dofus.network.messages.game.context.mount.MountEquipedErrorMessage::new);
 
+    res.put(5636, com.ankamagames.dofus.network.messages.game.guild.GuildInfosUpgradeMessage::new);
+
+    res.put(
+        6464,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeBidPriceForSellerMessage
+            ::new);
+
     res.put(
         6326,
         () ->
@@ -2019,8 +2027,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeObjectTransfertExistingToInvMessage.i);
 
     res.put(
-        6358,
-        com.ankamagames.dofus.network.messages.game.achievement.AchievementDetailedListMessage
+        6381,
+        com.ankamagames.dofus.network.messages.game.achievement
+                .AchievementFinishedInformationMessage
             ::new);
 
     res.put(
@@ -2028,9 +2037,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.items.MimicryObjectEraseRequestMessage
             ::new);
 
-    res.put(4, com.ankamagames.dofus.network.messages.connection.IdentificationMessage::new);
-
-    res.put(1502, com.ankamagames.dofus.network.messages.updater.parts.PartsListMessage::new);
+    res.put(
+        5929,
+        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersEnemyRemoveMessage
+            ::new);
 
     res.put(
         5962,
@@ -2043,13 +2053,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         6345,
         com.ankamagames.dofus.network.messages.web.krosmaster.KrosmasterAuthTokenErrorMessage::new);
-
-    res.put(
-        6067,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightResumeMessage::new);
-
-    res.put(
-        712, com.ankamagames.dofus.network.messages.game.context.fight.GameFightStartMessage::new);
 
     res.put(
         5509,
@@ -2065,10 +2068,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6254,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyCancelInvitationMessage
-            ::new);
+        6516,
+        com.ankamagames.dofus.network.messages.game.context.mount.PaddockBuyResultMessage::new);
+
+    res.put(6661, com.ankamagames.dofus.network.messages.game.dare.DareListMessage::new);
+
+    res.put(
+        884, com.ankamagames.dofus.network.messages.game.chat.ChatServerCopyWithObjectMessage::new);
 
     res.put(
         5748,
@@ -2079,24 +2085,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5915,
         com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementRemoveMessage
-            ::new);
-
-    res.put(
-        6251,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyCancelInvitationNotificationMessage
-            ::new);
-
-    res.put(
-        6575,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
-                .GameRolePlayArenaSwitchToFightServerMessage
-            ::new);
-
-    res.put(
-        6599,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobExperienceOtherPlayerUpdateMessage
             ::new);
 
     res.put(
@@ -2114,13 +2102,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5687,
         com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmoteRemoveMessage::new);
 
-    res.put(
-        5652,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobCrafterDirectorySettingsMessage
-            ::new);
-
     res.put(6265, com.ankamagames.dofus.network.messages.game.friend.SpouseStatusMessage::new);
+
+    res.put(
+        6589,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeStoppedMessage
+            ::new);
 
     res.put(
         715,
@@ -2128,9 +2115,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6066,
-        com.ankamagames.dofus.network.messages.game.inventory.items
-                .LivingObjectMessageRequestMessage
+        5768,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeOkMultiCraftMessage
             ::new);
 
     res.put(
@@ -2146,24 +2132,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5556, com.ankamagames.dofus.network.messages.game.guild.GuildInvitationAnswerMessage::new);
 
     res.put(
-        5784,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangePlayerMultiCraftRequestMessage
+        167,
+        com.ankamagames.dofus.network.messages.game.character.replay.CharacterReplayRequestMessage
             ::new);
+
+    res.put(
+        740,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightHumanReadyStateMessage
+            ::new);
+
+    res.put(
+        5557,
+        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsGeneralMessage::new);
 
     res.put(
         6174,
         com.ankamagames.dofus.network.messages.connection.IdentificationFailedBannedMessage::new);
 
-    res.put(
-        6013,
-        com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdatePvpSeekMessage::new);
-
     res.put(6398, () -> com.ankamagames.dofus.network.messages.game.alliance.AllianceLeftMessage.i);
-
-    res.put(
-        6051,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.MapObstacleUpdateMessage::new);
 
     res.put(
         707,
@@ -2197,6 +2183,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6422, com.ankamagames.dofus.network.messages.game.guild.GuildInAllianceFactsMessage::new);
 
     res.put(5679, com.ankamagames.dofus.network.messages.game.friend.IgnoredAddFailureMessage::new);
+
+    res.put(
+        6664,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeStartedTaxCollectorShopMessage
+            ::new);
 
     res.put(
         6524,
@@ -2244,11 +2236,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        252,
-        com.ankamagames.dofus.network.messages.game.context.GameContextRemoveMultipleElementsMessage
-            ::new);
-
-    res.put(
         6357,
         com.ankamagames.dofus.network.messages.game.achievement
                 .AchievementDetailedListRequestMessage
@@ -2264,22 +2251,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6216, com.ankamagames.dofus.network.messages.game.approach.AccountCapabilitiesMessage::new);
 
     res.put(
-        5739,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.purchasable
-                .PurchasableDialogMessage
+        5735,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyResultMessage
             ::new);
 
     res.put(
         109, () -> com.ankamagames.dofus.network.messages.game.approach.AlreadyConnectedMessage.i);
 
     res.put(
-        6035,
-        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageObjectsRemoveMessage
-            ::new);
-
-    res.put(
-        6069,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSpectateMessage::new);
+        892, com.ankamagames.dofus.network.messages.game.chat.channel.EnabledChannelsMessage::new);
 
     res.put(
         6170,
@@ -2287,7 +2267,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .InventoryPresetSaveResultMessage
             ::new);
 
+    res.put(
+        6061,
+        com.ankamagames.dofus.network.messages.game.guild.GuildMemberOnlineStatusMessage::new);
+
     res.put(6587, com.ankamagames.dofus.network.messages.game.idol.IdolSelectRequestMessage::new);
+
+    res.put(6415, com.ankamagames.dofus.network.messages.game.guild.GuildFactsMessage::new);
 
     res.put(
         6219,
@@ -2306,18 +2292,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightCastRequestMessage
             ::new);
 
-    res.put(6658, com.ankamagames.dofus.network.messages.game.dare.DareSubscribedListMessage::new);
+    res.put(
+        5992,
+        com.ankamagames.dofus.network.messages.game.context.mount
+                .GameDataPaddockObjectListAddMessage
+            ::new);
+
+    res.put(30, com.ankamagames.dofus.network.messages.connection.ServersListMessage::new);
 
     res.put(
         6001,
         () ->
             com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeReplayStopMessage.i);
-
-    res.put(
-        6163,
-        com.ankamagames.dofus.network.messages.game.inventory.preset.InventoryPresetUseResultMessage
-            ::new);
 
     res.put(6506, com.ankamagames.dofus.network.messages.game.guest.GuestLimitationMessage::new);
 
@@ -2341,9 +2328,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(1508, com.ankamagames.dofus.network.messages.updater.parts.PartInfoMessage::new);
 
     res.put(
-        5733,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
-                .GameRolePlayPlayerFightFriendlyAnsweredMessage
+        6712,
+        com.ankamagames.dofus.network.messages.game.context.roleplay
+                .GameRolePlayShowMultipleActorsMessage
             ::new);
 
     res.put(6591, com.ankamagames.dofus.network.messages.game.guild.GuildMotdSetErrorMessage::new);
@@ -2354,11 +2341,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6263,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyInvitationDetailsMessage
+            ::new);
+
+    res.put(
         6143,
         com.ankamagames.dofus.network.messages.connection.search.AcquaintanceSearchErrorMessage
             ::new);
-
-    res.put(883, com.ankamagames.dofus.network.messages.game.chat.ChatServerWithObjectMessage::new);
 
     res.put(
         6382,
@@ -2366,11 +2357,21 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .FriendGuildSetWarnOnAchievementCompleteMessage
             ::new);
 
+    res.put(
+        5959,
+        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsPaddocksMessage::new);
+
     res.put(5673, com.ankamagames.dofus.network.messages.game.friend.IgnoredAddRequestMessage::new);
 
     res.put(
         5515,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMessage::new);
+
+    res.put(
+        6138,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
+                .PaddockToSellListMessage
+            ::new);
 
     res.put(
         6052,
@@ -2389,19 +2390,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             com.ankamagames.dofus.network.messages.game.prism.PrismModuleExchangeRequestMessage.i);
 
     res.put(
-        6614,
-        com.ankamagames.dofus.network.messages.game.inventory.preset.IdolsPresetUseResultMessage
+        5731,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
+                .GameRolePlayPlayerFightRequestMessage
             ::new);
+
+    res.put(5674, com.ankamagames.dofus.network.messages.game.friend.IgnoredListMessage::new);
 
     res.put(
         6246,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party
                 .DungeonPartyFinderListenRequestMessage
-            ::new);
-
-    res.put(
-        6252,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberEjectedMessage
             ::new);
 
     res.put(
@@ -2424,8 +2423,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.mount.MountRenameRequestMessage::new);
 
     res.put(
-        6537,
-        com.ankamagames.dofus.network.messages.game.startup.StartupActionsAllAttributionMessage
+        5743,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.MapRunningFightListMessage
             ::new);
 
     res.put(
@@ -2433,10 +2432,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.finishmoves.FinishMoveSetRequestMessage::new);
 
     res.put(
-        6044,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job
-                .JobCrafterDirectoryEntryMessage
-            ::new);
+        6206,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsQuantityMessage::new);
 
     res.put(
         714,
@@ -2450,8 +2447,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(1810, com.ankamagames.dofus.network.messages.game.pvp.SetEnablePVPRequestMessage::new);
 
-    res.put(30, com.ankamagames.dofus.network.messages.connection.ServersListMessage::new);
-
     res.put(
         3023,
         com.ankamagames.dofus.network.messages.game.inventory.items.ObjectQuantityMessage::new);
@@ -2461,8 +2456,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.fight.GameFightNewRoundMessage::new);
 
     res.put(
-        5698,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseKickRequestMessage
+        6039,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeObjectTransfertListToInvMessage
             ::new);
 
     res.put(
@@ -2475,12 +2471,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.achievement.AchievementDetailsRequestMessage
             ::new);
 
-    res.put(6292, com.ankamagames.dofus.network.messages.web.ankabox.NewMailMessage::new);
+    res.put(780, com.ankamagames.dofus.network.messages.game.basic.TextInformationMessage::new);
 
     res.put(
         6040, com.ankamagames.dofus.network.messages.game.prism.PrismFightStateUpdateMessage::new);
-
-    res.put(2001, com.ankamagames.dofus.network.messages.debug.DebugHighlightCellsMessage::new);
 
     res.put(
         6437, com.ankamagames.dofus.network.messages.game.prism.PrismSettingsRequestMessage::new);
@@ -2492,21 +2486,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6504,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSpectatorJoinMessage
-            ::new);
-
-    res.put(
-        6386,
-        com.ankamagames.dofus.network.messages.game.character.status.PlayerStatusUpdateMessage
-            ::new);
-
-    res.put(
-        6395, com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitationMessage::new);
-
-    res.put(
-        6162,
-        com.ankamagames.dofus.network.messages.game.inventory.items.InventoryContentAndPresetMessage
+        6717,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.quest.FollowedQuestsMessage
             ::new);
 
     res.put(
@@ -2533,9 +2514,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6249,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .DungeonPartyFinderRegisterRequestMessage
+        5521,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeKamaModifiedMessage
             ::new);
 
     res.put(6404, com.ankamagames.dofus.network.messages.game.guild.GuildFactsRequestMessage::new);
@@ -2547,39 +2527,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5615,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.npc
-                .TaxCollectorDialogQuestionExtendedMessage
-            ::new);
-
-    res.put(
-        6350,
-        com.ankamagames.dofus.network.messages.web.krosmaster.KrosmasterInventoryMessage::new);
-
-    res.put(
         111,
         () ->
             com.ankamagames.dofus.network.messages.game.approach.AuthenticationTicketAcceptedMessage
                 .i);
 
     res.put(
-        5589,
-        com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdatePartyMemberMessage
-            ::new);
-
-    res.put(
-        6114,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.visual
-                .GameRolePlaySpellAnimMessage
-            ::new);
-
-    res.put(
-        6612,
+        5905,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeBidHouseUnsoldItemsMessage
+                .ExchangeStartedBidSellerMessage
             ::new);
-
-    res.put(6682, com.ankamagames.dofus.network.messages.game.dare.DareWonListMessage::new);
 
     res.put(
         6450,
@@ -2590,28 +2547,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.items.WrapperObjectErrorMessage::new);
 
     res.put(
-        6647,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting
-                .TeleportHavenBagRequestMessage
-            ::new);
-
-    res.put(
         6407,
         com.ankamagames.dofus.network.messages.game.context.roleplay
                 .GameRolePlayShowActorWithEventMessage
             ::new);
 
     res.put(
-        5549,
-        com.ankamagames.dofus.network.messages.game.guild.GuildChangeMemberParametersMessage::new);
-
-    res.put(
         6654,
         com.ankamagames.dofus.network.messages.game.context.roleplay.spell.SpellModifySuccessMessage
             ::new);
-
-    res.put(
-        892, com.ankamagames.dofus.network.messages.game.chat.channel.EnabledChannelsMessage::new);
 
     res.put(
         6184,
@@ -2644,6 +2588,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () -> com.ankamagames.dofus.network.messages.game.friend.FriendSpouseJoinRequestMessage.i);
 
     res.put(
+        6561,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeMountsPaddockAddMessage
+            ::new);
+
+    res.put(
         5614,
         com.ankamagames.dofus.network.messages.game.context.fight.challenge
                 .ChallengeTargetsListRequestMessage
@@ -2661,8 +2611,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6321,
-        com.ankamagames.dofus.network.messages.game.character.stats.CharacterExperienceGainMessage
+        5752,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeTypesItemsExchangerDescriptionForUserMessage
             ::new);
 
     res.put(
@@ -2683,28 +2634,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6611,
-        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementsOfflineMessage
-            ::new);
-
-    res.put(
         5836,
         () ->
             com.ankamagames.dofus.network.messages.game.character.choice
                 .CharacterSelectedErrorMessage.i);
 
     res.put(
-        5576,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyJoinMessage::new);
-
-    res.put(
         6209,
         com.ankamagames.dofus.network.messages.connection.IdentificationSuccessWithLoginTokenMessage
-            ::new);
-
-    res.put(
-        167,
-        com.ankamagames.dofus.network.messages.game.character.replay.CharacterReplayRequestMessage
             ::new);
 
     res.put(
@@ -2713,8 +2650,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6293,
-        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyAnswerMessage
+        5773,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangePlayerRequestMessage
             ::new);
 
     res.put(6660, com.ankamagames.dofus.network.messages.game.dare.DareSubscribedMessage::new);
@@ -2722,6 +2659,11 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5639,
         com.ankamagames.dofus.network.messages.connection.register.NicknameChoiceRequestMessage
+            ::new);
+
+    res.put(
+        6036,
+        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageObjectsUpdateMessage
             ::new);
 
     res.put(
@@ -2740,22 +2682,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         41, com.ankamagames.dofus.network.messages.connection.SelectedServerRefusedMessage::new);
 
     res.put(
-        6054,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyUpdateLightMessage
-            ::new);
+        5677, com.ankamagames.dofus.network.messages.game.friend.IgnoredDeleteResultMessage::new);
 
     res.put(
-        5677, com.ankamagames.dofus.network.messages.game.friend.IgnoredDeleteResultMessage::new);
+        6662,
+        com.ankamagames.dofus.network.messages.common.basic.AggregateStatWithDataMessage::new);
 
     res.put(
         151,
         com.ankamagames.dofus.network.messages.game.character.choice.CharactersListMessage::new);
 
-    res.put(
-        6555,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeMountsStableAddMessage
-            ::new);
+    res.put(6677, com.ankamagames.dofus.network.messages.game.dare.DareRewardsListMessage::new);
 
     res.put(
         6229, com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarRefreshMessage::new);
@@ -2770,8 +2707,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6302,
+        com.ankamagames.dofus.network.messages.game.interactive.meeting
+                .TeleportBuddiesRequestedMessage
+            ::new);
+
+    res.put(
         6458,
         com.ankamagames.dofus.network.messages.game.inventory.items.MimicryObjectPreviewMessage
+            ::new);
+
+    res.put(
+        6358,
+        com.ankamagames.dofus.network.messages.game.achievement.AchievementDetailedListMessage
             ::new);
 
     res.put(5924, com.ankamagames.dofus.network.messages.game.friend.FriendUpdateMessage::new);
@@ -2791,18 +2739,31 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6578,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeCraftPaymentModifiedMessage
+            ::new);
+
+    res.put(
         6068,
         com.ankamagames.dofus.network.messages.game.character.choice.CharacterSelectedForceMessage
             ::new);
 
     res.put(
-        5897,
-        com.ankamagames.dofus.network.messages.game.prism.PrismFightAttackerRemoveMessage::new);
+        6634,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
+                .HavenBagFurnituresMessage
+            ::new);
 
     res.put(
-        6242,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .DungeonPartyFinderAvailableDungeonsMessage
+        6142,
+        com.ankamagames.dofus.network.messages.connection.search.AcquaintanceServerListMessage
+            ::new);
+
+    res.put(
+        6544,
+        com.ankamagames.dofus.network.messages.game.context.fight
+                .GameFightPlacementSwapPositionsMessage
             ::new);
 
     res.put(
@@ -2815,6 +2776,8 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5683,
         com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmotePlayMessage::new);
 
+    res.put(6440, com.ankamagames.dofus.network.messages.game.prism.PrismsListMessage::new);
+
     res.put(200, com.ankamagames.dofus.network.messages.game.context.GameContextCreateMessage::new);
 
     res.put(
@@ -2824,12 +2787,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         721, com.ankamagames.dofus.network.messages.game.context.fight.GameFightLeaveMessage::new);
 
     res.put(1506, com.ankamagames.dofus.network.messages.updater.parts.GetPartInfoMessage::new);
-
-    res.put(
-        6381,
-        com.ankamagames.dofus.network.messages.game.achievement
-                .AchievementFinishedInformationMessage
-            ::new);
 
     res.put(
         164,
@@ -2849,10 +2806,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6692,
         com.ankamagames.dofus.network.messages.game.alliance.AllianceBulletinSetErrorMessage::new);
 
-    res.put(
-        5919, com.ankamagames.dofus.network.messages.game.guild.GuildHousesInformationMessage::new);
-
     res.put(5607, com.ankamagames.dofus.network.messages.security.ClientKeyMessage::new);
+
+    res.put(
+        5747,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobMultiCraftAvailableSkillsMessage
+            ::new);
 
     res.put(
         3019, com.ankamagames.dofus.network.messages.game.inventory.items.ObjectUseMessage::new);
@@ -2877,25 +2837,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .OpenHavenBagFurnitureSequenceRequestMessage.i);
 
     res.put(
-        6569,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.DecraftResultMessage::new);
-
-    res.put(
         957,
         com.ankamagames.dofus.network.messages.game.actions.GameActionAcknowledgementMessage::new);
 
     res.put(
-        6214,
-        com.ankamagames.dofus.network.messages.game.context.fight.SlaveSwitchContextMessage::new);
+        6038,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeShopStockMultiMovementUpdatedMessage
+            ::new);
 
     res.put(
         3005, com.ankamagames.dofus.network.messages.game.inventory.items.ObjectDropMessage::new);
-
-    res.put(
-        6276,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
-                .GameRolePlayArenaFightPropositionMessage
-            ::new);
 
     res.put(
         5618,
@@ -2911,10 +2863,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6452, com.ankamagames.dofus.network.messages.game.prism.PrismFightAddedMessage::new);
 
     res.put(
-        5633,
-        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementMessage::new);
-
-    res.put(
         6493,
         com.ankamagames.dofus.network.messages.game.modificator.AreaFightModificatorUpdateMessage
             ::new);
@@ -2924,21 +2872,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.chat.channel.ChannelEnablingChangeMessage::new);
 
     res.put(
-        6596,
-        com.ankamagames.dofus.network.messages.game.chat.smiley.ChatSmileyExtraPackListMessage
-            ::new);
+        1200, com.ankamagames.dofus.network.messages.game.inventory.spells.SpellListMessage::new);
+
+    res.put(
+        5626,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.quest.QuestListMessage::new);
 
     res.put(
         6732,
         () ->
             com.ankamagames.dofus.network.messages.game.character.creation
                 .CharacterCanBeCreatedRequestMessage.i);
-
-    res.put(
-        6120,
-        com.ankamagames.dofus.network.messages.game.character.choice
-                .CharactersListWithModificationsMessage
-            ::new);
 
     res.put(
         719,
@@ -2986,33 +2930,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeBidHouseInListUpdatedMessage
             ::new);
 
-    res.put(
-        6470,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeObjectTransfertListWithQuantityToInvMessage
-            ::new);
-
     res.put(6028, com.ankamagames.dofus.network.messages.debug.DebugInClientMessage::new);
 
-    res.put(
-        5613,
-        com.ankamagames.dofus.network.messages.game.context.fight.challenge
-                .ChallengeTargetsListMessage
-            ::new);
-
     res.put(6580, com.ankamagames.dofus.network.messages.game.idol.IdolPartyLostMessage::new);
-
-    res.put(
-        6500,
-        com.ankamagames.dofus.network.messages.game.context.roleplay
-                .MapRunningFightDetailsExtendedMessage
-            ::new);
-
-    res.put(
-        5944,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.objects
-                .ObjectGroundRemovedMultipleMessage
-            ::new);
 
     res.put(
         6638,
@@ -3020,22 +2940,30 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ChangeHavenBagRoomRequestMessage
             ::new);
 
-    res.put(
-        5743,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.MapRunningFightListMessage
-            ::new);
+    res.put(883, com.ankamagames.dofus.network.messages.game.chat.ChatServerWithObjectMessage::new);
 
     res.put(
         6030, com.ankamagames.dofus.network.messages.game.inventory.items.GoldAddedMessage::new);
+
+    res.put(
+        5613,
+        com.ankamagames.dofus.network.messages.game.context.fight.challenge
+                .ChallengeTargetsListMessage
+            ::new);
+
+    res.put(
+        6470,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeObjectTransfertListWithQuantityToInvMessage
+            ::new);
 
     res.put(
         6144,
         com.ankamagames.dofus.network.messages.connection.search.AcquaintanceSearchMessage::new);
 
     res.put(
-        6518, com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewRequestMessage::new);
-
-    res.put(6408, com.ankamagames.dofus.network.messages.game.alliance.AllianceListMessage::new);
+        6299,
+        com.ankamagames.dofus.network.messages.game.context.dungeon.DungeonKeyRingMessage::new);
 
     res.put(
         5573, com.ankamagames.dofus.network.messages.game.subscriber.SubscriptionZoneMessage::new);
@@ -3045,20 +2973,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyNewMemberMessage
             ::new);
 
-    res.put(6372, com.ankamagames.dofus.network.messages.security.CheckIntegrityMessage::new);
-
-    res.put(
-        5735,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseBuyResultMessage
-            ::new);
-
     res.put(5952, com.ankamagames.dofus.network.messages.game.guild.GuildPaddockBoughtMessage::new);
-
-    res.put(
-        5949,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeBidHouseInListAddedMessage
-            ::new);
 
     res.put(
         6487,
@@ -3074,12 +2989,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6550,
-        com.ankamagames.dofus.network.messages.game.character.choice
-                .CharactersListWithRemodelingMessage
-            ::new);
-
-    res.put(
         6347,
         com.ankamagames.dofus.network.messages.web.krosmaster.KrosmasterPlayingStatusMessage::new);
 
@@ -3088,15 +2997,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.actions.sequence.SequenceStartMessage::new);
 
     res.put(
+        6611,
+        com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementsOfflineMessage
+            ::new);
+
+    res.put(
         5792,
         () ->
             com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeSellOkMessage
                 .i);
-
-    res.put(
-        6215,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightResumeWithSlavesMessage
-            ::new);
 
     res.put(
         6463, com.ankamagames.dofus.network.messages.game.ui.ClientUIOpenedByObjectMessage::new);
@@ -3120,30 +3029,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6584, com.ankamagames.dofus.network.messages.game.idol.IdolSelectErrorMessage::new);
 
     res.put(
-        5761,
+        5765,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartOkNpcShopMessage
+                .ExchangeTypesExchangerDescriptionForUserMessage
             ::new);
-
-    res.put(
-        6637,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
-                .HavenBagFurnituresRequestMessage
-            ::new);
-
-    res.put(
-        6618,
-        com.ankamagames.dofus.network.messages.game.context.GameRefreshMonsterBoostsMessage::new);
 
     res.put(
         5602,
         com.ankamagames.dofus.network.messages.game.friend.FriendSetWarnOnConnectionMessage::new);
-
-    res.put(
-        6578,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeCraftPaymentModifiedMessage
-            ::new);
 
     res.put(
         6171,
@@ -3157,6 +3050,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6073,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
+                .GameRolePlayAggressionMessage
+            ::new);
+
+    res.put(
+        6162,
+        com.ankamagames.dofus.network.messages.game.inventory.items.InventoryContentAndPresetMessage
+            ::new);
+
+    res.put(
         6004,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeObjectUseInWorkshopMessage
@@ -3165,6 +3069,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         251,
         com.ankamagames.dofus.network.messages.game.context.GameContextRemoveElementMessage::new);
+
+    res.put(
+        6550,
+        com.ankamagames.dofus.network.messages.game.character.choice
+                .CharactersListWithRemodelingMessage
+            ::new);
 
     res.put(
         6312,
@@ -3179,16 +3089,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5514,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeObjectMovePricedMessage
-            ::new);
-
-    res.put(
         6705,
         com.ankamagames.dofus.network.messages.game.context.roleplay.spell
                 .SpellVariantActivationMessage
             ::new);
+
+    res.put(
+        6256,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyInvitationCancelledForGuestMessage
+            ::new);
+
+    res.put(
+        1301, com.ankamagames.dofus.network.messages.game.startup.StartupActionsListMessage::new);
 
     res.put(
         5542,
@@ -3211,21 +3124,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6241,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .DungeonPartyFinderRegisterSuccessMessage
+        6722,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.quest
+                .RefreshFollowedQuestsOrderRequestMessage
             ::new);
 
-    res.put(
-        5696,
-        com.ankamagames.dofus.network.messages.game.context.GameEntitiesDispositionMessage::new);
+    res.put(180, com.ankamagames.dofus.network.messages.game.basic.BasicWhoIsMessage::new);
 
     res.put(
         5917,
         com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorMovementAddMessage::new);
-
-    res.put(
-        6388, com.ankamagames.dofus.network.messages.game.chat.smiley.MoodSmileyUpdateMessage::new);
 
     res.put(
         6523,
@@ -3237,6 +3145,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () ->
             com.ankamagames.dofus.network.messages.game.character.choice.CharactersListErrorMessage
                 .i);
+
+    res.put(5923, com.ankamagames.dofus.network.messages.game.guild.GuildMemberLeavingMessage::new);
+
+    res.put(6372, com.ankamagames.dofus.network.messages.security.CheckIntegrityMessage::new);
 
     res.put(
         6072,
@@ -3254,6 +3166,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorAttackedMessage::new);
 
     res.put(
+        6080,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyAbdicateThroneMessage
+            ::new);
+
+    res.put(
         700,
         com.ankamagames.dofus.network.messages.game.context.fight.GameFightStartingMessage::new);
 
@@ -3264,23 +3182,33 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6575,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
+                .GameRolePlayArenaSwitchToFightServerMessage
+            ::new);
+
+    res.put(
         1030,
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightPointsVariationMessage
             ::new);
 
     res.put(
-        5617,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcDialogQuestionMessage
+        6120,
+        com.ankamagames.dofus.network.messages.game.character.choice
+                .CharactersListWithModificationsMessage
             ::new);
-
-    res.put(6663, com.ankamagames.dofus.network.messages.game.dare.DareCreatedListMessage::new);
 
     res.put(
         6653,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.spell
                 .SpellModifyFailureMessage.i);
+
+    res.put(
+        1303,
+        com.ankamagames.dofus.network.messages.game.startup.StartupActionsObjetAttributionMessage
+            ::new);
 
     res.put(
         5999,
@@ -3291,29 +3219,23 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6443, com.ankamagames.dofus.network.messages.game.pvp.SetEnableAVARequestMessage::new);
 
     res.put(
-        5626,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.quest.QuestListMessage::new);
-
-    res.put(
         6730,
         com.ankamagames.dofus.network.messages.game.chat.community
                 .ChatCommunityChannelCommunityMessage
             ::new);
 
     res.put(
-        6556,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeMountsStableRemoveMessage
-            ::new);
-
-    res.put(
-        6722,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.quest
-                .RefreshFollowedQuestsOrderRequestMessage
+        6026,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
+                .GameDataPlayFarmObjectAnimationMessage
             ::new);
 
     res.put(
         6365, com.ankamagames.dofus.network.messages.game.tinsel.TitleSelectRequestMessage::new);
+
+    res.put(
+        6013,
+        com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdatePvpSeekMessage::new);
 
     res.put(
         6196, com.ankamagames.dofus.network.messages.game.chat.smiley.MoodSmileyResultMessage::new);
@@ -3323,15 +3245,21 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () -> com.ankamagames.dofus.network.messages.connection.register.NicknameAcceptedMessage.i);
 
     res.put(
+        6179,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.UpdateMountBoostMessage
+            ::new);
+
+    res.put(
         6217,
         com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightVanishMessage
             ::new);
 
-    res.put(
-        5953,
-        com.ankamagames.dofus.network.messages.game.context.mount.PaddockSellRequestMessage::new);
-
     res.put(6649, com.ankamagames.dofus.network.messages.web.haapi.HaapiApiKeyMessage::new);
+
+    res.put(
+        6475,
+        com.ankamagames.dofus.network.messages.game.character.choice.BasicCharactersListMessage
+            ::new);
 
     res.put(
         6192,
@@ -3344,25 +3272,31 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6386,
+        com.ankamagames.dofus.network.messages.game.character.status.PlayerStatusUpdateMessage
+            ::new);
+
+    res.put(
         6289,
         com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportBuddiesMessage
             ::new);
 
     res.put(
-        6559,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeMountsPaddockRemoveMessage
-            ::new);
+        6034,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectsDeletedMessage::new);
 
     res.put(
         821, com.ankamagames.dofus.network.messages.game.chat.report.ChatMessageReportMessage::new);
 
     res.put(6678, com.ankamagames.dofus.network.messages.game.dare.DareRewardWonMessage::new);
 
-    res.put(4002, com.ankamagames.dofus.network.messages.game.friend.FriendsListMessage::new);
-
     res.put(
-        6403, com.ankamagames.dofus.network.messages.game.alliance.AllianceInsiderInfoMessage::new);
+        5784,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangePlayerMultiCraftRequestMessage
+            ::new);
+
+    res.put(6292, com.ankamagames.dofus.network.messages.web.ankabox.NewMailMessage::new);
 
     res.put(
         5813,
@@ -3371,15 +3305,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeStartOkCraftMessage.i);
 
     res.put(
-        6554,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeMountsTakenFromPaddockMessage
+        713,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightTurnListMessage::new);
+
+    res.put(
+        5960,
+        com.ankamagames.dofus.network.messages.game.interactive.zaap.TeleportDestinationsListMessage
             ::new);
 
     res.put(
-        6329,
-        com.ankamagames.dofus.network.messages.game.inventory.preset
-                .InventoryPresetSaveCustomMessage
+        5819,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeStartOkJobIndexMessage
+            ::new);
+
+    res.put(
+        6554,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeMountsTakenFromPaddockMessage
             ::new);
 
     res.put(
@@ -3388,19 +3331,30 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6367,
-        com.ankamagames.dofus.network.messages.game.tinsel.TitlesAndOrnamentsListMessage::new);
-
-    res.put(
-        5577,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyFollowMemberRequestMessage
-            ::new);
-
-    res.put(
         5822,
         com.ankamagames.dofus.network.messages.game.context.roleplay.fight
                 .GameRolePlayFightRequestCanceledMessage
+            ::new);
+
+    res.put(
+        5549,
+        com.ankamagames.dofus.network.messages.game.guild.GuildChangeMemberParametersMessage::new);
+
+    res.put(
+        189, com.ankamagames.dofus.network.messages.server.basic.SystemMessageDisplayMessage::new);
+
+    res.put(
+        5719,
+        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersHelpersLeaveMessage
+            ::new);
+
+    res.put(
+        720, com.ankamagames.dofus.network.messages.game.context.fight.GameFightEndMessage::new);
+
+    res.put(
+        6262,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyInvitationDungeonDetailsMessage
             ::new);
 
     res.put(861, com.ankamagames.dofus.network.messages.game.chat.ChatClientMultiMessage::new);
@@ -3423,14 +3377,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6602,
         com.ankamagames.dofus.network.messages.game.inventory.preset.IdolsPresetDeleteMessage::new);
 
-    res.put(882, com.ankamagames.dofus.network.messages.game.chat.ChatServerCopyMessage::new);
-
-    res.put(
-        6026,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
-                .GameDataPlayFarmObjectAnimationMessage
-            ::new);
-
     res.put(40, com.ankamagames.dofus.network.messages.connection.ServerSelectionMessage::new);
 
     res.put(
@@ -3440,18 +3386,11 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6302,
-        com.ankamagames.dofus.network.messages.game.interactive.meeting
-                .TeleportBuddiesRequestedMessage
+        6532,
+        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeObjectsRemovedMessage
             ::new);
 
-    res.put(6731, com.ankamagames.dofus.network.messages.connection.MigratedServerListMessage::new);
-
     res.put(6366, com.ankamagames.dofus.network.messages.game.tinsel.TitleSelectedMessage::new);
-
-    res.put(
-        3016,
-        com.ankamagames.dofus.network.messages.game.inventory.items.InventoryContentMessage::new);
 
     res.put(
         5643,
@@ -3464,6 +3403,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         5518,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectMoveMessage
+            ::new);
+
+    res.put(
+        6637,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
+                .HavenBagFurnituresRequestMessage
             ::new);
 
     res.put(
@@ -3484,9 +3429,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeObjectAddedMessage
             ::new);
 
+    res.put(951, com.ankamagames.dofus.network.messages.game.context.GameMapMovementMessage::new);
+
     res.put(
-        713,
-        com.ankamagames.dofus.network.messages.game.context.fight.GameFightTurnListMessage::new);
+        6620,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
+                .HavenBagPackListMessage
+            ::new);
+
+    res.put(
+        6215,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightResumeWithSlavesMessage
+            ::new);
+
+    res.put(
+        5937,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
+                .GameRolePlayPlayerFightFriendlyRequestedMessage
+            ::new);
 
     res.put(
         6370, com.ankamagames.dofus.network.messages.game.tinsel.OrnamentSelectErrorMessage::new);
@@ -3583,11 +3543,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.chat.smiley.LocalizedChatSmileyMessage::new);
 
     res.put(
-        6533,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeObjectsModifiedMessage
-            ::new);
-
-    res.put(
         946,
         com.ankamagames.dofus.network.messages.game.context.GameMapChangeOrientationMessage::new);
 
@@ -3600,12 +3555,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         6270,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLoyaltyStatusMessage
-            ::new);
-
-    res.put(
-        6250,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .DungeonPartyFinderRoomContentUpdateMessage
             ::new);
 
     res.put(
@@ -3643,7 +3592,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(1513, com.ankamagames.dofus.network.messages.updater.parts.DownloadErrorMessage::new);
 
-    res.put(180, com.ankamagames.dofus.network.messages.game.basic.BasicWhoIsMessage::new);
+    res.put(
+        6704, com.ankamagames.dofus.network.messages.game.finishmoves.FinishMoveListMessage::new);
+
+    res.put(
+        5794,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeCraftInformationObjectMessage
+            ::new);
 
     res.put(
         5646,
@@ -3655,13 +3611,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(101, () -> com.ankamagames.dofus.network.messages.game.approach.HelloGameMessage.i);
 
     res.put(
-        5590,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyKickedByMessage
+        6392,
+        com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitationStateRecrutedMessage
             ::new);
 
     res.put(
-        6392,
-        com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitationStateRecrutedMessage
+        5984,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeStartedMountStockMessage
             ::new);
 
     res.put(
@@ -3682,19 +3639,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6061,
-        com.ankamagames.dofus.network.messages.game.guild.GuildMemberOnlineStatusMessage::new);
-
-    res.put(6253, com.ankamagames.dofus.network.messages.security.RawDataMessage::new);
-
-    res.put(
         6659, com.ankamagames.dofus.network.messages.game.dare.DareInformationsRequestMessage::new);
-
-    res.put(
-        6037,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeShopStockMultiMovementRemovedMessage
-            ::new);
 
     res.put(
         6394,
@@ -3709,11 +3654,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         () ->
             com.ankamagames.dofus.network.messages.game.context.GameContextCreateRequestMessage.i);
 
-    res.put(
-        6335,
-        com.ankamagames.dofus.network.messages.game.inventory.ObjectAveragePricesMessage::new);
-
-    res.put(6414, com.ankamagames.dofus.network.messages.game.alliance.AllianceFactsMessage::new);
+    res.put(6253, com.ankamagames.dofus.network.messages.security.RawDataMessage::new);
 
     res.put(
         5572,
@@ -3723,10 +3664,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6513, com.ankamagames.dofus.network.messages.game.friend.WarnOnPermaDeathStateMessage::new);
 
     res.put(
-        6161,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.paddock
-                .PaddockToSellFilterMessage
+        6137,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseToSellFilterMessage
             ::new);
+
+    res.put(
+        5897,
+        com.ankamagames.dofus.network.messages.game.prism.PrismFightAttackerRemoveMessage::new);
 
     res.put(
         5972,
@@ -3736,6 +3680,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         6540,
         () -> com.ankamagames.dofus.network.messages.game.approach.ReloginTokenRequestMessage.i);
+
+    res.put(
+        6276,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
+                .GameRolePlayArenaFightPropositionMessage
+            ::new);
 
     res.put(
         6546,
@@ -3754,12 +3704,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6639,
         com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
                 .ChangeThemeRequestMessage
-            ::new);
-
-    res.put(
-        5992,
-        com.ankamagames.dofus.network.messages.game.context.mount
-                .GameDataPaddockObjectListAddMessage
             ::new);
 
     res.put(
@@ -3787,15 +3731,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeBidHouseBuyResultMessage
             ::new);
 
+    res.put(6451, com.ankamagames.dofus.network.messages.game.prism.PrismsInfoValidMessage::new);
+
     res.put(
-        5716, com.ankamagames.dofus.network.messages.game.interactive.StatedMapUpdateMessage::new);
+        6329,
+        com.ankamagames.dofus.network.messages.game.inventory.preset
+                .InventoryPresetSaveCustomMessage
+            ::new);
 
     res.put(5546, com.ankamagames.dofus.network.messages.game.guild.GuildCreationValidMessage::new);
-
-    res.put(
-        5691,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.emote.EmotePlayMassiveMessage
-            ::new);
 
     res.put(
         300,
@@ -3803,10 +3747,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .GameRolePlayRemoveChallengeMessage
             ::new);
 
-    res.put(
-        5697,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.HouseSellRequestMessage
-            ::new);
+    res.put(6682, com.ankamagames.dofus.network.messages.game.dare.DareWonListMessage::new);
+
+    res.put(6297, com.ankamagames.dofus.network.messages.game.basic.NumericWhoIsMessage::new);
 
     res.put(
         5954,
@@ -3822,10 +3765,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(6058, com.ankamagames.dofus.network.messages.game.pvp.AlignmentRankUpdateMessage::new);
-
-    res.put(
-        6516,
-        com.ankamagames.dofus.network.messages.game.context.mount.PaddockBuyResultMessage::new);
 
     res.put(
         6264,
@@ -3845,36 +3784,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6416,
+        com.ankamagames.dofus.network.messages.game.context
+                .GameContextRemoveMultipleElementsWithEventsMessage
+            ::new);
+
+    res.put(
         6684, com.ankamagames.dofus.network.messages.game.social.SocialNoticeSetErrorMessage::new);
-
-    res.put(
-        6342,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyMemberInFightMessage
-            ::new);
-
-    res.put(
-        5558,
-        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsMembersMessage::new);
-
-    res.put(
-        6573, com.ankamagames.dofus.network.messages.common.basic.BasicStatWithDataMessage::new);
-
-    res.put(
-        6464,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeBidPriceForSellerMessage
-            ::new);
-
-    res.put(
-        6073,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
-                .GameRolePlayAggressionMessage
-            ::new);
-
-    res.put(
-        3003,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ObjectUseOnCharacterMessage
-            ::new);
 
     res.put(
         1511,
@@ -3887,6 +3803,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        5617,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcDialogQuestionMessage
+            ::new);
+
+    res.put(
+        6613,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeOfflineSoldItemsMessage
+            ::new);
+
+    res.put(
         6426,
         com.ankamagames.dofus.network.messages.game.alliance.AllianceChangeGuildRightsMessage::new);
 
@@ -3894,11 +3821,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         5704,
         com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guild
                 .HouseGuildShareRequestMessage
-            ::new);
-
-    res.put(
-        5773,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangePlayerRequestMessage
             ::new);
 
     res.put(
@@ -3921,16 +3843,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .ExchangeStartedWithStorageMessage
             ::new);
 
+    res.put(
+        5951,
+        com.ankamagames.dofus.network.messages.game.context.mount.PaddockBuyRequestMessage::new);
+
     res.put(5600, com.ankamagames.dofus.network.messages.game.friend.FriendAddFailureMessage::new);
 
     res.put(
         6466,
         com.ankamagames.dofus.network.messages.game.prism.PrismSetSabotagedRefusedMessage::new);
-
-    res.put(
-        6142,
-        com.ankamagames.dofus.network.messages.connection.search.AcquaintanceServerListMessage
-            ::new);
 
     res.put(
         6210,
@@ -3965,13 +3886,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(6081, com.ankamagames.dofus.network.messages.game.context.GameContextKickMessage::new);
 
     res.put(
-        6435, com.ankamagames.dofus.network.messages.game.guild.GuildVersatileInfoListMessage::new);
+        6434,
+        com.ankamagames.dofus.network.messages.game.approach.ServerSessionConstantsMessage::new);
 
     res.put(
         6130,
         com.ankamagames.dofus.network.messages.game.context.roleplay
                 .MapComplementaryInformationsDataInHouseMessage
             ::new);
+
+    res.put(5552, com.ankamagames.dofus.network.messages.game.guild.GuildInvitedMessage::new);
 
     res.put(
         5619,
@@ -4000,13 +3924,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         255, () -> com.ankamagames.dofus.network.messages.game.context.GameContextQuitMessage.i);
 
     res.put(
+        6321,
+        com.ankamagames.dofus.network.messages.game.character.stats.CharacterExperienceGainMessage
+            ::new);
+
+    res.put(
         6261,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyDeletedMessage
             ::new);
 
     res.put(
-        6315,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.houses.AccountHouseMessage
+        6647,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting
+                .TeleportHavenBagRequestMessage
             ::new);
 
     res.put(
@@ -4020,21 +3950,19 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.guild.GuildModificationEmblemValidMessage::new);
 
     res.put(
-        6620,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
-                .HavenBagPackListMessage
-            ::new);
-
-    res.put(
-        6592,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .JobBookSubscribeRequestMessage
+        5589,
+        com.ankamagames.dofus.network.messages.game.atlas.compass.CompassUpdatePartyMemberMessage
             ::new);
 
     res.put(
         6598,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeCrafterJobLevelupMessage
+            ::new);
+
+    res.put(
+        254,
+        com.ankamagames.dofus.network.messages.game.context.GameContextMoveMultipleElementsMessage
             ::new);
 
     res.put(
@@ -4067,27 +3995,26 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5655,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobDescriptionMessage
+        6599,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobExperienceOtherPlayerUpdateMessage
             ::new);
-
-    res.put(179, com.ankamagames.dofus.network.messages.game.basic.BasicWhoIsNoMatchMessage::new);
 
     res.put(
-        5592,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyKickRequestMessage
-            ::new);
+        5935,
+        com.ankamagames.dofus.network.messages.game.social.ContactLookRequestByIdMessage::new);
+
+    res.put(
+        6350,
+        com.ankamagames.dofus.network.messages.web.krosmaster.KrosmasterInventoryMessage::new);
+
+    res.put(179, com.ankamagames.dofus.network.messages.game.basic.BasicWhoIsNoMatchMessage::new);
 
     res.put(
         5981,
         () ->
             com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeMountStableErrorMessage.i);
-
-    res.put(
-        6532,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeObjectsRemovedMessage
-            ::new);
 
     res.put(
         6339,
@@ -4098,14 +4025,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6172, com.ankamagames.dofus.network.messages.game.context.mount.MountDataErrorMessage::new);
 
     res.put(
-        5521,
-        com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeKamaModifiedMessage
+        6044,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobCrafterDirectoryEntryMessage
             ::new);
 
     res.put(
-        5752,
+        6559,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeTypesItemsExchangerDescriptionForUserMessage
+                .ExchangeMountsPaddockRemoveMessage
             ::new);
 
     res.put(6135, com.ankamagames.dofus.network.messages.game.chat.ChatAdminServerMessage::new);
@@ -4125,8 +4053,18 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.character.stats.FighterStatsListMessage::new);
 
     res.put(
+        862,
+        com.ankamagames.dofus.network.messages.game.chat.ChatClientMultiWithObjectMessage::new);
+
+    res.put(
         6496,
         com.ankamagames.dofus.network.messages.game.context.GameCautiousMapMovementRequestMessage
+            ::new);
+
+    res.put(
+        5949,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeBidHouseInListAddedMessage
             ::new);
 
     res.put(
@@ -4136,13 +4074,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        6305,
-        com.ankamagames.dofus.network.messages.game.approach.ServerOptionalFeaturesMessage::new);
+        6303,
+        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyCloseMessage
+            ::new);
 
     res.put(
-        6474,
-        com.ankamagames.dofus.network.messages.game.context.fight
-                .GameFightSpectatePlayerRequestMessage
+        6035,
+        com.ankamagames.dofus.network.messages.game.inventory.storage.StorageObjectsRemoveMessage
             ::new);
 
     res.put(
@@ -4185,9 +4123,9 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5787,
+        5761,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeReplyTaxVendorMessage
+                .ExchangeStartOkNpcShopMessage
             ::new);
 
     res.put(
@@ -4204,6 +4142,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        5558,
+        com.ankamagames.dofus.network.messages.game.guild.GuildInformationsMembersMessage::new);
+
+    res.put(
         6000,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges
                 .ExchangeCraftResultWithObjectIdMessage
@@ -4216,9 +4158,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        884, com.ankamagames.dofus.network.messages.game.chat.ChatServerCopyWithObjectMessage::new);
-
-    res.put(
         6356, com.ankamagames.dofus.network.messages.game.friend.SpouseInformationsMessage::new);
 
     res.put(
@@ -4227,23 +4166,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .FriendSpouseFollowWithCompassRequestMessage
             ::new);
 
-    res.put(6440, com.ankamagames.dofus.network.messages.game.prism.PrismsListMessage::new);
-
     res.put(
         5680, com.ankamagames.dofus.network.messages.game.friend.IgnoredDeleteRequestMessage::new);
 
     res.put(
-        6263,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyInvitationDetailsMessage
-            ::new);
-
-    res.put(
-        5930, com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorListMessage::new);
-
-    res.put(
-        6087,
-        com.ankamagames.dofus.network.messages.game.context.notification.NotificationListMessage
+        5523,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeRequestedTradeMessage
             ::new);
 
     res.put(
@@ -4251,13 +4180,13 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyRestrictedMessage
             ::new);
 
-    res.put(6415, com.ankamagames.dofus.network.messages.game.guild.GuildFactsMessage::new);
-
     res.put(
         6471,
         () ->
             com.ankamagames.dofus.network.messages.game.initialization
                 .CharacterLoadingCompleteMessage.i);
+
+    res.put(4, com.ankamagames.dofus.network.messages.connection.IdentificationMessage::new);
 
     res.put(5562, () -> com.ankamagames.dofus.network.messages.game.guild.GuildLeftMessage.i);
 
@@ -4276,6 +4205,10 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.friend.FriendSetWarnOnLevelGainMessage::new);
 
     res.put(
+        6155,
+        com.ankamagames.dofus.network.messages.game.context.GameMapChangeOrientationsMessage::new);
+
+    res.put(
         5625,
         com.ankamagames.dofus.network.messages.game.context.roleplay.quest.QuestStepInfoMessage
             ::new);
@@ -4291,16 +4224,27 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.inventory.items.ObjectSetPositionMessage::new);
 
     res.put(
+        5581,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .PartyFollowStatusUpdateMessage
+            ::new);
+
+    res.put(
         5623,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.quest
                 .QuestListRequestMessage.i);
+
+    res.put(882, com.ankamagames.dofus.network.messages.game.chat.ChatServerCopyMessage::new);
 
     res.put(
         6729,
         com.ankamagames.dofus.network.messages.game.chat.community
                 .ChatCommunityChannelSetCommunityRequestMessage
             ::new);
+
+    res.put(
+        5901, com.ankamagames.dofus.network.messages.game.prism.PrismFightSwapRequestMessage::new);
 
     res.put(
         1304,
@@ -4329,21 +4273,34 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        950,
-        com.ankamagames.dofus.network.messages.game.context.GameMapMovementRequestMessage::new);
-
-    res.put(
         6282,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena
                 .GameRolePlayArenaUnregisterMessage.i);
 
     res.put(
-        5595,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLocateMembersMessage
+        6579,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeCraftPaymentModificationRequestMessage
             ::new);
 
-    res.put(780, com.ankamagames.dofus.network.messages.game.basic.TextInformationMessage::new);
+    res.put(
+        6388, com.ankamagames.dofus.network.messages.game.chat.smiley.MoodSmileyUpdateMessage::new);
+
+    res.put(
+        6335,
+        com.ankamagames.dofus.network.messages.game.inventory.ObjectAveragePricesMessage::new);
+
+    res.put(
+        5592,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyKickRequestMessage
+            ::new);
+
+    res.put(
+        5514,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeObjectMovePricedMessage
+            ::new);
 
     res.put(
         5807,
@@ -4351,20 +4308,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5719,
-        com.ankamagames.dofus.network.messages.game.guild.tax.GuildFightPlayersHelpersLeaveMessage
+        6293,
+        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyAnswerMessage
             ::new);
 
     res.put(
         5649,
         com.ankamagames.dofus.network.messages.game.context.roleplay.job
                 .JobCrafterDirectoryDefineSettingsMessage
-            ::new);
-
-    res.put(
-        6080,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyAbdicateThroneMessage
             ::new);
 
     res.put(
@@ -4384,7 +4335,7 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.roleplay.npc.NpcDialogReplyMessage
             ::new);
 
-    res.put(5636, com.ankamagames.dofus.network.messages.game.guild.GuildInfosUpgradeMessage::new);
+    res.put(6688, com.ankamagames.dofus.network.messages.game.social.SocialNoticeMessage::new);
 
     res.put(
         6615,
@@ -4397,18 +4348,25 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6569,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.DecraftResultMessage::new);
+
+    res.put(
         6519, com.ankamagames.dofus.network.messages.game.inventory.items.ObtainedItemMessage::new);
+
+    res.put(
+        6586,
+        com.ankamagames.dofus.network.messages.game.idol.IdolFightPreparationUpdateMessage::new);
 
     res.put(6154, com.ankamagames.dofus.network.messages.security.CheckFileRequestMessage::new);
 
     res.put(
-        5819,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartOkJobIndexMessage
-            ::new);
+        6521, com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewErrorMessage::new);
 
     res.put(
-        6521, com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewErrorMessage::new);
+        1004,
+        com.ankamagames.dofus.network.messages.game.actions.fight.GameActionFightTackledMessage
+            ::new);
 
     res.put(
         6492,
@@ -4421,16 +4379,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .roleplay
                 .treasureHunt
                 .PortalUseRequestMessage
-            ::new);
-
-    res.put(
-        5908,
-        com.ankamagames.dofus.network.messages.game.guild.ChallengeFightJoinRefusedMessage::new);
-
-    res.put(
-        6544,
-        com.ankamagames.dofus.network.messages.game.context.fight
-                .GameFightPlacementSwapPositionsMessage
             ::new);
 
     res.put(
@@ -4453,18 +4401,29 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.roleplay.party.AbstractPartyEventMessage
             ::new);
 
-    res.put(5923, com.ankamagames.dofus.network.messages.game.guild.GuildMemberLeavingMessage::new);
-
     res.put(
         210,
         com.ankamagames.dofus.network.messages.game.context.roleplay.MapFightCountMessage::new);
 
     res.put(
-        6127, com.ankamagames.dofus.network.messages.authorized.ConsoleCommandsListMessage::new);
+        6046,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job
+                .JobCrafterDirectoryListMessage
+            ::new);
+
+    res.put(6439, com.ankamagames.dofus.network.messages.game.alliance.KohUpdateMessage::new);
 
     res.put(6062, com.ankamagames.dofus.network.messages.game.guild.GuildLevelUpMessage::new);
 
     res.put(6681, com.ankamagames.dofus.network.messages.game.dare.DareWonMessage::new);
+
+    res.put(
+        950,
+        com.ankamagames.dofus.network.messages.game.context.GameMapMovementRequestMessage::new);
+
+    res.put(
+        6069,
+        com.ankamagames.dofus.network.messages.game.context.fight.GameFightSpectateMessage::new);
 
     res.put(
         5640,
@@ -4500,10 +4459,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(5663, com.ankamagames.dofus.network.messages.game.basic.BasicLatencyStatsMessage::new);
 
     res.put(
-        852,
-        com.ankamagames.dofus.network.messages.game.chat.ChatClientPrivateWithObjectMessage::new);
-
-    res.put(
         5900,
         () ->
             com.ankamagames.dofus.network.messages.game.context.roleplay.npc
@@ -4514,10 +4469,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.actions.fight
                 .GameActionFightTeleportOnSameMapMessage
             ::new);
-
-    res.put(
-        6434,
-        com.ankamagames.dofus.network.messages.game.approach.ServerSessionConstantsMessage::new);
 
     res.put(
         6129,
@@ -4535,18 +4486,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
                 .GameFightPlacementSwapPositionsAcceptMessage
             ::new);
 
-    res.put(6369, com.ankamagames.dofus.network.messages.game.tinsel.OrnamentSelectedMessage::new);
-
     res.put(
-        5751,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.MapRunningFightDetailsMessage
+        6054,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyUpdateLightMessage
             ::new);
 
-    res.put(183, com.ankamagames.dofus.network.messages.common.basic.BasicPongMessage::new);
+    res.put(6369, com.ankamagames.dofus.network.messages.game.tinsel.OrnamentSelectedMessage::new);
 
-    res.put(
-        6155,
-        com.ankamagames.dofus.network.messages.game.context.GameMapChangeOrientationsMessage::new);
+    res.put(183, com.ankamagames.dofus.network.messages.common.basic.BasicPongMessage::new);
 
     res.put(
         5632,
@@ -4555,17 +4502,16 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(5859, com.ankamagames.dofus.network.messages.game.prism.PrismInfoInValidMessage::new);
 
-    res.put(
-        6636,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag
-                .EnterHavenBagRequestMessage
-            ::new);
-
     res.put(6267, com.ankamagames.dofus.network.messages.secure.TrustStatusMessage::new);
 
     res.put(
         21,
         com.ankamagames.dofus.network.messages.connection.IdentificationFailedForBadVersionMessage
+            ::new);
+
+    res.put(
+        5586,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyInvitationMessage
             ::new);
 
     res.put(6505, com.ankamagames.dofus.network.messages.game.guest.GuestModeMessage::new);
@@ -4577,7 +4523,14 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        189, com.ankamagames.dofus.network.messages.server.basic.SystemMessageDisplayMessage::new);
+        6287,
+        com.ankamagames.dofus.network.messages.game.interactive.meeting.TeleportToBuddyOfferMessage
+            ::new);
+
+    res.put(
+        5590,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyKickedByMessage
+            ::new);
 
     res.put(5612, com.ankamagames.dofus.network.messages.game.context.ShowCellMessage::new);
 
@@ -4589,29 +4542,17 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(177, com.ankamagames.dofus.network.messages.game.basic.BasicDateMessage::new);
 
+    res.put(
+        5991,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeStartOkMountWithOutPaddockMessage
+            ::new);
+
     res.put(6071, com.ankamagames.dofus.network.messages.game.context.GameContextReadyMessage::new);
 
     res.put(1, com.ankamagames.dofus.network.messages.handshake.ProtocolRequired::new);
 
-    res.put(
-        6562,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeHandleMountsStableMessage
-            ::new);
-
-    res.put(
-        6256,
-        com.ankamagames.dofus.network.messages.game.context.roleplay.party
-                .PartyInvitationCancelledForGuestMessage
-            ::new);
-
     res.put(6594, com.ankamagames.dofus.network.messages.wtf.ClientYouAreDrunkMessage::new);
-
-    res.put(
-        5767,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartOkHumanVendorMessage
-            ::new);
 
     res.put(6266, com.ankamagames.dofus.network.messages.game.script.URLOpenMessage::new);
 
@@ -4619,6 +4560,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         6700,
         com.ankamagames.dofus.network.messages.game.context.fight.arena.ArenaFighterLeaveMessage
             ::new);
+
+    res.put(5537, com.ankamagames.dofus.network.messages.game.inventory.KamasUpdateMessage::new);
+
+    res.put(
+        6568,
+        com.ankamagames.dofus.network.messages.game.guild.tax.AbstractTaxCollectorListMessage::new);
 
     res.put(
         5634, com.ankamagames.dofus.network.messages.game.guild.tax.TaxCollectorErrorMessage::new);
@@ -4630,21 +4577,34 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5511,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeReadyMessage::new);
+        6103,
+        com.ankamagames.dofus.network.messages.game.context.notification.NotificationByServerMessage
+            ::new);
 
     res.put(
-        6664,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartedTaxCollectorShopMessage
-            ::new);
+        5511,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeReadyMessage::new);
 
     res.put(
         5755,
         com.ankamagames.dofus.network.messages.game.inventory.exchanges.ExchangeBidPriceMessage
             ::new);
 
+    res.put(
+        5642,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.npc
+                .MapNpcsQuestStatusUpdateMessage
+            ::new);
+
+    res.put(
+        6573, com.ankamagames.dofus.network.messages.common.basic.BasicStatWithDataMessage::new);
+
     res.put(2, () -> com.ankamagames.dofus.network.messages.common.NetworkDataContainerMessage.i);
+
+    res.put(
+        6614,
+        com.ankamagames.dofus.network.messages.game.inventory.preset.IdolsPresetUseResultMessage
+            ::new);
 
     res.put(
         5786,
@@ -4653,12 +4613,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
 
     res.put(
         6427, com.ankamagames.dofus.network.messages.game.alliance.AlliancePartialListMessage::new);
-
-    res.put(
-        6039,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeObjectTransfertListToInvMessage
-            ::new);
 
     res.put(
         6055,
@@ -4671,12 +4625,15 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.context.GameContextRefreshEntityLookMessage
             ::new);
 
-    res.put(5887, com.ankamagames.dofus.network.messages.game.guild.GuildKickRequestMessage::new);
-
     res.put(6517, com.ankamagames.dofus.network.messages.game.look.AccessoryPreviewMessage::new);
 
     res.put(
+        5716, com.ankamagames.dofus.network.messages.game.interactive.StatedMapUpdateMessage::new);
+
+    res.put(
         3004, com.ankamagames.dofus.network.messages.game.inventory.items.ObjectErrorMessage::new);
+
+    res.put(6079, com.ankamagames.dofus.network.messages.game.report.CharacterReportMessage::new);
 
     res.put(
         6160,
@@ -4690,12 +4647,6 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        5772,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeOnHumanVendorRequestMessage
-            ::new);
-
-    res.put(
         220, com.ankamagames.dofus.network.messages.game.context.roleplay.CurrentMapMessage::new);
 
     res.put(
@@ -4704,21 +4655,50 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
-        152,
-        com.ankamagames.dofus.network.messages.game.character.choice.CharacterSelectionMessage
+        5733,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.fight
+                .GameRolePlayPlayerFightFriendlyAnsweredMessage
             ::new);
 
     res.put(
-        5991,
-        com.ankamagames.dofus.network.messages.game.inventory.exchanges
-                .ExchangeStartOkMountWithOutPaddockMessage
+        6110,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.npc.EntityTalkMessage::new);
+
+    res.put(
+        5578,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party.PartyLeaderUpdateMessage
             ::new);
+
+    res.put(
+        160,
+        com.ankamagames.dofus.network.messages.game.character.creation
+                .CharacterCreationRequestMessage
+            ::new);
+
+    res.put(
+        6486,
+        com.ankamagames
+                .dofus
+                .network
+                .messages
+                .game
+                .context
+                .roleplay
+                .treasureHunt
+                .TreasureHuntMessage
+            ::new);
+
+    res.put(
+        5953,
+        com.ankamagames.dofus.network.messages.game.context.mount.PaddockSellRequestMessage::new);
 
     res.put(
         5864,
         com.ankamagames.dofus.network.messages.game.context.fight.character
                 .GameFightShowFighterMessage
             ::new);
+
+    res.put(6397, com.ankamagames.dofus.network.messages.game.alliance.AllianceInvitedMessage::new);
 
     res.put(
         6693,
@@ -4728,6 +4708,11 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
     res.put(
         6009,
         com.ankamagames.dofus.network.messages.game.inventory.items.ExchangeObjectPutInBagMessage
+            ::new);
+
+    res.put(
+        6593,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.job.JobBookSubscriptionMessage
             ::new);
 
     res.put(
@@ -4756,6 +4741,12 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
             ::new);
 
     res.put(
+        6183,
+        com.ankamagames.dofus.network.messages.game.inventory.exchanges
+                .ExchangeObjectTransfertListFromInvMessage
+            ::new);
+
+    res.put(
         5970, com.ankamagames.dofus.network.messages.game.context.mount.MountXpRatioMessage::new);
 
     res.put(
@@ -4772,18 +4763,24 @@ public class MessageReceiver extends SimpleNetworkComponentFactory<NetworkMessag
         com.ankamagames.dofus.network.messages.game.guild.tax.TopTaxCollectorListMessage::new);
 
     res.put(
+        6231, com.ankamagames.dofus.network.messages.game.shortcut.ShortcutBarContentMessage::new);
+
+    res.put(
         6248,
         com.ankamagames.dofus.network.messages.game.context.roleplay.party
                 .DungeonPartyFinderListenErrorMessage
             ::new);
 
     res.put(
-        6205, com.ankamagames.dofus.network.messages.game.achievement.AchievementListMessage::new);
-
-    res.put(
         5671,
         com.ankamagames.dofus.network.messages.game.context.roleplay.lockable
                 .LockableStateUpdateAbstractMessage
+            ::new);
+
+    res.put(
+        6247,
+        com.ankamagames.dofus.network.messages.game.context.roleplay.party
+                .DungeonPartyFinderRoomContentMessage
             ::new);
 
     res.put(

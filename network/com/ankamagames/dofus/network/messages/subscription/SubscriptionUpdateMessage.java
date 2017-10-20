@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.subscription;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SubscriptionUpdateMessage extends NetworkMessage {
   // f64
   public double timestamp;
 
-  public SubscriptionUpdateMessage()
-  {}
+  public SubscriptionUpdateMessage() {}
 
-  public SubscriptionUpdateMessage(double timestamp)
-  {
+  public SubscriptionUpdateMessage(double timestamp) {
     this.timestamp = timestamp;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6616;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.timestamp);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.timestamp = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SubscriptionUpdateMessage(" + "timestamp=" + this.timestamp + ')';
   }

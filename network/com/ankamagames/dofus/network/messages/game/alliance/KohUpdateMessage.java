@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -29,8 +29,7 @@ public class KohUpdateMessage extends NetworkMessage {
   // f64
   public double nextTickTime;
 
-  public KohUpdateMessage()
-  {}
+  public KohUpdateMessage() {}
 
   public KohUpdateMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations[] alliances,
@@ -41,8 +40,7 @@ public class KohUpdateMessage extends NetworkMessage {
           allianceMapWinner,
       int allianceMapWinnerScore,
       int allianceMapMyAllianceScore,
-      double nextTickTime)
-  {
+      double nextTickTime) {
     this.alliances = alliances;
     this.allianceNbMembers = allianceNbMembers;
     this.allianceRoundWeigth = allianceRoundWeigth;
@@ -64,8 +62,7 @@ public class KohUpdateMessage extends NetworkMessage {
           allianceMapWinner,
       int allianceMapWinnerScore,
       int allianceMapMyAllianceScore,
-      double nextTickTime)
-  {
+      double nextTickTime) {
     this.alliances =
         alliances.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations[]::new);
@@ -79,18 +76,15 @@ public class KohUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6439;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(alliances.length);
 
-    for (int i = 0; i < alliances.length; i++)
-  {
+    for (int i = 0; i < alliances.length; i++) {
 
       alliances[i].serialize(writer);
     }
@@ -107,16 +101,14 @@ public class KohUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int alliances_length = reader.read_ui16();
     this.alliances =
         new com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations
             [alliances_length];
 
-    for (int i = 0; i < alliances_length; i++)
-  {
+    for (int i = 0; i < alliances_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations alliances_it =
           new com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations();
@@ -142,8 +134,7 @@ public class KohUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "KohUpdateMessage("
         + "alliances="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class ExchangeTypesExchangerDescriptionForUserMessage extends NetworkMess
   // array,vi32
   public int[] typeDescription;
 
-  public ExchangeTypesExchangerDescriptionForUserMessage()
-  {}
+  public ExchangeTypesExchangerDescriptionForUserMessage() {}
 
-  public ExchangeTypesExchangerDescriptionForUserMessage(int[] typeDescription)
-  {
+  public ExchangeTypesExchangerDescriptionForUserMessage(int[] typeDescription) {
     this.typeDescription = typeDescription;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5765;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(typeDescription.length);
     writer.write_array_vi32(this.typeDescription);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int typeDescription_length = reader.read_ui16();
     this.typeDescription = reader.read_array_vi32(typeDescription_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeTypesExchangerDescriptionForUserMessage("
         + "typeDescription="

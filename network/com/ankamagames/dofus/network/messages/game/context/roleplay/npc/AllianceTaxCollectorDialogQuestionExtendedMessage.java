@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,8 +17,7 @@ public class AllianceTaxCollectorDialogQuestionExtendedMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
       alliance;
 
-  public AllianceTaxCollectorDialogQuestionExtendedMessage()
-  {}
+  public AllianceTaxCollectorDialogQuestionExtendedMessage() {}
 
   public AllianceTaxCollectorDialogQuestionExtendedMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo,
@@ -27,13 +26,12 @@ public class AllianceTaxCollectorDialogQuestionExtendedMessage
       short wisdom,
       byte taxCollectorsCount,
       int taxCollectorAttack,
-      java.math.BigInteger kamas,
-      java.math.BigInteger experience,
+      long kamas,
+      long experience,
       int pods,
-      java.math.BigInteger itemsValue,
+      long itemsValue,
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
-          alliance)
-  {
+          alliance) {
 
     super(
         guildInfo,
@@ -50,22 +48,19 @@ public class AllianceTaxCollectorDialogQuestionExtendedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6445;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.alliance.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.alliance =
@@ -75,8 +70,7 @@ public class AllianceTaxCollectorDialogQuestionExtendedMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceTaxCollectorDialogQuestionExtendedMessage("
         + "guildInfo="

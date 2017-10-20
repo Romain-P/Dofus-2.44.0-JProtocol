@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -32,8 +32,7 @@ public class GuildInfosUpgradeMessage extends NetworkMessage {
   // array,i16
   public short[] spellLevel;
 
-  public GuildInfosUpgradeMessage()
-  {}
+  public GuildInfosUpgradeMessage() {}
 
   public GuildInfosUpgradeMessage(
       byte maxTaxCollectorsCount,
@@ -45,8 +44,7 @@ public class GuildInfosUpgradeMessage extends NetworkMessage {
       short taxCollectorWisdom,
       short boostPoints,
       short[] spellId,
-      short[] spellLevel)
-  {
+      short[] spellLevel) {
     this.maxTaxCollectorsCount = maxTaxCollectorsCount;
     this.taxCollectorsCount = taxCollectorsCount;
     this.taxCollectorLifePoints = taxCollectorLifePoints;
@@ -60,14 +58,12 @@ public class GuildInfosUpgradeMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5636;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.maxTaxCollectorsCount);
     writer.write_i8(this.taxCollectorsCount);
     writer.write_vi16(this.taxCollectorLifePoints);
@@ -83,8 +79,7 @@ public class GuildInfosUpgradeMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.maxTaxCollectorsCount = reader.read_i8();
     this.taxCollectorsCount = reader.read_i8();
     this.taxCollectorLifePoints = reader.read_vi16();
@@ -102,8 +97,7 @@ public class GuildInfosUpgradeMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInfosUpgradeMessage("
         + "maxTaxCollectorsCount="

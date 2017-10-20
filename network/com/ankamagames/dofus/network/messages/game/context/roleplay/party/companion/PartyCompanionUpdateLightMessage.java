@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party.companion;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,48 +16,42 @@ public class PartyCompanionUpdateLightMessage
   // i8
   public byte indexId;
 
-  public PartyCompanionUpdateLightMessage()
-  {}
+  public PartyCompanionUpdateLightMessage() {}
 
   public PartyCompanionUpdateLightMessage(
       int partyId,
-      java.math.BigInteger id,
+      long id,
       int lifePoints,
       int maxLifePoints,
       short prospecting,
       short regenRate,
-      byte indexId)
-  {
+      byte indexId) {
 
     super(partyId, id, lifePoints, maxLifePoints, prospecting, regenRate);
     this.indexId = indexId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6472;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.indexId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.indexId = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyCompanionUpdateLightMessage("
         + "partyId="

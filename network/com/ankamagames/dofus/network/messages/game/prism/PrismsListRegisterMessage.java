@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class PrismsListRegisterMessage extends NetworkMessage {
   // i8
   public byte listen;
 
-  public PrismsListRegisterMessage()
-  {}
+  public PrismsListRegisterMessage() {}
 
-  public PrismsListRegisterMessage(byte listen)
-  {
+  public PrismsListRegisterMessage(byte listen) {
     this.listen = listen;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6441;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.listen);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.listen = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismsListRegisterMessage(" + "listen=" + this.listen + ')';
   }

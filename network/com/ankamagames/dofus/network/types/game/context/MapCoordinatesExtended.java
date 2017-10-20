@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class MapCoordinatesExtended
   // vi16
   public short subAreaId;
 
-  public MapCoordinatesExtended()
-  {}
+  public MapCoordinatesExtended() {}
 
-  public MapCoordinatesExtended(short worldX, short worldY, double mapId, short subAreaId)
-  {
+  public MapCoordinatesExtended(short worldX, short worldY, double mapId, short subAreaId) {
 
     super(worldX, worldY, mapId);
     this.subAreaId = subAreaId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 176;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.subAreaId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.subAreaId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapCoordinatesExtended("
         + "worldX="

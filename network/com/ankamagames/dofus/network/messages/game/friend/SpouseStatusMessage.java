@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SpouseStatusMessage extends NetworkMessage {
   // bool
   public boolean hasSpouse;
 
-  public SpouseStatusMessage()
-  {}
+  public SpouseStatusMessage() {}
 
-  public SpouseStatusMessage(boolean hasSpouse)
-  {
+  public SpouseStatusMessage(boolean hasSpouse) {
     this.hasSpouse = hasSpouse;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6265;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.hasSpouse);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.hasSpouse = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpouseStatusMessage(" + "hasSpouse=" + this.hasSpouse + ')';
   }

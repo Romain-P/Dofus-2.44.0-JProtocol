@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,8 @@ public class FriendOnlineInformations
   public boolean sex;
   // flag,_loc2_,1
   public boolean havenBagShared;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // str
   public java.lang.String playerName;
   // ui8
@@ -33,8 +33,7 @@ public class FriendOnlineInformations
   // com.ankamagames.dofus.network.types.game.character.status.PlayerStatus
   public com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status;
 
-  public FriendOnlineInformations()
-  {}
+  public FriendOnlineInformations() {}
 
   public FriendOnlineInformations(
       int accountId,
@@ -44,15 +43,14 @@ public class FriendOnlineInformations
       int achievementPoints,
       boolean sex,
       boolean havenBagShared,
-      java.math.BigInteger playerId,
+      long playerId,
       java.lang.String playerName,
       short level,
       byte alignmentSide,
       byte breed,
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo,
       short moodSmileyId,
-      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status)
-  {
+      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status) {
 
     super(accountId, accountName, playerState, lastConnection, achievementPoints);
     this.sex = sex;
@@ -68,14 +66,12 @@ public class FriendOnlineInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 92;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -83,7 +79,7 @@ public class FriendOnlineInformations
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.sex, 0);
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.havenBagShared, 1);
     writer.write_i8(_loc2_);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
     writer.write_str(this.playerName);
     writer.write_ui8(this.level);
     writer.write_i8(this.alignmentSide);
@@ -95,15 +91,14 @@ public class FriendOnlineInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
     int _loc2_ = reader.read_i8();
     this.sex = BooleanByteWrapper.getFlag(_loc2_, 0);
     this.havenBagShared = BooleanByteWrapper.getFlag(_loc2_, 1);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
     this.playerName = reader.read_str();
     this.level = reader.read_ui8();
     this.alignmentSide = reader.read_i8();
@@ -121,8 +116,7 @@ public class FriendOnlineInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendOnlineInformations("
         + "accountId="

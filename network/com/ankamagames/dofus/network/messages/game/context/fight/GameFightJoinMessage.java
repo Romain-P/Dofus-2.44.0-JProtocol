@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,8 +24,7 @@ public class GameFightJoinMessage extends NetworkMessage {
   // i8
   public byte fightType;
 
-  public GameFightJoinMessage()
-  {}
+  public GameFightJoinMessage() {}
 
   public GameFightJoinMessage(
       boolean isTeamPhase,
@@ -33,8 +32,7 @@ public class GameFightJoinMessage extends NetworkMessage {
       boolean canSayReady,
       boolean isFightStarted,
       short timeMaxBeforeFightStart,
-      byte fightType)
-  {
+      byte fightType) {
     this.isTeamPhase = isTeamPhase;
     this.canBeCancelled = canBeCancelled;
     this.canSayReady = canSayReady;
@@ -44,14 +42,12 @@ public class GameFightJoinMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 702;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isTeamPhase, 0);
@@ -64,8 +60,7 @@ public class GameFightJoinMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.isTeamPhase = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -77,8 +72,7 @@ public class GameFightJoinMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightJoinMessage("
         + "isTeamPhase="

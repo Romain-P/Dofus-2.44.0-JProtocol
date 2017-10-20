@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class ExchangeMountSterilizeFromPaddockMessage extends NetworkMessage {
   // str
   public java.lang.String sterilizator;
 
-  public ExchangeMountSterilizeFromPaddockMessage()
-  {}
+  public ExchangeMountSterilizeFromPaddockMessage() {}
 
   public ExchangeMountSterilizeFromPaddockMessage(
-      java.lang.String name, short worldX, short worldY, java.lang.String sterilizator)
-  {
+      java.lang.String name, short worldX, short worldY, java.lang.String sterilizator) {
     this.name = name;
     this.worldX = worldX;
     this.worldY = worldY;
@@ -33,14 +31,12 @@ public class ExchangeMountSterilizeFromPaddockMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6056;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
     writer.write_i16(this.worldX);
     writer.write_i16(this.worldY);
@@ -48,8 +44,7 @@ public class ExchangeMountSterilizeFromPaddockMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
     this.worldX = reader.read_i16();
     this.worldY = reader.read_i16();
@@ -57,8 +52,7 @@ public class ExchangeMountSterilizeFromPaddockMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeMountSterilizeFromPaddockMessage("
         + "name="

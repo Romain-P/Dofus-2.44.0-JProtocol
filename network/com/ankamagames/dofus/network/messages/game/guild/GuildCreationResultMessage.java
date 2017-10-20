@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildCreationResultMessage extends NetworkMessage {
   // i8
   public byte result;
 
-  public GuildCreationResultMessage()
-  {}
+  public GuildCreationResultMessage() {}
 
-  public GuildCreationResultMessage(byte result)
-  {
+  public GuildCreationResultMessage(byte result) {
     this.result = result;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5554;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.result);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.result = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildCreationResultMessage(" + "result=" + this.result + ')';
   }

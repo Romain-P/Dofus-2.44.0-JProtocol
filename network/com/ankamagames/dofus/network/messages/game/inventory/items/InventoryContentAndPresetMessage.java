@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class InventoryContentAndPresetMessage
   // array,com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset
   public com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset[] idolsPresets;
 
-  public InventoryContentAndPresetMessage()
-  {}
+  public InventoryContentAndPresetMessage() {}
 
   public InventoryContentAndPresetMessage(
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] objects,
-      java.math.BigInteger kamas,
+      long kamas,
       com.ankamagames.dofus.network.types.game.inventory.preset.Preset[] presets,
-      com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset[] idolsPresets)
-  {
+      com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset[] idolsPresets) {
 
     super(objects, kamas);
     this.presets = presets;
@@ -35,12 +33,11 @@ public class InventoryContentAndPresetMessage
   public InventoryContentAndPresetMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
           objects,
-      java.math.BigInteger kamas,
+      long kamas,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.inventory.preset.Preset>
           presets,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset>
-          idolsPresets)
-  {
+          idolsPresets) {
 
     super(objects, kamas);
     this.presets =
@@ -51,35 +48,30 @@ public class InventoryContentAndPresetMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6162;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(presets.length);
 
-    for (int i = 0; i < presets.length; i++)
-  {
+    for (int i = 0; i < presets.length; i++) {
 
       presets[i].serialize(writer);
     }
     writer.write_ui16(idolsPresets.length);
 
-    for (int i = 0; i < idolsPresets.length; i++)
-  {
+    for (int i = 0; i < idolsPresets.length; i++) {
 
       idolsPresets[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -87,8 +79,7 @@ public class InventoryContentAndPresetMessage
     this.presets =
         new com.ankamagames.dofus.network.types.game.inventory.preset.Preset[presets_length];
 
-    for (int i = 0; i < presets_length; i++)
-  {
+    for (int i = 0; i < presets_length; i++) {
 
       com.ankamagames.dofus.network.types.game.inventory.preset.Preset presets_it =
           new com.ankamagames.dofus.network.types.game.inventory.preset.Preset();
@@ -102,8 +93,7 @@ public class InventoryContentAndPresetMessage
         new com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset
             [idolsPresets_length];
 
-    for (int i = 0; i < idolsPresets_length; i++)
-  {
+    for (int i = 0; i < idolsPresets_length; i++) {
 
       com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset idolsPresets_it =
           new com.ankamagames.dofus.network.types.game.inventory.preset.IdolsPreset();
@@ -114,8 +104,7 @@ public class InventoryContentAndPresetMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryContentAndPresetMessage("
         + "objects="

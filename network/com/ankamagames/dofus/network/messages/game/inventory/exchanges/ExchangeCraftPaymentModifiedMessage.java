@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class ExchangeCraftPaymentModifiedMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6578;
-  // ui64
-  public java.math.BigInteger goldSum;
+  // vi64
+  public long goldSum;
 
-  public ExchangeCraftPaymentModifiedMessage()
-  {}
+  public ExchangeCraftPaymentModifiedMessage() {}
 
-  public ExchangeCraftPaymentModifiedMessage(java.math.BigInteger goldSum)
-  {
+  public ExchangeCraftPaymentModifiedMessage(long goldSum) {
     this.goldSum = goldSum;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6578;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.goldSum);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.goldSum);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.goldSum = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.goldSum = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeCraftPaymentModifiedMessage(" + "goldSum=" + this.goldSum + ')';
   }

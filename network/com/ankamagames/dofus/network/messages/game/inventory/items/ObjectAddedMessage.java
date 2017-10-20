@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,36 +14,30 @@ public class ObjectAddedMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem object;
 
-  public ObjectAddedMessage()
-  {}
+  public ObjectAddedMessage() {}
 
-  public ObjectAddedMessage(com.ankamagames.dofus.network.types.game.data.items.ObjectItem object)
-  {
+  public ObjectAddedMessage(com.ankamagames.dofus.network.types.game.data.items.ObjectItem object) {
     this.object = object;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3025;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.object.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.object = new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
     this.object.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectAddedMessage(" + "object=" + this.object + ')';
   }

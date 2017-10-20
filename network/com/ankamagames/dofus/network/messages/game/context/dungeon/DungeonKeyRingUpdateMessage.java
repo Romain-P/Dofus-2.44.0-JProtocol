@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.dungeon;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class DungeonKeyRingUpdateMessage extends NetworkMessage {
   // bool
   public boolean available;
 
-  public DungeonKeyRingUpdateMessage()
-  {}
+  public DungeonKeyRingUpdateMessage() {}
 
-  public DungeonKeyRingUpdateMessage(short dungeonId, boolean available)
-  {
+  public DungeonKeyRingUpdateMessage(short dungeonId, boolean available) {
     this.dungeonId = dungeonId;
     this.available = available;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6296;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.dungeonId);
     writer.write_bool(this.available);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dungeonId = reader.read_vi16();
     this.available = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonKeyRingUpdateMessage("
         + "dungeonId="

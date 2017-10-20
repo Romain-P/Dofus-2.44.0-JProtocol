@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,35 +16,30 @@ public class CharacterReplayWithRemodelRequestMessage
   // com.ankamagames.dofus.network.types.game.character.choice.RemodelingInformation
   public com.ankamagames.dofus.network.types.game.character.choice.RemodelingInformation remodel;
 
-  public CharacterReplayWithRemodelRequestMessage()
-  {}
+  public CharacterReplayWithRemodelRequestMessage() {}
 
   public CharacterReplayWithRemodelRequestMessage(
-      java.math.BigInteger characterId,
-      com.ankamagames.dofus.network.types.game.character.choice.RemodelingInformation remodel)
-  {
+      long characterId,
+      com.ankamagames.dofus.network.types.game.character.choice.RemodelingInformation remodel) {
 
     super(characterId);
     this.remodel = remodel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6551;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.remodel.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.remodel =
@@ -53,8 +48,7 @@ public class CharacterReplayWithRemodelRequestMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterReplayWithRemodelRequestMessage("
         + "characterId="

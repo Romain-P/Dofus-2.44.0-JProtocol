@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameFightMonsterWithAlignmentInformations
   public com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations
       alignmentInfos;
 
-  public GameFightMonsterWithAlignmentInformations()
-  {}
+  public GameFightMonsterWithAlignmentInformations() {}
 
   public GameFightMonsterWithAlignmentInformations(
       double contextualId,
@@ -31,8 +30,7 @@ public class GameFightMonsterWithAlignmentInformations
       short creatureGenericId,
       byte creatureGrade,
       com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations
-          alignmentInfos)
-  {
+          alignmentInfos) {
 
     super(
         contextualId,
@@ -49,22 +47,19 @@ public class GameFightMonsterWithAlignmentInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 203;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.alignmentInfos.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.alignmentInfos =
@@ -74,8 +69,7 @@ public class GameFightMonsterWithAlignmentInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightMonsterWithAlignmentInformations("
         + "contextualId="

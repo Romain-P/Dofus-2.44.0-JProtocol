@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class PresetItem extends NetworkType {
   // vi32
   public int objUid;
 
-  public PresetItem()
-  {}
+  public PresetItem() {}
 
-  public PresetItem(short position, short objGid, int objUid)
-  {
+  public PresetItem(short position, short objGid, int objUid) {
     this.position = position;
     this.objGid = objGid;
     this.objUid = objUid;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 354;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.position);
     writer.write_vi16(this.objGid);
     writer.write_vi32(this.objUid);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.position = reader.read_ui8();
     this.objGid = reader.read_vi16();
     this.objUid = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PresetItem("
         + "position="

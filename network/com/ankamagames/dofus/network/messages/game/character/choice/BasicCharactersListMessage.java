@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,21 +15,18 @@ public class BasicCharactersListMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
       characters;
 
-  public BasicCharactersListMessage()
-  {}
+  public BasicCharactersListMessage() {}
 
   public BasicCharactersListMessage(
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
-          characters)
-  {
+          characters) {
     this.characters = characters;
   }
 
   public BasicCharactersListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations>
-          characters)
-  {
+          characters) {
     this.characters =
         characters.toArray(
             com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
@@ -37,18 +34,15 @@ public class BasicCharactersListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6475;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(characters.length);
 
-    for (int i = 0; i < characters.length; i++)
-  {
+    for (int i = 0; i < characters.length; i++) {
 
       writer.write_ui16(characters[i].getProtocolId());
 
@@ -57,16 +51,14 @@ public class BasicCharactersListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int characters_length = reader.read_ui16();
     this.characters =
         new com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations
             [characters_length];
 
-    for (int i = 0; i < characters_length; i++)
-  {
+    for (int i = 0; i < characters_length; i++) {
 
       int characters_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations
@@ -80,8 +72,7 @@ public class BasicCharactersListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicCharactersListMessage("
         + "characters="

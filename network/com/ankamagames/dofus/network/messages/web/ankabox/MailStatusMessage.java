@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.web.ankabox;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class MailStatusMessage extends NetworkMessage {
   // vi16
   public short total;
 
-  public MailStatusMessage()
-  {}
+  public MailStatusMessage() {}
 
-  public MailStatusMessage(short unread, short total)
-  {
+  public MailStatusMessage(short unread, short total) {
     this.unread = unread;
     this.total = total;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6275;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.unread);
     writer.write_vi16(this.total);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.unread = reader.read_vi16();
     this.total = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MailStatusMessage(" + "unread=" + this.unread + ", total=" + this.total + ')';
   }

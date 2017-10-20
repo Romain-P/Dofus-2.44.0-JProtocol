@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class PartyLoyaltyStatusMessage
   // bool
   public boolean loyal;
 
-  public PartyLoyaltyStatusMessage()
-  {}
+  public PartyLoyaltyStatusMessage() {}
 
-  public PartyLoyaltyStatusMessage(int partyId, boolean loyal)
-  {
+  public PartyLoyaltyStatusMessage(int partyId, boolean loyal) {
 
     super(partyId);
     this.loyal = loyal;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6270;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.loyal);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.loyal = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyLoyaltyStatusMessage(" + "partyId=" + this.partyId + ", loyal=" + this.loyal + ')';
   }

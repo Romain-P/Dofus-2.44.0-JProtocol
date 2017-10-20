@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,39 +14,32 @@ public class HouseSellFromInsideRequestMessage
         .HouseSellRequestMessage {
   public static final int PROTOCOL_ID = 5884;
 
-  public HouseSellFromInsideRequestMessage()
-  {}
+  public HouseSellFromInsideRequestMessage() {}
 
-  public HouseSellFromInsideRequestMessage(
-      int instanceId, java.math.BigInteger amount, boolean forSale)
-  {
+  public HouseSellFromInsideRequestMessage(int instanceId, long amount, boolean forSale) {
 
     super(instanceId, amount, forSale);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5884;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseSellFromInsideRequestMessage("
         + "instanceId="

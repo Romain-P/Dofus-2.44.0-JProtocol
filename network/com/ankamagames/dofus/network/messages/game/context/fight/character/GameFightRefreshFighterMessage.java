@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight.character;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,31 +14,26 @@ public class GameFightRefreshFighterMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.GameContextActorInformations
   public com.ankamagames.dofus.network.types.game.context.GameContextActorInformations informations;
 
-  public GameFightRefreshFighterMessage()
-  {}
+  public GameFightRefreshFighterMessage() {}
 
   public GameFightRefreshFighterMessage(
-      com.ankamagames.dofus.network.types.game.context.GameContextActorInformations informations)
-  {
+      com.ankamagames.dofus.network.types.game.context.GameContextActorInformations informations) {
     this.informations = informations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6309;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.informations.getProtocolId());
     this.informations.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int informations_typeId = reader.read_ui16();
     this.informations =
@@ -48,8 +43,7 @@ public class GameFightRefreshFighterMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightRefreshFighterMessage(" + "informations=" + this.informations + ')';
   }

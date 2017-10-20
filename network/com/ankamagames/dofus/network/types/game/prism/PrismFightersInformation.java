@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class PrismFightersInformation extends NetworkType {
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
       enemyCharactersInformations;
 
-  public PrismFightersInformation()
-  {}
+  public PrismFightersInformation() {}
 
   public PrismFightersInformation(
       short subAreaId,
@@ -33,8 +32,7 @@ public class PrismFightersInformation extends NetworkType {
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
           allyCharactersInformations,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations[]
-          enemyCharactersInformations)
-  {
+          enemyCharactersInformations) {
     this.subAreaId = subAreaId;
     this.waitingForHelpInfo = waitingForHelpInfo;
     this.allyCharactersInformations = allyCharactersInformations;
@@ -52,8 +50,7 @@ public class PrismFightersInformation extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character
                   .CharacterMinimalPlusLookInformations>
-          enemyCharactersInformations)
-  {
+          enemyCharactersInformations) {
     this.subAreaId = subAreaId;
     this.waitingForHelpInfo = waitingForHelpInfo;
     this.allyCharactersInformations =
@@ -69,20 +66,17 @@ public class PrismFightersInformation extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 443;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.subAreaId);
     this.waitingForHelpInfo.serialize(writer);
     writer.write_ui16(allyCharactersInformations.length);
 
-    for (int i = 0; i < allyCharactersInformations.length; i++)
-  {
+    for (int i = 0; i < allyCharactersInformations.length; i++) {
 
       writer.write_ui16(allyCharactersInformations[i].getProtocolId());
 
@@ -90,8 +84,7 @@ public class PrismFightersInformation extends NetworkType {
     }
     writer.write_ui16(enemyCharactersInformations.length);
 
-    for (int i = 0; i < enemyCharactersInformations.length; i++)
-  {
+    for (int i = 0; i < enemyCharactersInformations.length; i++) {
 
       writer.write_ui16(enemyCharactersInformations[i].getProtocolId());
 
@@ -100,8 +93,7 @@ public class PrismFightersInformation extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.subAreaId = reader.read_vi16();
     this.waitingForHelpInfo =
         new com.ankamagames.dofus.network.types.game.fight.ProtectedEntityWaitingForHelpInfo();
@@ -112,8 +104,7 @@ public class PrismFightersInformation extends NetworkType {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
             [allyCharactersInformations_length];
 
-    for (int i = 0; i < allyCharactersInformations_length; i++)
-  {
+    for (int i = 0; i < allyCharactersInformations_length; i++) {
 
       int allyCharactersInformations_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
@@ -131,8 +122,7 @@ public class PrismFightersInformation extends NetworkType {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
             [enemyCharactersInformations_length];
 
-    for (int i = 0; i < enemyCharactersInformations_length; i++)
-  {
+    for (int i = 0; i < enemyCharactersInformations_length; i++) {
 
       int enemyCharactersInformations_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
@@ -147,8 +137,7 @@ public class PrismFightersInformation extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismFightersInformation("
         + "subAreaId="

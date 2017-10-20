@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,15 +16,13 @@ public class GameActionFightSummonMessage
   public com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations[]
       summons;
 
-  public GameActionFightSummonMessage()
-  {}
+  public GameActionFightSummonMessage() {}
 
   public GameActionFightSummonMessage(
       short actionId,
       double sourceId,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations[]
-          summons)
-  {
+          summons) {
 
     super(actionId, sourceId);
     this.summons = summons;
@@ -35,8 +33,7 @@ public class GameActionFightSummonMessage
       double sourceId,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations>
-          summons)
-  {
+          summons) {
 
     super(actionId, sourceId);
     this.summons =
@@ -46,20 +43,17 @@ public class GameActionFightSummonMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5825;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(summons.length);
 
-    for (int i = 0; i < summons.length; i++)
-  {
+    for (int i = 0; i < summons.length; i++) {
 
       writer.write_ui16(summons[i].getProtocolId());
 
@@ -68,8 +62,7 @@ public class GameActionFightSummonMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -78,8 +71,7 @@ public class GameActionFightSummonMessage
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations
             [summons_length];
 
-    for (int i = 0; i < summons_length; i++)
-  {
+    for (int i = 0; i < summons_length; i++) {
 
       int summons_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations
@@ -93,8 +85,7 @@ public class GameActionFightSummonMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightSummonMessage("
         + "actionId="

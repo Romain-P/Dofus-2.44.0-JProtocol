@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.spell;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class SpellItemBoostMessage extends NetworkMessage {
   // vi16
   public short value;
 
-  public SpellItemBoostMessage()
-  {}
+  public SpellItemBoostMessage() {}
 
-  public SpellItemBoostMessage(int statId, short spellId, short value)
-  {
+  public SpellItemBoostMessage(int statId, short spellId, short value) {
     this.statId = statId;
     this.spellId = spellId;
     this.value = value;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6011;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.statId);
     writer.write_vi16(this.spellId);
     writer.write_vi16(this.value);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.statId = reader.read_vi32();
     this.spellId = reader.read_vi16();
     this.value = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpellItemBoostMessage("
         + "statId="

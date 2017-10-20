@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class GameFightSpellCooldown extends NetworkType {
   // i8
   public byte cooldown;
 
-  public GameFightSpellCooldown()
-  {}
+  public GameFightSpellCooldown() {}
 
-  public GameFightSpellCooldown(int spellId, byte cooldown)
-  {
+  public GameFightSpellCooldown(int spellId, byte cooldown) {
     this.spellId = spellId;
     this.cooldown = cooldown;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 205;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.spellId);
     writer.write_i8(this.cooldown);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellId = reader.read_i32();
     this.cooldown = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightSpellCooldown("
         + "spellId="

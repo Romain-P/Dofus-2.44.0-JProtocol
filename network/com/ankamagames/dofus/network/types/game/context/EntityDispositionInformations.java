@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class EntityDispositionInformations extends NetworkType {
   // i8
   public byte direction;
 
-  public EntityDispositionInformations()
-  {}
+  public EntityDispositionInformations() {}
 
-  public EntityDispositionInformations(short cellId, byte direction)
-  {
+  public EntityDispositionInformations(short cellId, byte direction) {
     this.cellId = cellId;
     this.direction = direction;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 60;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i16(this.cellId);
     writer.write_i8(this.direction);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cellId = reader.read_i16();
     this.direction = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EntityDispositionInformations("
         + "cellId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,8 +22,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.look.EntityLook
   public com.ankamagames.dofus.network.types.game.look.EntityLook playerLook;
 
-  public JobCrafterDirectoryEntryMessage()
-  {}
+  public JobCrafterDirectoryEntryMessage() {}
 
   public JobCrafterDirectoryEntryMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job
@@ -32,8 +31,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobCrafterDirectoryEntryJobInfo
               []
           jobInfoList,
-      com.ankamagames.dofus.network.types.game.look.EntityLook playerLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook playerLook) {
     this.playerInfo = playerInfo;
     this.jobInfoList = jobInfoList;
     this.playerLook = playerLook;
@@ -47,8 +45,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.context.roleplay.job
                   .JobCrafterDirectoryEntryJobInfo>
           jobInfoList,
-      com.ankamagames.dofus.network.types.game.look.EntityLook playerLook)
-  {
+      com.ankamagames.dofus.network.types.game.look.EntityLook playerLook) {
     this.playerInfo = playerInfo;
     this.jobInfoList =
         jobInfoList.toArray(
@@ -60,19 +57,16 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6044;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.playerInfo.serialize(writer);
     writer.write_ui16(jobInfoList.length);
 
-    for (int i = 0; i < jobInfoList.length; i++)
-  {
+    for (int i = 0; i < jobInfoList.length; i++) {
 
       jobInfoList[i].serialize(writer);
     }
@@ -80,8 +74,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.playerInfo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job
             .JobCrafterDirectoryEntryPlayerInfo();
@@ -92,8 +85,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.job
                 .JobCrafterDirectoryEntryJobInfo[jobInfoList_length];
 
-    for (int i = 0; i < jobInfoList_length; i++)
-  {
+    for (int i = 0; i < jobInfoList_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobCrafterDirectoryEntryJobInfo
           jobInfoList_it =
@@ -108,8 +100,7 @@ public class JobCrafterDirectoryEntryMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryEntryMessage("
         + "playerInfo="

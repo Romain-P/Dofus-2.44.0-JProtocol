@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,28 +18,24 @@ public class GameContextActorInformations extends NetworkType {
   // com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations
   public com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition;
 
-  public GameContextActorInformations()
-  {}
+  public GameContextActorInformations() {}
 
   public GameContextActorInformations(
       double contextualId,
       com.ankamagames.dofus.network.types.game.look.EntityLook look,
-      com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition)
-  {
+      com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition) {
     this.contextualId = contextualId;
     this.look = look;
     this.disposition = disposition;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 150;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.contextualId);
     this.look.serialize(writer);
     writer.write_ui16(this.disposition.getProtocolId());
@@ -47,8 +43,7 @@ public class GameContextActorInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.contextualId = reader.read_f64();
     this.look = new com.ankamagames.dofus.network.types.game.look.EntityLook();
     this.look.deserialize(reader);
@@ -61,8 +56,7 @@ public class GameContextActorInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameContextActorInformations("
         + "contextualId="

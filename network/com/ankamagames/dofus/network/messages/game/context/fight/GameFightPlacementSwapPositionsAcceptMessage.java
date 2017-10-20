@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GameFightPlacementSwapPositionsAcceptMessage extends NetworkMessage
   // i32
   public int requestId;
 
-  public GameFightPlacementSwapPositionsAcceptMessage()
-  {}
+  public GameFightPlacementSwapPositionsAcceptMessage() {}
 
-  public GameFightPlacementSwapPositionsAcceptMessage(int requestId)
-  {
+  public GameFightPlacementSwapPositionsAcceptMessage(int requestId) {
     this.requestId = requestId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6547;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.requestId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.requestId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightPlacementSwapPositionsAcceptMessage(" + "requestId=" + this.requestId + ')';
   }

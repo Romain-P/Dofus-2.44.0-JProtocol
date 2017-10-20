@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,53 +14,45 @@ public class StatedMapUpdateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.interactive.StatedElement
   public com.ankamagames.dofus.network.types.game.interactive.StatedElement[] statedElements;
 
-  public StatedMapUpdateMessage()
-  {}
+  public StatedMapUpdateMessage() {}
 
   public StatedMapUpdateMessage(
-      com.ankamagames.dofus.network.types.game.interactive.StatedElement[] statedElements)
-  {
+      com.ankamagames.dofus.network.types.game.interactive.StatedElement[] statedElements) {
     this.statedElements = statedElements;
   }
 
   public StatedMapUpdateMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.interactive.StatedElement>
-          statedElements)
-  {
+          statedElements) {
     this.statedElements =
         statedElements.toArray(
             com.ankamagames.dofus.network.types.game.interactive.StatedElement[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5716;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(statedElements.length);
 
-    for (int i = 0; i < statedElements.length; i++)
-  {
+    for (int i = 0; i < statedElements.length; i++) {
 
       statedElements[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int statedElements_length = reader.read_ui16();
     this.statedElements =
         new com.ankamagames.dofus.network.types.game.interactive.StatedElement
             [statedElements_length];
 
-    for (int i = 0; i < statedElements_length; i++)
-  {
+    for (int i = 0; i < statedElements_length; i++) {
 
       com.ankamagames.dofus.network.types.game.interactive.StatedElement statedElements_it =
           new com.ankamagames.dofus.network.types.game.interactive.StatedElement();
@@ -71,8 +63,7 @@ public class StatedMapUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StatedMapUpdateMessage("
         + "statedElements="

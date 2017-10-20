@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class AdditionalTaxCollectorInformations extends NetworkType {
   // i32
   public int date;
 
-  public AdditionalTaxCollectorInformations()
-  {}
+  public AdditionalTaxCollectorInformations() {}
 
-  public AdditionalTaxCollectorInformations(java.lang.String collectorCallerName, int date)
-  {
+  public AdditionalTaxCollectorInformations(java.lang.String collectorCallerName, int date) {
     this.collectorCallerName = collectorCallerName;
     this.date = date;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 165;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.collectorCallerName);
     writer.write_i32(this.date);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.collectorCallerName = reader.read_str();
     this.date = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AdditionalTaxCollectorInformations("
         + "collectorCallerName="

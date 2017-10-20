@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,36 +18,31 @@ public class AllianceCreationValidMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.guild.GuildEmblem
   public com.ankamagames.dofus.network.types.game.guild.GuildEmblem allianceEmblem;
 
-  public AllianceCreationValidMessage()
-  {}
+  public AllianceCreationValidMessage() {}
 
   public AllianceCreationValidMessage(
       java.lang.String allianceName,
       java.lang.String allianceTag,
-      com.ankamagames.dofus.network.types.game.guild.GuildEmblem allianceEmblem)
-  {
+      com.ankamagames.dofus.network.types.game.guild.GuildEmblem allianceEmblem) {
     this.allianceName = allianceName;
     this.allianceTag = allianceTag;
     this.allianceEmblem = allianceEmblem;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6393;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.allianceName);
     writer.write_str(this.allianceTag);
     this.allianceEmblem.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.allianceName = reader.read_str();
     this.allianceTag = reader.read_str();
     this.allianceEmblem = new com.ankamagames.dofus.network.types.game.guild.GuildEmblem();
@@ -55,8 +50,7 @@ public class AllianceCreationValidMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceCreationValidMessage("
         + "allianceName="

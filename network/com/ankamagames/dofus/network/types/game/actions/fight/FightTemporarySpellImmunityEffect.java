@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class FightTemporarySpellImmunityEffect
   // i32
   public int immuneSpellId;
 
-  public FightTemporarySpellImmunityEffect()
-  {}
+  public FightTemporarySpellImmunityEffect() {}
 
   public FightTemporarySpellImmunityEffect(
       int uid,
@@ -26,38 +25,33 @@ public class FightTemporarySpellImmunityEffect
       short spellId,
       int effectId,
       int parentBoostUid,
-      int immuneSpellId)
-  {
+      int immuneSpellId) {
 
     super(uid, targetId, turnDuration, dispelable, spellId, effectId, parentBoostUid);
     this.immuneSpellId = immuneSpellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 366;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.immuneSpellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.immuneSpellId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTemporarySpellImmunityEffect("
         + "uid="

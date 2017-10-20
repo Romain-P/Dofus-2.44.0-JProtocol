@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class ArenaRankInfos extends NetworkType {
   // vi16
   public short fightcount;
 
-  public ArenaRankInfos()
-  {}
+  public ArenaRankInfos() {}
 
-  public ArenaRankInfos(short rank, short bestRank, short victoryCount, short fightcount)
-  {
+  public ArenaRankInfos(short rank, short bestRank, short victoryCount, short fightcount) {
     this.rank = rank;
     this.bestRank = bestRank;
     this.victoryCount = victoryCount;
@@ -32,14 +30,12 @@ public class ArenaRankInfos extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 499;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.rank);
     writer.write_vi16(this.bestRank);
     writer.write_vi16(this.victoryCount);
@@ -47,8 +43,7 @@ public class ArenaRankInfos extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.rank = reader.read_vi16();
     this.bestRank = reader.read_vi16();
     this.victoryCount = reader.read_vi16();
@@ -56,8 +51,7 @@ public class ArenaRankInfos extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ArenaRankInfos("
         + "rank="

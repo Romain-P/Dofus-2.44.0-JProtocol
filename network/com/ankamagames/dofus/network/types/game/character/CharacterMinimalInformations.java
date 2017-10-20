@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class CharacterMinimalInformations
   // ui8
   public short level;
 
-  public CharacterMinimalInformations()
-  {}
+  public CharacterMinimalInformations() {}
 
-  public CharacterMinimalInformations(java.math.BigInteger id, java.lang.String name, short level)
-  {
+  public CharacterMinimalInformations(long id, java.lang.String name, short level) {
 
     super(id, name);
     this.level = level;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 110;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.level);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.level = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterMinimalInformations("
         + "id="

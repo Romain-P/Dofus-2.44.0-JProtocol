@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive.skill;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SkillActionDescription extends NetworkType {
   // vi16
   public short skillId;
 
-  public SkillActionDescription()
-  {}
+  public SkillActionDescription() {}
 
-  public SkillActionDescription(short skillId)
-  {
+  public SkillActionDescription(short skillId) {
     this.skillId = skillId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 102;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.skillId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.skillId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SkillActionDescription(" + "skillId=" + this.skillId + ')';
   }

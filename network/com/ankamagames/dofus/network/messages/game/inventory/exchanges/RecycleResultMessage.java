@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class RecycleResultMessage extends NetworkMessage {
   // vi32
   public int nuggetsForPlayer;
 
-  public RecycleResultMessage()
-  {}
+  public RecycleResultMessage() {}
 
-  public RecycleResultMessage(int nuggetsForPrism, int nuggetsForPlayer)
-  {
+  public RecycleResultMessage(int nuggetsForPrism, int nuggetsForPlayer) {
     this.nuggetsForPrism = nuggetsForPrism;
     this.nuggetsForPlayer = nuggetsForPlayer;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6601;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.nuggetsForPrism);
     writer.write_vi32(this.nuggetsForPlayer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.nuggetsForPrism = reader.read_vi32();
     this.nuggetsForPlayer = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "RecycleResultMessage("
         + "nuggetsForPrism="

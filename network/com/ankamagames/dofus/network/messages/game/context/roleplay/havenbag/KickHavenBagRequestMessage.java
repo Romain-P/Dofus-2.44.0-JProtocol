@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class KickHavenBagRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6652;
-  // ui64
-  public java.math.BigInteger guestId;
+  // vi64
+  public long guestId;
 
-  public KickHavenBagRequestMessage()
-  {}
+  public KickHavenBagRequestMessage() {}
 
-  public KickHavenBagRequestMessage(java.math.BigInteger guestId)
-  {
+  public KickHavenBagRequestMessage(long guestId) {
     this.guestId = guestId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6652;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.guestId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.guestId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.guestId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.guestId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "KickHavenBagRequestMessage(" + "guestId=" + this.guestId + ')';
   }

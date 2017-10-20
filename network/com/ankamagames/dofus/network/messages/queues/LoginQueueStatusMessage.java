@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.queues;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class LoginQueueStatusMessage extends NetworkMessage {
   // ui16
   public int total;
 
-  public LoginQueueStatusMessage()
-  {}
+  public LoginQueueStatusMessage() {}
 
-  public LoginQueueStatusMessage(int position, int total)
-  {
+  public LoginQueueStatusMessage(int position, int total) {
     this.position = position;
     this.total = total;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 10;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.position);
     writer.write_ui16(this.total);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.position = reader.read_ui16();
     this.total = reader.read_ui16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LoginQueueStatusMessage(" + "position=" + this.position + ", total=" + this.total + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,44 +16,38 @@ public class ExchangeCraftResultMagicWithObjectDescMessage
   // i8
   public byte magicPoolStatus;
 
-  public ExchangeCraftResultMagicWithObjectDescMessage()
-  {}
+  public ExchangeCraftResultMagicWithObjectDescMessage() {}
 
   public ExchangeCraftResultMagicWithObjectDescMessage(
       byte craftResult,
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemNotInContainer objectInfo,
-      byte magicPoolStatus)
-  {
+      byte magicPoolStatus) {
 
     super(craftResult, objectInfo);
     this.magicPoolStatus = magicPoolStatus;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6188;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.magicPoolStatus);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.magicPoolStatus = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeCraftResultMagicWithObjectDescMessage("
         + "craftResult="

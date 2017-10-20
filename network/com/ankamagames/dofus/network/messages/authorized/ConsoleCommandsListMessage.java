@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:21+02:00
 package com.ankamagames.dofus.network.messages.authorized;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,26 +18,22 @@ public class ConsoleCommandsListMessage extends NetworkMessage {
   // array,str
   public java.lang.String[] descriptions;
 
-  public ConsoleCommandsListMessage()
-  {}
+  public ConsoleCommandsListMessage() {}
 
   public ConsoleCommandsListMessage(
-      java.lang.String[] aliases, java.lang.String[] args, java.lang.String[] descriptions)
-  {
+      java.lang.String[] aliases, java.lang.String[] args, java.lang.String[] descriptions) {
     this.aliases = aliases;
     this.args = args;
     this.descriptions = descriptions;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6127;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(aliases.length);
     writer.write_array_str(this.aliases);
     writer.write_ui16(args.length);
@@ -47,8 +43,7 @@ public class ConsoleCommandsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int aliases_length = reader.read_ui16();
     this.aliases = reader.read_array_str(aliases_length);
@@ -61,8 +56,7 @@ public class ConsoleCommandsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ConsoleCommandsListMessage("
         + "aliases="

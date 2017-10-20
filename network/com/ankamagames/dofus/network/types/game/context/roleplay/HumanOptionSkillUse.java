@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,9 @@ public class HumanOptionSkillUse
   // f64
   public double skillEndTime;
 
-  public HumanOptionSkillUse()
-  {}
+  public HumanOptionSkillUse() {}
 
-  public HumanOptionSkillUse(int elementId, short skillId, double skillEndTime)
-  {
+  public HumanOptionSkillUse(int elementId, short skillId, double skillEndTime) {
 
     super();
     this.elementId = elementId;
@@ -32,14 +30,12 @@ public class HumanOptionSkillUse
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 495;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.elementId);
@@ -48,8 +44,7 @@ public class HumanOptionSkillUse
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.elementId = reader.read_vi32();
@@ -58,8 +53,7 @@ public class HumanOptionSkillUse
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionSkillUse("
         + "elementId="

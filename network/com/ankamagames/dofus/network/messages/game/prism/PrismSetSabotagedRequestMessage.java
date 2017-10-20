@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class PrismSetSabotagedRequestMessage extends NetworkMessage {
   // vi16
   public short subAreaId;
 
-  public PrismSetSabotagedRequestMessage()
-  {}
+  public PrismSetSabotagedRequestMessage() {}
 
-  public PrismSetSabotagedRequestMessage(short subAreaId)
-  {
+  public PrismSetSabotagedRequestMessage(short subAreaId) {
     this.subAreaId = subAreaId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6468;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.subAreaId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.subAreaId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismSetSabotagedRequestMessage(" + "subAreaId=" + this.subAreaId + ')';
   }

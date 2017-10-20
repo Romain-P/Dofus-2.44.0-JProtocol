@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class MountSetXpRatioRequestMessage extends NetworkMessage {
   // i8
   public byte xpRatio;
 
-  public MountSetXpRatioRequestMessage()
-  {}
+  public MountSetXpRatioRequestMessage() {}
 
-  public MountSetXpRatioRequestMessage(byte xpRatio)
-  {
+  public MountSetXpRatioRequestMessage(byte xpRatio) {
     this.xpRatio = xpRatio;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5989;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.xpRatio);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.xpRatio = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountSetXpRatioRequestMessage(" + "xpRatio=" + this.xpRatio + ')';
   }

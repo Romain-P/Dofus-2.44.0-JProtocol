@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class GameFightFighterNamedLightInformations
   // str
   public java.lang.String name;
 
-  public GameFightFighterNamedLightInformations()
-  {}
+  public GameFightFighterNamedLightInformations() {}
 
   public GameFightFighterNamedLightInformations(
       boolean sex,
@@ -26,38 +25,33 @@ public class GameFightFighterNamedLightInformations
       byte wave,
       short level,
       byte breed,
-      java.lang.String name)
-  {
+      java.lang.String name) {
 
     super(sex, alive, id, wave, level, breed);
     this.name = name;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 456;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.name);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.name = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterNamedLightInformations("
         + "sex="

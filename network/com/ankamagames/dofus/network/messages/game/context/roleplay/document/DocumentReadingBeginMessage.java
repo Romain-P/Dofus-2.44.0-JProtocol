@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.document;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class DocumentReadingBeginMessage extends NetworkMessage {
   // vi16
   public short documentId;
 
-  public DocumentReadingBeginMessage()
-  {}
+  public DocumentReadingBeginMessage() {}
 
-  public DocumentReadingBeginMessage(short documentId)
-  {
+  public DocumentReadingBeginMessage(short documentId) {
     this.documentId = documentId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5675;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.documentId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.documentId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DocumentReadingBeginMessage(" + "documentId=" + this.documentId + ')';
   }

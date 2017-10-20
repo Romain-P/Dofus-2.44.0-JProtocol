@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.objects;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ObjectGroundAddedMessage extends NetworkMessage {
   // vi16
   public short objectGID;
 
-  public ObjectGroundAddedMessage()
-  {}
+  public ObjectGroundAddedMessage() {}
 
-  public ObjectGroundAddedMessage(short cellId, short objectGID)
-  {
+  public ObjectGroundAddedMessage(short cellId, short objectGID) {
     this.cellId = cellId;
     this.objectGID = objectGID;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3017;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.cellId);
     writer.write_vi16(this.objectGID);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cellId = reader.read_vi16();
     this.objectGID = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectGroundAddedMessage("
         + "cellId="

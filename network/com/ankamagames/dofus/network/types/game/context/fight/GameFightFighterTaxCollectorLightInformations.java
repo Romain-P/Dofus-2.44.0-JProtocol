@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,8 +18,7 @@ public class GameFightFighterTaxCollectorLightInformations
   // vi16
   public short lastNameId;
 
-  public GameFightFighterTaxCollectorLightInformations()
-  {}
+  public GameFightFighterTaxCollectorLightInformations() {}
 
   public GameFightFighterTaxCollectorLightInformations(
       boolean sex,
@@ -29,8 +28,7 @@ public class GameFightFighterTaxCollectorLightInformations
       short level,
       byte breed,
       short firstNameId,
-      short lastNameId)
-  {
+      short lastNameId) {
 
     super(sex, alive, id, wave, level, breed);
     this.firstNameId = firstNameId;
@@ -38,14 +36,12 @@ public class GameFightFighterTaxCollectorLightInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 457;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.firstNameId);
@@ -53,8 +49,7 @@ public class GameFightFighterTaxCollectorLightInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.firstNameId = reader.read_vi16();
@@ -62,8 +57,7 @@ public class GameFightFighterTaxCollectorLightInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterTaxCollectorLightInformations("
         + "sex="

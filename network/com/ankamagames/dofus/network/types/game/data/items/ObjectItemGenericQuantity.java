@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class ObjectItemGenericQuantity
   // vi32
   public int quantity;
 
-  public ObjectItemGenericQuantity()
-  {}
+  public ObjectItemGenericQuantity() {}
 
-  public ObjectItemGenericQuantity(short objectGID, int quantity)
-  {
+  public ObjectItemGenericQuantity(short objectGID, int quantity) {
 
     super();
     this.objectGID = objectGID;
@@ -29,14 +27,12 @@ public class ObjectItemGenericQuantity
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 483;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.objectGID);
@@ -44,8 +40,7 @@ public class ObjectItemGenericQuantity
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.objectGID = reader.read_vi16();
@@ -53,8 +48,7 @@ public class ObjectItemGenericQuantity
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectItemGenericQuantity("
         + "objectGID="

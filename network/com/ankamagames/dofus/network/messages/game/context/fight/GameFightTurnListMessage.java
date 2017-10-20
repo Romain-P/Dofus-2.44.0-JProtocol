@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class GameFightTurnListMessage extends NetworkMessage {
   // array,f64
   public double[] deadsIds;
 
-  public GameFightTurnListMessage()
-  {}
+  public GameFightTurnListMessage() {}
 
-  public GameFightTurnListMessage(double[] ids, double[] deadsIds)
-  {
+  public GameFightTurnListMessage(double[] ids, double[] deadsIds) {
     this.ids = ids;
     this.deadsIds = deadsIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 713;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(ids.length);
     writer.write_array_f64(this.ids);
     writer.write_ui16(deadsIds.length);
@@ -41,8 +37,7 @@ public class GameFightTurnListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int ids_length = reader.read_ui16();
     this.ids = reader.read_array_f64(ids_length);
@@ -52,8 +47,7 @@ public class GameFightTurnListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightTurnListMessage("
         + "ids="

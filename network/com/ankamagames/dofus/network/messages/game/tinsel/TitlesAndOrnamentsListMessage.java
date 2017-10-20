@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.tinsel;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class TitlesAndOrnamentsListMessage extends NetworkMessage {
   // vi16
   public short activeOrnament;
 
-  public TitlesAndOrnamentsListMessage()
-  {}
+  public TitlesAndOrnamentsListMessage() {}
 
   public TitlesAndOrnamentsListMessage(
-      short[] titles, short[] ornaments, short activeTitle, short activeOrnament)
-  {
+      short[] titles, short[] ornaments, short activeTitle, short activeOrnament) {
     this.titles = titles;
     this.ornaments = ornaments;
     this.activeTitle = activeTitle;
@@ -33,14 +31,12 @@ public class TitlesAndOrnamentsListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6367;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(titles.length);
     writer.write_array_vi16(this.titles);
     writer.write_ui16(ornaments.length);
@@ -50,8 +46,7 @@ public class TitlesAndOrnamentsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int titles_length = reader.read_ui16();
     this.titles = reader.read_array_vi16(titles_length);
@@ -63,8 +58,7 @@ public class TitlesAndOrnamentsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TitlesAndOrnamentsListMessage("
         + "titles="

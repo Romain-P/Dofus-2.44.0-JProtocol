@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class LifePointsRegenEndMessage
   // vi32
   public int lifePointsGained;
 
-  public LifePointsRegenEndMessage()
-  {}
+  public LifePointsRegenEndMessage() {}
 
-  public LifePointsRegenEndMessage(int lifePoints, int maxLifePoints, int lifePointsGained)
-  {
+  public LifePointsRegenEndMessage(int lifePoints, int maxLifePoints, int lifePointsGained) {
 
     super(lifePoints, maxLifePoints);
     this.lifePointsGained = lifePointsGained;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5686;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.lifePointsGained);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.lifePointsGained = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LifePointsRegenEndMessage("
         + "lifePoints="

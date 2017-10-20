@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class InventoryPresetUpdateMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.inventory.preset.Preset
   public com.ankamagames.dofus.network.types.game.inventory.preset.Preset preset;
 
-  public InventoryPresetUpdateMessage()
-  {}
+  public InventoryPresetUpdateMessage() {}
 
   public InventoryPresetUpdateMessage(
-      com.ankamagames.dofus.network.types.game.inventory.preset.Preset preset)
-  {
+      com.ankamagames.dofus.network.types.game.inventory.preset.Preset preset) {
     this.preset = preset;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6171;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.preset.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.preset = new com.ankamagames.dofus.network.types.game.inventory.preset.Preset();
     this.preset.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetUpdateMessage(" + "preset=" + this.preset + ')';
   }

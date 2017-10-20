@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeStartOkNpcTradeMessage extends NetworkMessage {
   // f64
   public double npcId;
 
-  public ExchangeStartOkNpcTradeMessage()
-  {}
+  public ExchangeStartOkNpcTradeMessage() {}
 
-  public ExchangeStartOkNpcTradeMessage(double npcId)
-  {
+  public ExchangeStartOkNpcTradeMessage(double npcId) {
     this.npcId = npcId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5785;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.npcId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.npcId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkNpcTradeMessage(" + "npcId=" + this.npcId + ')';
   }

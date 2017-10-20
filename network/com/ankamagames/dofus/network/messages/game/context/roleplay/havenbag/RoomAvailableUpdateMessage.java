@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class RoomAvailableUpdateMessage extends NetworkMessage {
   // ui8
   public short nbRoom;
 
-  public RoomAvailableUpdateMessage()
-  {}
+  public RoomAvailableUpdateMessage() {}
 
-  public RoomAvailableUpdateMessage(short nbRoom)
-  {
+  public RoomAvailableUpdateMessage(short nbRoom) {
     this.nbRoom = nbRoom;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6630;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.nbRoom);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.nbRoom = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "RoomAvailableUpdateMessage(" + "nbRoom=" + this.nbRoom + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class GameActionMarkedCell extends NetworkType {
   // i8
   public byte cellsType;
 
-  public GameActionMarkedCell()
-  {}
+  public GameActionMarkedCell() {}
 
-  public GameActionMarkedCell(short cellId, byte zoneSize, int cellColor, byte cellsType)
-  {
+  public GameActionMarkedCell(short cellId, byte zoneSize, int cellColor, byte cellsType) {
     this.cellId = cellId;
     this.zoneSize = zoneSize;
     this.cellColor = cellColor;
@@ -32,14 +30,12 @@ public class GameActionMarkedCell extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 85;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.cellId);
     writer.write_i8(this.zoneSize);
     writer.write_i32(this.cellColor);
@@ -47,8 +43,7 @@ public class GameActionMarkedCell extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.cellId = reader.read_vi16();
     this.zoneSize = reader.read_i8();
     this.cellColor = reader.read_i32();
@@ -56,8 +51,7 @@ public class GameActionMarkedCell extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionMarkedCell("
         + "cellId="

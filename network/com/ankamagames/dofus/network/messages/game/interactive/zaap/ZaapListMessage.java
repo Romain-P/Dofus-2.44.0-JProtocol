@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.interactive.zaap;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class ZaapListMessage
   // f64
   public double spawnMapId;
 
-  public ZaapListMessage()
-  {}
+  public ZaapListMessage() {}
 
   public ZaapListMessage(
       byte teleporterType,
@@ -25,38 +24,33 @@ public class ZaapListMessage
       short[] subAreaIds,
       short[] costs,
       byte[] destTeleporterType,
-      double spawnMapId)
-  {
+      double spawnMapId) {
 
     super(teleporterType, mapIds, subAreaIds, costs, destTeleporterType);
     this.spawnMapId = spawnMapId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1604;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.spawnMapId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.spawnMapId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ZaapListMessage("
         + "teleporterType="

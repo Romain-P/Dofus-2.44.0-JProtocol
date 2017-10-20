@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class AbstractContactInformations extends NetworkType {
   // str
   public java.lang.String accountName;
 
-  public AbstractContactInformations()
-  {}
+  public AbstractContactInformations() {}
 
-  public AbstractContactInformations(int accountId, java.lang.String accountName)
-  {
+  public AbstractContactInformations(int accountId, java.lang.String accountName) {
     this.accountId = accountId;
     this.accountName = accountName;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 380;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.accountId);
     writer.write_str(this.accountName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.accountId = reader.read_i32();
     this.accountName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractContactInformations("
         + "accountId="

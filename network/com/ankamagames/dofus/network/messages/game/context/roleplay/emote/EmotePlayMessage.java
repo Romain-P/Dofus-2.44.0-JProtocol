@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.emote;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,11 +18,9 @@ public class EmotePlayMessage
   // i32
   public int accountId;
 
-  public EmotePlayMessage()
-  {}
+  public EmotePlayMessage() {}
 
-  public EmotePlayMessage(short emoteId, double emoteStartTime, double actorId, int accountId)
-  {
+  public EmotePlayMessage(short emoteId, double emoteStartTime, double actorId, int accountId) {
 
     super(emoteId, emoteStartTime);
     this.actorId = actorId;
@@ -30,14 +28,12 @@ public class EmotePlayMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5683;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.actorId);
@@ -45,8 +41,7 @@ public class EmotePlayMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.actorId = reader.read_f64();
@@ -54,8 +49,7 @@ public class EmotePlayMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EmotePlayMessage("
         + "emoteId="

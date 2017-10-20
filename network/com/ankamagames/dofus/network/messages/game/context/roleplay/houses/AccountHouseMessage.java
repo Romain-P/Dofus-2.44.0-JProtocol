@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,53 +14,45 @@ public class AccountHouseMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.house.AccountHouseInformations
   public com.ankamagames.dofus.network.types.game.house.AccountHouseInformations[] houses;
 
-  public AccountHouseMessage()
-  {}
+  public AccountHouseMessage() {}
 
   public AccountHouseMessage(
-      com.ankamagames.dofus.network.types.game.house.AccountHouseInformations[] houses)
-  {
+      com.ankamagames.dofus.network.types.game.house.AccountHouseInformations[] houses) {
     this.houses = houses;
   }
 
   public AccountHouseMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.house.AccountHouseInformations>
-          houses)
-  {
+          houses) {
     this.houses =
         houses.toArray(
             com.ankamagames.dofus.network.types.game.house.AccountHouseInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6315;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(houses.length);
 
-    for (int i = 0; i < houses.length; i++)
-  {
+    for (int i = 0; i < houses.length; i++) {
 
       houses[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int houses_length = reader.read_ui16();
     this.houses =
         new com.ankamagames.dofus.network.types.game.house.AccountHouseInformations[houses_length];
 
-    for (int i = 0; i < houses_length; i++)
-  {
+    for (int i = 0; i < houses_length; i++) {
 
       com.ankamagames.dofus.network.types.game.house.AccountHouseInformations houses_it =
           new com.ankamagames.dofus.network.types.game.house.AccountHouseInformations();
@@ -71,8 +63,7 @@ public class AccountHouseMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AccountHouseMessage(" + "houses=" + java.util.Arrays.toString(this.houses) + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class DungeonPartyFinderListenRequestMessage extends NetworkMessage {
   // vi16
   public short dungeonId;
 
-  public DungeonPartyFinderListenRequestMessage()
-  {}
+  public DungeonPartyFinderListenRequestMessage() {}
 
-  public DungeonPartyFinderListenRequestMessage(short dungeonId)
-  {
+  public DungeonPartyFinderListenRequestMessage(short dungeonId) {
     this.dungeonId = dungeonId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6246;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.dungeonId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dungeonId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonPartyFinderListenRequestMessage(" + "dungeonId=" + this.dungeonId + ')';
   }

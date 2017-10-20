@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class WrapperObjectDissociateRequestMessage extends NetworkMessage {
   // ui8
   public short hostPos;
 
-  public WrapperObjectDissociateRequestMessage()
-  {}
+  public WrapperObjectDissociateRequestMessage() {}
 
-  public WrapperObjectDissociateRequestMessage(int hostUID, short hostPos)
-  {
+  public WrapperObjectDissociateRequestMessage(int hostUID, short hostPos) {
     this.hostUID = hostUID;
     this.hostPos = hostPos;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6524;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.hostUID);
     writer.write_ui8(this.hostPos);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.hostUID = reader.read_vi32();
     this.hostPos = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "WrapperObjectDissociateRequestMessage("
         + "hostUID="

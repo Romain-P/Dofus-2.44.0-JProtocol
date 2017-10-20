@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class PartyNameUpdateMessage
   // str
   public java.lang.String partyName;
 
-  public PartyNameUpdateMessage()
-  {}
+  public PartyNameUpdateMessage() {}
 
-  public PartyNameUpdateMessage(int partyId, java.lang.String partyName)
-  {
+  public PartyNameUpdateMessage(int partyId, java.lang.String partyName) {
 
     super(partyId);
     this.partyName = partyName;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6502;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.partyName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.partyName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyNameUpdateMessage("
         + "partyId="

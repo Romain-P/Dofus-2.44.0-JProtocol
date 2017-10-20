@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,15 +17,13 @@ public class PaddockGuildedInformations
   // com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo;
 
-  public PaddockGuildedInformations()
-  {}
+  public PaddockGuildedInformations() {}
 
   public PaddockGuildedInformations(
-      java.math.BigInteger price,
+      long price,
       boolean locked,
       boolean deserted,
-      com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo) {
 
     super(price, locked);
     this.deserted = deserted;
@@ -33,14 +31,12 @@ public class PaddockGuildedInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 508;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.deserted);
@@ -48,8 +44,7 @@ public class PaddockGuildedInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.deserted = reader.read_bool();
@@ -59,8 +54,7 @@ public class PaddockGuildedInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockGuildedInformations("
         + "price="

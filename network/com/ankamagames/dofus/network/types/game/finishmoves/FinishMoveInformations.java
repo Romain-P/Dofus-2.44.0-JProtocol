@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.finishmoves;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class FinishMoveInformations extends NetworkType {
   // bool
   public boolean finishMoveState;
 
-  public FinishMoveInformations()
-  {}
+  public FinishMoveInformations() {}
 
-  public FinishMoveInformations(int finishMoveId, boolean finishMoveState)
-  {
+  public FinishMoveInformations(int finishMoveId, boolean finishMoveState) {
     this.finishMoveId = finishMoveId;
     this.finishMoveState = finishMoveState;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 506;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.finishMoveId);
     writer.write_bool(this.finishMoveState);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.finishMoveId = reader.read_i32();
     this.finishMoveState = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FinishMoveInformations("
         + "finishMoveId="

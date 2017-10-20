@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class GameRolePlayNpcQuestFlag extends NetworkType {
   // array,vi16
   public short[] questsToStartId;
 
-  public GameRolePlayNpcQuestFlag()
-  {}
+  public GameRolePlayNpcQuestFlag() {}
 
-  public GameRolePlayNpcQuestFlag(short[] questsToValidId, short[] questsToStartId)
-  {
+  public GameRolePlayNpcQuestFlag(short[] questsToValidId, short[] questsToStartId) {
     this.questsToValidId = questsToValidId;
     this.questsToStartId = questsToStartId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 384;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(questsToValidId.length);
     writer.write_array_vi16(this.questsToValidId);
     writer.write_ui16(questsToStartId.length);
@@ -41,8 +37,7 @@ public class GameRolePlayNpcQuestFlag extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int questsToValidId_length = reader.read_ui16();
     this.questsToValidId = reader.read_array_vi16(questsToValidId_length);
@@ -52,8 +47,7 @@ public class GameRolePlayNpcQuestFlag extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayNpcQuestFlag("
         + "questsToValidId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,15 +16,14 @@ public class AllianceInsiderPrismInformation
   public int lastTimeSlotModificationDate;
   // vi32
   public int lastTimeSlotModificationAuthorGuildId;
-  // ui64
-  public java.math.BigInteger lastTimeSlotModificationAuthorId;
+  // vi64
+  public long lastTimeSlotModificationAuthorId;
   // str
   public java.lang.String lastTimeSlotModificationAuthorName;
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] modulesObjects;
 
-  public AllianceInsiderPrismInformation()
-  {}
+  public AllianceInsiderPrismInformation() {}
 
   public AllianceInsiderPrismInformation(
       byte typeId,
@@ -34,10 +33,9 @@ public class AllianceInsiderPrismInformation
       int rewardTokenCount,
       int lastTimeSlotModificationDate,
       int lastTimeSlotModificationAuthorGuildId,
-      java.math.BigInteger lastTimeSlotModificationAuthorId,
+      long lastTimeSlotModificationAuthorId,
       java.lang.String lastTimeSlotModificationAuthorName,
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] modulesObjects)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] modulesObjects) {
 
     super(typeId, state, nextVulnerabilityDate, placementDate, rewardTokenCount);
     this.lastTimeSlotModificationDate = lastTimeSlotModificationDate;
@@ -55,11 +53,10 @@ public class AllianceInsiderPrismInformation
       int rewardTokenCount,
       int lastTimeSlotModificationDate,
       int lastTimeSlotModificationAuthorGuildId,
-      java.math.BigInteger lastTimeSlotModificationAuthorId,
+      long lastTimeSlotModificationAuthorId,
       java.lang.String lastTimeSlotModificationAuthorName,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
-          modulesObjects)
-  {
+          modulesObjects) {
 
     super(typeId, state, nextVulnerabilityDate, placementDate, rewardTokenCount);
     this.lastTimeSlotModificationDate = lastTimeSlotModificationDate;
@@ -72,45 +69,40 @@ public class AllianceInsiderPrismInformation
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 431;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.lastTimeSlotModificationDate);
     writer.write_vi32(this.lastTimeSlotModificationAuthorGuildId);
-    writer.write_ui64(this.lastTimeSlotModificationAuthorId);
+    writer.write_vi64(this.lastTimeSlotModificationAuthorId);
     writer.write_str(this.lastTimeSlotModificationAuthorName);
     writer.write_ui16(modulesObjects.length);
 
-    for (int i = 0; i < modulesObjects.length; i++)
-  {
+    for (int i = 0; i < modulesObjects.length; i++) {
 
       modulesObjects[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.lastTimeSlotModificationDate = reader.read_i32();
     this.lastTimeSlotModificationAuthorGuildId = reader.read_vi32();
-    this.lastTimeSlotModificationAuthorId = reader.read_ui64();
+    this.lastTimeSlotModificationAuthorId = reader.read_vi64();
     this.lastTimeSlotModificationAuthorName = reader.read_str();
 
     int modulesObjects_length = reader.read_ui16();
     this.modulesObjects =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[modulesObjects_length];
 
-    for (int i = 0; i < modulesObjects_length; i++)
-  {
+    for (int i = 0; i < modulesObjects_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem modulesObjects_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -121,8 +113,7 @@ public class AllianceInsiderPrismInformation
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceInsiderPrismInformation("
         + "typeId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class DareCanceledMessage extends NetworkMessage {
   // f64
   public double dareId;
 
-  public DareCanceledMessage()
-  {}
+  public DareCanceledMessage() {}
 
-  public DareCanceledMessage(double dareId)
-  {
+  public DareCanceledMessage(double dareId) {
     this.dareId = dareId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6679;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.dareId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dareId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareCanceledMessage(" + "dareId=" + this.dareId + ')';
   }

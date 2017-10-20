@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.notification;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class NotificationUpdateFlagMessage extends NetworkMessage {
   // vi16
   public short index;
 
-  public NotificationUpdateFlagMessage()
-  {}
+  public NotificationUpdateFlagMessage() {}
 
-  public NotificationUpdateFlagMessage(short index)
-  {
+  public NotificationUpdateFlagMessage(short index) {
     this.index = index;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6090;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.index);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.index = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NotificationUpdateFlagMessage(" + "index=" + this.index + ')';
   }

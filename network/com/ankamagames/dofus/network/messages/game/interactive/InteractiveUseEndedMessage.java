@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class InteractiveUseEndedMessage extends NetworkMessage {
   // vi16
   public short skillId;
 
-  public InteractiveUseEndedMessage()
-  {}
+  public InteractiveUseEndedMessage() {}
 
-  public InteractiveUseEndedMessage(int elemId, short skillId)
-  {
+  public InteractiveUseEndedMessage(int elemId, short skillId) {
     this.elemId = elemId;
     this.skillId = skillId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6112;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.elemId);
     writer.write_vi16(this.skillId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.elemId = reader.read_vi32();
     this.skillId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveUseEndedMessage("
         + "elemId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class AchievementFinishedMessage extends NetworkMessage {
   // ui8
   public short finishedlevel;
 
-  public AchievementFinishedMessage()
-  {}
+  public AchievementFinishedMessage() {}
 
-  public AchievementFinishedMessage(short id, short finishedlevel)
-  {
+  public AchievementFinishedMessage(short id, short finishedlevel) {
     this.id = id;
     this.finishedlevel = finishedlevel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6208;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.id);
     writer.write_ui8(this.finishedlevel);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_vi16();
     this.finishedlevel = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementFinishedMessage("
         + "id="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class EntityTalkMessage extends NetworkMessage {
   // array,str
   public java.lang.String[] parameters;
 
-  public EntityTalkMessage()
-  {}
+  public EntityTalkMessage() {}
 
-  public EntityTalkMessage(double entityId, short textId, java.lang.String[] parameters)
-  {
+  public EntityTalkMessage(double entityId, short textId, java.lang.String[] parameters) {
     this.entityId = entityId;
     this.textId = textId;
     this.parameters = parameters;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6110;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.entityId);
     writer.write_vi16(this.textId);
     writer.write_ui16(parameters.length);
@@ -44,8 +40,7 @@ public class EntityTalkMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.entityId = reader.read_f64();
     this.textId = reader.read_vi16();
 
@@ -54,8 +49,7 @@ public class EntityTalkMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EntityTalkMessage("
         + "entityId="

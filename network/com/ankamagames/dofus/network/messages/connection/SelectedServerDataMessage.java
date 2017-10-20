@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,16 +22,14 @@ public class SelectedServerDataMessage extends NetworkMessage {
   // array,i8
   public byte[] ticket;
 
-  public SelectedServerDataMessage()
-  {}
+  public SelectedServerDataMessage() {}
 
   public SelectedServerDataMessage(
       short serverId,
       java.lang.String address,
       int port,
       boolean canCreateNewCharacter,
-      byte[] ticket)
-  {
+      byte[] ticket) {
     this.serverId = serverId;
     this.address = address;
     this.port = port;
@@ -40,37 +38,33 @@ public class SelectedServerDataMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 42;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.serverId);
     writer.write_str(this.address);
     writer.write_ui16(this.port);
     writer.write_bool(this.canCreateNewCharacter);
-    writer.write_ui16(ticket.length);
+    writer.write_vi32(ticket.length);
     writer.write_array_i8(this.ticket);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.serverId = reader.read_vi16();
     this.address = reader.read_str();
     this.port = reader.read_ui16();
     this.canCreateNewCharacter = reader.read_bool();
 
-    int ticket_length = reader.read_ui16();
+    int ticket_length = reader.read_vi32();
     this.ticket = reader.read_array_i8(ticket_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SelectedServerDataMessage("
         + "serverId="

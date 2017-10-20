@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ChatClientMultiMessage
   // i8
   public byte channel;
 
-  public ChatClientMultiMessage()
-  {}
+  public ChatClientMultiMessage() {}
 
-  public ChatClientMultiMessage(java.lang.String content, byte channel)
-  {
+  public ChatClientMultiMessage(java.lang.String content, byte channel) {
 
     super(content);
     this.channel = channel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 861;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.channel);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.channel = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatClientMultiMessage("
         + "content="

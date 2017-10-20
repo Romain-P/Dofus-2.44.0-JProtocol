@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class GameRolePlayFightRequestCanceledMessage extends NetworkMessage {
   // f64
   public double targetId;
 
-  public GameRolePlayFightRequestCanceledMessage()
-  {}
+  public GameRolePlayFightRequestCanceledMessage() {}
 
-  public GameRolePlayFightRequestCanceledMessage(int fightId, double sourceId, double targetId)
-  {
+  public GameRolePlayFightRequestCanceledMessage(int fightId, double sourceId, double targetId) {
     this.fightId = fightId;
     this.sourceId = sourceId;
     this.targetId = targetId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5822;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.fightId);
     writer.write_f64(this.sourceId);
     writer.write_f64(this.targetId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i32();
     this.sourceId = reader.read_f64();
     this.targetId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayFightRequestCanceledMessage("
         + "fightId="

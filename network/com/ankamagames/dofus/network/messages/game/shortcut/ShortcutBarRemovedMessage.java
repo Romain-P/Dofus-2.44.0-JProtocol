@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ShortcutBarRemovedMessage extends NetworkMessage {
   // i8
   public byte slot;
 
-  public ShortcutBarRemovedMessage()
-  {}
+  public ShortcutBarRemovedMessage() {}
 
-  public ShortcutBarRemovedMessage(byte barType, byte slot)
-  {
+  public ShortcutBarRemovedMessage(byte barType, byte slot) {
     this.barType = barType;
     this.slot = slot;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6224;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.barType);
     writer.write_i8(this.slot);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.barType = reader.read_i8();
     this.slot = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutBarRemovedMessage(" + "barType=" + this.barType + ", slot=" + this.slot + ')';
   }

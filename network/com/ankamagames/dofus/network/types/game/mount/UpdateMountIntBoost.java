@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class UpdateMountIntBoost
   // i32
   public int value;
 
-  public UpdateMountIntBoost()
-  {}
+  public UpdateMountIntBoost() {}
 
-  public UpdateMountIntBoost(byte type, int value)
-  {
+  public UpdateMountIntBoost(byte type, int value) {
 
     super(type);
     this.value = value;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 357;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.value);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.value = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "UpdateMountIntBoost(" + "type=" + this.type + ", value=" + this.value + ')';
   }

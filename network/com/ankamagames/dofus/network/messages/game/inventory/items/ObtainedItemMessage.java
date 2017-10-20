@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ObtainedItemMessage extends NetworkMessage {
   // vi32
   public int baseQuantity;
 
-  public ObtainedItemMessage()
-  {}
+  public ObtainedItemMessage() {}
 
-  public ObtainedItemMessage(short genericId, int baseQuantity)
-  {
+  public ObtainedItemMessage(short genericId, int baseQuantity) {
     this.genericId = genericId;
     this.baseQuantity = baseQuantity;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6519;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.genericId);
     writer.write_vi32(this.baseQuantity);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.genericId = reader.read_vi16();
     this.baseQuantity = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObtainedItemMessage("
         + "genericId="

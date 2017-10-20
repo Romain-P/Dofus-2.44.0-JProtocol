@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.idol;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class Idol extends NetworkType {
   // vi16
   public short dropBonusPercent;
 
-  public Idol()
-  {}
+  public Idol() {}
 
-  public Idol(short id, short xpBonusPercent, short dropBonusPercent)
-  {
+  public Idol(short id, short xpBonusPercent, short dropBonusPercent) {
     this.id = id;
     this.xpBonusPercent = xpBonusPercent;
     this.dropBonusPercent = dropBonusPercent;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 489;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.id);
     writer.write_vi16(this.xpBonusPercent);
     writer.write_vi16(this.dropBonusPercent);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_vi16();
     this.xpBonusPercent = reader.read_vi16();
     this.dropBonusPercent = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "Idol("
         + "id="

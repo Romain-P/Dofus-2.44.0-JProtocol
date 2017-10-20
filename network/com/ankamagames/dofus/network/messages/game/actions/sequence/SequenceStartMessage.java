@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.sequence;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class SequenceStartMessage extends NetworkMessage {
   // f64
   public double authorId;
 
-  public SequenceStartMessage()
-  {}
+  public SequenceStartMessage() {}
 
-  public SequenceStartMessage(byte sequenceType, double authorId)
-  {
+  public SequenceStartMessage(byte sequenceType, double authorId) {
     this.sequenceType = sequenceType;
     this.authorId = authorId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 955;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.sequenceType);
     writer.write_f64(this.authorId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.sequenceType = reader.read_i8();
     this.authorId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SequenceStartMessage("
         + "sequenceType="

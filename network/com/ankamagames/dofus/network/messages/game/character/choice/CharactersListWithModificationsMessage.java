@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class CharactersListWithModificationsMessage
   public com.ankamagames.dofus.network.types.game.character.choice.CharacterToRelookInformation[]
       charactersToRelook;
 
-  public CharactersListWithModificationsMessage()
-  {}
+  public CharactersListWithModificationsMessage() {}
 
   public CharactersListWithModificationsMessage(
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
@@ -35,8 +34,7 @@ public class CharactersListWithModificationsMessage
       int[] charactersToRename,
       int[] unusableCharacters,
       com.ankamagames.dofus.network.types.game.character.choice.CharacterToRelookInformation[]
-          charactersToRelook)
-  {
+          charactersToRelook) {
 
     super(characters, hasStartupActions);
     this.charactersToRecolor = charactersToRecolor;
@@ -59,8 +57,7 @@ public class CharactersListWithModificationsMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character.choice
                   .CharacterToRelookInformation>
-          charactersToRelook)
-  {
+          charactersToRelook) {
 
     super(characters, hasStartupActions);
     this.charactersToRecolor =
@@ -77,20 +74,17 @@ public class CharactersListWithModificationsMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6120;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(charactersToRecolor.length);
 
-    for (int i = 0; i < charactersToRecolor.length; i++)
-  {
+    for (int i = 0; i < charactersToRecolor.length; i++) {
 
       charactersToRecolor[i].serialize(writer);
     }
@@ -100,16 +94,14 @@ public class CharactersListWithModificationsMessage
     writer.write_array_i32(this.unusableCharacters);
     writer.write_ui16(charactersToRelook.length);
 
-    for (int i = 0; i < charactersToRelook.length; i++)
-  {
+    for (int i = 0; i < charactersToRelook.length; i++) {
 
       charactersToRelook[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -118,8 +110,7 @@ public class CharactersListWithModificationsMessage
         new com.ankamagames.dofus.network.types.game.character.choice.CharacterToRecolorInformation
             [charactersToRecolor_length];
 
-    for (int i = 0; i < charactersToRecolor_length; i++)
-  {
+    for (int i = 0; i < charactersToRecolor_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.choice.CharacterToRecolorInformation
           charactersToRecolor_it =
@@ -141,8 +132,7 @@ public class CharactersListWithModificationsMessage
         new com.ankamagames.dofus.network.types.game.character.choice.CharacterToRelookInformation
             [charactersToRelook_length];
 
-    for (int i = 0; i < charactersToRelook_length; i++)
-  {
+    for (int i = 0; i < charactersToRelook_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.choice.CharacterToRelookInformation
           charactersToRelook_it =
@@ -155,8 +145,7 @@ public class CharactersListWithModificationsMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharactersListWithModificationsMessage("
         + "characters="

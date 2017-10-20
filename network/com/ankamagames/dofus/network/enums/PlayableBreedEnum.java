@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.enums;
 
 import java.util.Optional;
@@ -45,17 +45,13 @@ public enum PlayableBreedEnum {
 
   public final byte value;
 
-  private PlayableBreedEnum(byte value)
-  {
+  private PlayableBreedEnum(byte value) {
     this.value = value;
   }
 
-  public static Optional<PlayableBreedEnum> valueOf(byte value)
-  {
-    for (PlayableBreedEnum it : values())
-  {
-      if (it.value == value)
-  {
+  public static Optional<PlayableBreedEnum> valueOf(byte value) {
+    for (PlayableBreedEnum it : values()) {
+      if (it.value == value) {
         return Optional.of(it);
       }
     }

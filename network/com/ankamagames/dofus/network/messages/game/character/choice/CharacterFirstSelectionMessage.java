@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class CharacterFirstSelectionMessage
   // bool
   public boolean doTutorial;
 
-  public CharacterFirstSelectionMessage()
-  {}
+  public CharacterFirstSelectionMessage() {}
 
-  public CharacterFirstSelectionMessage(java.math.BigInteger id, boolean doTutorial)
-  {
+  public CharacterFirstSelectionMessage(long id, boolean doTutorial) {
 
     super(id);
     this.doTutorial = doTutorial;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6084;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.doTutorial);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.doTutorial = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterFirstSelectionMessage("
         + "id="

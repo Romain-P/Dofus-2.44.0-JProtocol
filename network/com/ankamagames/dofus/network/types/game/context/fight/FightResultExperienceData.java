@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -26,23 +26,22 @@ public class FightResultExperienceData
   public boolean showExperienceForMount;
   // flag,_loc2_,6
   public boolean isIncarnationExperience;
-  // ui64
-  public java.math.BigInteger experience;
-  // ui64
-  public java.math.BigInteger experienceLevelFloor;
-  // ui64
-  public java.math.BigInteger experienceNextLevelFloor;
-  // ui64
-  public java.math.BigInteger experienceFightDelta;
-  // ui64
-  public java.math.BigInteger experienceForGuild;
-  // ui64
-  public java.math.BigInteger experienceForMount;
+  // vi64
+  public long experience;
+  // vi64
+  public long experienceLevelFloor;
+  // vi64
+  public long experienceNextLevelFloor;
+  // vi64
+  public long experienceFightDelta;
+  // vi64
+  public long experienceForGuild;
+  // vi64
+  public long experienceForMount;
   // i8
   public byte rerollExperienceMul;
 
-  public FightResultExperienceData()
-  {}
+  public FightResultExperienceData() {}
 
   public FightResultExperienceData(
       boolean showExperience,
@@ -52,14 +51,13 @@ public class FightResultExperienceData
       boolean showExperienceForGuild,
       boolean showExperienceForMount,
       boolean isIncarnationExperience,
-      java.math.BigInteger experience,
-      java.math.BigInteger experienceLevelFloor,
-      java.math.BigInteger experienceNextLevelFloor,
-      java.math.BigInteger experienceFightDelta,
-      java.math.BigInteger experienceForGuild,
-      java.math.BigInteger experienceForMount,
-      byte rerollExperienceMul)
-  {
+      long experience,
+      long experienceLevelFloor,
+      long experienceNextLevelFloor,
+      long experienceFightDelta,
+      long experienceForGuild,
+      long experienceForMount,
+      byte rerollExperienceMul) {
 
     super();
     this.showExperience = showExperience;
@@ -79,14 +77,12 @@ public class FightResultExperienceData
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 192;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -99,18 +95,17 @@ public class FightResultExperienceData
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.showExperienceForMount, 5);
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isIncarnationExperience, 6);
     writer.write_i8(_loc2_);
-    writer.write_ui64(this.experience);
-    writer.write_ui64(this.experienceLevelFloor);
-    writer.write_ui64(this.experienceNextLevelFloor);
-    writer.write_ui64(this.experienceFightDelta);
-    writer.write_ui64(this.experienceForGuild);
-    writer.write_ui64(this.experienceForMount);
+    writer.write_vi64(this.experience);
+    writer.write_vi64(this.experienceLevelFloor);
+    writer.write_vi64(this.experienceNextLevelFloor);
+    writer.write_vi64(this.experienceFightDelta);
+    writer.write_vi64(this.experienceForGuild);
+    writer.write_vi64(this.experienceForMount);
     writer.write_i8(this.rerollExperienceMul);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -122,18 +117,17 @@ public class FightResultExperienceData
     this.showExperienceForGuild = BooleanByteWrapper.getFlag(_loc2_, 4);
     this.showExperienceForMount = BooleanByteWrapper.getFlag(_loc2_, 5);
     this.isIncarnationExperience = BooleanByteWrapper.getFlag(_loc2_, 6);
-    this.experience = reader.read_ui64();
-    this.experienceLevelFloor = reader.read_ui64();
-    this.experienceNextLevelFloor = reader.read_ui64();
-    this.experienceFightDelta = reader.read_ui64();
-    this.experienceForGuild = reader.read_ui64();
-    this.experienceForMount = reader.read_ui64();
+    this.experience = reader.read_vi64();
+    this.experienceLevelFloor = reader.read_vi64();
+    this.experienceNextLevelFloor = reader.read_vi64();
+    this.experienceFightDelta = reader.read_vi64();
+    this.experienceForGuild = reader.read_vi64();
+    this.experienceForMount = reader.read_vi64();
     this.rerollExperienceMul = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultExperienceData("
         + "showExperience="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class GuildCreationValidMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.guild.GuildEmblem
   public com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem;
 
-  public GuildCreationValidMessage()
-  {}
+  public GuildCreationValidMessage() {}
 
   public GuildCreationValidMessage(
       java.lang.String guildName,
-      com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem)
-  {
+      com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem) {
     this.guildName = guildName;
     this.guildEmblem = guildEmblem;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5546;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.guildName);
     this.guildEmblem.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.guildName = reader.read_str();
     this.guildEmblem = new com.ankamagames.dofus.network.types.game.guild.GuildEmblem();
     this.guildEmblem.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildCreationValidMessage("
         + "guildName="

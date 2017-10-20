@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class RefreshFollowedQuestsOrderRequestMessage extends NetworkMessage {
   // array,vi16
   public short[] quests;
 
-  public RefreshFollowedQuestsOrderRequestMessage()
-  {}
+  public RefreshFollowedQuestsOrderRequestMessage() {}
 
-  public RefreshFollowedQuestsOrderRequestMessage(short[] quests)
-  {
+  public RefreshFollowedQuestsOrderRequestMessage(short[] quests) {
     this.quests = quests;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6722;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(quests.length);
     writer.write_array_vi16(this.quests);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int quests_length = reader.read_ui16();
     this.quests = reader.read_array_vi16(quests_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "RefreshFollowedQuestsOrderRequestMessage("
         + "quests="

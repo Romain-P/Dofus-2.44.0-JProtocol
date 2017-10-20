@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,14 +18,12 @@ public class PaddockToSellListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell
   public com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell[] paddockList;
 
-  public PaddockToSellListMessage()
-  {}
+  public PaddockToSellListMessage() {}
 
   public PaddockToSellListMessage(
       short pageIndex,
       short totalPage,
-      com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell[] paddockList)
-  {
+      com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell[] paddockList) {
     this.pageIndex = pageIndex;
     this.totalPage = totalPage;
     this.paddockList = paddockList;
@@ -36,8 +34,7 @@ public class PaddockToSellListMessage extends NetworkMessage {
       short totalPage,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell>
-          paddockList)
-  {
+          paddockList) {
     this.pageIndex = pageIndex;
     this.totalPage = totalPage;
     this.paddockList =
@@ -46,28 +43,24 @@ public class PaddockToSellListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6138;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.pageIndex);
     writer.write_vi16(this.totalPage);
     writer.write_ui16(paddockList.length);
 
-    for (int i = 0; i < paddockList.length; i++)
-  {
+    for (int i = 0; i < paddockList.length; i++) {
 
       paddockList[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.pageIndex = reader.read_vi16();
     this.totalPage = reader.read_vi16();
 
@@ -76,8 +69,7 @@ public class PaddockToSellListMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell
             [paddockList_length];
 
-    for (int i = 0; i < paddockList_length; i++)
-  {
+    for (int i = 0; i < paddockList_length; i++) {
 
       com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell paddockList_it =
           new com.ankamagames.dofus.network.types.game.paddock.PaddockInformationsForSell();
@@ -88,8 +80,7 @@ public class PaddockToSellListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockToSellListMessage("
         + "pageIndex="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,12 +22,10 @@ public class PartyMemberGeoPosition extends NetworkType {
   // vi16
   public short subAreaId;
 
-  public PartyMemberGeoPosition()
-  {}
+  public PartyMemberGeoPosition() {}
 
   public PartyMemberGeoPosition(
-      int memberId, short worldX, short worldY, double mapId, short subAreaId)
-  {
+      int memberId, short worldX, short worldY, double mapId, short subAreaId) {
     this.memberId = memberId;
     this.worldX = worldX;
     this.worldY = worldY;
@@ -36,14 +34,12 @@ public class PartyMemberGeoPosition extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 378;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.memberId);
     writer.write_i16(this.worldX);
     writer.write_i16(this.worldY);
@@ -52,8 +48,7 @@ public class PartyMemberGeoPosition extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.memberId = reader.read_i32();
     this.worldX = reader.read_i16();
     this.worldY = reader.read_i16();
@@ -62,8 +57,7 @@ public class PartyMemberGeoPosition extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyMemberGeoPosition("
         + "memberId="

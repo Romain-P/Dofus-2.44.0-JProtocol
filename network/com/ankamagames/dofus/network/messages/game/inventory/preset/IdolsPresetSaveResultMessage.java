@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,38 +13,32 @@ public class IdolsPresetSaveResultMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.AbstractPresetSaveResultMessage {
   public static final int PROTOCOL_ID = 6604;
 
-  public IdolsPresetSaveResultMessage()
-  {}
+  public IdolsPresetSaveResultMessage() {}
 
-  public IdolsPresetSaveResultMessage(byte presetId, byte code)
-  {
+  public IdolsPresetSaveResultMessage(byte presetId, byte code) {
 
     super(presetId, code);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6604;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolsPresetSaveResultMessage("
         + "presetId="

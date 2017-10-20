@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class TreasureHuntFlag extends NetworkType {
   // i8
   public byte state;
 
-  public TreasureHuntFlag()
-  {}
+  public TreasureHuntFlag() {}
 
-  public TreasureHuntFlag(double mapId, byte state)
-  {
+  public TreasureHuntFlag(double mapId, byte state) {
     this.mapId = mapId;
     this.state = state;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 473;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.mapId);
     writer.write_i8(this.state);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mapId = reader.read_f64();
     this.state = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntFlag(" + "mapId=" + this.mapId + ", state=" + this.state + ')';
   }

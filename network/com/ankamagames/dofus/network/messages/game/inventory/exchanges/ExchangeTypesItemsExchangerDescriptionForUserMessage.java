@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,55 +15,47 @@ public class ExchangeTypesItemsExchangerDescriptionForUserMessage extends Networ
   public com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo[]
       itemTypeDescriptions;
 
-  public ExchangeTypesItemsExchangerDescriptionForUserMessage()
-  {}
+  public ExchangeTypesItemsExchangerDescriptionForUserMessage() {}
 
   public ExchangeTypesItemsExchangerDescriptionForUserMessage(
       com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo[]
-          itemTypeDescriptions)
-  {
+          itemTypeDescriptions) {
     this.itemTypeDescriptions = itemTypeDescriptions;
   }
 
   public ExchangeTypesItemsExchangerDescriptionForUserMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo>
-          itemTypeDescriptions)
-  {
+          itemTypeDescriptions) {
     this.itemTypeDescriptions =
         itemTypeDescriptions.toArray(
             com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5752;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(itemTypeDescriptions.length);
 
-    for (int i = 0; i < itemTypeDescriptions.length; i++)
-  {
+    for (int i = 0; i < itemTypeDescriptions.length; i++) {
 
       itemTypeDescriptions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int itemTypeDescriptions_length = reader.read_ui16();
     this.itemTypeDescriptions =
         new com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo
             [itemTypeDescriptions_length];
 
-    for (int i = 0; i < itemTypeDescriptions_length; i++)
-  {
+    for (int i = 0; i < itemTypeDescriptions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.BidExchangerObjectInfo
           itemTypeDescriptions_it =
@@ -75,8 +67,7 @@ public class ExchangeTypesItemsExchangerDescriptionForUserMessage extends Networ
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeTypesItemsExchangerDescriptionForUserMessage("
         + "itemTypeDescriptions="

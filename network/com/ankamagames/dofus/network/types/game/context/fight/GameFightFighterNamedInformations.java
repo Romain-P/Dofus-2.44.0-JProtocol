@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,8 +17,7 @@ public class GameFightFighterNamedInformations
   // com.ankamagames.dofus.network.types.game.character.status.PlayerStatus
   public com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status;
 
-  public GameFightFighterNamedInformations()
-  {}
+  public GameFightFighterNamedInformations() {}
 
   public GameFightFighterNamedInformations(
       double contextualId,
@@ -30,8 +29,7 @@ public class GameFightFighterNamedInformations
       com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats stats,
       short[] previousPositions,
       java.lang.String name,
-      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status)
-  {
+      com.ankamagames.dofus.network.types.game.character.status.PlayerStatus status) {
 
     super(contextualId, look, disposition, teamId, wave, alive, stats, previousPositions);
     this.name = name;
@@ -39,14 +37,12 @@ public class GameFightFighterNamedInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 158;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.name);
@@ -54,8 +50,7 @@ public class GameFightFighterNamedInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.name = reader.read_str();
@@ -64,8 +59,7 @@ public class GameFightFighterNamedInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterNamedInformations("
         + "contextualId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,19 +18,17 @@ public class CharacterToRemodelInformations
   // i8
   public byte mandatoryChangeMask;
 
-  public CharacterToRemodelInformations()
-  {}
+  public CharacterToRemodelInformations() {}
 
   public CharacterToRemodelInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       byte breed,
       boolean sex,
       short cosmeticId,
       int[] colors,
       byte possibleChangeMask,
-      byte mandatoryChangeMask)
-  {
+      byte mandatoryChangeMask) {
 
     super(id, name, breed, sex, cosmeticId, colors);
     this.possibleChangeMask = possibleChangeMask;
@@ -38,14 +36,12 @@ public class CharacterToRemodelInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 477;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.possibleChangeMask);
@@ -53,8 +49,7 @@ public class CharacterToRemodelInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.possibleChangeMask = reader.read_i8();
@@ -62,8 +57,7 @@ public class CharacterToRemodelInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterToRemodelInformations("
         + "id="

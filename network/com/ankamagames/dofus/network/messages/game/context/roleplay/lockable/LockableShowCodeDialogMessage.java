@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class LockableShowCodeDialogMessage extends NetworkMessage {
   // i8
   public byte codeSize;
 
-  public LockableShowCodeDialogMessage()
-  {}
+  public LockableShowCodeDialogMessage() {}
 
-  public LockableShowCodeDialogMessage(boolean changeOrUse, byte codeSize)
-  {
+  public LockableShowCodeDialogMessage(boolean changeOrUse, byte codeSize) {
     this.changeOrUse = changeOrUse;
     this.codeSize = codeSize;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5740;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.changeOrUse);
     writer.write_i8(this.codeSize);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.changeOrUse = reader.read_bool();
     this.codeSize = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LockableShowCodeDialogMessage("
         + "changeOrUse="

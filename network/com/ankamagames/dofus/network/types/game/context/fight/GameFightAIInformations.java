@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,8 +13,7 @@ public class GameFightAIInformations
     extends com.ankamagames.dofus.network.types.game.context.fight.GameFightFighterInformations {
   public static final int PROTOCOL_ID = 151;
 
-  public GameFightAIInformations()
-  {}
+  public GameFightAIInformations() {}
 
   public GameFightAIInformations(
       double contextualId,
@@ -24,35 +23,30 @@ public class GameFightAIInformations
       byte wave,
       boolean alive,
       com.ankamagames.dofus.network.types.game.context.fight.GameFightMinimalStats stats,
-      short[] previousPositions)
-  {
+      short[] previousPositions) {
 
     super(contextualId, look, disposition, teamId, wave, alive, stats, previousPositions);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 151;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightAIInformations("
         + "contextualId="

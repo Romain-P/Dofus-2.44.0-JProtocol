@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class SymbioticObjectErrorMessage
   // i8
   public byte errorCode;
 
-  public SymbioticObjectErrorMessage()
-  {}
+  public SymbioticObjectErrorMessage() {}
 
-  public SymbioticObjectErrorMessage(byte reason, byte errorCode)
-  {
+  public SymbioticObjectErrorMessage(byte reason, byte errorCode) {
 
     super(reason);
     this.errorCode = errorCode;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6526;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.errorCode);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.errorCode = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SymbioticObjectErrorMessage("
         + "reason="

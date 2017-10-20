@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class NpcDialogCreationMessage extends NetworkMessage {
   // i32
   public int npcId;
 
-  public NpcDialogCreationMessage()
-  {}
+  public NpcDialogCreationMessage() {}
 
-  public NpcDialogCreationMessage(double mapId, int npcId)
-  {
+  public NpcDialogCreationMessage(double mapId, int npcId) {
     this.mapId = mapId;
     this.npcId = npcId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5618;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.mapId);
     writer.write_i32(this.npcId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mapId = reader.read_f64();
     this.npcId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NpcDialogCreationMessage(" + "mapId=" + this.mapId + ", npcId=" + this.npcId + ')';
   }

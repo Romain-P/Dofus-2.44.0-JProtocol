@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class AbstractPresetSaveMessage extends NetworkMessage {
   // i8
   public byte symbolId;
 
-  public AbstractPresetSaveMessage()
-  {}
+  public AbstractPresetSaveMessage() {}
 
-  public AbstractPresetSaveMessage(byte presetId, byte symbolId)
-  {
+  public AbstractPresetSaveMessage(byte presetId, byte symbolId) {
     this.presetId = presetId;
     this.symbolId = symbolId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6736;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_i8(this.symbolId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.symbolId = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractPresetSaveMessage("
         + "presetId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,8 +20,7 @@ public class GameRolePlayNpcInformations
   // vi16
   public short specialArtworkId;
 
-  public GameRolePlayNpcInformations()
-  {}
+  public GameRolePlayNpcInformations() {}
 
   public GameRolePlayNpcInformations(
       double contextualId,
@@ -29,8 +28,7 @@ public class GameRolePlayNpcInformations
       com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition,
       short npcId,
       boolean sex,
-      short specialArtworkId)
-  {
+      short specialArtworkId) {
 
     super(contextualId, look, disposition);
     this.npcId = npcId;
@@ -39,14 +37,12 @@ public class GameRolePlayNpcInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 156;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.npcId);
@@ -55,8 +51,7 @@ public class GameRolePlayNpcInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.npcId = reader.read_vi16();
@@ -65,8 +60,7 @@ public class GameRolePlayNpcInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayNpcInformations("
         + "contextualId="

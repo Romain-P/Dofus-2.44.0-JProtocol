@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class DareVersatileInformations extends NetworkType {
   // i32
   public int countWinners;
 
-  public DareVersatileInformations()
-  {}
+  public DareVersatileInformations() {}
 
-  public DareVersatileInformations(double dareId, int countEntrants, int countWinners)
-  {
+  public DareVersatileInformations(double dareId, int countEntrants, int countWinners) {
     this.dareId = dareId;
     this.countEntrants = countEntrants;
     this.countWinners = countWinners;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 504;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.dareId);
     writer.write_i32(this.countEntrants);
     writer.write_i32(this.countWinners);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dareId = reader.read_f64();
     this.countEntrants = reader.read_i32();
     this.countWinners = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareVersatileInformations("
         + "dareId="

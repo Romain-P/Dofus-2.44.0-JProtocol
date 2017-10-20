@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,36 +19,31 @@ public class TaxCollectorAttackedResultMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild;
 
-  public TaxCollectorAttackedResultMessage()
-  {}
+  public TaxCollectorAttackedResultMessage() {}
 
   public TaxCollectorAttackedResultMessage(
       boolean deadOrAlive,
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations basicInfos,
-      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guild) {
     this.deadOrAlive = deadOrAlive;
     this.basicInfos = basicInfos;
     this.guild = guild;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5635;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.deadOrAlive);
     this.basicInfos.serialize(writer);
     this.guild.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.deadOrAlive = reader.read_bool();
     this.basicInfos =
         new com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorBasicInformations();
@@ -59,8 +54,7 @@ public class TaxCollectorAttackedResultMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorAttackedResultMessage("
         + "deadOrAlive="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:21+02:00
 package com.ankamagames.dofus.network.messages.authorized;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class AdminCommandMessage extends NetworkMessage {
   // str
   public java.lang.String content;
 
-  public AdminCommandMessage()
-  {}
+  public AdminCommandMessage() {}
 
-  public AdminCommandMessage(java.lang.String content)
-  {
+  public AdminCommandMessage(java.lang.String content) {
     this.content = content;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 76;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.content);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.content = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AdminCommandMessage(" + "content=" + this.content + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class HumanOptionTitle
   // str
   public java.lang.String titleParam;
 
-  public HumanOptionTitle()
-  {}
+  public HumanOptionTitle() {}
 
-  public HumanOptionTitle(short titleId, java.lang.String titleParam)
-  {
+  public HumanOptionTitle(short titleId, java.lang.String titleParam) {
 
     super();
     this.titleId = titleId;
@@ -29,14 +27,12 @@ public class HumanOptionTitle
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 408;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.titleId);
@@ -44,8 +40,7 @@ public class HumanOptionTitle
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.titleId = reader.read_vi16();
@@ -53,8 +48,7 @@ public class HumanOptionTitle
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionTitle("
         + "titleId="

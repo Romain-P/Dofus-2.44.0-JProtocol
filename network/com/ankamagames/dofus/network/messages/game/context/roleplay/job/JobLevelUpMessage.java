@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,34 +17,29 @@ public class JobLevelUpMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription
       jobsDescription;
 
-  public JobLevelUpMessage()
-  {}
+  public JobLevelUpMessage() {}
 
   public JobLevelUpMessage(
       short newLevel,
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription
-          jobsDescription)
-  {
+          jobsDescription) {
     this.newLevel = newLevel;
     this.jobsDescription = jobsDescription;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5656;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.newLevel);
     this.jobsDescription.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.newLevel = reader.read_ui8();
     this.jobsDescription =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job.JobDescription();
@@ -52,8 +47,7 @@ public class JobLevelUpMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobLevelUpMessage("
         + "newLevel="

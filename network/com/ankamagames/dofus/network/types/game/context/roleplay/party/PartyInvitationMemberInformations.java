@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -25,11 +25,10 @@ public class PartyInvitationMemberInformations
           .PartyCompanionBaseInformations[]
       companions;
 
-  public PartyInvitationMemberInformations()
-  {}
+  public PartyInvitationMemberInformations() {}
 
   public PartyInvitationMemberInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -42,8 +41,7 @@ public class PartyInvitationMemberInformations
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionBaseInformations
               []
-          companions)
-  {
+          companions) {
 
     super(id, name, level, entityLook, breed, sex);
     this.worldX = worldX;
@@ -54,7 +52,7 @@ public class PartyInvitationMemberInformations
   }
 
   public PartyInvitationMemberInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -67,8 +65,7 @@ public class PartyInvitationMemberInformations
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionBaseInformations>
-          companions)
-  {
+          companions) {
 
     super(id, name, level, entityLook, breed, sex);
     this.worldX = worldX;
@@ -84,14 +81,12 @@ public class PartyInvitationMemberInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 376;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.worldX);
@@ -100,16 +95,14 @@ public class PartyInvitationMemberInformations
     writer.write_vi16(this.subAreaId);
     writer.write_ui16(companions.length);
 
-    for (int i = 0; i < companions.length; i++)
-  {
+    for (int i = 0; i < companions.length; i++) {
 
       companions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.worldX = reader.read_i16();
@@ -122,8 +115,7 @@ public class PartyInvitationMemberInformations
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                 .PartyCompanionBaseInformations[companions_length];
 
-    for (int i = 0; i < companions_length; i++)
-  {
+    for (int i = 0; i < companions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
               .PartyCompanionBaseInformations
@@ -137,8 +129,7 @@ public class PartyInvitationMemberInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationMemberInformations("
         + "id="

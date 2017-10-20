@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,25 +19,23 @@ public class PartyInvitationMessage
   public java.lang.String partyName;
   // i8
   public byte maxParticipants;
-  // ui64
-  public java.math.BigInteger fromId;
+  // vi64
+  public long fromId;
   // str
   public java.lang.String fromName;
-  // ui64
-  public java.math.BigInteger toId;
+  // vi64
+  public long toId;
 
-  public PartyInvitationMessage()
-  {}
+  public PartyInvitationMessage() {}
 
   public PartyInvitationMessage(
       int partyId,
       byte partyType,
       java.lang.String partyName,
       byte maxParticipants,
-      java.math.BigInteger fromId,
+      long fromId,
       java.lang.String fromName,
-      java.math.BigInteger toId)
-  {
+      long toId) {
 
     super(partyId);
     this.partyType = partyType;
@@ -49,40 +47,36 @@ public class PartyInvitationMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5586;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.partyType);
     writer.write_str(this.partyName);
     writer.write_i8(this.maxParticipants);
-    writer.write_ui64(this.fromId);
+    writer.write_vi64(this.fromId);
     writer.write_str(this.fromName);
-    writer.write_ui64(this.toId);
+    writer.write_vi64(this.toId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.partyType = reader.read_i8();
     this.partyName = reader.read_str();
     this.maxParticipants = reader.read_i8();
-    this.fromId = reader.read_ui64();
+    this.fromId = reader.read_vi64();
     this.fromName = reader.read_str();
-    this.toId = reader.read_ui64();
+    this.toId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyInvitationMessage("
         + "partyId="

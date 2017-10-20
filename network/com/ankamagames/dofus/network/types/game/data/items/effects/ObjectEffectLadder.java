@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ObjectEffectLadder
   // vi32
   public int monsterCount;
 
-  public ObjectEffectLadder()
-  {}
+  public ObjectEffectLadder() {}
 
-  public ObjectEffectLadder(short actionId, short monsterFamilyId, int monsterCount)
-  {
+  public ObjectEffectLadder(short actionId, short monsterFamilyId, int monsterCount) {
 
     super(actionId, monsterFamilyId);
     this.monsterCount = monsterCount;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 81;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.monsterCount);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.monsterCount = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectLadder("
         + "actionId="

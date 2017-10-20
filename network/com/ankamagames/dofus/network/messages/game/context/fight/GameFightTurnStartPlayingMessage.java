@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,34 +12,28 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class GameFightTurnStartPlayingMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6465;
 
-  public GameFightTurnStartPlayingMessage()
-  {}
+  public GameFightTurnStartPlayingMessage() {}
 
   public static final GameFightTurnStartPlayingMessage i = new GameFightTurnStartPlayingMessage();
 
   @Override
-  public boolean isAlwaysEmpty()
-  {
+  public boolean isAlwaysEmpty() {
     return true;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6465;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightTurnStartPlayingMessage";
   }

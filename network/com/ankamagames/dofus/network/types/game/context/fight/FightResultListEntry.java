@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,36 +18,31 @@ public class FightResultListEntry extends NetworkType {
   // com.ankamagames.dofus.network.types.game.context.fight.FightLoot
   public com.ankamagames.dofus.network.types.game.context.fight.FightLoot rewards;
 
-  public FightResultListEntry()
-  {}
+  public FightResultListEntry() {}
 
   public FightResultListEntry(
       short outcome,
       byte wave,
-      com.ankamagames.dofus.network.types.game.context.fight.FightLoot rewards)
-  {
+      com.ankamagames.dofus.network.types.game.context.fight.FightLoot rewards) {
     this.outcome = outcome;
     this.wave = wave;
     this.rewards = rewards;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 16;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.outcome);
     writer.write_i8(this.wave);
     this.rewards.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.outcome = reader.read_vi16();
     this.wave = reader.read_i8();
     this.rewards = new com.ankamagames.dofus.network.types.game.context.fight.FightLoot();
@@ -55,8 +50,7 @@ public class FightResultListEntry extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultListEntry("
         + "outcome="

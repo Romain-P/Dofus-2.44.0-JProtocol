@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,15 +21,13 @@ public class DareSubscribedMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations
       dareVersatilesInfos;
 
-  public DareSubscribedMessage()
-  {}
+  public DareSubscribedMessage() {}
 
   public DareSubscribedMessage(
       boolean success,
       boolean subscribe,
       double dareId,
-      com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations dareVersatilesInfos)
-  {
+      com.ankamagames.dofus.network.types.game.dare.DareVersatileInformations dareVersatilesInfos) {
     this.success = success;
     this.subscribe = subscribe;
     this.dareId = dareId;
@@ -37,14 +35,12 @@ public class DareSubscribedMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6660;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.success, 0);
@@ -55,8 +51,7 @@ public class DareSubscribedMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.success = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -68,8 +63,7 @@ public class DareSubscribedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareSubscribedMessage("
         + "success="

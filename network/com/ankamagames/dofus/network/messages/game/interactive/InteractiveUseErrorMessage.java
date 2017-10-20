@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class InteractiveUseErrorMessage extends NetworkMessage {
   // vi32
   public int skillInstanceUid;
 
-  public InteractiveUseErrorMessage()
-  {}
+  public InteractiveUseErrorMessage() {}
 
-  public InteractiveUseErrorMessage(int elemId, int skillInstanceUid)
-  {
+  public InteractiveUseErrorMessage(int elemId, int skillInstanceUid) {
     this.elemId = elemId;
     this.skillInstanceUid = skillInstanceUid;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6384;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.elemId);
     writer.write_vi32(this.skillInstanceUid);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.elemId = reader.read_vi32();
     this.skillInstanceUid = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveUseErrorMessage("
         + "elemId="

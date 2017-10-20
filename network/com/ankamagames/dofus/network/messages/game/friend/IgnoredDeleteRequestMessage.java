@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class IgnoredDeleteRequestMessage extends NetworkMessage {
   // bool
   public boolean session;
 
-  public IgnoredDeleteRequestMessage()
-  {}
+  public IgnoredDeleteRequestMessage() {}
 
-  public IgnoredDeleteRequestMessage(int accountId, boolean session)
-  {
+  public IgnoredDeleteRequestMessage(int accountId, boolean session) {
     this.accountId = accountId;
     this.session = session;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5680;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.accountId);
     writer.write_bool(this.session);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.accountId = reader.read_i32();
     this.session = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IgnoredDeleteRequestMessage("
         + "accountId="

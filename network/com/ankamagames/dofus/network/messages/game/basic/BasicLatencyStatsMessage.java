@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class BasicLatencyStatsMessage extends NetworkMessage {
   // vi16
   public short max;
 
-  public BasicLatencyStatsMessage()
-  {}
+  public BasicLatencyStatsMessage() {}
 
-  public BasicLatencyStatsMessage(int latency, short sampleCount, short max)
-  {
+  public BasicLatencyStatsMessage(int latency, short sampleCount, short max) {
     this.latency = latency;
     this.sampleCount = sampleCount;
     this.max = max;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5663;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.latency);
     writer.write_vi16(this.sampleCount);
     writer.write_vi16(this.max);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.latency = reader.read_ui16();
     this.sampleCount = reader.read_vi16();
     this.max = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicLatencyStatsMessage("
         + "latency="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class IdentificationSuccessWithLoginTokenMessage
   // str
   public java.lang.String loginToken;
 
-  public IdentificationSuccessWithLoginTokenMessage()
-  {}
+  public IdentificationSuccessWithLoginTokenMessage() {}
 
   public IdentificationSuccessWithLoginTokenMessage(
       boolean hasRights,
@@ -30,8 +29,7 @@ public class IdentificationSuccessWithLoginTokenMessage
       double subscriptionElapsedDuration,
       double subscriptionEndDate,
       short havenbagAvailableRoom,
-      java.lang.String loginToken)
-  {
+      java.lang.String loginToken) {
 
     super(
         hasRights,
@@ -49,30 +47,26 @@ public class IdentificationSuccessWithLoginTokenMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6209;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.loginToken);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.loginToken = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationSuccessWithLoginTokenMessage("
         + "hasRights="

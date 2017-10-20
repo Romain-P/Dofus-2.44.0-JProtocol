@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.spell;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class SpellModifyRequestMessage extends NetworkMessage {
   // i16
   public short spellLevel;
 
-  public SpellModifyRequestMessage()
-  {}
+  public SpellModifyRequestMessage() {}
 
-  public SpellModifyRequestMessage(short spellId, short spellLevel)
-  {
+  public SpellModifyRequestMessage(short spellId, short spellLevel) {
     this.spellId = spellId;
     this.spellLevel = spellLevel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6655;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.spellId);
     writer.write_i16(this.spellLevel);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellId = reader.read_vi16();
     this.spellLevel = reader.read_i16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpellModifyRequestMessage("
         + "spellId="

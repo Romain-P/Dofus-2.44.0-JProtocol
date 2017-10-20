@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,20 +14,17 @@ public class MapRunningFightListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations
   public com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations[] fights;
 
-  public MapRunningFightListMessage()
-  {}
+  public MapRunningFightListMessage() {}
 
   public MapRunningFightListMessage(
-      com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations[] fights)
-  {
+      com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations[] fights) {
     this.fights = fights;
   }
 
   public MapRunningFightListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations>
-          fights)
-  {
+          fights) {
     this.fights =
         fights.toArray(
             com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations[]
@@ -35,34 +32,29 @@ public class MapRunningFightListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5743;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(fights.length);
 
-    for (int i = 0; i < fights.length; i++)
-  {
+    for (int i = 0; i < fights.length; i++) {
 
       fights[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int fights_length = reader.read_ui16();
     this.fights =
         new com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations
             [fights_length];
 
-    for (int i = 0; i < fights_length; i++)
-  {
+    for (int i = 0; i < fights_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations fights_it =
           new com.ankamagames.dofus.network.types.game.context.fight.FightExternalInformations();
@@ -73,8 +65,7 @@ public class MapRunningFightListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapRunningFightListMessage(" + "fights=" + java.util.Arrays.toString(this.fights) + ')';
   }

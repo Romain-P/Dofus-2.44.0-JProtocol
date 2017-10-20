@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ObjectEffect extends NetworkType {
   // vi16
   public short actionId;
 
-  public ObjectEffect()
-  {}
+  public ObjectEffect() {}
 
-  public ObjectEffect(short actionId)
-  {
+  public ObjectEffect(short actionId) {
     this.actionId = actionId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 76;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.actionId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.actionId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffect(" + "actionId=" + this.actionId + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class HouseToSellListRequestMessage extends NetworkMessage {
   // vi16
   public short pageIndex;
 
-  public HouseToSellListRequestMessage()
-  {}
+  public HouseToSellListRequestMessage() {}
 
-  public HouseToSellListRequestMessage(short pageIndex)
-  {
+  public HouseToSellListRequestMessage(short pageIndex) {
     this.pageIndex = pageIndex;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6139;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.pageIndex);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.pageIndex = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseToSellListRequestMessage(" + "pageIndex=" + this.pageIndex + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.startup;
 
 import org.heat.dofus.network.NetworkType;
@@ -25,8 +25,7 @@ public class StartupActionAddObject extends NetworkType {
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity[]
       items;
 
-  public StartupActionAddObject()
-  {}
+  public StartupActionAddObject() {}
 
   public StartupActionAddObject(
       int uid,
@@ -35,8 +34,7 @@ public class StartupActionAddObject extends NetworkType {
       java.lang.String descUrl,
       java.lang.String pictureUrl,
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity[]
-          items)
-  {
+          items) {
     this.uid = uid;
     this.title = title;
     this.text = text;
@@ -53,8 +51,7 @@ public class StartupActionAddObject extends NetworkType {
       java.lang.String pictureUrl,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity>
-          items)
-  {
+          items) {
     this.uid = uid;
     this.title = title;
     this.text = text;
@@ -67,14 +64,12 @@ public class StartupActionAddObject extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 52;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.uid);
     writer.write_str(this.title);
     writer.write_str(this.text);
@@ -82,16 +77,14 @@ public class StartupActionAddObject extends NetworkType {
     writer.write_str(this.pictureUrl);
     writer.write_ui16(items.length);
 
-    for (int i = 0; i < items.length; i++)
-  {
+    for (int i = 0; i < items.length; i++) {
 
       items[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.uid = reader.read_i32();
     this.title = reader.read_str();
     this.text = reader.read_str();
@@ -103,8 +96,7 @@ public class StartupActionAddObject extends NetworkType {
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity
             [items_length];
 
-    for (int i = 0; i < items_length; i++)
-  {
+    for (int i = 0; i < items_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemInformationWithQuantity
           items_it =
@@ -117,8 +109,7 @@ public class StartupActionAddObject extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StartupActionAddObject("
         + "uid="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.houses.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,16 +22,14 @@ public class HouseGuildRightsMessage extends NetworkMessage {
   // vi32
   public int rights;
 
-  public HouseGuildRightsMessage()
-  {}
+  public HouseGuildRightsMessage() {}
 
   public HouseGuildRightsMessage(
       int houseId,
       int instanceId,
       boolean secondHand,
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo,
-      int rights)
-  {
+      int rights) {
     this.houseId = houseId;
     this.instanceId = instanceId;
     this.secondHand = secondHand;
@@ -40,14 +38,12 @@ public class HouseGuildRightsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5703;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.houseId);
     writer.write_i32(this.instanceId);
     writer.write_bool(this.secondHand);
@@ -56,8 +52,7 @@ public class HouseGuildRightsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.houseId = reader.read_vi32();
     this.instanceId = reader.read_i32();
     this.secondHand = reader.read_bool();
@@ -68,8 +63,7 @@ public class HouseGuildRightsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseGuildRightsMessage("
         + "houseId="

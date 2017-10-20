@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.idol;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class IdolPartyRefreshMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.idol.PartyIdol
   public com.ankamagames.dofus.network.types.game.idol.PartyIdol partyIdol;
 
-  public IdolPartyRefreshMessage()
-  {}
+  public IdolPartyRefreshMessage() {}
 
   public IdolPartyRefreshMessage(
-      com.ankamagames.dofus.network.types.game.idol.PartyIdol partyIdol)
-  {
+      com.ankamagames.dofus.network.types.game.idol.PartyIdol partyIdol) {
     this.partyIdol = partyIdol;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6583;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.partyIdol.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.partyIdol = new com.ankamagames.dofus.network.types.game.idol.PartyIdol();
     this.partyIdol.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolPartyRefreshMessage(" + "partyIdol=" + this.partyIdol + ')';
   }

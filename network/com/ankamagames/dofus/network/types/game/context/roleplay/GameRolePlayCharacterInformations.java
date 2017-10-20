@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,8 +17,7 @@ public class GameRolePlayCharacterInformations
   public com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations
       alignmentInfos;
 
-  public GameRolePlayCharacterInformations()
-  {}
+  public GameRolePlayCharacterInformations() {}
 
   public GameRolePlayCharacterInformations(
       double contextualId,
@@ -28,30 +27,26 @@ public class GameRolePlayCharacterInformations
       com.ankamagames.dofus.network.types.game.context.roleplay.HumanInformations humanoidInfo,
       int accountId,
       com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations
-          alignmentInfos)
-  {
+          alignmentInfos) {
 
     super(contextualId, look, disposition, name, humanoidInfo, accountId);
     this.alignmentInfos = alignmentInfos;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 36;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.alignmentInfos.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.alignmentInfos =
@@ -61,8 +56,7 @@ public class GameRolePlayCharacterInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayCharacterInformations("
         + "contextualId="

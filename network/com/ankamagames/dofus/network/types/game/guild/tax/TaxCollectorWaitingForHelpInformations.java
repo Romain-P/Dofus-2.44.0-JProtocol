@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,35 +17,30 @@ public class TaxCollectorWaitingForHelpInformations
   public com.ankamagames.dofus.network.types.game.fight.ProtectedEntityWaitingForHelpInfo
       waitingForHelpInfo;
 
-  public TaxCollectorWaitingForHelpInformations()
-  {}
+  public TaxCollectorWaitingForHelpInformations() {}
 
   public TaxCollectorWaitingForHelpInformations(
       com.ankamagames.dofus.network.types.game.fight.ProtectedEntityWaitingForHelpInfo
-          waitingForHelpInfo)
-  {
+          waitingForHelpInfo) {
 
     super();
     this.waitingForHelpInfo = waitingForHelpInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 447;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.waitingForHelpInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.waitingForHelpInfo =
@@ -54,8 +49,7 @@ public class TaxCollectorWaitingForHelpInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorWaitingForHelpInformations("
         + "waitingForHelpInfo="

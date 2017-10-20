@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,52 +14,44 @@ public class GameMapChangeOrientationsMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.context.ActorOrientation
   public com.ankamagames.dofus.network.types.game.context.ActorOrientation[] orientations;
 
-  public GameMapChangeOrientationsMessage()
-  {}
+  public GameMapChangeOrientationsMessage() {}
 
   public GameMapChangeOrientationsMessage(
-      com.ankamagames.dofus.network.types.game.context.ActorOrientation[] orientations)
-  {
+      com.ankamagames.dofus.network.types.game.context.ActorOrientation[] orientations) {
     this.orientations = orientations;
   }
 
   public GameMapChangeOrientationsMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.context.ActorOrientation>
-          orientations)
-  {
+          orientations) {
     this.orientations =
         orientations.toArray(
             com.ankamagames.dofus.network.types.game.context.ActorOrientation[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6155;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(orientations.length);
 
-    for (int i = 0; i < orientations.length; i++)
-  {
+    for (int i = 0; i < orientations.length; i++) {
 
       orientations[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int orientations_length = reader.read_ui16();
     this.orientations =
         new com.ankamagames.dofus.network.types.game.context.ActorOrientation[orientations_length];
 
-    for (int i = 0; i < orientations_length; i++)
-  {
+    for (int i = 0; i < orientations_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.ActorOrientation orientations_it =
           new com.ankamagames.dofus.network.types.game.context.ActorOrientation();
@@ -70,8 +62,7 @@ public class GameMapChangeOrientationsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameMapChangeOrientationsMessage("
         + "orientations="

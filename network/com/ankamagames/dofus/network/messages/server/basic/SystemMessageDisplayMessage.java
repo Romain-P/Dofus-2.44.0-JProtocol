@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.server.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class SystemMessageDisplayMessage extends NetworkMessage {
   // array,str
   public java.lang.String[] parameters;
 
-  public SystemMessageDisplayMessage()
-  {}
+  public SystemMessageDisplayMessage() {}
 
-  public SystemMessageDisplayMessage(boolean hangUp, short msgId, java.lang.String[] parameters)
-  {
+  public SystemMessageDisplayMessage(boolean hangUp, short msgId, java.lang.String[] parameters) {
     this.hangUp = hangUp;
     this.msgId = msgId;
     this.parameters = parameters;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 189;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.hangUp);
     writer.write_vi16(this.msgId);
     writer.write_ui16(parameters.length);
@@ -44,8 +40,7 @@ public class SystemMessageDisplayMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.hangUp = reader.read_bool();
     this.msgId = reader.read_vi16();
 
@@ -54,8 +49,7 @@ public class SystemMessageDisplayMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SystemMessageDisplayMessage("
         + "hangUp="

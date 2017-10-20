@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.approach;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class ReloginTokenStatusMessage extends NetworkMessage {
   // array,i8
   public byte[] ticket;
 
-  public ReloginTokenStatusMessage()
-  {}
+  public ReloginTokenStatusMessage() {}
 
-  public ReloginTokenStatusMessage(boolean validToken, byte[] ticket)
-  {
+  public ReloginTokenStatusMessage(boolean validToken, byte[] ticket) {
     this.validToken = validToken;
     this.ticket = ticket;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6539;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.validToken);
-    writer.write_ui16(ticket.length);
+    writer.write_vi32(ticket.length);
     writer.write_array_i8(this.ticket);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.validToken = reader.read_bool();
 
-    int ticket_length = reader.read_ui16();
+    int ticket_length = reader.read_vi32();
     this.ticket = reader.read_array_i8(ticket_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ReloginTokenStatusMessage("
         + "validToken="

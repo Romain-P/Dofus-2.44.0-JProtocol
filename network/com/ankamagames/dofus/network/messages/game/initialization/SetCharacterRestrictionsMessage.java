@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.initialization;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,34 +18,29 @@ public class SetCharacterRestrictionsMessage extends NetworkMessage {
           .ActorRestrictionsInformations
       restrictions;
 
-  public SetCharacterRestrictionsMessage()
-  {}
+  public SetCharacterRestrictionsMessage() {}
 
   public SetCharacterRestrictionsMessage(
       double actorId,
       com.ankamagames.dofus.network.types.game.character.restriction.ActorRestrictionsInformations
-          restrictions)
-  {
+          restrictions) {
     this.actorId = actorId;
     this.restrictions = restrictions;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 170;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.actorId);
     this.restrictions.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.actorId = reader.read_f64();
     this.restrictions =
         new com.ankamagames.dofus.network.types.game.character.restriction
@@ -54,8 +49,7 @@ public class SetCharacterRestrictionsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SetCharacterRestrictionsMessage("
         + "actorId="

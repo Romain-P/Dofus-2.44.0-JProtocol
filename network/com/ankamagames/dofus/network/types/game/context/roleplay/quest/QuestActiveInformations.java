@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class QuestActiveInformations extends NetworkType {
   // vi16
   public short questId;
 
-  public QuestActiveInformations()
-  {}
+  public QuestActiveInformations() {}
 
-  public QuestActiveInformations(short questId)
-  {
+  public QuestActiveInformations(short questId) {
     this.questId = questId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 381;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.questId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.questId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "QuestActiveInformations(" + "questId=" + this.questId + ')';
   }

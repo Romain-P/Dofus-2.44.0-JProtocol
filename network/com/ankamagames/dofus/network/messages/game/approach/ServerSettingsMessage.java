@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.approach;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class ServerSettingsMessage extends NetworkMessage {
   // vi16
   public short arenaLeaveBanTime;
 
-  public ServerSettingsMessage()
-  {}
+  public ServerSettingsMessage() {}
 
   public ServerSettingsMessage(
-      java.lang.String lang, byte community, byte gameType, short arenaLeaveBanTime)
-  {
+      java.lang.String lang, byte community, byte gameType, short arenaLeaveBanTime) {
     this.lang = lang;
     this.community = community;
     this.gameType = gameType;
@@ -33,14 +31,12 @@ public class ServerSettingsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6340;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.lang);
     writer.write_i8(this.community);
     writer.write_i8(this.gameType);
@@ -48,8 +44,7 @@ public class ServerSettingsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.lang = reader.read_str();
     this.community = reader.read_i8();
     this.gameType = reader.read_i8();
@@ -57,8 +52,7 @@ public class ServerSettingsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ServerSettingsMessage("
         + "lang="

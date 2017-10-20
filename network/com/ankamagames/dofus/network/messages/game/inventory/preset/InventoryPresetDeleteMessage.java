@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,38 +13,32 @@ public class InventoryPresetDeleteMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.AbstractPresetDeleteMessage {
   public static final int PROTOCOL_ID = 6169;
 
-  public InventoryPresetDeleteMessage()
-  {}
+  public InventoryPresetDeleteMessage() {}
 
-  public InventoryPresetDeleteMessage(byte presetId)
-  {
+  public InventoryPresetDeleteMessage(byte presetId) {
 
     super(presetId);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6169;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetDeleteMessage(" + "presetId=" + this.presetId + ')';
   }

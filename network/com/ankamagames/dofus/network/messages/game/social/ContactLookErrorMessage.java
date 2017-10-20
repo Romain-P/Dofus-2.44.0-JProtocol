@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ContactLookErrorMessage extends NetworkMessage {
   // vi32
   public int requestId;
 
-  public ContactLookErrorMessage()
-  {}
+  public ContactLookErrorMessage() {}
 
-  public ContactLookErrorMessage(int requestId)
-  {
+  public ContactLookErrorMessage(int requestId) {
     this.requestId = requestId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6045;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.requestId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.requestId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ContactLookErrorMessage(" + "requestId=" + this.requestId + ')';
   }

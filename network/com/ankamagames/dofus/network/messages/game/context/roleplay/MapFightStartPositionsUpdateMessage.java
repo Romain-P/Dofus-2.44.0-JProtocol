@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,34 +17,29 @@ public class MapFightStartPositionsUpdateMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
       fightStartPositions;
 
-  public MapFightStartPositionsUpdateMessage()
-  {}
+  public MapFightStartPositionsUpdateMessage() {}
 
   public MapFightStartPositionsUpdateMessage(
       double mapId,
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
-          fightStartPositions)
-  {
+          fightStartPositions) {
     this.mapId = mapId;
     this.fightStartPositions = fightStartPositions;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6716;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.mapId);
     this.fightStartPositions.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mapId = reader.read_f64();
     this.fightStartPositions =
         new com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions();
@@ -52,8 +47,7 @@ public class MapFightStartPositionsUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapFightStartPositionsUpdateMessage("
         + "mapId="

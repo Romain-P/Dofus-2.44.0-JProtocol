@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.notification;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class NotificationByServerMessage extends NetworkMessage {
   // bool
   public boolean forceOpen;
 
-  public NotificationByServerMessage()
-  {}
+  public NotificationByServerMessage() {}
 
-  public NotificationByServerMessage(short id, java.lang.String[] parameters, boolean forceOpen)
-  {
+  public NotificationByServerMessage(short id, java.lang.String[] parameters, boolean forceOpen) {
     this.id = id;
     this.parameters = parameters;
     this.forceOpen = forceOpen;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6103;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.id);
     writer.write_ui16(parameters.length);
     writer.write_array_str(this.parameters);
@@ -44,8 +40,7 @@ public class NotificationByServerMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_vi16();
 
     int parameters_length = reader.read_ui16();
@@ -54,8 +49,7 @@ public class NotificationByServerMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NotificationByServerMessage("
         + "id="

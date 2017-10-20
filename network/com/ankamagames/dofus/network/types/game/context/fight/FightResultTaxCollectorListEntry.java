@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,8 +19,7 @@ public class FightResultTaxCollectorListEntry
   // i32
   public int experienceForGuild;
 
-  public FightResultTaxCollectorListEntry()
-  {}
+  public FightResultTaxCollectorListEntry() {}
 
   public FightResultTaxCollectorListEntry(
       short outcome,
@@ -30,8 +29,7 @@ public class FightResultTaxCollectorListEntry
       boolean alive,
       short level,
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo,
-      int experienceForGuild)
-  {
+      int experienceForGuild) {
 
     super(outcome, wave, rewards, id, alive);
     this.level = level;
@@ -40,14 +38,12 @@ public class FightResultTaxCollectorListEntry
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 84;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.level);
@@ -56,8 +52,7 @@ public class FightResultTaxCollectorListEntry
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.level = reader.read_ui8();
@@ -68,8 +63,7 @@ public class FightResultTaxCollectorListEntry
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultTaxCollectorListEntry("
         + "outcome="

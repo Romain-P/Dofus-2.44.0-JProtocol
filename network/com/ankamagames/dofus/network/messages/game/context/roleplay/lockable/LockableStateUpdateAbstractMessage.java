@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class LockableStateUpdateAbstractMessage extends NetworkMessage {
   // bool
   public boolean locked;
 
-  public LockableStateUpdateAbstractMessage()
-  {}
+  public LockableStateUpdateAbstractMessage() {}
 
-  public LockableStateUpdateAbstractMessage(boolean locked)
-  {
+  public LockableStateUpdateAbstractMessage(boolean locked) {
     this.locked = locked;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5671;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.locked);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.locked = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LockableStateUpdateAbstractMessage(" + "locked=" + this.locked + ')';
   }

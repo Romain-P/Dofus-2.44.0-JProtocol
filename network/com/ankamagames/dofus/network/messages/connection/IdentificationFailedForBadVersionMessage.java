@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,34 +15,29 @@ public class IdentificationFailedForBadVersionMessage
   // com.ankamagames.dofus.network.types.version.Version
   public com.ankamagames.dofus.network.types.version.Version requiredVersion;
 
-  public IdentificationFailedForBadVersionMessage()
-  {}
+  public IdentificationFailedForBadVersionMessage() {}
 
   public IdentificationFailedForBadVersionMessage(
-      byte reason, com.ankamagames.dofus.network.types.version.Version requiredVersion)
-  {
+      byte reason, com.ankamagames.dofus.network.types.version.Version requiredVersion) {
 
     super(reason);
     this.requiredVersion = requiredVersion;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 21;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.requiredVersion.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.requiredVersion = new com.ankamagames.dofus.network.types.version.Version();
@@ -50,8 +45,7 @@ public class IdentificationFailedForBadVersionMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationFailedForBadVersionMessage("
         + "reason="

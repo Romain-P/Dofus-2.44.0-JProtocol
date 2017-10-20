@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,8 +18,7 @@ public class GameRolePlayMountInformations
   // ui8
   public short level;
 
-  public GameRolePlayMountInformations()
-  {}
+  public GameRolePlayMountInformations() {}
 
   public GameRolePlayMountInformations(
       double contextualId,
@@ -27,8 +26,7 @@ public class GameRolePlayMountInformations
       com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition,
       java.lang.String name,
       java.lang.String ownerName,
-      short level)
-  {
+      short level) {
 
     super(contextualId, look, disposition, name);
     this.ownerName = ownerName;
@@ -36,14 +34,12 @@ public class GameRolePlayMountInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 180;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.ownerName);
@@ -51,8 +47,7 @@ public class GameRolePlayMountInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.ownerName = reader.read_str();
@@ -60,8 +55,7 @@ public class GameRolePlayMountInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayMountInformations("
         + "contextualId="

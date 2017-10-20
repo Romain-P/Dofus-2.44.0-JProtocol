@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class MapObstacle extends NetworkType {
   // i8
   public byte state;
 
-  public MapObstacle()
-  {}
+  public MapObstacle() {}
 
-  public MapObstacle(short obstacleCellId, byte state)
-  {
+  public MapObstacle(short obstacleCellId, byte state) {
     this.obstacleCellId = obstacleCellId;
     this.state = state;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 200;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.obstacleCellId);
     writer.write_i8(this.state);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.obstacleCellId = reader.read_vi16();
     this.state = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapObstacle(" + "obstacleCellId=" + this.obstacleCellId + ", state=" + this.state + ')';
   }

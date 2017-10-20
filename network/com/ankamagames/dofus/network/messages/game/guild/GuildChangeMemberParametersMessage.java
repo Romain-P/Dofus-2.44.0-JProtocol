@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,8 +11,8 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GuildChangeMemberParametersMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5549;
-  // ui64
-  public java.math.BigInteger memberId;
+  // vi64
+  public long memberId;
   // vi16
   public short rank;
   // i8
@@ -20,12 +20,10 @@ public class GuildChangeMemberParametersMessage extends NetworkMessage {
   // vi32
   public int rights;
 
-  public GuildChangeMemberParametersMessage()
-  {}
+  public GuildChangeMemberParametersMessage() {}
 
   public GuildChangeMemberParametersMessage(
-      java.math.BigInteger memberId, short rank, byte experienceGivenPercent, int rights)
-  {
+      long memberId, short rank, byte experienceGivenPercent, int rights) {
     this.memberId = memberId;
     this.rank = rank;
     this.experienceGivenPercent = experienceGivenPercent;
@@ -33,32 +31,28 @@ public class GuildChangeMemberParametersMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5549;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.memberId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.memberId);
     writer.write_vi16(this.rank);
     writer.write_i8(this.experienceGivenPercent);
     writer.write_vi32(this.rights);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.memberId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.memberId = reader.read_vi64();
     this.rank = reader.read_vi16();
     this.experienceGivenPercent = reader.read_i8();
     this.rights = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildChangeMemberParametersMessage("
         + "memberId="

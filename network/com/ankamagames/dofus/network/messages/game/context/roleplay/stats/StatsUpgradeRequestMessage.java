@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class StatsUpgradeRequestMessage extends NetworkMessage {
   // vi16
   public short boostPoint;
 
-  public StatsUpgradeRequestMessage()
-  {}
+  public StatsUpgradeRequestMessage() {}
 
-  public StatsUpgradeRequestMessage(boolean useAdditionnal, byte statId, short boostPoint)
-  {
+  public StatsUpgradeRequestMessage(boolean useAdditionnal, byte statId, short boostPoint) {
     this.useAdditionnal = useAdditionnal;
     this.statId = statId;
     this.boostPoint = boostPoint;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5610;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.useAdditionnal);
     writer.write_i8(this.statId);
     writer.write_vi16(this.boostPoint);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.useAdditionnal = reader.read_bool();
     this.statId = reader.read_i8();
     this.boostPoint = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StatsUpgradeRequestMessage("
         + "useAdditionnal="

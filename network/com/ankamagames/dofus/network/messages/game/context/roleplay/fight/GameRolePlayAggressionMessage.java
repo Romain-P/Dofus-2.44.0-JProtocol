@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,44 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class GameRolePlayAggressionMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6073;
-  // ui64
-  public java.math.BigInteger attackerId;
-  // ui64
-  public java.math.BigInteger defenderId;
+  // vi64
+  public long attackerId;
+  // vi64
+  public long defenderId;
 
-  public GameRolePlayAggressionMessage()
-  {}
+  public GameRolePlayAggressionMessage() {}
 
-  public GameRolePlayAggressionMessage(
-      java.math.BigInteger attackerId, java.math.BigInteger defenderId)
-  {
+  public GameRolePlayAggressionMessage(long attackerId, long defenderId) {
     this.attackerId = attackerId;
     this.defenderId = defenderId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6073;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.attackerId);
-    writer.write_ui64(this.defenderId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.attackerId);
+    writer.write_vi64(this.defenderId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.attackerId = reader.read_ui64();
-    this.defenderId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.attackerId = reader.read_vi64();
+    this.defenderId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayAggressionMessage("
         + "attackerId="

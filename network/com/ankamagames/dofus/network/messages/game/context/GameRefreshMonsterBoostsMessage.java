@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,13 +16,11 @@ public class GameRefreshMonsterBoostsMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts
   public com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts[] familyBoosts;
 
-  public GameRefreshMonsterBoostsMessage()
-  {}
+  public GameRefreshMonsterBoostsMessage() {}
 
   public GameRefreshMonsterBoostsMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts[] monsterBoosts,
-      com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts[] familyBoosts)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts[] familyBoosts) {
     this.monsterBoosts = monsterBoosts;
     this.familyBoosts = familyBoosts;
   }
@@ -33,8 +31,7 @@ public class GameRefreshMonsterBoostsMessage extends NetworkMessage {
           monsterBoosts,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts>
-          familyBoosts)
-  {
+          familyBoosts) {
     this.monsterBoosts =
         monsterBoosts.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts[]::new);
@@ -44,41 +41,35 @@ public class GameRefreshMonsterBoostsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6618;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(monsterBoosts.length);
 
-    for (int i = 0; i < monsterBoosts.length; i++)
-  {
+    for (int i = 0; i < monsterBoosts.length; i++) {
 
       monsterBoosts[i].serialize(writer);
     }
     writer.write_ui16(familyBoosts.length);
 
-    for (int i = 0; i < familyBoosts.length; i++)
-  {
+    for (int i = 0; i < familyBoosts.length; i++) {
 
       familyBoosts[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int monsterBoosts_length = reader.read_ui16();
     this.monsterBoosts =
         new com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts
             [monsterBoosts_length];
 
-    for (int i = 0; i < monsterBoosts_length; i++)
-  {
+    for (int i = 0; i < monsterBoosts_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts monsterBoosts_it =
           new com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts();
@@ -92,8 +83,7 @@ public class GameRefreshMonsterBoostsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts
             [familyBoosts_length];
 
-    for (int i = 0; i < familyBoosts_length; i++)
-  {
+    for (int i = 0; i < familyBoosts_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts familyBoosts_it =
           new com.ankamagames.dofus.network.types.game.context.roleplay.MonsterBoosts();
@@ -104,8 +94,7 @@ public class GameRefreshMonsterBoostsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRefreshMonsterBoostsMessage("
         + "monsterBoosts="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class GuildBulletinSetRequestMessage
   // bool
   public boolean notifyMembers;
 
-  public GuildBulletinSetRequestMessage()
-  {}
+  public GuildBulletinSetRequestMessage() {}
 
-  public GuildBulletinSetRequestMessage(java.lang.String content, boolean notifyMembers)
-  {
+  public GuildBulletinSetRequestMessage(java.lang.String content, boolean notifyMembers) {
 
     super();
     this.content = content;
@@ -29,14 +27,12 @@ public class GuildBulletinSetRequestMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6694;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.content);
@@ -44,8 +40,7 @@ public class GuildBulletinSetRequestMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.content = reader.read_str();
@@ -53,8 +48,7 @@ public class GuildBulletinSetRequestMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildBulletinSetRequestMessage("
         + "content="

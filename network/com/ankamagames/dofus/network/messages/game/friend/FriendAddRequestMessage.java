@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class FriendAddRequestMessage extends NetworkMessage {
   // str
   public java.lang.String name;
 
-  public FriendAddRequestMessage()
-  {}
+  public FriendAddRequestMessage() {}
 
-  public FriendAddRequestMessage(java.lang.String name)
-  {
+  public FriendAddRequestMessage(java.lang.String name) {
     this.name = name;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 4004;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendAddRequestMessage(" + "name=" + this.name + ')';
   }

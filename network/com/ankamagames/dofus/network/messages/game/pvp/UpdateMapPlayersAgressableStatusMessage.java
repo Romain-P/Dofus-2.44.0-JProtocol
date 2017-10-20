@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.pvp;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,49 +11,43 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class UpdateMapPlayersAgressableStatusMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6454;
-  // array,ui64
-  public java.math.BigInteger[] playerIds;
+  // array,vi64
+  public long[] playerIds;
   // array,i8
   public byte[] enable;
 
-  public UpdateMapPlayersAgressableStatusMessage()
-  {}
+  public UpdateMapPlayersAgressableStatusMessage() {}
 
-  public UpdateMapPlayersAgressableStatusMessage(java.math.BigInteger[] playerIds, byte[] enable)
-  {
+  public UpdateMapPlayersAgressableStatusMessage(long[] playerIds, byte[] enable) {
     this.playerIds = playerIds;
     this.enable = enable;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6454;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(playerIds.length);
-    writer.write_array_ui64(this.playerIds);
+    writer.write_array_vi64(this.playerIds);
     writer.write_ui16(enable.length);
     writer.write_array_i8(this.enable);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int playerIds_length = reader.read_ui16();
-    this.playerIds = reader.read_array_ui64(playerIds_length);
+    this.playerIds = reader.read_array_vi64(playerIds_length);
 
     int enable_length = reader.read_ui16();
     this.enable = reader.read_array_i8(enable_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "UpdateMapPlayersAgressableStatusMessage("
         + "playerIds="

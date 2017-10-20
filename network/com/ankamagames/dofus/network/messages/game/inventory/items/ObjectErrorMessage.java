@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ObjectErrorMessage extends NetworkMessage {
   // i8
   public byte reason;
 
-  public ObjectErrorMessage()
-  {}
+  public ObjectErrorMessage() {}
 
-  public ObjectErrorMessage(byte reason)
-  {
+  public ObjectErrorMessage(byte reason) {
     this.reason = reason;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3004;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.reason);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.reason = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectErrorMessage(" + "reason=" + this.reason + ')';
   }

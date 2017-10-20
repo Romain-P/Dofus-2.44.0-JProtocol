@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.spell;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SpellVariantActivationRequestMessage extends NetworkMessage {
   // vi16
   public short spellId;
 
-  public SpellVariantActivationRequestMessage()
-  {}
+  public SpellVariantActivationRequestMessage() {}
 
-  public SpellVariantActivationRequestMessage(short spellId)
-  {
+  public SpellVariantActivationRequestMessage(short spellId) {
     this.spellId = spellId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6707;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.spellId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SpellVariantActivationRequestMessage(" + "spellId=" + this.spellId + ')';
   }

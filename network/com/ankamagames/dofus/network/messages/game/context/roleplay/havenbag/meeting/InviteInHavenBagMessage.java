@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag.meeting;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,34 +17,29 @@ public class InviteInHavenBagMessage extends NetworkMessage {
   // bool
   public boolean accept;
 
-  public InviteInHavenBagMessage()
-  {}
+  public InviteInHavenBagMessage() {}
 
   public InviteInHavenBagMessage(
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations
           guestInformations,
-      boolean accept)
-  {
+      boolean accept) {
     this.guestInformations = guestInformations;
     this.accept = accept;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6642;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.guestInformations.serialize(writer);
     writer.write_bool(this.accept);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.guestInformations =
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations();
     this.guestInformations.deserialize(reader);
@@ -52,8 +47,7 @@ public class InviteInHavenBagMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InviteInHavenBagMessage("
         + "guestInformations="

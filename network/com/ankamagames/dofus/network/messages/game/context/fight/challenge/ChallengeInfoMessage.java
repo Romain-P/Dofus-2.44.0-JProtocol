@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight.challenge;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class ChallengeInfoMessage extends NetworkMessage {
   // vi32
   public int dropBonus;
 
-  public ChallengeInfoMessage()
-  {}
+  public ChallengeInfoMessage() {}
 
-  public ChallengeInfoMessage(short challengeId, double targetId, int xpBonus, int dropBonus)
-  {
+  public ChallengeInfoMessage(short challengeId, double targetId, int xpBonus, int dropBonus) {
     this.challengeId = challengeId;
     this.targetId = targetId;
     this.xpBonus = xpBonus;
@@ -32,14 +30,12 @@ public class ChallengeInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6022;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.challengeId);
     writer.write_f64(this.targetId);
     writer.write_vi32(this.xpBonus);
@@ -47,8 +43,7 @@ public class ChallengeInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.challengeId = reader.read_vi16();
     this.targetId = reader.read_f64();
     this.xpBonus = reader.read_vi32();
@@ -56,8 +51,7 @@ public class ChallengeInfoMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChallengeInfoMessage("
         + "challengeId="

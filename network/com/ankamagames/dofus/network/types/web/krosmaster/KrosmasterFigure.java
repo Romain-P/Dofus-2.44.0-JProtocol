@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.web.krosmaster;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class KrosmasterFigure extends NetworkType {
   // bool
   public boolean bound;
 
-  public KrosmasterFigure()
-  {}
+  public KrosmasterFigure() {}
 
-  public KrosmasterFigure(java.lang.String uid, short figure, short pedestal, boolean bound)
-  {
+  public KrosmasterFigure(java.lang.String uid, short figure, short pedestal, boolean bound) {
     this.uid = uid;
     this.figure = figure;
     this.pedestal = pedestal;
@@ -32,14 +30,12 @@ public class KrosmasterFigure extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 397;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.uid);
     writer.write_vi16(this.figure);
     writer.write_vi16(this.pedestal);
@@ -47,8 +43,7 @@ public class KrosmasterFigure extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.uid = reader.read_str();
     this.figure = reader.read_vi16();
     this.pedestal = reader.read_vi16();
@@ -56,8 +51,7 @@ public class KrosmasterFigure extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "KrosmasterFigure("
         + "uid="

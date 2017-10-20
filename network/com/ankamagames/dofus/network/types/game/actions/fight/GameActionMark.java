@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -30,8 +30,7 @@ public class GameActionMark extends NetworkType {
   // bool
   public boolean active;
 
-  public GameActionMark()
-  {}
+  public GameActionMark() {}
 
   public GameActionMark(
       double markAuthorId,
@@ -42,8 +41,7 @@ public class GameActionMark extends NetworkType {
       byte markType,
       short markimpactCell,
       com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell[] cells,
-      boolean active)
-  {
+      boolean active) {
     this.markAuthorId = markAuthorId;
     this.markTeamId = markTeamId;
     this.markSpellId = markSpellId;
@@ -66,8 +64,7 @@ public class GameActionMark extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell>
           cells,
-      boolean active)
-  {
+      boolean active) {
     this.markAuthorId = markAuthorId;
     this.markTeamId = markTeamId;
     this.markSpellId = markSpellId;
@@ -82,14 +79,12 @@ public class GameActionMark extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 351;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.markAuthorId);
     writer.write_i8(this.markTeamId);
     writer.write_i32(this.markSpellId);
@@ -99,8 +94,7 @@ public class GameActionMark extends NetworkType {
     writer.write_i16(this.markimpactCell);
     writer.write_ui16(cells.length);
 
-    for (int i = 0; i < cells.length; i++)
-  {
+    for (int i = 0; i < cells.length; i++) {
 
       cells[i].serialize(writer);
     }
@@ -108,8 +102,7 @@ public class GameActionMark extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.markAuthorId = reader.read_f64();
     this.markTeamId = reader.read_i8();
     this.markSpellId = reader.read_i32();
@@ -123,8 +116,7 @@ public class GameActionMark extends NetworkType {
         new com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell
             [cells_length];
 
-    for (int i = 0; i < cells_length; i++)
-  {
+    for (int i = 0; i < cells_length; i++) {
 
       com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell cells_it =
           new com.ankamagames.dofus.network.types.game.actions.fight.GameActionMarkedCell();
@@ -136,8 +128,7 @@ public class GameActionMark extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionMark("
         + "markAuthorId="

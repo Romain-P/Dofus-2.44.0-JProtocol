@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class IdolsPreset extends NetworkType {
   // array,vi16
   public short[] idolId;
 
-  public IdolsPreset()
-  {}
+  public IdolsPreset() {}
 
-  public IdolsPreset(byte presetId, byte symbolId, short[] idolId)
-  {
+  public IdolsPreset(byte presetId, byte symbolId, short[] idolId) {
     this.presetId = presetId;
     this.symbolId = symbolId;
     this.idolId = idolId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 491;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.presetId);
     writer.write_i8(this.symbolId);
     writer.write_ui16(idolId.length);
@@ -44,8 +40,7 @@ public class IdolsPreset extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.presetId = reader.read_i8();
     this.symbolId = reader.read_i8();
 
@@ -54,8 +49,7 @@ public class IdolsPreset extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdolsPreset("
         + "presetId="

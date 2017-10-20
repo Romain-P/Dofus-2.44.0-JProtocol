@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive.skill;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class SkillActionDescriptionCraft
   // i8
   public byte probability;
 
-  public SkillActionDescriptionCraft()
-  {}
+  public SkillActionDescriptionCraft() {}
 
-  public SkillActionDescriptionCraft(short skillId, byte probability)
-  {
+  public SkillActionDescriptionCraft(short skillId, byte probability) {
 
     super(skillId);
     this.probability = probability;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 100;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.probability);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.probability = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SkillActionDescriptionCraft("
         + "skillId="

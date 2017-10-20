@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,32 +16,27 @@ public class FighterStatsListMessage extends NetworkMessage {
           .CharacterCharacteristicsInformations
       stats;
 
-  public FighterStatsListMessage()
-  {}
+  public FighterStatsListMessage() {}
 
   public FighterStatsListMessage(
       com.ankamagames.dofus.network.types.game.character.characteristic
               .CharacterCharacteristicsInformations
-          stats)
-  {
+          stats) {
     this.stats = stats;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6322;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.stats.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.stats =
         new com.ankamagames.dofus.network.types.game.character.characteristic
             .CharacterCharacteristicsInformations();
@@ -49,8 +44,7 @@ public class FighterStatsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FighterStatsListMessage(" + "stats=" + this.stats + ')';
   }

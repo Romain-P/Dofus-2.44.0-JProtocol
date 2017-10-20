@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildCharacsUpgradeRequestMessage extends NetworkMessage {
   // i8
   public byte charaTypeTarget;
 
-  public GuildCharacsUpgradeRequestMessage()
-  {}
+  public GuildCharacsUpgradeRequestMessage() {}
 
-  public GuildCharacsUpgradeRequestMessage(byte charaTypeTarget)
-  {
+  public GuildCharacsUpgradeRequestMessage(byte charaTypeTarget) {
     this.charaTypeTarget = charaTypeTarget;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5706;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.charaTypeTarget);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.charaTypeTarget = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildCharacsUpgradeRequestMessage(" + "charaTypeTarget=" + this.charaTypeTarget + ')';
   }

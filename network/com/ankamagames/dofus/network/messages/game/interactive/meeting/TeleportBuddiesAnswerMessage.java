@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive.meeting;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class TeleportBuddiesAnswerMessage extends NetworkMessage {
   // bool
   public boolean accept;
 
-  public TeleportBuddiesAnswerMessage()
-  {}
+  public TeleportBuddiesAnswerMessage() {}
 
-  public TeleportBuddiesAnswerMessage(boolean accept)
-  {
+  public TeleportBuddiesAnswerMessage(boolean accept) {
     this.accept = accept;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6294;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.accept);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.accept = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TeleportBuddiesAnswerMessage(" + "accept=" + this.accept + ')';
   }

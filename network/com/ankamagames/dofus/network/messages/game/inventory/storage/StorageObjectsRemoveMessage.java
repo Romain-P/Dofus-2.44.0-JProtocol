@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.storage;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class StorageObjectsRemoveMessage extends NetworkMessage {
   // array,vi32
   public int[] objectUIDList;
 
-  public StorageObjectsRemoveMessage()
-  {}
+  public StorageObjectsRemoveMessage() {}
 
-  public StorageObjectsRemoveMessage(int[] objectUIDList)
-  {
+  public StorageObjectsRemoveMessage(int[] objectUIDList) {
     this.objectUIDList = objectUIDList;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6035;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objectUIDList.length);
     writer.write_array_vi32(this.objectUIDList);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objectUIDList_length = reader.read_ui16();
     this.objectUIDList = reader.read_array_vi32(objectUIDList_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StorageObjectsRemoveMessage("
         + "objectUIDList="

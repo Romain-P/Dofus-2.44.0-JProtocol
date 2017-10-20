@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.lockable;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,12 +20,10 @@ public class LockableStateUpdateHouseDoorMessage
   // bool
   public boolean secondHand;
 
-  public LockableStateUpdateHouseDoorMessage()
-  {}
+  public LockableStateUpdateHouseDoorMessage() {}
 
   public LockableStateUpdateHouseDoorMessage(
-      boolean locked, int houseId, int instanceId, boolean secondHand)
-  {
+      boolean locked, int houseId, int instanceId, boolean secondHand) {
 
     super(locked);
     this.houseId = houseId;
@@ -34,14 +32,12 @@ public class LockableStateUpdateHouseDoorMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5668;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.houseId);
@@ -50,8 +46,7 @@ public class LockableStateUpdateHouseDoorMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.houseId = reader.read_vi32();
@@ -60,8 +55,7 @@ public class LockableStateUpdateHouseDoorMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "LockableStateUpdateHouseDoorMessage("
         + "locked="

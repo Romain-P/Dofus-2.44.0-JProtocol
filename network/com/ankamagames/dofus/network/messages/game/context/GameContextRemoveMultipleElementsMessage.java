@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class GameContextRemoveMultipleElementsMessage extends NetworkMessage {
   // array,f64
   public double[] elementsIds;
 
-  public GameContextRemoveMultipleElementsMessage()
-  {}
+  public GameContextRemoveMultipleElementsMessage() {}
 
-  public GameContextRemoveMultipleElementsMessage(double[] elementsIds)
-  {
+  public GameContextRemoveMultipleElementsMessage(double[] elementsIds) {
     this.elementsIds = elementsIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 252;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(elementsIds.length);
     writer.write_array_f64(this.elementsIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int elementsIds_length = reader.read_ui16();
     this.elementsIds = reader.read_array_f64(elementsIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameContextRemoveMultipleElementsMessage("
         + "elementsIds="

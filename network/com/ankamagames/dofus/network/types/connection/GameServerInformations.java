@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -28,8 +28,7 @@ public class GameServerInformations extends NetworkType {
   // f64
   public double date;
 
-  public GameServerInformations()
-  {}
+  public GameServerInformations() {}
 
   public GameServerInformations(
       short id,
@@ -39,8 +38,7 @@ public class GameServerInformations extends NetworkType {
       boolean isSelectable,
       byte charactersCount,
       byte charactersSlots,
-      double date)
-  {
+      double date) {
     this.id = id;
     this.type = type;
     this.status = status;
@@ -52,14 +50,12 @@ public class GameServerInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 25;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.id);
     writer.write_i8(this.type);
     writer.write_i8(this.status);
@@ -71,8 +67,7 @@ public class GameServerInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_vi16();
     this.type = reader.read_i8();
     this.status = reader.read_i8();
@@ -84,8 +79,7 @@ public class GameServerInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameServerInformations("
         + "id="

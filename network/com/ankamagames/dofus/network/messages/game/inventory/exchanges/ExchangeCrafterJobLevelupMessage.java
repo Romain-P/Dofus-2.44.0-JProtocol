@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeCrafterJobLevelupMessage extends NetworkMessage {
   // ui8
   public short crafterJobLevel;
 
-  public ExchangeCrafterJobLevelupMessage()
-  {}
+  public ExchangeCrafterJobLevelupMessage() {}
 
-  public ExchangeCrafterJobLevelupMessage(short crafterJobLevel)
-  {
+  public ExchangeCrafterJobLevelupMessage(short crafterJobLevel) {
     this.crafterJobLevel = crafterJobLevel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6598;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.crafterJobLevel);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.crafterJobLevel = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeCrafterJobLevelupMessage(" + "crafterJobLevel=" + this.crafterJobLevel + ')';
   }

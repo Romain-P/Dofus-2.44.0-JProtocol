@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection.search;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class AcquaintanceServerListMessage extends NetworkMessage {
   // array,vi16
   public short[] servers;
 
-  public AcquaintanceServerListMessage()
-  {}
+  public AcquaintanceServerListMessage() {}
 
-  public AcquaintanceServerListMessage(short[] servers)
-  {
+  public AcquaintanceServerListMessage(short[] servers) {
     this.servers = servers;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6142;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(servers.length);
     writer.write_array_vi16(this.servers);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int servers_length = reader.read_ui16();
     this.servers = reader.read_array_vi16(servers_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AcquaintanceServerListMessage("
         + "servers="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeShopStockMovementRemovedMessage extends NetworkMessage {
   // vi32
   public int objectId;
 
-  public ExchangeShopStockMovementRemovedMessage()
-  {}
+  public ExchangeShopStockMovementRemovedMessage() {}
 
-  public ExchangeShopStockMovementRemovedMessage(int objectId)
-  {
+  public ExchangeShopStockMovementRemovedMessage(int objectId) {
     this.objectId = objectId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5907;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.objectId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objectId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeShopStockMovementRemovedMessage(" + "objectId=" + this.objectId + ')';
   }

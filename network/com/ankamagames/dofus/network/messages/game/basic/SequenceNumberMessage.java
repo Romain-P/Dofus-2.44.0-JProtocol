@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SequenceNumberMessage extends NetworkMessage {
   // ui16
   public int number;
 
-  public SequenceNumberMessage()
-  {}
+  public SequenceNumberMessage() {}
 
-  public SequenceNumberMessage(int number)
-  {
+  public SequenceNumberMessage(int number) {
     this.number = number;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6317;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.number);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.number = reader.read_ui16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SequenceNumberMessage(" + "number=" + this.number + ')';
   }

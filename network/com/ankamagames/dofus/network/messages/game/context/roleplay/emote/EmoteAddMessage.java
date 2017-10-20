@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.emote;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class EmoteAddMessage extends NetworkMessage {
   // ui8
   public short emoteId;
 
-  public EmoteAddMessage()
-  {}
+  public EmoteAddMessage() {}
 
-  public EmoteAddMessage(short emoteId)
-  {
+  public EmoteAddMessage(short emoteId) {
     this.emoteId = emoteId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5644;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.emoteId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.emoteId = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EmoteAddMessage(" + "emoteId=" + this.emoteId + ')';
   }

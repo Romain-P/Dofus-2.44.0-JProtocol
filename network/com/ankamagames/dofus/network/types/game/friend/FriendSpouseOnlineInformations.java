@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,12 +21,11 @@ public class FriendSpouseOnlineInformations
   // vi16
   public short subAreaId;
 
-  public FriendSpouseOnlineInformations()
-  {}
+  public FriendSpouseOnlineInformations() {}
 
   public FriendSpouseOnlineInformations(
       int spouseAccountId,
-      java.math.BigInteger spouseId,
+      long spouseId,
       java.lang.String spouseName,
       short spouseLevel,
       byte breed,
@@ -37,8 +36,7 @@ public class FriendSpouseOnlineInformations
       boolean inFight,
       boolean followSpouse,
       double mapId,
-      short subAreaId)
-  {
+      short subAreaId) {
 
     super(
         spouseAccountId,
@@ -57,14 +55,12 @@ public class FriendSpouseOnlineInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 93;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -77,8 +73,7 @@ public class FriendSpouseOnlineInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -90,8 +85,7 @@ public class FriendSpouseOnlineInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendSpouseOnlineInformations("
         + "spouseAccountId="

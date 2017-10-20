@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class GuildMotdSetRequestMessage
   // str
   public java.lang.String content;
 
-  public GuildMotdSetRequestMessage()
-  {}
+  public GuildMotdSetRequestMessage() {}
 
-  public GuildMotdSetRequestMessage(java.lang.String content)
-  {
+  public GuildMotdSetRequestMessage(java.lang.String content) {
 
     super();
     this.content = content;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6588;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.content);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.content = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildMotdSetRequestMessage(" + "content=" + this.content + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class GameFightCharacterInformations
   // bool
   public boolean sex;
 
-  public GameFightCharacterInformations()
-  {}
+  public GameFightCharacterInformations() {}
 
   public GameFightCharacterInformations(
       double contextualId,
@@ -41,8 +40,7 @@ public class GameFightCharacterInformations
       com.ankamagames.dofus.network.types.game.character.alignment.ActorAlignmentInformations
           alignmentInfos,
       byte breed,
-      boolean sex)
-  {
+      boolean sex) {
 
     super(
         contextualId,
@@ -62,14 +60,12 @@ public class GameFightCharacterInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 46;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.level);
@@ -79,8 +75,7 @@ public class GameFightCharacterInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.level = reader.read_ui8();
@@ -93,8 +88,7 @@ public class GameFightCharacterInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightCharacterInformations("
         + "contextualId="

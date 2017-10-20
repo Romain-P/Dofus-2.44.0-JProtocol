@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,31 +15,26 @@ public class JobCrafterDirectoryDefineSettingsMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobCrafterDirectorySettings
       settings;
 
-  public JobCrafterDirectoryDefineSettingsMessage()
-  {}
+  public JobCrafterDirectoryDefineSettingsMessage() {}
 
   public JobCrafterDirectoryDefineSettingsMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobCrafterDirectorySettings
-          settings)
-  {
+          settings) {
     this.settings = settings;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5649;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.settings.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.settings =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job
             .JobCrafterDirectorySettings();
@@ -47,8 +42,7 @@ public class JobCrafterDirectoryDefineSettingsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryDefineSettingsMessage(" + "settings=" + this.settings + ')';
   }

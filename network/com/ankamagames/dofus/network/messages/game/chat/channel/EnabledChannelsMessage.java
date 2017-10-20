@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat.channel;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class EnabledChannelsMessage extends NetworkMessage {
   // array,i8
   public byte[] disallowed;
 
-  public EnabledChannelsMessage()
-  {}
+  public EnabledChannelsMessage() {}
 
-  public EnabledChannelsMessage(byte[] channels, byte[] disallowed)
-  {
+  public EnabledChannelsMessage(byte[] channels, byte[] disallowed) {
     this.channels = channels;
     this.disallowed = disallowed;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 892;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(channels.length);
     writer.write_array_i8(this.channels);
     writer.write_ui16(disallowed.length);
@@ -41,8 +37,7 @@ public class EnabledChannelsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int channels_length = reader.read_ui16();
     this.channels = reader.read_array_i8(channels_length);
@@ -52,8 +47,7 @@ public class EnabledChannelsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "EnabledChannelsMessage("
         + "channels="

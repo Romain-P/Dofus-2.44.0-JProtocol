@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,8 +16,7 @@ public class AlliancedGuildFactSheetInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
       allianceInfos;
 
-  public AlliancedGuildFactSheetInformations()
-  {}
+  public AlliancedGuildFactSheetInformations() {}
 
   public AlliancedGuildFactSheetInformations(
       int guildId,
@@ -25,30 +24,26 @@ public class AlliancedGuildFactSheetInformations
       short guildLevel,
       com.ankamagames.dofus.network.types.game.guild.GuildEmblem guildEmblem,
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicNamedAllianceInformations
-          allianceInfos)
-  {
+          allianceInfos) {
 
     super(guildId, guildName, guildLevel, guildEmblem);
     this.allianceInfos = allianceInfos;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 422;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.allianceInfos.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.allianceInfos =
@@ -58,8 +53,7 @@ public class AlliancedGuildFactSheetInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AlliancedGuildFactSheetInformations("
         + "guildId="

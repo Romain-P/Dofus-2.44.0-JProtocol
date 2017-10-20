@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class IgnoredDeleteResultMessage extends NetworkMessage {
   // str
   public java.lang.String name;
 
-  public IgnoredDeleteResultMessage()
-  {}
+  public IgnoredDeleteResultMessage() {}
 
-  public IgnoredDeleteResultMessage(boolean success, boolean session, java.lang.String name)
-  {
+  public IgnoredDeleteResultMessage(boolean success, boolean session, java.lang.String name) {
     this.success = success;
     this.session = session;
     this.name = name;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5677;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.success, 0);
@@ -46,8 +42,7 @@ public class IgnoredDeleteResultMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.success = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -56,8 +51,7 @@ public class IgnoredDeleteResultMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IgnoredDeleteResultMessage("
         + "success="

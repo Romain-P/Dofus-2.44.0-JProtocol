@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class GameMapChangeOrientationMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.ActorOrientation
   public com.ankamagames.dofus.network.types.game.context.ActorOrientation orientation;
 
-  public GameMapChangeOrientationMessage()
-  {}
+  public GameMapChangeOrientationMessage() {}
 
   public GameMapChangeOrientationMessage(
-      com.ankamagames.dofus.network.types.game.context.ActorOrientation orientation)
-  {
+      com.ankamagames.dofus.network.types.game.context.ActorOrientation orientation) {
     this.orientation = orientation;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 946;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.orientation.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.orientation = new com.ankamagames.dofus.network.types.game.context.ActorOrientation();
     this.orientation.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameMapChangeOrientationMessage(" + "orientation=" + this.orientation + ')';
   }

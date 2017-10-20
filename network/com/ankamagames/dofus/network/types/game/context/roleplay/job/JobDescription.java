@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,13 +16,11 @@ public class JobDescription extends NetworkType {
   // array,com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription
   public com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription[] skills;
 
-  public JobDescription()
-  {}
+  public JobDescription() {}
 
   public JobDescription(
       byte jobId,
-      com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription[] skills)
-  {
+      com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription[] skills) {
     this.jobId = jobId;
     this.skills = skills;
   }
@@ -31,8 +29,7 @@ public class JobDescription extends NetworkType {
       byte jobId,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription>
-          skills)
-  {
+          skills) {
     this.jobId = jobId;
     this.skills =
         skills.toArray(
@@ -41,19 +38,16 @@ public class JobDescription extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 101;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.jobId);
     writer.write_ui16(skills.length);
 
-    for (int i = 0; i < skills.length; i++)
-  {
+    for (int i = 0; i < skills.length; i++) {
 
       writer.write_ui16(skills[i].getProtocolId());
 
@@ -62,8 +56,7 @@ public class JobDescription extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.jobId = reader.read_i8();
 
     int skills_length = reader.read_ui16();
@@ -71,8 +64,7 @@ public class JobDescription extends NetworkType {
         new com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription
             [skills_length];
 
-    for (int i = 0; i < skills_length; i++)
-  {
+    for (int i = 0; i < skills_length; i++) {
 
       int skills_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.interactive.skill.SkillActionDescription skills_it =
@@ -85,8 +77,7 @@ public class JobDescription extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobDescription("
         + "jobId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,41 +18,35 @@ public class GameFightRemoveTeamMemberMessage extends NetworkMessage {
   // f64
   public double charId;
 
-  public GameFightRemoveTeamMemberMessage()
-  {}
+  public GameFightRemoveTeamMemberMessage() {}
 
-  public GameFightRemoveTeamMemberMessage(short fightId, byte teamId, double charId)
-  {
+  public GameFightRemoveTeamMemberMessage(short fightId, byte teamId, double charId) {
     this.fightId = fightId;
     this.teamId = teamId;
     this.charId = charId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 711;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i16(this.fightId);
     writer.write_i8(this.teamId);
     writer.write_f64(this.charId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i16();
     this.teamId = reader.read_i8();
     this.charId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightRemoveTeamMemberMessage("
         + "fightId="

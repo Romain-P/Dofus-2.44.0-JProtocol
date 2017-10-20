@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class FriendsListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.friend.FriendInformations
   public com.ankamagames.dofus.network.types.game.friend.FriendInformations[] friendsList;
 
-  public FriendsListMessage()
-  {}
+  public FriendsListMessage() {}
 
   public FriendsListMessage(
-      com.ankamagames.dofus.network.types.game.friend.FriendInformations[] friendsList)
-  {
+      com.ankamagames.dofus.network.types.game.friend.FriendInformations[] friendsList) {
     this.friendsList = friendsList;
   }
 
   public FriendsListMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.friend.FriendInformations>
-          friendsList)
-  {
+          friendsList) {
     this.friendsList =
         friendsList.toArray(
             com.ankamagames.dofus.network.types.game.friend.FriendInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 4002;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(friendsList.length);
 
-    for (int i = 0; i < friendsList.length; i++)
-  {
+    for (int i = 0; i < friendsList.length; i++) {
 
       writer.write_ui16(friendsList[i].getProtocolId());
 
@@ -53,15 +47,13 @@ public class FriendsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int friendsList_length = reader.read_ui16();
     this.friendsList =
         new com.ankamagames.dofus.network.types.game.friend.FriendInformations[friendsList_length];
 
-    for (int i = 0; i < friendsList_length; i++)
-  {
+    for (int i = 0; i < friendsList_length; i++) {
 
       int friendsList_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.friend.FriendInformations friendsList_it =
@@ -74,8 +66,7 @@ public class FriendsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendsListMessage("
         + "friendsList="

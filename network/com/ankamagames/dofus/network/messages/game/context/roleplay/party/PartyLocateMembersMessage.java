@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class PartyLocateMembersMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberGeoPosition[]
       geopositions;
 
-  public PartyLocateMembersMessage()
-  {}
+  public PartyLocateMembersMessage() {}
 
   public PartyLocateMembersMessage(
       int partyId,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberGeoPosition[]
-          geopositions)
-  {
+          geopositions) {
 
     super(partyId);
     this.geopositions = geopositions;
@@ -35,8 +33,7 @@ public class PartyLocateMembersMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party
                   .PartyMemberGeoPosition>
-          geopositions)
-  {
+          geopositions) {
 
     super(partyId);
     this.geopositions =
@@ -46,28 +43,24 @@ public class PartyLocateMembersMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5595;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(geopositions.length);
 
-    for (int i = 0; i < geopositions.length; i++)
-  {
+    for (int i = 0; i < geopositions.length; i++) {
 
       geopositions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -76,8 +69,7 @@ public class PartyLocateMembersMessage
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberGeoPosition
             [geopositions_length];
 
-    for (int i = 0; i < geopositions_length; i++)
-  {
+    for (int i = 0; i < geopositions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyMemberGeoPosition
           geopositions_it =
@@ -90,8 +82,7 @@ public class PartyLocateMembersMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyLocateMembersMessage("
         + "partyId="

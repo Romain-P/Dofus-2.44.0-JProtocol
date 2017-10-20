@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,8 +24,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.shortcut.Shortcut
   public com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts;
 
-  public SlaveSwitchContextMessage()
-  {}
+  public SlaveSwitchContextMessage() {}
 
   public SlaveSwitchContextMessage(
       double masterId,
@@ -34,8 +33,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
       com.ankamagames.dofus.network.types.game.character.characteristic
               .CharacterCharacteristicsInformations
           slaveStats,
-      com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts)
-  {
+      com.ankamagames.dofus.network.types.game.shortcut.Shortcut[] shortcuts) {
     this.masterId = masterId;
     this.slaveId = slaveId;
     this.slaveSpells = slaveSpells;
@@ -52,8 +50,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
               .CharacterCharacteristicsInformations
           slaveStats,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.shortcut.Shortcut>
-          shortcuts)
-  {
+          shortcuts) {
     this.masterId = masterId;
     this.slaveId = slaveId;
     this.slaveSpells =
@@ -64,28 +61,24 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6214;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.masterId);
     writer.write_f64(this.slaveId);
     writer.write_ui16(slaveSpells.length);
 
-    for (int i = 0; i < slaveSpells.length; i++)
-  {
+    for (int i = 0; i < slaveSpells.length; i++) {
 
       slaveSpells[i].serialize(writer);
     }
     this.slaveStats.serialize(writer);
     writer.write_ui16(shortcuts.length);
 
-    for (int i = 0; i < shortcuts.length; i++)
-  {
+    for (int i = 0; i < shortcuts.length; i++) {
 
       writer.write_ui16(shortcuts[i].getProtocolId());
 
@@ -94,8 +87,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.masterId = reader.read_f64();
     this.slaveId = reader.read_f64();
 
@@ -103,8 +95,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
     this.slaveSpells =
         new com.ankamagames.dofus.network.types.game.data.items.SpellItem[slaveSpells_length];
 
-    for (int i = 0; i < slaveSpells_length; i++)
-  {
+    for (int i = 0; i < slaveSpells_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.SpellItem slaveSpells_it =
           new com.ankamagames.dofus.network.types.game.data.items.SpellItem();
@@ -121,8 +112,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
     this.shortcuts =
         new com.ankamagames.dofus.network.types.game.shortcut.Shortcut[shortcuts_length];
 
-    for (int i = 0; i < shortcuts_length; i++)
-  {
+    for (int i = 0; i < shortcuts_length; i++) {
 
       int shortcuts_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.shortcut.Shortcut shortcuts_it =
@@ -135,8 +125,7 @@ public class SlaveSwitchContextMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SlaveSwitchContextMessage("
         + "masterId="

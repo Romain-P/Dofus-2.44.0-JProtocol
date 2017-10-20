@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,16 +16,14 @@ public class CharactersListWithRemodelingMessage
   public com.ankamagames.dofus.network.types.game.character.choice.CharacterToRemodelInformations[]
       charactersToRemodel;
 
-  public CharactersListWithRemodelingMessage()
-  {}
+  public CharactersListWithRemodelingMessage() {}
 
   public CharactersListWithRemodelingMessage(
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
           characters,
       boolean hasStartupActions,
       com.ankamagames.dofus.network.types.game.character.choice.CharacterToRemodelInformations[]
-          charactersToRemodel)
-  {
+          charactersToRemodel) {
 
     super(characters, hasStartupActions);
     this.charactersToRemodel = charactersToRemodel;
@@ -39,8 +37,7 @@ public class CharactersListWithRemodelingMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character.choice
                   .CharacterToRemodelInformations>
-          charactersToRemodel)
-  {
+          charactersToRemodel) {
 
     super(characters, hasStartupActions);
     this.charactersToRemodel =
@@ -51,28 +48,24 @@ public class CharactersListWithRemodelingMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6550;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(charactersToRemodel.length);
 
-    for (int i = 0; i < charactersToRemodel.length; i++)
-  {
+    for (int i = 0; i < charactersToRemodel.length; i++) {
 
       charactersToRemodel[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -81,8 +74,7 @@ public class CharactersListWithRemodelingMessage
         new com.ankamagames.dofus.network.types.game.character.choice.CharacterToRemodelInformations
             [charactersToRemodel_length];
 
-    for (int i = 0; i < charactersToRemodel_length; i++)
-  {
+    for (int i = 0; i < charactersToRemodel_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.choice.CharacterToRemodelInformations
           charactersToRemodel_it =
@@ -95,8 +87,7 @@ public class CharactersListWithRemodelingMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharactersListWithRemodelingMessage("
         + "characters="

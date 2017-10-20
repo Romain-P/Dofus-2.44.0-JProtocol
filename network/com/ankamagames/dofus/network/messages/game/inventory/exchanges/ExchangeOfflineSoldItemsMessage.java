@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,15 +18,13 @@ public class ExchangeOfflineSoldItemsMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice[]
       merchantItems;
 
-  public ExchangeOfflineSoldItemsMessage()
-  {}
+  public ExchangeOfflineSoldItemsMessage() {}
 
   public ExchangeOfflineSoldItemsMessage(
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice[]
           bidHouseItems,
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice[]
-          merchantItems)
-  {
+          merchantItems) {
     this.bidHouseItems = bidHouseItems;
     this.merchantItems = merchantItems;
   }
@@ -37,8 +35,7 @@ public class ExchangeOfflineSoldItemsMessage extends NetworkMessage {
           bidHouseItems,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice>
-          merchantItems)
-  {
+          merchantItems) {
     this.bidHouseItems =
         bidHouseItems.toArray(
             com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice[]
@@ -50,41 +47,35 @@ public class ExchangeOfflineSoldItemsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6613;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(bidHouseItems.length);
 
-    for (int i = 0; i < bidHouseItems.length; i++)
-  {
+    for (int i = 0; i < bidHouseItems.length; i++) {
 
       bidHouseItems[i].serialize(writer);
     }
     writer.write_ui16(merchantItems.length);
 
-    for (int i = 0; i < merchantItems.length; i++)
-  {
+    for (int i = 0; i < merchantItems.length; i++) {
 
       merchantItems[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int bidHouseItems_length = reader.read_ui16();
     this.bidHouseItems =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice
             [bidHouseItems_length];
 
-    for (int i = 0; i < bidHouseItems_length; i++)
-  {
+    for (int i = 0; i < bidHouseItems_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice
           bidHouseItems_it =
@@ -100,8 +91,7 @@ public class ExchangeOfflineSoldItemsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice
             [merchantItems_length];
 
-    for (int i = 0; i < merchantItems_length; i++)
-  {
+    for (int i = 0; i < merchantItems_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantityPrice
           merchantItems_it =
@@ -114,8 +104,7 @@ public class ExchangeOfflineSoldItemsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeOfflineSoldItemsMessage("
         + "bidHouseItems="

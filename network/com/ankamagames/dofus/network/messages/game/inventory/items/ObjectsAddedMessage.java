@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,50 +14,42 @@ public class ObjectsAddedMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItem
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object;
 
-  public ObjectsAddedMessage()
-  {}
+  public ObjectsAddedMessage() {}
 
   public ObjectsAddedMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItem[] object) {
     this.object = object;
   }
 
   public ObjectsAddedMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItem>
-          object)
-  {
+          object) {
     this.object =
         object.toArray(com.ankamagames.dofus.network.types.game.data.items.ObjectItem[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6033;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(object.length);
 
-    for (int i = 0; i < object.length; i++)
-  {
+    for (int i = 0; i < object.length; i++) {
 
       object[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int object_length = reader.read_ui16();
     this.object = new com.ankamagames.dofus.network.types.game.data.items.ObjectItem[object_length];
 
-    for (int i = 0; i < object_length; i++)
-  {
+    for (int i = 0; i < object_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItem object_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItem();
@@ -68,8 +60,7 @@ public class ObjectsAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectsAddedMessage(" + "object=" + java.util.Arrays.toString(this.object) + ')';
   }

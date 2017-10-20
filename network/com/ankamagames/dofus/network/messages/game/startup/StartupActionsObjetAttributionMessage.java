@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.startup;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,41 +13,35 @@ public class StartupActionsObjetAttributionMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 1303;
   // i32
   public int actionId;
-  // ui64
-  public java.math.BigInteger characterId;
+  // vi64
+  public long characterId;
 
-  public StartupActionsObjetAttributionMessage()
-  {}
+  public StartupActionsObjetAttributionMessage() {}
 
-  public StartupActionsObjetAttributionMessage(int actionId, java.math.BigInteger characterId)
-  {
+  public StartupActionsObjetAttributionMessage(int actionId, long characterId) {
     this.actionId = actionId;
     this.characterId = characterId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1303;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.actionId);
-    writer.write_ui64(this.characterId);
+    writer.write_vi64(this.characterId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.actionId = reader.read_i32();
-    this.characterId = reader.read_ui64();
+    this.characterId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StartupActionsObjetAttributionMessage("
         + "actionId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class StatedElement extends NetworkType {
   // bool
   public boolean onCurrentMap;
 
-  public StatedElement()
-  {}
+  public StatedElement() {}
 
-  public StatedElement(int elementId, short elementCellId, int elementState, boolean onCurrentMap)
-  {
+  public StatedElement(int elementId, short elementCellId, int elementState, boolean onCurrentMap) {
     this.elementId = elementId;
     this.elementCellId = elementCellId;
     this.elementState = elementState;
@@ -32,14 +30,12 @@ public class StatedElement extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 108;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.elementId);
     writer.write_vi16(this.elementCellId);
     writer.write_vi32(this.elementState);
@@ -47,8 +43,7 @@ public class StatedElement extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.elementId = reader.read_i32();
     this.elementCellId = reader.read_vi16();
     this.elementState = reader.read_vi32();
@@ -56,8 +51,7 @@ public class StatedElement extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StatedElement("
         + "elementId="

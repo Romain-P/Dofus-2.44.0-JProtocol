@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,45 +16,39 @@ public class GameRolePlayTreasureHintInformations
   // vi16
   public short npcId;
 
-  public GameRolePlayTreasureHintInformations()
-  {}
+  public GameRolePlayTreasureHintInformations() {}
 
   public GameRolePlayTreasureHintInformations(
       double contextualId,
       com.ankamagames.dofus.network.types.game.look.EntityLook look,
       com.ankamagames.dofus.network.types.game.context.EntityDispositionInformations disposition,
-      short npcId)
-  {
+      short npcId) {
 
     super(contextualId, look, disposition);
     this.npcId = npcId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 471;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.npcId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.npcId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayTreasureHintInformations("
         + "contextualId="

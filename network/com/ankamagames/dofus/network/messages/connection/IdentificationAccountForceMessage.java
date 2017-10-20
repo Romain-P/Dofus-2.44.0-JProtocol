@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class IdentificationAccountForceMessage
   // str
   public java.lang.String forcedAccountLogin;
 
-  public IdentificationAccountForceMessage()
-  {}
+  public IdentificationAccountForceMessage() {}
 
   public IdentificationAccountForceMessage(
       boolean autoconnect,
@@ -28,8 +27,7 @@ public class IdentificationAccountForceMessage
       short serverId,
       long sessionOptionalSalt,
       short[] failedAttempts,
-      java.lang.String forcedAccountLogin)
-  {
+      java.lang.String forcedAccountLogin) {
 
     super(
         autoconnect,
@@ -45,30 +43,26 @@ public class IdentificationAccountForceMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6119;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.forcedAccountLogin);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.forcedAccountLogin = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationAccountForceMessage("
         + "autoconnect="

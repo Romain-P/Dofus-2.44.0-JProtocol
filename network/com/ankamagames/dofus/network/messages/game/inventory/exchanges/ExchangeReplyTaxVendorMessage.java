@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,44 +11,37 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class ExchangeReplyTaxVendorMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5787;
-  // ui64
-  public java.math.BigInteger objectValue;
-  // ui64
-  public java.math.BigInteger totalTaxValue;
+  // vi64
+  public long objectValue;
+  // vi64
+  public long totalTaxValue;
 
-  public ExchangeReplyTaxVendorMessage()
-  {}
+  public ExchangeReplyTaxVendorMessage() {}
 
-  public ExchangeReplyTaxVendorMessage(
-      java.math.BigInteger objectValue, java.math.BigInteger totalTaxValue)
-  {
+  public ExchangeReplyTaxVendorMessage(long objectValue, long totalTaxValue) {
     this.objectValue = objectValue;
     this.totalTaxValue = totalTaxValue;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5787;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.objectValue);
-    writer.write_ui64(this.totalTaxValue);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.objectValue);
+    writer.write_vi64(this.totalTaxValue);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.objectValue = reader.read_ui64();
-    this.totalTaxValue = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.objectValue = reader.read_vi64();
+    this.totalTaxValue = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeReplyTaxVendorMessage("
         + "objectValue="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,8 +20,7 @@ public class GameFightResumeMessage
   // i8
   public byte bombCount;
 
-  public GameFightResumeMessage()
-  {}
+  public GameFightResumeMessage() {}
 
   public GameFightResumeMessage(
       com.ankamagames.dofus.network.types.game.action.fight
@@ -35,8 +34,7 @@ public class GameFightResumeMessage
       com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown[]
           spellCooldowns,
       byte summonCount,
-      byte bombCount)
-  {
+      byte bombCount) {
 
     super(effects, marks, gameTurn, fightStart, idols);
     this.spellCooldowns = spellCooldowns;
@@ -58,8 +56,7 @@ public class GameFightResumeMessage
               com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown>
           spellCooldowns,
       byte summonCount,
-      byte bombCount)
-  {
+      byte bombCount) {
 
     super(effects, marks, gameTurn, fightStart, idols);
     this.spellCooldowns =
@@ -70,20 +67,17 @@ public class GameFightResumeMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6067;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(spellCooldowns.length);
 
-    for (int i = 0; i < spellCooldowns.length; i++)
-  {
+    for (int i = 0; i < spellCooldowns.length; i++) {
 
       spellCooldowns[i].serialize(writer);
     }
@@ -92,8 +86,7 @@ public class GameFightResumeMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -102,8 +95,7 @@ public class GameFightResumeMessage
         new com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown
             [spellCooldowns_length];
 
-    for (int i = 0; i < spellCooldowns_length; i++)
-  {
+    for (int i = 0; i < spellCooldowns_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.GameFightSpellCooldown
           spellCooldowns_it =
@@ -117,8 +109,7 @@ public class GameFightResumeMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightResumeMessage("
         + "effects="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,13 +15,11 @@ public class TopTaxCollectorListMessage
   // bool
   public boolean isDungeon;
 
-  public TopTaxCollectorListMessage()
-  {}
+  public TopTaxCollectorListMessage() {}
 
   public TopTaxCollectorListMessage(
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations[] informations,
-      boolean isDungeon)
-  {
+      boolean isDungeon) {
 
     super(informations);
     this.isDungeon = isDungeon;
@@ -31,38 +29,33 @@ public class TopTaxCollectorListMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorInformations>
           informations,
-      boolean isDungeon)
-  {
+      boolean isDungeon) {
 
     super(informations);
     this.isDungeon = isDungeon;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6565;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.isDungeon);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.isDungeon = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TopTaxCollectorListMessage("
         + "informations="

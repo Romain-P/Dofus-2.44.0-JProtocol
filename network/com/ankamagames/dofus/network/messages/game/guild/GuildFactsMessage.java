@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class GuildFactsMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations[] members;
 
-  public GuildFactsMessage()
-  {}
+  public GuildFactsMessage() {}
 
   public GuildFactsMessage(
       com.ankamagames.dofus.network.types.game.social.GuildFactSheetInformations infos,
       int creationDate,
       short nbTaxCollectors,
-      com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations[] members)
-  {
+      com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations[] members) {
     this.infos = infos;
     this.creationDate = creationDate;
     this.nbTaxCollectors = nbTaxCollectors;
@@ -41,8 +39,7 @@ public class GuildFactsMessage extends NetworkMessage {
       short nbTaxCollectors,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations>
-          members)
-  {
+          members) {
     this.infos = infos;
     this.creationDate = creationDate;
     this.nbTaxCollectors = nbTaxCollectors;
@@ -52,30 +49,26 @@ public class GuildFactsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6415;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.infos.getProtocolId());
     this.infos.serialize(writer);
     writer.write_i32(this.creationDate);
     writer.write_vi16(this.nbTaxCollectors);
     writer.write_ui16(members.length);
 
-    for (int i = 0; i < members.length; i++)
-  {
+    for (int i = 0; i < members.length; i++) {
 
       members[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int infos_typeId = reader.read_ui16();
     this.infos =
@@ -90,8 +83,7 @@ public class GuildFactsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations
             [members_length];
 
-    for (int i = 0; i < members_length; i++)
-  {
+    for (int i = 0; i < members_length; i++) {
 
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations members_it =
           new com.ankamagames.dofus.network.types.game.character.CharacterMinimalInformations();
@@ -102,8 +94,7 @@ public class GuildFactsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFactsMessage("
         + "infos="

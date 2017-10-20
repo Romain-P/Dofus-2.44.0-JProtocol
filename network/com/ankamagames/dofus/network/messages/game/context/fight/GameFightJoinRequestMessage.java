@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class GameFightJoinRequestMessage extends NetworkMessage {
   // i32
   public int fightId;
 
-  public GameFightJoinRequestMessage()
-  {}
+  public GameFightJoinRequestMessage() {}
 
-  public GameFightJoinRequestMessage(double fighterId, int fightId)
-  {
+  public GameFightJoinRequestMessage(double fighterId, int fightId) {
     this.fighterId = fighterId;
     this.fightId = fightId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 701;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.fighterId);
     writer.write_i32(this.fightId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fighterId = reader.read_f64();
     this.fightId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightJoinRequestMessage("
         + "fighterId="

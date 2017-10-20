@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.storage;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,38 +11,32 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class StorageKamasUpdateMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5645;
-  // ui64
-  public java.math.BigInteger kamasTotal;
+  // vi64
+  public long kamasTotal;
 
-  public StorageKamasUpdateMessage()
-  {}
+  public StorageKamasUpdateMessage() {}
 
-  public StorageKamasUpdateMessage(java.math.BigInteger kamasTotal)
-  {
+  public StorageKamasUpdateMessage(long kamasTotal) {
     this.kamasTotal = kamasTotal;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5645;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.kamasTotal);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.kamasTotal);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.kamasTotal = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.kamasTotal = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StorageKamasUpdateMessage(" + "kamasTotal=" + this.kamasTotal + ')';
   }

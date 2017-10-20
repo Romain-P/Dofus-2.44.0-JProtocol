@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -98,8 +98,7 @@ public class GameFightMinimalStats extends NetworkType {
   // vi16
   public short spellDamageReceivedPercent;
 
-  public GameFightMinimalStats()
-  {}
+  public GameFightMinimalStats() {}
 
   public GameFightMinimalStats(
       int lifePoints,
@@ -144,8 +143,7 @@ public class GameFightMinimalStats extends NetworkType {
       short meleeDamageReceivedPercent,
       short rangedDamageReceivedPercent,
       short weaponDamageReceivedPercent,
-      short spellDamageReceivedPercent)
-  {
+      short spellDamageReceivedPercent) {
     this.lifePoints = lifePoints;
     this.maxLifePoints = maxLifePoints;
     this.baseMaxLifePoints = baseMaxLifePoints;
@@ -192,14 +190,12 @@ public class GameFightMinimalStats extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 31;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.lifePoints);
     writer.write_vi32(this.maxLifePoints);
     writer.write_vi32(this.baseMaxLifePoints);
@@ -246,8 +242,7 @@ public class GameFightMinimalStats extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.lifePoints = reader.read_vi32();
     this.maxLifePoints = reader.read_vi32();
     this.baseMaxLifePoints = reader.read_vi32();
@@ -294,8 +289,7 @@ public class GameFightMinimalStats extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightMinimalStats("
         + "lifePoints="

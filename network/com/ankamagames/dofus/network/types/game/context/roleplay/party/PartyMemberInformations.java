@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -39,11 +39,10 @@ public class PartyMemberInformations
           .PartyCompanionMemberInformations[]
       companions;
 
-  public PartyMemberInformations()
-  {}
+  public PartyMemberInformations() {}
 
   public PartyMemberInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -63,8 +62,7 @@ public class PartyMemberInformations
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionMemberInformations
               []
-          companions)
-  {
+          companions) {
 
     super(id, name, level, entityLook, breed, sex);
     this.lifePoints = lifePoints;
@@ -82,7 +80,7 @@ public class PartyMemberInformations
   }
 
   public PartyMemberInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -102,8 +100,7 @@ public class PartyMemberInformations
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                   .PartyCompanionMemberInformations>
-          companions)
-  {
+          companions) {
 
     super(id, name, level, entityLook, breed, sex);
     this.lifePoints = lifePoints;
@@ -126,14 +123,12 @@ public class PartyMemberInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 90;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.lifePoints);
@@ -150,16 +145,14 @@ public class PartyMemberInformations
     this.status.serialize(writer);
     writer.write_ui16(companions.length);
 
-    for (int i = 0; i < companions.length; i++)
-  {
+    for (int i = 0; i < companions.length; i++) {
 
       companions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.lifePoints = reader.read_vi32();
@@ -184,8 +177,7 @@ public class PartyMemberInformations
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
                 .PartyCompanionMemberInformations[companions_length];
 
-    for (int i = 0; i < companions_length; i++)
-  {
+    for (int i = 0; i < companions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.companion
               .PartyCompanionMemberInformations
@@ -199,8 +191,7 @@ public class PartyMemberInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyMemberInformations("
         + "id="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,14 +16,12 @@ public class CharactersListMessage
   // bool
   public boolean hasStartupActions;
 
-  public CharactersListMessage()
-  {}
+  public CharactersListMessage() {}
 
   public CharactersListMessage(
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations[]
           characters,
-      boolean hasStartupActions)
-  {
+      boolean hasStartupActions) {
 
     super(characters);
     this.hasStartupActions = hasStartupActions;
@@ -33,38 +31,33 @@ public class CharactersListMessage
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations>
           characters,
-      boolean hasStartupActions)
-  {
+      boolean hasStartupActions) {
 
     super(characters);
     this.hasStartupActions = hasStartupActions;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 151;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.hasStartupActions);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.hasStartupActions = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharactersListMessage("
         + "characters="

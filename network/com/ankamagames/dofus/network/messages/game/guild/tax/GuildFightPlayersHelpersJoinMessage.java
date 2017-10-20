@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,34 +17,29 @@ public class GuildFightPlayersHelpersJoinMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
       playerInfo;
 
-  public GuildFightPlayersHelpersJoinMessage()
-  {}
+  public GuildFightPlayersHelpersJoinMessage() {}
 
   public GuildFightPlayersHelpersJoinMessage(
       double fightId,
       com.ankamagames.dofus.network.types.game.character.CharacterMinimalPlusLookInformations
-          playerInfo)
-  {
+          playerInfo) {
     this.fightId = fightId;
     this.playerInfo = playerInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5720;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.fightId);
     this.playerInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_f64();
     this.playerInfo =
         new com.ankamagames.dofus.network.types.game.character
@@ -53,8 +48,7 @@ public class GuildFightPlayersHelpersJoinMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFightPlayersHelpersJoinMessage("
         + "fightId="

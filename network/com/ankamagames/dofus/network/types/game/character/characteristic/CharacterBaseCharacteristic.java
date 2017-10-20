@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.characteristic;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,16 +22,14 @@ public class CharacterBaseCharacteristic extends NetworkType {
   // vi16
   public short contextModif;
 
-  public CharacterBaseCharacteristic()
-  {}
+  public CharacterBaseCharacteristic() {}
 
   public CharacterBaseCharacteristic(
       short base,
       short additionnal,
       short objectsAndMountBonus,
       short alignGiftBonus,
-      short contextModif)
-  {
+      short contextModif) {
     this.base = base;
     this.additionnal = additionnal;
     this.objectsAndMountBonus = objectsAndMountBonus;
@@ -40,14 +38,12 @@ public class CharacterBaseCharacteristic extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 4;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.base);
     writer.write_vi16(this.additionnal);
     writer.write_vi16(this.objectsAndMountBonus);
@@ -56,8 +52,7 @@ public class CharacterBaseCharacteristic extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.base = reader.read_vi16();
     this.additionnal = reader.read_vi16();
     this.objectsAndMountBonus = reader.read_vi16();
@@ -66,8 +61,7 @@ public class CharacterBaseCharacteristic extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterBaseCharacteristic("
         + "base="

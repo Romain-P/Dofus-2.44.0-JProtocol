@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class MigratedServerListMessage extends NetworkMessage {
   // array,vi16
   public short[] migratedServerIds;
 
-  public MigratedServerListMessage()
-  {}
+  public MigratedServerListMessage() {}
 
-  public MigratedServerListMessage(short[] migratedServerIds)
-  {
+  public MigratedServerListMessage(short[] migratedServerIds) {
     this.migratedServerIds = migratedServerIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6731;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(migratedServerIds.length);
     writer.write_array_vi16(this.migratedServerIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int migratedServerIds_length = reader.read_ui16();
     this.migratedServerIds = reader.read_array_vi16(migratedServerIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MigratedServerListMessage("
         + "migratedServerIds="

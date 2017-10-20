@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,53 +14,45 @@ public class ExchangeShopStockMultiMovementUpdatedMessage extends NetworkMessage
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell[] objectInfoList;
 
-  public ExchangeShopStockMultiMovementUpdatedMessage()
-  {}
+  public ExchangeShopStockMultiMovementUpdatedMessage() {}
 
   public ExchangeShopStockMultiMovementUpdatedMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell[] objectInfoList)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell[] objectInfoList) {
     this.objectInfoList = objectInfoList;
   }
 
   public ExchangeShopStockMultiMovementUpdatedMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell>
-          objectInfoList)
-  {
+          objectInfoList) {
     this.objectInfoList =
         objectInfoList.toArray(
             com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6038;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objectInfoList.length);
 
-    for (int i = 0; i < objectInfoList.length; i++)
-  {
+    for (int i = 0; i < objectInfoList.length; i++) {
 
       objectInfoList[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objectInfoList_length = reader.read_ui16();
     this.objectInfoList =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell
             [objectInfoList_length];
 
-    for (int i = 0; i < objectInfoList_length; i++)
-  {
+    for (int i = 0; i < objectInfoList_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell objectInfoList_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSell();
@@ -71,8 +63,7 @@ public class ExchangeShopStockMultiMovementUpdatedMessage extends NetworkMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeShopStockMultiMovementUpdatedMessage("
         + "objectInfoList="

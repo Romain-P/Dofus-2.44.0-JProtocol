@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class ExchangeStartOkMulticraftCustomerMessage extends NetworkMessage {
   // ui8
   public short crafterJobLevel;
 
-  public ExchangeStartOkMulticraftCustomerMessage()
-  {}
+  public ExchangeStartOkMulticraftCustomerMessage() {}
 
-  public ExchangeStartOkMulticraftCustomerMessage(int skillId, short crafterJobLevel)
-  {
+  public ExchangeStartOkMulticraftCustomerMessage(int skillId, short crafterJobLevel) {
     this.skillId = skillId;
     this.crafterJobLevel = crafterJobLevel;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5817;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.skillId);
     writer.write_ui8(this.crafterJobLevel);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.skillId = reader.read_vi32();
     this.crafterJobLevel = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeStartOkMulticraftCustomerMessage("
         + "skillId="

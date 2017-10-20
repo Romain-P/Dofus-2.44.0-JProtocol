@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class TaxCollectorMovementRemoveMessage extends NetworkMessage {
   // f64
   public double collectorId;
 
-  public TaxCollectorMovementRemoveMessage()
-  {}
+  public TaxCollectorMovementRemoveMessage() {}
 
-  public TaxCollectorMovementRemoveMessage(double collectorId)
-  {
+  public TaxCollectorMovementRemoveMessage(double collectorId) {
     this.collectorId = collectorId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5915;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.collectorId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.collectorId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorMovementRemoveMessage(" + "collectorId=" + this.collectorId + ')';
   }

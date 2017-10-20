@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class ExchangeBidHouseItemAddOkMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid itemInfo;
 
-  public ExchangeBidHouseItemAddOkMessage()
-  {}
+  public ExchangeBidHouseItemAddOkMessage() {}
 
   public ExchangeBidHouseItemAddOkMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid itemInfo)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid itemInfo) {
     this.itemInfo = itemInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5945;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.itemInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.itemInfo = new com.ankamagames.dofus.network.types.game.data.items.ObjectItemToSellInBid();
     this.itemInfo.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseItemAddOkMessage(" + "itemInfo=" + this.itemInfo + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.interactive.zaap;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ZaapRespawnUpdatedMessage extends NetworkMessage {
   // f64
   public double mapId;
 
-  public ZaapRespawnUpdatedMessage()
-  {}
+  public ZaapRespawnUpdatedMessage() {}
 
-  public ZaapRespawnUpdatedMessage(double mapId)
-  {
+  public ZaapRespawnUpdatedMessage(double mapId) {
     this.mapId = mapId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6571;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.mapId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mapId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ZaapRespawnUpdatedMessage(" + "mapId=" + this.mapId + ')';
   }

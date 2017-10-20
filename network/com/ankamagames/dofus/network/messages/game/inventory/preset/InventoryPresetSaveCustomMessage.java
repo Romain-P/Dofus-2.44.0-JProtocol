@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,12 +17,10 @@ public class InventoryPresetSaveCustomMessage
   // array,vi32
   public int[] itemsUids;
 
-  public InventoryPresetSaveCustomMessage()
-  {}
+  public InventoryPresetSaveCustomMessage() {}
 
   public InventoryPresetSaveCustomMessage(
-      byte presetId, byte symbolId, short[] itemsPositions, int[] itemsUids)
-  {
+      byte presetId, byte symbolId, short[] itemsPositions, int[] itemsUids) {
 
     super(presetId, symbolId);
     this.itemsPositions = itemsPositions;
@@ -30,14 +28,12 @@ public class InventoryPresetSaveCustomMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6329;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(itemsPositions.length);
@@ -47,8 +43,7 @@ public class InventoryPresetSaveCustomMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -60,8 +55,7 @@ public class InventoryPresetSaveCustomMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetSaveCustomMessage("
         + "presetId="

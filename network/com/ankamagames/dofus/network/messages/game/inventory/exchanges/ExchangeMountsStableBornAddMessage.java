@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,47 +14,40 @@ public class ExchangeMountsStableBornAddMessage
         .ExchangeMountsStableAddMessage {
   public static final int PROTOCOL_ID = 6557;
 
-  public ExchangeMountsStableBornAddMessage()
-  {}
+  public ExchangeMountsStableBornAddMessage() {}
 
   public ExchangeMountsStableBornAddMessage(
-      com.ankamagames.dofus.network.types.game.mount.MountClientData[] mountDescription)
-  {
+      com.ankamagames.dofus.network.types.game.mount.MountClientData[] mountDescription) {
 
     super(mountDescription);
   }
 
   public ExchangeMountsStableBornAddMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.mount.MountClientData>
-          mountDescription)
-  {
+          mountDescription) {
 
     super(mountDescription);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6557;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeMountsStableBornAddMessage("
         + "mountDescription="

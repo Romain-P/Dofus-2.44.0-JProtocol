@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.enums;
 
 import java.util.Optional;
@@ -31,17 +31,13 @@ public enum ChatChannelsMultiEnum {
 
   public final byte value;
 
-  private ChatChannelsMultiEnum(byte value)
-  {
+  private ChatChannelsMultiEnum(byte value) {
     this.value = value;
   }
 
-  public static Optional<ChatChannelsMultiEnum> valueOf(byte value)
-  {
-    for (ChatChannelsMultiEnum it : values())
-  {
-      if (it.value == value)
-  {
+  public static Optional<ChatChannelsMultiEnum> valueOf(byte value) {
+    for (ChatChannelsMultiEnum it : values()) {
+      if (it.value == value) {
         return Optional.of(it);
       }
     }

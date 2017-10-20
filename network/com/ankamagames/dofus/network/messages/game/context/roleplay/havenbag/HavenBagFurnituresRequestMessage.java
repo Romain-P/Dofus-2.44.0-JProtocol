@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.havenbag;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class HavenBagFurnituresRequestMessage extends NetworkMessage {
   // array,i8
   public byte[] orientations;
 
-  public HavenBagFurnituresRequestMessage()
-  {}
+  public HavenBagFurnituresRequestMessage() {}
 
-  public HavenBagFurnituresRequestMessage(short[] cellIds, int[] funitureIds, byte[] orientations)
-  {
+  public HavenBagFurnituresRequestMessage(short[] cellIds, int[] funitureIds, byte[] orientations) {
     this.cellIds = cellIds;
     this.funitureIds = funitureIds;
     this.orientations = orientations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6637;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(cellIds.length);
     writer.write_array_vi16(this.cellIds);
     writer.write_ui16(funitureIds.length);
@@ -46,8 +42,7 @@ public class HavenBagFurnituresRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int cellIds_length = reader.read_ui16();
     this.cellIds = reader.read_array_vi16(cellIds_length);
@@ -60,8 +55,7 @@ public class HavenBagFurnituresRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HavenBagFurnituresRequestMessage("
         + "cellIds="

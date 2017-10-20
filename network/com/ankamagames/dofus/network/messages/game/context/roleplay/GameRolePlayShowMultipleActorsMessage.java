@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,13 +15,11 @@ public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations[]
       informationsList;
 
-  public GameRolePlayShowMultipleActorsMessage()
-  {}
+  public GameRolePlayShowMultipleActorsMessage() {}
 
   public GameRolePlayShowMultipleActorsMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations[]
-          informationsList)
-  {
+          informationsList) {
     this.informationsList = informationsList;
   }
 
@@ -29,8 +27,7 @@ public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay
                   .GameRolePlayActorInformations>
-          informationsList)
-  {
+          informationsList) {
     this.informationsList =
         informationsList.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
@@ -39,18 +36,15 @@ public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6712;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(informationsList.length);
 
-    for (int i = 0; i < informationsList.length; i++)
-  {
+    for (int i = 0; i < informationsList.length; i++) {
 
       writer.write_ui16(informationsList[i].getProtocolId());
 
@@ -59,16 +53,14 @@ public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int informationsList_length = reader.read_ui16();
     this.informationsList =
         new com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
             [informationsList_length];
 
-    for (int i = 0; i < informationsList_length; i++)
-  {
+    for (int i = 0; i < informationsList_length; i++) {
 
       int informationsList_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
@@ -83,8 +75,7 @@ public class GameRolePlayShowMultipleActorsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayShowMultipleActorsMessage("
         + "informationsList="

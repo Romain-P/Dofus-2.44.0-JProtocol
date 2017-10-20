@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.quest;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,15 +16,13 @@ public class FollowedQuestsMessage extends NetworkMessage {
           .QuestActiveDetailedInformations[]
       quests;
 
-  public FollowedQuestsMessage()
-  {}
+  public FollowedQuestsMessage() {}
 
   public FollowedQuestsMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.quest
                   .QuestActiveDetailedInformations
               []
-          quests)
-  {
+          quests) {
     this.quests = quests;
   }
 
@@ -32,8 +30,7 @@ public class FollowedQuestsMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.quest
                   .QuestActiveDetailedInformations>
-          quests)
-  {
+          quests) {
     this.quests =
         quests.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.quest
@@ -43,34 +40,29 @@ public class FollowedQuestsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6717;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(quests.length);
 
-    for (int i = 0; i < quests.length; i++)
-  {
+    for (int i = 0; i < quests.length; i++) {
 
       quests[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int quests_length = reader.read_ui16();
     this.quests =
         new com.ankamagames.dofus.network.types.game.context.roleplay.quest
                 .QuestActiveDetailedInformations[quests_length];
 
-    for (int i = 0; i < quests_length; i++)
-  {
+    for (int i = 0; i < quests_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.quest
               .QuestActiveDetailedInformations
@@ -84,8 +76,7 @@ public class FollowedQuestsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FollowedQuestsMessage(" + "quests=" + java.util.Arrays.toString(this.quests) + ')';
   }

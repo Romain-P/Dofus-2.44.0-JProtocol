@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,11 +19,10 @@ public class CharacterHardcoreOrEpicInformations
   // ui8
   public short deathMaxLevel;
 
-  public CharacterHardcoreOrEpicInformations()
-  {}
+  public CharacterHardcoreOrEpicInformations() {}
 
   public CharacterHardcoreOrEpicInformations(
-      java.math.BigInteger id,
+      long id,
       java.lang.String name,
       short level,
       com.ankamagames.dofus.network.types.game.look.EntityLook entityLook,
@@ -31,8 +30,7 @@ public class CharacterHardcoreOrEpicInformations
       boolean sex,
       byte deathState,
       short deathCount,
-      short deathMaxLevel)
-  {
+      short deathMaxLevel) {
 
     super(id, name, level, entityLook, breed, sex);
     this.deathState = deathState;
@@ -41,14 +39,12 @@ public class CharacterHardcoreOrEpicInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 474;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.deathState);
@@ -57,8 +53,7 @@ public class CharacterHardcoreOrEpicInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.deathState = reader.read_i8();
@@ -67,8 +62,7 @@ public class CharacterHardcoreOrEpicInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterHardcoreOrEpicInformations("
         + "id="

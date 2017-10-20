@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,36 +17,31 @@ public class PartyNewGuestMessage
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations
       guest;
 
-  public PartyNewGuestMessage()
-  {}
+  public PartyNewGuestMessage() {}
 
   public PartyNewGuestMessage(
       int partyId,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.PartyGuestInformations
-          guest)
-  {
+          guest) {
 
     super(partyId);
     this.guest = guest;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6260;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.guest.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.guest =
@@ -56,8 +51,7 @@ public class PartyNewGuestMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyNewGuestMessage(" + "partyId=" + this.partyId + ", guest=" + this.guest + ')';
   }

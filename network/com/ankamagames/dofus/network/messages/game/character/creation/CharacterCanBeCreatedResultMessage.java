@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.creation;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class CharacterCanBeCreatedResultMessage extends NetworkMessage {
   // bool
   public boolean yesYouCan;
 
-  public CharacterCanBeCreatedResultMessage()
-  {}
+  public CharacterCanBeCreatedResultMessage() {}
 
-  public CharacterCanBeCreatedResultMessage(boolean yesYouCan)
-  {
+  public CharacterCanBeCreatedResultMessage(boolean yesYouCan) {
     this.yesYouCan = yesYouCan;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6733;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.yesYouCan);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.yesYouCan = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterCanBeCreatedResultMessage(" + "yesYouCan=" + this.yesYouCan + ')';
   }

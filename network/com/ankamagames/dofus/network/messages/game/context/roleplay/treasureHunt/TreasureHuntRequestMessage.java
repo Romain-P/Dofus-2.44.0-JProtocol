@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class TreasureHuntRequestMessage extends NetworkMessage {
   // i8
   public byte questType;
 
-  public TreasureHuntRequestMessage()
-  {}
+  public TreasureHuntRequestMessage() {}
 
-  public TreasureHuntRequestMessage(short questLevel, byte questType)
-  {
+  public TreasureHuntRequestMessage(short questLevel, byte questType) {
     this.questLevel = questLevel;
     this.questType = questType;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6488;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui8(this.questLevel);
     writer.write_i8(this.questType);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.questLevel = reader.read_ui8();
     this.questType = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntRequestMessage("
         + "questLevel="

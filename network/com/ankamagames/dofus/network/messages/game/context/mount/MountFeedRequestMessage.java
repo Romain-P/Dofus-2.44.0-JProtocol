@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class MountFeedRequestMessage extends NetworkMessage {
   // vi32
   public int quantity;
 
-  public MountFeedRequestMessage()
-  {}
+  public MountFeedRequestMessage() {}
 
-  public MountFeedRequestMessage(int mountUid, byte mountLocation, int mountFoodUid, int quantity)
-  {
+  public MountFeedRequestMessage(int mountUid, byte mountLocation, int mountFoodUid, int quantity) {
     this.mountUid = mountUid;
     this.mountLocation = mountLocation;
     this.mountFoodUid = mountFoodUid;
@@ -32,14 +30,12 @@ public class MountFeedRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6189;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.mountUid);
     writer.write_i8(this.mountLocation);
     writer.write_vi32(this.mountFoodUid);
@@ -47,8 +43,7 @@ public class MountFeedRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.mountUid = reader.read_vi32();
     this.mountLocation = reader.read_i8();
     this.mountFoodUid = reader.read_vi32();
@@ -56,8 +51,7 @@ public class MountFeedRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountFeedRequestMessage("
         + "mountUid="

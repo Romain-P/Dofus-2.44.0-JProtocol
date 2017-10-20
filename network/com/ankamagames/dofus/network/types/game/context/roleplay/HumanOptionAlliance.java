@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,14 +18,12 @@ public class HumanOptionAlliance
   // i8
   public byte aggressable;
 
-  public HumanOptionAlliance()
-  {}
+  public HumanOptionAlliance() {}
 
   public HumanOptionAlliance(
       com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations
           allianceInformations,
-      byte aggressable)
-  {
+      byte aggressable) {
 
     super();
     this.allianceInformations = allianceInformations;
@@ -33,14 +31,12 @@ public class HumanOptionAlliance
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 425;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.allianceInformations.serialize(writer);
@@ -48,8 +44,7 @@ public class HumanOptionAlliance
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.allianceInformations =
@@ -59,8 +54,7 @@ public class HumanOptionAlliance
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionAlliance("
         + "allianceInformations="

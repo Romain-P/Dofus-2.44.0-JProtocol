@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,12 +13,10 @@ public class AlliancePartialListMessage
     extends com.ankamagames.dofus.network.messages.game.alliance.AllianceListMessage {
   public static final int PROTOCOL_ID = 6427;
 
-  public AlliancePartialListMessage()
-  {}
+  public AlliancePartialListMessage() {}
 
   public AlliancePartialListMessage(
-      com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[] alliances)
-  {
+      com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations[] alliances) {
 
     super(alliances);
   }
@@ -26,35 +24,30 @@ public class AlliancePartialListMessage
   public AlliancePartialListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.social.AllianceFactSheetInformations>
-          alliances)
-  {
+          alliances) {
 
     super(alliances);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6427;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AlliancePartialListMessage("
         + "alliances="

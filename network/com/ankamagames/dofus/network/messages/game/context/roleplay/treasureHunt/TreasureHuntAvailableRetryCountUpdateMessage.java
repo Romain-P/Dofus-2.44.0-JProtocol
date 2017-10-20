@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class TreasureHuntAvailableRetryCountUpdateMessage extends NetworkMessage
   // i32
   public int availableRetryCount;
 
-  public TreasureHuntAvailableRetryCountUpdateMessage()
-  {}
+  public TreasureHuntAvailableRetryCountUpdateMessage() {}
 
-  public TreasureHuntAvailableRetryCountUpdateMessage(byte questType, int availableRetryCount)
-  {
+  public TreasureHuntAvailableRetryCountUpdateMessage(byte questType, int availableRetryCount) {
     this.questType = questType;
     this.availableRetryCount = availableRetryCount;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6491;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.questType);
     writer.write_i32(this.availableRetryCount);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.questType = reader.read_i8();
     this.availableRetryCount = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntAvailableRetryCountUpdateMessage("
         + "questType="

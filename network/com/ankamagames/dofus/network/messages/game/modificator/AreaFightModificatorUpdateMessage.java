@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.modificator;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class AreaFightModificatorUpdateMessage extends NetworkMessage {
   // i32
   public int spellPairId;
 
-  public AreaFightModificatorUpdateMessage()
-  {}
+  public AreaFightModificatorUpdateMessage() {}
 
-  public AreaFightModificatorUpdateMessage(int spellPairId)
-  {
+  public AreaFightModificatorUpdateMessage(int spellPairId) {
     this.spellPairId = spellPairId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6493;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.spellPairId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellPairId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AreaFightModificatorUpdateMessage(" + "spellPairId=" + this.spellPairId + ')';
   }

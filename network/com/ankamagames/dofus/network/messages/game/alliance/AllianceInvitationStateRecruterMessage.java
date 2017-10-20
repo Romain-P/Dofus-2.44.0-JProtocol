@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.alliance;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,39 +16,33 @@ public class AllianceInvitationStateRecruterMessage extends NetworkMessage {
   // i8
   public byte invitationState;
 
-  public AllianceInvitationStateRecruterMessage()
-  {}
+  public AllianceInvitationStateRecruterMessage() {}
 
   public AllianceInvitationStateRecruterMessage(
-      java.lang.String recrutedName, byte invitationState)
-  {
+      java.lang.String recrutedName, byte invitationState) {
     this.recrutedName = recrutedName;
     this.invitationState = invitationState;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6396;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.recrutedName);
     writer.write_i8(this.invitationState);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.recrutedName = reader.read_str();
     this.invitationState = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AllianceInvitationStateRecruterMessage("
         + "recrutedName="

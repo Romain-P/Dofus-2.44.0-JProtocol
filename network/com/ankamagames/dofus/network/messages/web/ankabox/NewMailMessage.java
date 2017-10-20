@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.web.ankabox;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,25 +15,21 @@ public class NewMailMessage
   // array,i32
   public int[] sendersAccountId;
 
-  public NewMailMessage()
-  {}
+  public NewMailMessage() {}
 
-  public NewMailMessage(short unread, short total, int[] sendersAccountId)
-  {
+  public NewMailMessage(short unread, short total, int[] sendersAccountId) {
 
     super(unread, total);
     this.sendersAccountId = sendersAccountId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6292;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(sendersAccountId.length);
@@ -41,8 +37,7 @@ public class NewMailMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -51,8 +46,7 @@ public class NewMailMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NewMailMessage("
         + "unread="

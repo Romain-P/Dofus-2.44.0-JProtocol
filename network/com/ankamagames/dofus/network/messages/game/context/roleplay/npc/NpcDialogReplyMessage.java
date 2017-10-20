@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class NpcDialogReplyMessage extends NetworkMessage {
   // vi32
   public int replyId;
 
-  public NpcDialogReplyMessage()
-  {}
+  public NpcDialogReplyMessage() {}
 
-  public NpcDialogReplyMessage(int replyId)
-  {
+  public NpcDialogReplyMessage(int replyId) {
     this.replyId = replyId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5616;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.replyId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.replyId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NpcDialogReplyMessage(" + "replyId=" + this.replyId + ')';
   }

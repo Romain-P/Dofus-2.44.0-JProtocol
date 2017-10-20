@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.common;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,34 +12,28 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class NetworkDataContainerMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 2;
 
-  public NetworkDataContainerMessage()
-  {}
+  public NetworkDataContainerMessage() {}
 
   public static final NetworkDataContainerMessage i = new NetworkDataContainerMessage();
 
   @Override
-  public boolean isAlwaysEmpty()
-  {
+  public boolean isAlwaysEmpty() {
     return true;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 2;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "NetworkDataContainerMessage";
   }

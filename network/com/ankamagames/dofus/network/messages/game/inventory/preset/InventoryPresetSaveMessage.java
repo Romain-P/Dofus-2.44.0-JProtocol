@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.preset;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class InventoryPresetSaveMessage
   // bool
   public boolean saveEquipment;
 
-  public InventoryPresetSaveMessage()
-  {}
+  public InventoryPresetSaveMessage() {}
 
-  public InventoryPresetSaveMessage(byte presetId, byte symbolId, boolean saveEquipment)
-  {
+  public InventoryPresetSaveMessage(byte presetId, byte symbolId, boolean saveEquipment) {
 
     super(presetId, symbolId);
     this.saveEquipment = saveEquipment;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6165;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.saveEquipment);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.saveEquipment = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InventoryPresetSaveMessage("
         + "presetId="

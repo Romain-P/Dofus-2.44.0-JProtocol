@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -34,8 +34,7 @@ public class TaxCollectorInformations extends NetworkType {
   public com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorComplementaryInformations[]
       complements;
 
-  public TaxCollectorInformations()
-  {}
+  public TaxCollectorInformations() {}
 
   public TaxCollectorInformations(
       double uniqueId,
@@ -49,8 +48,7 @@ public class TaxCollectorInformations extends NetworkType {
       byte state,
       com.ankamagames.dofus.network.types.game.look.EntityLook look,
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorComplementaryInformations[]
-          complements)
-  {
+          complements) {
     this.uniqueId = uniqueId;
     this.firtNameId = firtNameId;
     this.lastNameId = lastNameId;
@@ -77,8 +75,7 @@ public class TaxCollectorInformations extends NetworkType {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.guild.tax
                   .TaxCollectorComplementaryInformations>
-          complements)
-  {
+          complements) {
     this.uniqueId = uniqueId;
     this.firtNameId = firtNameId;
     this.lastNameId = lastNameId;
@@ -96,14 +93,12 @@ public class TaxCollectorInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 167;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.uniqueId);
     writer.write_vi16(this.firtNameId);
     writer.write_vi16(this.lastNameId);
@@ -115,8 +110,7 @@ public class TaxCollectorInformations extends NetworkType {
     this.look.serialize(writer);
     writer.write_ui16(complements.length);
 
-    for (int i = 0; i < complements.length; i++)
-  {
+    for (int i = 0; i < complements.length; i++) {
 
       writer.write_ui16(complements[i].getProtocolId());
 
@@ -125,8 +119,7 @@ public class TaxCollectorInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.uniqueId = reader.read_f64();
     this.firtNameId = reader.read_vi16();
     this.lastNameId = reader.read_vi16();
@@ -145,8 +138,7 @@ public class TaxCollectorInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorComplementaryInformations
             [complements_length];
 
-    for (int i = 0; i < complements_length; i++)
-  {
+    for (int i = 0; i < complements_length; i++) {
 
       int complements_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.guild.tax.TaxCollectorComplementaryInformations
@@ -161,8 +153,7 @@ public class TaxCollectorInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorInformations("
         + "uniqueId="

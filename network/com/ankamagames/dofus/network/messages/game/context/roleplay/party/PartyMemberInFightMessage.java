@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,8 @@ public class PartyMemberInFightMessage
   public static final int PROTOCOL_ID = 6342;
   // i8
   public byte reason;
-  // ui64
-  public java.math.BigInteger memberId;
+  // vi64
+  public long memberId;
   // i32
   public int memberAccountId;
   // str
@@ -28,19 +28,17 @@ public class PartyMemberInFightMessage
   // vi16
   public short timeBeforeFightStart;
 
-  public PartyMemberInFightMessage()
-  {}
+  public PartyMemberInFightMessage() {}
 
   public PartyMemberInFightMessage(
       int partyId,
       byte reason,
-      java.math.BigInteger memberId,
+      long memberId,
       int memberAccountId,
       java.lang.String memberName,
       int fightId,
       com.ankamagames.dofus.network.types.game.context.MapCoordinatesExtended fightMap,
-      short timeBeforeFightStart)
-  {
+      short timeBeforeFightStart) {
 
     super(partyId);
     this.reason = reason;
@@ -53,18 +51,16 @@ public class PartyMemberInFightMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6342;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.reason);
-    writer.write_ui64(this.memberId);
+    writer.write_vi64(this.memberId);
     writer.write_i32(this.memberAccountId);
     writer.write_str(this.memberName);
     writer.write_i32(this.fightId);
@@ -73,12 +69,11 @@ public class PartyMemberInFightMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.reason = reader.read_i8();
-    this.memberId = reader.read_ui64();
+    this.memberId = reader.read_vi64();
     this.memberAccountId = reader.read_i32();
     this.memberName = reader.read_str();
     this.fightId = reader.read_i32();
@@ -88,8 +83,7 @@ public class PartyMemberInFightMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyMemberInFightMessage("
         + "partyId="

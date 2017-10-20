@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class PartyModifiableStatusMessage
   // bool
   public boolean enabled;
 
-  public PartyModifiableStatusMessage()
-  {}
+  public PartyModifiableStatusMessage() {}
 
-  public PartyModifiableStatusMessage(int partyId, boolean enabled)
-  {
+  public PartyModifiableStatusMessage(int partyId, boolean enabled) {
 
     super(partyId);
     this.enabled = enabled;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6277;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_bool(this.enabled);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.enabled = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PartyModifiableStatusMessage("
         + "partyId="

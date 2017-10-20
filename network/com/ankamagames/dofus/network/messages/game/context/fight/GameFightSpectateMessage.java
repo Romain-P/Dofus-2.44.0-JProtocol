@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,8 +24,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.idol.Idol
   public com.ankamagames.dofus.network.types.game.idol.Idol[] idols;
 
-  public GameFightSpectateMessage()
-  {}
+  public GameFightSpectateMessage() {}
 
   public GameFightSpectateMessage(
       com.ankamagames.dofus.network.types.game.action.fight
@@ -35,8 +34,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
       com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark[] marks,
       short gameTurn,
       int fightStart,
-      com.ankamagames.dofus.network.types.game.idol.Idol[] idols)
-  {
+      com.ankamagames.dofus.network.types.game.idol.Idol[] idols) {
     this.effects = effects;
     this.marks = marks;
     this.gameTurn = gameTurn;
@@ -53,8 +51,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
           marks,
       short gameTurn,
       int fightStart,
-      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.idol.Idol> idols)
-  {
+      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.idol.Idol> idols) {
     this.effects =
         effects.toArray(
             com.ankamagames.dofus.network.types.game.action.fight
@@ -69,25 +66,21 @@ public class GameFightSpectateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6069;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(effects.length);
 
-    for (int i = 0; i < effects.length; i++)
-  {
+    for (int i = 0; i < effects.length; i++) {
 
       effects[i].serialize(writer);
     }
     writer.write_ui16(marks.length);
 
-    for (int i = 0; i < marks.length; i++)
-  {
+    for (int i = 0; i < marks.length; i++) {
 
       marks[i].serialize(writer);
     }
@@ -95,24 +88,21 @@ public class GameFightSpectateMessage extends NetworkMessage {
     writer.write_i32(this.fightStart);
     writer.write_ui16(idols.length);
 
-    for (int i = 0; i < idols.length; i++)
-  {
+    for (int i = 0; i < idols.length; i++) {
 
       idols[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int effects_length = reader.read_ui16();
     this.effects =
         new com.ankamagames.dofus.network.types.game.action.fight
                 .FightDispellableEffectExtendedInformations[effects_length];
 
-    for (int i = 0; i < effects_length; i++)
-  {
+    for (int i = 0; i < effects_length; i++) {
 
       com.ankamagames.dofus.network.types.game.action.fight
               .FightDispellableEffectExtendedInformations
@@ -128,8 +118,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
     this.marks =
         new com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark[marks_length];
 
-    for (int i = 0; i < marks_length; i++)
-  {
+    for (int i = 0; i < marks_length; i++) {
 
       com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark marks_it =
           new com.ankamagames.dofus.network.types.game.actions.fight.GameActionMark();
@@ -143,8 +132,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
     int idols_length = reader.read_ui16();
     this.idols = new com.ankamagames.dofus.network.types.game.idol.Idol[idols_length];
 
-    for (int i = 0; i < idols_length; i++)
-  {
+    for (int i = 0; i < idols_length; i++) {
 
       com.ankamagames.dofus.network.types.game.idol.Idol idols_it =
           new com.ankamagames.dofus.network.types.game.idol.Idol();
@@ -155,8 +143,7 @@ public class GameFightSpectateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightSpectateMessage("
         + "effects="

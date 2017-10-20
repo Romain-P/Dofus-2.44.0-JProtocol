@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class AbstractGameActionFightTargetedAbilityMessage
   // i8
   public byte critical;
 
-  public AbstractGameActionFightTargetedAbilityMessage()
-  {}
+  public AbstractGameActionFightTargetedAbilityMessage() {}
 
   public AbstractGameActionFightTargetedAbilityMessage(
       short actionId,
@@ -33,8 +32,7 @@ public class AbstractGameActionFightTargetedAbilityMessage
       boolean verboseCast,
       double targetId,
       short destinationCellId,
-      byte critical)
-  {
+      byte critical) {
 
     super(actionId, sourceId);
     this.silentCast = silentCast;
@@ -45,14 +43,12 @@ public class AbstractGameActionFightTargetedAbilityMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6118;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -66,8 +62,7 @@ public class AbstractGameActionFightTargetedAbilityMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -80,8 +75,7 @@ public class AbstractGameActionFightTargetedAbilityMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractGameActionFightTargetedAbilityMessage("
         + "actionId="

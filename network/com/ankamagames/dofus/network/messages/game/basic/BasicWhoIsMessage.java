@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.basic;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,8 @@ public class BasicWhoIsMessage extends NetworkMessage {
   public int accountId;
   // str
   public java.lang.String playerName;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // i16
   public short areaId;
   // i16
@@ -36,8 +36,7 @@ public class BasicWhoIsMessage extends NetworkMessage {
   // i8
   public byte playerState;
 
-  public BasicWhoIsMessage()
-  {}
+  public BasicWhoIsMessage() {}
 
   public BasicWhoIsMessage(
       boolean self,
@@ -46,13 +45,12 @@ public class BasicWhoIsMessage extends NetworkMessage {
       java.lang.String accountNickname,
       int accountId,
       java.lang.String playerName,
-      java.math.BigInteger playerId,
+      long playerId,
       short areaId,
       short serverId,
       short originServerId,
       com.ankamagames.dofus.network.types.game.social.AbstractSocialGroupInfos[] socialGroups,
-      byte playerState)
-  {
+      byte playerState) {
     this.self = self;
     this.verbose = verbose;
     this.position = position;
@@ -74,15 +72,14 @@ public class BasicWhoIsMessage extends NetworkMessage {
       java.lang.String accountNickname,
       int accountId,
       java.lang.String playerName,
-      java.math.BigInteger playerId,
+      long playerId,
       short areaId,
       short serverId,
       short originServerId,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.social.AbstractSocialGroupInfos>
           socialGroups,
-      byte playerState)
-  {
+      byte playerState) {
     this.self = self;
     this.verbose = verbose;
     this.position = position;
@@ -100,14 +97,12 @@ public class BasicWhoIsMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 180;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.self, 0);
@@ -117,14 +112,13 @@ public class BasicWhoIsMessage extends NetworkMessage {
     writer.write_str(this.accountNickname);
     writer.write_i32(this.accountId);
     writer.write_str(this.playerName);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
     writer.write_i16(this.areaId);
     writer.write_i16(this.serverId);
     writer.write_i16(this.originServerId);
     writer.write_ui16(socialGroups.length);
 
-    for (int i = 0; i < socialGroups.length; i++)
-  {
+    for (int i = 0; i < socialGroups.length; i++) {
 
       writer.write_ui16(socialGroups[i].getProtocolId());
 
@@ -134,8 +128,7 @@ public class BasicWhoIsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.self = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -144,7 +137,7 @@ public class BasicWhoIsMessage extends NetworkMessage {
     this.accountNickname = reader.read_str();
     this.accountId = reader.read_i32();
     this.playerName = reader.read_str();
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
     this.areaId = reader.read_i16();
     this.serverId = reader.read_i16();
     this.originServerId = reader.read_i16();
@@ -154,8 +147,7 @@ public class BasicWhoIsMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.social.AbstractSocialGroupInfos
             [socialGroups_length];
 
-    for (int i = 0; i < socialGroups_length; i++)
-  {
+    for (int i = 0; i < socialGroups_length; i++) {
 
       int socialGroups_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.social.AbstractSocialGroupInfos socialGroups_it =
@@ -169,8 +161,7 @@ public class BasicWhoIsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BasicWhoIsMessage("
         + "self="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.actions.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GameActionFightNoSpellCastMessage extends NetworkMessage {
   // vi32
   public int spellLevelId;
 
-  public GameActionFightNoSpellCastMessage()
-  {}
+  public GameActionFightNoSpellCastMessage() {}
 
-  public GameActionFightNoSpellCastMessage(int spellLevelId)
-  {
+  public GameActionFightNoSpellCastMessage(int spellLevelId) {
     this.spellLevelId = spellLevelId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6132;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.spellLevelId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spellLevelId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameActionFightNoSpellCastMessage(" + "spellLevelId=" + this.spellLevelId + ')';
   }

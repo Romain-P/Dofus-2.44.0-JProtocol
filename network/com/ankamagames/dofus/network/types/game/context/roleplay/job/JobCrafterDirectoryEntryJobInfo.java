@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,11 +20,9 @@ public class JobCrafterDirectoryEntryJobInfo extends NetworkType {
   // ui8
   public short minLevel;
 
-  public JobCrafterDirectoryEntryJobInfo()
-  {}
+  public JobCrafterDirectoryEntryJobInfo() {}
 
-  public JobCrafterDirectoryEntryJobInfo(byte jobId, short jobLevel, boolean free, short minLevel)
-  {
+  public JobCrafterDirectoryEntryJobInfo(byte jobId, short jobLevel, boolean free, short minLevel) {
     this.jobId = jobId;
     this.jobLevel = jobLevel;
     this.free = free;
@@ -32,14 +30,12 @@ public class JobCrafterDirectoryEntryJobInfo extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 195;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.jobId);
     writer.write_ui8(this.jobLevel);
     writer.write_bool(this.free);
@@ -47,8 +43,7 @@ public class JobCrafterDirectoryEntryJobInfo extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.jobId = reader.read_i8();
     this.jobLevel = reader.read_ui8();
     this.free = reader.read_bool();
@@ -56,8 +51,7 @@ public class JobCrafterDirectoryEntryJobInfo extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobCrafterDirectoryEntryJobInfo("
         + "jobId="

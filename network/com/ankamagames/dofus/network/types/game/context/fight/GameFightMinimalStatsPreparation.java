@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class GameFightMinimalStatsPreparation
   // vi32
   public int initiative;
 
-  public GameFightMinimalStatsPreparation()
-  {}
+  public GameFightMinimalStatsPreparation() {}
 
   public GameFightMinimalStatsPreparation(
       int lifePoints,
@@ -62,8 +61,7 @@ public class GameFightMinimalStatsPreparation
       short rangedDamageReceivedPercent,
       short weaponDamageReceivedPercent,
       short spellDamageReceivedPercent,
-      int initiative)
-  {
+      int initiative) {
 
     super(
         lifePoints,
@@ -113,30 +111,26 @@ public class GameFightMinimalStatsPreparation
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 360;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.initiative);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.initiative = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightMinimalStatsPreparation("
         + "lifePoints="

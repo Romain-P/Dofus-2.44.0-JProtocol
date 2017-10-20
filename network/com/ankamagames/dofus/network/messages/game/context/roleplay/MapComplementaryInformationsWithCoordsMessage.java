@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,8 +18,7 @@ public class MapComplementaryInformationsWithCoordsMessage
   // i16
   public short worldY;
 
-  public MapComplementaryInformationsWithCoordsMessage()
-  {}
+  public MapComplementaryInformationsWithCoordsMessage() {}
 
   public MapComplementaryInformationsWithCoordsMessage(
       short subAreaId,
@@ -35,8 +34,7 @@ public class MapComplementaryInformationsWithCoordsMessage
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
           fightStartPositions,
       short worldX,
-      short worldY)
-  {
+      short worldY) {
 
     super(
         subAreaId,
@@ -76,8 +74,7 @@ public class MapComplementaryInformationsWithCoordsMessage
       com.ankamagames.dofus.network.types.game.context.fight.FightStartingPositions
           fightStartPositions,
       short worldX,
-      short worldY)
-  {
+      short worldY) {
 
     super(
         subAreaId,
@@ -95,14 +92,12 @@ public class MapComplementaryInformationsWithCoordsMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6268;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.worldX);
@@ -110,8 +105,7 @@ public class MapComplementaryInformationsWithCoordsMessage
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.worldX = reader.read_i16();
@@ -119,8 +113,7 @@ public class MapComplementaryInformationsWithCoordsMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MapComplementaryInformationsWithCoordsMessage("
         + "subAreaId="

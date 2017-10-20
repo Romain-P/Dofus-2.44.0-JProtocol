@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class Achievement extends NetworkType {
   public com.ankamagames.dofus.network.types.game.achievement.AchievementStartedObjective[]
       startedObjectives;
 
-  public Achievement()
-  {}
+  public Achievement() {}
 
   public Achievement(
       short id,
       com.ankamagames.dofus.network.types.game.achievement.AchievementObjective[] finishedObjective,
       com.ankamagames.dofus.network.types.game.achievement.AchievementStartedObjective[]
-          startedObjectives)
-  {
+          startedObjectives) {
     this.id = id;
     this.finishedObjective = finishedObjective;
     this.startedObjectives = startedObjectives;
@@ -41,8 +39,7 @@ public class Achievement extends NetworkType {
           finishedObjective,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.achievement.AchievementStartedObjective>
-          startedObjectives)
-  {
+          startedObjectives) {
     this.id = id;
     this.finishedObjective =
         finishedObjective.toArray(
@@ -54,34 +51,29 @@ public class Achievement extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 363;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.id);
     writer.write_ui16(finishedObjective.length);
 
-    for (int i = 0; i < finishedObjective.length; i++)
-  {
+    for (int i = 0; i < finishedObjective.length; i++) {
 
       finishedObjective[i].serialize(writer);
     }
     writer.write_ui16(startedObjectives.length);
 
-    for (int i = 0; i < startedObjectives.length; i++)
-  {
+    for (int i = 0; i < startedObjectives.length; i++) {
 
       startedObjectives[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_vi16();
 
     int finishedObjective_length = reader.read_ui16();
@@ -89,8 +81,7 @@ public class Achievement extends NetworkType {
         new com.ankamagames.dofus.network.types.game.achievement.AchievementObjective
             [finishedObjective_length];
 
-    for (int i = 0; i < finishedObjective_length; i++)
-  {
+    for (int i = 0; i < finishedObjective_length; i++) {
 
       com.ankamagames.dofus.network.types.game.achievement.AchievementObjective
           finishedObjective_it =
@@ -105,8 +96,7 @@ public class Achievement extends NetworkType {
         new com.ankamagames.dofus.network.types.game.achievement.AchievementStartedObjective
             [startedObjectives_length];
 
-    for (int i = 0; i < startedObjectives_length; i++)
-  {
+    for (int i = 0; i < startedObjectives_length; i++) {
 
       com.ankamagames.dofus.network.types.game.achievement.AchievementStartedObjective
           startedObjectives_it =
@@ -119,8 +109,7 @@ public class Achievement extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "Achievement("
         + "id="

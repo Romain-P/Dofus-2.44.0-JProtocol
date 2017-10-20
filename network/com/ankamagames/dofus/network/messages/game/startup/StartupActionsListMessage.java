@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.startup;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,53 +14,45 @@ public class StartupActionsListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject
   public com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject[] actions;
 
-  public StartupActionsListMessage()
-  {}
+  public StartupActionsListMessage() {}
 
   public StartupActionsListMessage(
-      com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject[] actions)
-  {
+      com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject[] actions) {
     this.actions = actions;
   }
 
   public StartupActionsListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject>
-          actions)
-  {
+          actions) {
     this.actions =
         actions.toArray(
             com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 1301;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(actions.length);
 
-    for (int i = 0; i < actions.length; i++)
-  {
+    for (int i = 0; i < actions.length; i++) {
 
       actions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int actions_length = reader.read_ui16();
     this.actions =
         new com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject[actions_length];
 
-    for (int i = 0; i < actions_length; i++)
-  {
+    for (int i = 0; i < actions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject actions_it =
           new com.ankamagames.dofus.network.types.game.startup.StartupActionAddObject();
@@ -71,8 +63,7 @@ public class StartupActionsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StartupActionsListMessage("
         + "actions="

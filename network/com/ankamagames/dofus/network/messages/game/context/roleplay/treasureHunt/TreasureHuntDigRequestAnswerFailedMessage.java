@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,42 +23,36 @@ public class TreasureHuntDigRequestAnswerFailedMessage
   // i8
   public byte wrongFlagCount;
 
-  public TreasureHuntDigRequestAnswerFailedMessage()
-  {}
+  public TreasureHuntDigRequestAnswerFailedMessage() {}
 
   public TreasureHuntDigRequestAnswerFailedMessage(
-      byte questType, byte result, byte wrongFlagCount)
-  {
+      byte questType, byte result, byte wrongFlagCount) {
 
     super(questType, result);
     this.wrongFlagCount = wrongFlagCount;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6509;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.wrongFlagCount);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.wrongFlagCount = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntDigRequestAnswerFailedMessage("
         + "questType="

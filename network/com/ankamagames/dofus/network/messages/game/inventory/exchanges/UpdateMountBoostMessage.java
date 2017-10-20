@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,13 +16,11 @@ public class UpdateMountBoostMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost
   public com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost[] boostToUpdateList;
 
-  public UpdateMountBoostMessage()
-  {}
+  public UpdateMountBoostMessage() {}
 
   public UpdateMountBoostMessage(
       int rideId,
-      com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost[] boostToUpdateList)
-  {
+      com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost[] boostToUpdateList) {
     this.rideId = rideId;
     this.boostToUpdateList = boostToUpdateList;
   }
@@ -30,8 +28,7 @@ public class UpdateMountBoostMessage extends NetworkMessage {
   public UpdateMountBoostMessage(
       int rideId,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost>
-          boostToUpdateList)
-  {
+          boostToUpdateList) {
     this.rideId = rideId;
     this.boostToUpdateList =
         boostToUpdateList.toArray(
@@ -39,19 +36,16 @@ public class UpdateMountBoostMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6179;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.rideId);
     writer.write_ui16(boostToUpdateList.length);
 
-    for (int i = 0; i < boostToUpdateList.length; i++)
-  {
+    for (int i = 0; i < boostToUpdateList.length; i++) {
 
       writer.write_ui16(boostToUpdateList[i].getProtocolId());
 
@@ -60,8 +54,7 @@ public class UpdateMountBoostMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.rideId = reader.read_vi32();
 
     int boostToUpdateList_length = reader.read_ui16();
@@ -69,8 +62,7 @@ public class UpdateMountBoostMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost
             [boostToUpdateList_length];
 
-    for (int i = 0; i < boostToUpdateList_length; i++)
-  {
+    for (int i = 0; i < boostToUpdateList_length; i++) {
 
       int boostToUpdateList_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.mount.UpdateMountBoost boostToUpdateList_it =
@@ -83,8 +75,7 @@ public class UpdateMountBoostMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "UpdateMountBoostMessage("
         + "rideId="

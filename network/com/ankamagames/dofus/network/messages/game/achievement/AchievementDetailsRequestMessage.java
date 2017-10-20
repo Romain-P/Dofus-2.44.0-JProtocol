@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class AchievementDetailsRequestMessage extends NetworkMessage {
   // vi16
   public short achievementId;
 
-  public AchievementDetailsRequestMessage()
-  {}
+  public AchievementDetailsRequestMessage() {}
 
-  public AchievementDetailsRequestMessage(short achievementId)
-  {
+  public AchievementDetailsRequestMessage(short achievementId) {
     this.achievementId = achievementId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6380;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.achievementId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.achievementId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementDetailsRequestMessage(" + "achievementId=" + this.achievementId + ')';
   }

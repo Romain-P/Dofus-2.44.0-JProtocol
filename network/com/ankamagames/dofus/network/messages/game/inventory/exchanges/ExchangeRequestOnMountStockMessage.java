@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,35 +12,29 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ExchangeRequestOnMountStockMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5986;
 
-  public ExchangeRequestOnMountStockMessage()
-  {}
+  public ExchangeRequestOnMountStockMessage() {}
 
   public static final ExchangeRequestOnMountStockMessage i =
       new ExchangeRequestOnMountStockMessage();
 
   @Override
-  public boolean isAlwaysEmpty()
-  {
+  public boolean isAlwaysEmpty() {
     return true;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5986;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {}
+  public void serialize(DataWriter writer) {}
 
   @Override
-  public void deserialize(DataReader reader)
-  {}
+  public void deserialize(DataReader reader) {}
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeRequestOnMountStockMessage";
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class StatedElementUpdatedMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.interactive.StatedElement
   public com.ankamagames.dofus.network.types.game.interactive.StatedElement statedElement;
 
-  public StatedElementUpdatedMessage()
-  {}
+  public StatedElementUpdatedMessage() {}
 
   public StatedElementUpdatedMessage(
-      com.ankamagames.dofus.network.types.game.interactive.StatedElement statedElement)
-  {
+      com.ankamagames.dofus.network.types.game.interactive.StatedElement statedElement) {
     this.statedElement = statedElement;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5709;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.statedElement.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.statedElement = new com.ankamagames.dofus.network.types.game.interactive.StatedElement();
     this.statedElement.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "StatedElementUpdatedMessage(" + "statedElement=" + this.statedElement + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class HouseGuildedInformations
   // com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo;
 
-  public HouseGuildedInformations()
-  {}
+  public HouseGuildedInformations() {}
 
   public HouseGuildedInformations(
       boolean secondHand,
@@ -25,30 +24,26 @@ public class HouseGuildedInformations
       int instanceId,
       java.lang.String ownerName,
       long price,
-      com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo) {
 
     super(secondHand, isLocked, isSaleLocked, instanceId, ownerName, price);
     this.guildInfo = guildInfo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 512;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.guildInfo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.guildInfo =
@@ -57,8 +52,7 @@ public class HouseGuildedInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseGuildedInformations("
         + "secondHand="

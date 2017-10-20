@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.mount;
 
 import org.heat.dofus.network.NetworkType;
@@ -33,10 +33,10 @@ public class MountClientData extends NetworkType {
   public java.lang.String name;
   // i32
   public int ownerId;
-  // ui64
-  public java.math.BigInteger experience;
-  // ui64
-  public java.math.BigInteger experienceForLevel;
+  // vi64
+  public long experience;
+  // vi64
+  public long experienceForLevel;
   // f64
   public double experienceForNextLevel;
   // i8
@@ -81,8 +81,7 @@ public class MountClientData extends NetworkType {
   public com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffectInteger[]
       effectList;
 
-  public MountClientData()
-  {}
+  public MountClientData() {}
 
   public MountClientData(
       boolean sex,
@@ -96,8 +95,8 @@ public class MountClientData extends NetworkType {
       int[] behaviors,
       java.lang.String name,
       int ownerId,
-      java.math.BigInteger experience,
-      java.math.BigInteger experienceForLevel,
+      long experience,
+      long experienceForLevel,
       double experienceForNextLevel,
       byte level,
       int maxPods,
@@ -119,8 +118,7 @@ public class MountClientData extends NetworkType {
       int reproductionCountMax,
       short harnessGID,
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffectInteger[]
-          effectList)
-  {
+          effectList) {
     this.sex = sex;
     this.isRideable = isRideable;
     this.isWild = isWild;
@@ -169,8 +167,8 @@ public class MountClientData extends NetworkType {
       int[] behaviors,
       java.lang.String name,
       int ownerId,
-      java.math.BigInteger experience,
-      java.math.BigInteger experienceForLevel,
+      long experience,
+      long experienceForLevel,
       double experienceForNextLevel,
       byte level,
       int maxPods,
@@ -193,8 +191,7 @@ public class MountClientData extends NetworkType {
       short harnessGID,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffectInteger>
-          effectList)
-  {
+          effectList) {
     this.sex = sex;
     this.isRideable = isRideable;
     this.isWild = isWild;
@@ -234,14 +231,12 @@ public class MountClientData extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 178;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.sex, 0);
@@ -258,8 +253,8 @@ public class MountClientData extends NetworkType {
     writer.write_array_i32(this.behaviors);
     writer.write_str(this.name);
     writer.write_i32(this.ownerId);
-    writer.write_ui64(this.experience);
-    writer.write_ui64(this.experienceForLevel);
+    writer.write_vi64(this.experience);
+    writer.write_vi64(this.experienceForLevel);
     writer.write_f64(this.experienceForNextLevel);
     writer.write_i8(this.level);
     writer.write_vi32(this.maxPods);
@@ -282,16 +277,14 @@ public class MountClientData extends NetworkType {
     writer.write_vi16(this.harnessGID);
     writer.write_ui16(effectList.length);
 
-    for (int i = 0; i < effectList.length; i++)
-  {
+    for (int i = 0; i < effectList.length; i++) {
 
       effectList[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.sex = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -309,8 +302,8 @@ public class MountClientData extends NetworkType {
     this.behaviors = reader.read_array_i32(behaviors_length);
     this.name = reader.read_str();
     this.ownerId = reader.read_i32();
-    this.experience = reader.read_ui64();
-    this.experienceForLevel = reader.read_ui64();
+    this.experience = reader.read_vi64();
+    this.experienceForLevel = reader.read_vi64();
     this.experienceForNextLevel = reader.read_f64();
     this.level = reader.read_i8();
     this.maxPods = reader.read_vi32();
@@ -337,8 +330,7 @@ public class MountClientData extends NetworkType {
         new com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffectInteger
             [effectList_length];
 
-    for (int i = 0; i < effectList_length; i++)
-  {
+    for (int i = 0; i < effectList_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffectInteger
           effectList_it =
@@ -350,8 +342,7 @@ public class MountClientData extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountClientData("
         + "sex="

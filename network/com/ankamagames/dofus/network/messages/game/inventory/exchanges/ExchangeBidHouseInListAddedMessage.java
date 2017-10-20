@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,18 +17,16 @@ public class ExchangeBidHouseInListAddedMessage extends NetworkMessage {
   public int objGenericId;
   // array,com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
   public com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] effects;
-  // array,ui64
-  public java.math.BigInteger[] prices;
+  // array,vi64
+  public long[] prices;
 
-  public ExchangeBidHouseInListAddedMessage()
-  {}
+  public ExchangeBidHouseInListAddedMessage() {}
 
   public ExchangeBidHouseInListAddedMessage(
       int itemUID,
       int objGenericId,
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect[] effects,
-      java.math.BigInteger[] prices)
-  {
+      long[] prices) {
     this.itemUID = itemUID;
     this.objGenericId = objGenericId;
     this.effects = effects;
@@ -41,8 +39,7 @@ public class ExchangeBidHouseInListAddedMessage extends NetworkMessage {
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect>
           effects,
-      java.math.BigInteger[] prices)
-  {
+      long[] prices) {
     this.itemUID = itemUID;
     this.objGenericId = objGenericId;
     this.effects =
@@ -52,32 +49,28 @@ public class ExchangeBidHouseInListAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5949;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.itemUID);
     writer.write_i32(this.objGenericId);
     writer.write_ui16(effects.length);
 
-    for (int i = 0; i < effects.length; i++)
-  {
+    for (int i = 0; i < effects.length; i++) {
 
       writer.write_ui16(effects[i].getProtocolId());
 
       effects[i].serialize(writer);
     }
     writer.write_ui16(prices.length);
-    writer.write_array_ui64(this.prices);
+    writer.write_array_vi64(this.prices);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.itemUID = reader.read_i32();
     this.objGenericId = reader.read_i32();
 
@@ -86,8 +79,7 @@ public class ExchangeBidHouseInListAddedMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect
             [effects_length];
 
-    for (int i = 0; i < effects_length; i++)
-  {
+    for (int i = 0; i < effects_length; i++) {
 
       int effects_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.data.items.effects.ObjectEffect effects_it =
@@ -99,12 +91,11 @@ public class ExchangeBidHouseInListAddedMessage extends NetworkMessage {
     }
 
     int prices_length = reader.read_ui16();
-    this.prices = reader.read_array_ui64(prices_length);
+    this.prices = reader.read_array_vi64(prices_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseInListAddedMessage("
         + "itemUID="

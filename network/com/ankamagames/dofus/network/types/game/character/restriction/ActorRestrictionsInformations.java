@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.restriction;
 
 import org.heat.dofus.network.NetworkType;
@@ -54,8 +54,7 @@ public class ActorRestrictionsInformations extends NetworkType {
   // flag,_loc4_,4
   public boolean cantWalk8Directions;
 
-  public ActorRestrictionsInformations()
-  {}
+  public ActorRestrictionsInformations() {}
 
   public ActorRestrictionsInformations(
       boolean cantBeAggressed,
@@ -78,8 +77,7 @@ public class ActorRestrictionsInformations extends NetworkType {
       boolean cantSpeakToNPC,
       boolean cantChangeZone,
       boolean cantAttackMonster,
-      boolean cantWalk8Directions)
-  {
+      boolean cantWalk8Directions) {
     this.cantBeAggressed = cantBeAggressed;
     this.cantBeChallenged = cantBeChallenged;
     this.cantTrade = cantTrade;
@@ -104,14 +102,12 @@ public class ActorRestrictionsInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 204;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.cantBeAggressed, 0);
@@ -145,8 +141,7 @@ public class ActorRestrictionsInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.cantBeAggressed = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -177,8 +172,7 @@ public class ActorRestrictionsInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ActorRestrictionsInformations("
         + "cantBeAggressed="

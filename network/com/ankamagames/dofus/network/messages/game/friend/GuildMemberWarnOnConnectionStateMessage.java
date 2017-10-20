@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class GuildMemberWarnOnConnectionStateMessage extends NetworkMessage {
   // bool
   public boolean enable;
 
-  public GuildMemberWarnOnConnectionStateMessage()
-  {}
+  public GuildMemberWarnOnConnectionStateMessage() {}
 
-  public GuildMemberWarnOnConnectionStateMessage(boolean enable)
-  {
+  public GuildMemberWarnOnConnectionStateMessage(boolean enable) {
     this.enable = enable;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6160;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.enable);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.enable = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildMemberWarnOnConnectionStateMessage(" + "enable=" + this.enable + ')';
   }

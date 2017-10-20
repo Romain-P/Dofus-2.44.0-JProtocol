@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class AlliancePrismInformation
   // com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations alliance;
 
-  public AlliancePrismInformation()
-  {}
+  public AlliancePrismInformation() {}
 
   public AlliancePrismInformation(
       byte typeId,
@@ -24,30 +23,26 @@ public class AlliancePrismInformation
       int nextVulnerabilityDate,
       int placementDate,
       int rewardTokenCount,
-      com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations alliance)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.AllianceInformations alliance) {
 
     super(typeId, state, nextVulnerabilityDate, placementDate, rewardTokenCount);
     this.alliance = alliance;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 427;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.alliance.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.alliance =
@@ -56,8 +51,7 @@ public class AlliancePrismInformation
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AlliancePrismInformation("
         + "typeId="

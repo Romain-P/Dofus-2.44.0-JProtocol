@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.dungeon;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class DungeonKeyRingMessage extends NetworkMessage {
   // array,vi16
   public short[] unavailables;
 
-  public DungeonKeyRingMessage()
-  {}
+  public DungeonKeyRingMessage() {}
 
-  public DungeonKeyRingMessage(short[] availables, short[] unavailables)
-  {
+  public DungeonKeyRingMessage(short[] availables, short[] unavailables) {
     this.availables = availables;
     this.unavailables = unavailables;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6299;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(availables.length);
     writer.write_array_vi16(this.availables);
     writer.write_ui16(unavailables.length);
@@ -41,8 +37,7 @@ public class DungeonKeyRingMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int availables_length = reader.read_ui16();
     this.availables = reader.read_array_vi16(availables_length);
@@ -52,8 +47,7 @@ public class DungeonKeyRingMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonKeyRingMessage("
         + "availables="

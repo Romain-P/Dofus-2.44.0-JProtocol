@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.finishmoves;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,54 +14,46 @@ public class FinishMoveListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations
   public com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations[] finishMoves;
 
-  public FinishMoveListMessage()
-  {}
+  public FinishMoveListMessage() {}
 
   public FinishMoveListMessage(
-      com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations[] finishMoves)
-  {
+      com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations[] finishMoves) {
     this.finishMoves = finishMoves;
   }
 
   public FinishMoveListMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations>
-          finishMoves)
-  {
+          finishMoves) {
     this.finishMoves =
         finishMoves.toArray(
             com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6704;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(finishMoves.length);
 
-    for (int i = 0; i < finishMoves.length; i++)
-  {
+    for (int i = 0; i < finishMoves.length; i++) {
 
       finishMoves[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int finishMoves_length = reader.read_ui16();
     this.finishMoves =
         new com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations
             [finishMoves_length];
 
-    for (int i = 0; i < finishMoves_length; i++)
-  {
+    for (int i = 0; i < finishMoves_length; i++) {
 
       com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations finishMoves_it =
           new com.ankamagames.dofus.network.types.game.finishmoves.FinishMoveInformations();
@@ -72,8 +64,7 @@ public class FinishMoveListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FinishMoveListMessage("
         + "finishMoves="

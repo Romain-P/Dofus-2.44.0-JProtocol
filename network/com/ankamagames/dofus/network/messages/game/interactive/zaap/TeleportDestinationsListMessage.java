@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.interactive.zaap;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,16 +22,14 @@ public class TeleportDestinationsListMessage extends NetworkMessage {
   // array,i8
   public byte[] destTeleporterType;
 
-  public TeleportDestinationsListMessage()
-  {}
+  public TeleportDestinationsListMessage() {}
 
   public TeleportDestinationsListMessage(
       byte teleporterType,
       double[] mapIds,
       short[] subAreaIds,
       short[] costs,
-      byte[] destTeleporterType)
-  {
+      byte[] destTeleporterType) {
     this.teleporterType = teleporterType;
     this.mapIds = mapIds;
     this.subAreaIds = subAreaIds;
@@ -40,14 +38,12 @@ public class TeleportDestinationsListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5960;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.teleporterType);
     writer.write_ui16(mapIds.length);
     writer.write_array_f64(this.mapIds);
@@ -60,8 +56,7 @@ public class TeleportDestinationsListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.teleporterType = reader.read_i8();
 
     int mapIds_length = reader.read_ui16();
@@ -78,8 +73,7 @@ public class TeleportDestinationsListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TeleportDestinationsListMessage("
         + "teleporterType="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeSetCraftRecipeMessage extends NetworkMessage {
   // vi16
   public short objectGID;
 
-  public ExchangeSetCraftRecipeMessage()
-  {}
+  public ExchangeSetCraftRecipeMessage() {}
 
-  public ExchangeSetCraftRecipeMessage(short objectGID)
-  {
+  public ExchangeSetCraftRecipeMessage(short objectGID) {
     this.objectGID = objectGID;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6389;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.objectGID);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objectGID = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeSetCraftRecipeMessage(" + "objectGID=" + this.objectGID + ')';
   }

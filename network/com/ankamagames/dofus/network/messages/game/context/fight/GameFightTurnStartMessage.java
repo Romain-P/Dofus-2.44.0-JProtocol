@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class GameFightTurnStartMessage extends NetworkMessage {
   // vi32
   public int waitTime;
 
-  public GameFightTurnStartMessage()
-  {}
+  public GameFightTurnStartMessage() {}
 
-  public GameFightTurnStartMessage(double id, int waitTime)
-  {
+  public GameFightTurnStartMessage(double id, int waitTime) {
     this.id = id;
     this.waitTime = waitTime;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 714;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.id);
     writer.write_vi32(this.waitTime);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.id = reader.read_f64();
     this.waitTime = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightTurnStartMessage(" + "id=" + this.id + ", waitTime=" + this.waitTime + ')';
   }

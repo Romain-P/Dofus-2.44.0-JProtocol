@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class ObjectEffectMinMax
   // vi32
   public int max;
 
-  public ObjectEffectMinMax()
-  {}
+  public ObjectEffectMinMax() {}
 
-  public ObjectEffectMinMax(short actionId, int min, int max)
-  {
+  public ObjectEffectMinMax(short actionId, int min, int max) {
 
     super(actionId);
     this.min = min;
@@ -29,14 +27,12 @@ public class ObjectEffectMinMax
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 82;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi32(this.min);
@@ -44,8 +40,7 @@ public class ObjectEffectMinMax
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.min = reader.read_vi32();
@@ -53,8 +48,7 @@ public class ObjectEffectMinMax
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectMinMax("
         + "actionId="

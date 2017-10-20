@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,45 +13,39 @@ public class ExchangeCraftInformationObjectMessage
     extends com.ankamagames.dofus.network.messages.game.inventory.exchanges
         .ExchangeCraftResultWithObjectIdMessage {
   public static final int PROTOCOL_ID = 5794;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
 
-  public ExchangeCraftInformationObjectMessage()
-  {}
+  public ExchangeCraftInformationObjectMessage() {}
 
   public ExchangeCraftInformationObjectMessage(
-      byte craftResult, short objectGenericId, java.math.BigInteger playerId)
-  {
+      byte craftResult, short objectGenericId, long playerId) {
 
     super(craftResult, objectGenericId);
     this.playerId = playerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5794;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeCraftInformationObjectMessage("
         + "craftResult="

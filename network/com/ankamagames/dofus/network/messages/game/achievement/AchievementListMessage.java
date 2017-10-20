@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.game.achievement;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,14 +17,12 @@ public class AchievementListMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.achievement.AchievementRewardable[]
       rewardableAchievements;
 
-  public AchievementListMessage()
-  {}
+  public AchievementListMessage() {}
 
   public AchievementListMessage(
       short[] finishedAchievementsIds,
       com.ankamagames.dofus.network.types.game.achievement.AchievementRewardable[]
-          rewardableAchievements)
-  {
+          rewardableAchievements) {
     this.finishedAchievementsIds = finishedAchievementsIds;
     this.rewardableAchievements = rewardableAchievements;
   }
@@ -33,8 +31,7 @@ public class AchievementListMessage extends NetworkMessage {
       short[] finishedAchievementsIds,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.achievement.AchievementRewardable>
-          rewardableAchievements)
-  {
+          rewardableAchievements) {
     this.finishedAchievementsIds = finishedAchievementsIds;
     this.rewardableAchievements =
         rewardableAchievements.toArray(
@@ -42,28 +39,24 @@ public class AchievementListMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6205;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(finishedAchievementsIds.length);
     writer.write_array_vi16(this.finishedAchievementsIds);
     writer.write_ui16(rewardableAchievements.length);
 
-    for (int i = 0; i < rewardableAchievements.length; i++)
-  {
+    for (int i = 0; i < rewardableAchievements.length; i++) {
 
       rewardableAchievements[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int finishedAchievementsIds_length = reader.read_ui16();
     this.finishedAchievementsIds = reader.read_array_vi16(finishedAchievementsIds_length);
@@ -73,8 +66,7 @@ public class AchievementListMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.achievement.AchievementRewardable
             [rewardableAchievements_length];
 
-    for (int i = 0; i < rewardableAchievements_length; i++)
-  {
+    for (int i = 0; i < rewardableAchievements_length; i++) {
 
       com.ankamagames.dofus.network.types.game.achievement.AchievementRewardable
           rewardableAchievements_it =
@@ -86,8 +78,7 @@ public class AchievementListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AchievementListMessage("
         + "finishedAchievementsIds="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,54 +14,46 @@ public class ObjectsQuantityMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity[] objectsUIDAndQty;
 
-  public ObjectsQuantityMessage()
-  {}
+  public ObjectsQuantityMessage() {}
 
   public ObjectsQuantityMessage(
-      com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity[] objectsUIDAndQty)
-  {
+      com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity[] objectsUIDAndQty) {
     this.objectsUIDAndQty = objectsUIDAndQty;
   }
 
   public ObjectsQuantityMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity>
-          objectsUIDAndQty)
-  {
+          objectsUIDAndQty) {
     this.objectsUIDAndQty =
         objectsUIDAndQty.toArray(
             com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6206;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(objectsUIDAndQty.length);
 
-    for (int i = 0; i < objectsUIDAndQty.length; i++)
-  {
+    for (int i = 0; i < objectsUIDAndQty.length; i++) {
 
       objectsUIDAndQty[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int objectsUIDAndQty_length = reader.read_ui16();
     this.objectsUIDAndQty =
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity
             [objectsUIDAndQty_length];
 
-    for (int i = 0; i < objectsUIDAndQty_length; i++)
-  {
+    for (int i = 0; i < objectsUIDAndQty_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity objectsUIDAndQty_it =
           new com.ankamagames.dofus.network.types.game.data.items.ObjectItemQuantity();
@@ -72,8 +64,7 @@ public class ObjectsQuantityMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectsQuantityMessage("
         + "objectsUIDAndQty="

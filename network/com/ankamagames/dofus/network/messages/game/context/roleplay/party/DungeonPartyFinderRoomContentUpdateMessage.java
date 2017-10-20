@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.party;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,18 +16,16 @@ public class DungeonPartyFinderRoomContentUpdateMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer
   public com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer[]
       addedPlayers;
-  // array,ui64
-  public java.math.BigInteger[] removedPlayersIds;
+  // array,vi64
+  public long[] removedPlayersIds;
 
-  public DungeonPartyFinderRoomContentUpdateMessage()
-  {}
+  public DungeonPartyFinderRoomContentUpdateMessage() {}
 
   public DungeonPartyFinderRoomContentUpdateMessage(
       short dungeonId,
       com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer[]
           addedPlayers,
-      java.math.BigInteger[] removedPlayersIds)
-  {
+      long[] removedPlayersIds) {
     this.dungeonId = dungeonId;
     this.addedPlayers = addedPlayers;
     this.removedPlayersIds = removedPlayersIds;
@@ -39,8 +37,7 @@ public class DungeonPartyFinderRoomContentUpdateMessage extends NetworkMessage {
               com.ankamagames.dofus.network.types.game.context.roleplay.party
                   .DungeonPartyFinderPlayer>
           addedPlayers,
-      java.math.BigInteger[] removedPlayersIds)
-  {
+      long[] removedPlayersIds) {
     this.dungeonId = dungeonId;
     this.addedPlayers =
         addedPlayers.toArray(
@@ -51,29 +48,25 @@ public class DungeonPartyFinderRoomContentUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6250;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.dungeonId);
     writer.write_ui16(addedPlayers.length);
 
-    for (int i = 0; i < addedPlayers.length; i++)
-  {
+    for (int i = 0; i < addedPlayers.length; i++) {
 
       addedPlayers[i].serialize(writer);
     }
     writer.write_ui16(removedPlayersIds.length);
-    writer.write_array_ui64(this.removedPlayersIds);
+    writer.write_array_vi64(this.removedPlayersIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dungeonId = reader.read_vi16();
 
     int addedPlayers_length = reader.read_ui16();
@@ -81,8 +74,7 @@ public class DungeonPartyFinderRoomContentUpdateMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer
             [addedPlayers_length];
 
-    for (int i = 0; i < addedPlayers_length; i++)
-  {
+    for (int i = 0; i < addedPlayers_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.party.DungeonPartyFinderPlayer
           addedPlayers_it =
@@ -94,12 +86,11 @@ public class DungeonPartyFinderRoomContentUpdateMessage extends NetworkMessage {
     }
 
     int removedPlayersIds_length = reader.read_ui16();
-    this.removedPlayersIds = reader.read_array_ui64(removedPlayersIds_length);
+    this.removedPlayersIds = reader.read_array_vi64(removedPlayersIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DungeonPartyFinderRoomContentUpdateMessage("
         + "dungeonId="

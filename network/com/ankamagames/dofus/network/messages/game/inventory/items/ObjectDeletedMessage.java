@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.items;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ObjectDeletedMessage extends NetworkMessage {
   // vi32
   public int objectUID;
 
-  public ObjectDeletedMessage()
-  {}
+  public ObjectDeletedMessage() {}
 
-  public ObjectDeletedMessage(int objectUID)
-  {
+  public ObjectDeletedMessage(int objectUID) {
     this.objectUID = objectUID;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 3024;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi32(this.objectUID);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.objectUID = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectDeletedMessage(" + "objectUID=" + this.objectUID + ')';
   }

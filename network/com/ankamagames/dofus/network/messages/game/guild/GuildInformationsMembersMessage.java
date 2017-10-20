@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,49 +14,41 @@ public class GuildInformationsMembersMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.guild.GuildMember
   public com.ankamagames.dofus.network.types.game.guild.GuildMember[] members;
 
-  public GuildInformationsMembersMessage()
-  {}
+  public GuildInformationsMembersMessage() {}
 
   public GuildInformationsMembersMessage(
-      com.ankamagames.dofus.network.types.game.guild.GuildMember[] members)
-  {
+      com.ankamagames.dofus.network.types.game.guild.GuildMember[] members) {
     this.members = members;
   }
 
   public GuildInformationsMembersMessage(
-      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.guild.GuildMember> members)
-  {
+      java.util.stream.Stream<com.ankamagames.dofus.network.types.game.guild.GuildMember> members) {
     this.members =
         members.toArray(com.ankamagames.dofus.network.types.game.guild.GuildMember[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5558;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(members.length);
 
-    for (int i = 0; i < members.length; i++)
-  {
+    for (int i = 0; i < members.length; i++) {
 
       members[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int members_length = reader.read_ui16();
     this.members = new com.ankamagames.dofus.network.types.game.guild.GuildMember[members_length];
 
-    for (int i = 0; i < members_length; i++)
-  {
+    for (int i = 0; i < members_length; i++) {
 
       com.ankamagames.dofus.network.types.game.guild.GuildMember members_it =
           new com.ankamagames.dofus.network.types.game.guild.GuildMember();
@@ -67,8 +59,7 @@ public class GuildInformationsMembersMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildInformationsMembersMessage("
         + "members="

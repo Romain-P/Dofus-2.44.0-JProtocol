@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -24,12 +24,10 @@ public class GameFightFighterLightInformations extends NetworkType {
   // i8
   public byte breed;
 
-  public GameFightFighterLightInformations()
-  {}
+  public GameFightFighterLightInformations() {}
 
   public GameFightFighterLightInformations(
-      boolean sex, boolean alive, double id, byte wave, short level, byte breed)
-  {
+      boolean sex, boolean alive, double id, byte wave, short level, byte breed) {
     this.sex = sex;
     this.alive = alive;
     this.id = id;
@@ -39,14 +37,12 @@ public class GameFightFighterLightInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 413;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.sex, 0);
@@ -59,8 +55,7 @@ public class GameFightFighterLightInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.sex = BooleanByteWrapper.getFlag(_loc2_, 0);
@@ -72,8 +67,7 @@ public class GameFightFighterLightInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightFighterLightInformations("
         + "sex="

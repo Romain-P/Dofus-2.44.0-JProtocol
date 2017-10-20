@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeBidHouseItemRemoveOkMessage extends NetworkMessage {
   // i32
   public int sellerId;
 
-  public ExchangeBidHouseItemRemoveOkMessage()
-  {}
+  public ExchangeBidHouseItemRemoveOkMessage() {}
 
-  public ExchangeBidHouseItemRemoveOkMessage(int sellerId)
-  {
+  public ExchangeBidHouseItemRemoveOkMessage(int sellerId) {
     this.sellerId = sellerId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5946;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.sellerId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.sellerId = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeBidHouseItemRemoveOkMessage(" + "sellerId=" + this.sellerId + ')';
   }

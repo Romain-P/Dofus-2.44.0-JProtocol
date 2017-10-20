@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,42 +18,36 @@ public class MountInformationsForPaddock extends NetworkType {
   // str
   public java.lang.String ownerName;
 
-  public MountInformationsForPaddock()
-  {}
+  public MountInformationsForPaddock() {}
 
   public MountInformationsForPaddock(
-      short modelId, java.lang.String name, java.lang.String ownerName)
-  {
+      short modelId, java.lang.String name, java.lang.String ownerName) {
     this.modelId = modelId;
     this.name = name;
     this.ownerName = ownerName;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 184;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.modelId);
     writer.write_str(this.name);
     writer.write_str(this.ownerName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.modelId = reader.read_vi16();
     this.name = reader.read_str();
     this.ownerName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "MountInformationsForPaddock("
         + "modelId="

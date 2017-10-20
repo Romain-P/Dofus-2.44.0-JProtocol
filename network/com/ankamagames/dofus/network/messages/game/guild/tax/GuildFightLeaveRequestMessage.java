@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.guild.tax;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,41 +13,35 @@ public class GuildFightLeaveRequestMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5715;
   // f64
   public double taxCollectorId;
-  // ui64
-  public java.math.BigInteger characterId;
+  // vi64
+  public long characterId;
 
-  public GuildFightLeaveRequestMessage()
-  {}
+  public GuildFightLeaveRequestMessage() {}
 
-  public GuildFightLeaveRequestMessage(double taxCollectorId, java.math.BigInteger characterId)
-  {
+  public GuildFightLeaveRequestMessage(double taxCollectorId, long characterId) {
     this.taxCollectorId = taxCollectorId;
     this.characterId = characterId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5715;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_f64(this.taxCollectorId);
-    writer.write_ui64(this.characterId);
+    writer.write_vi64(this.characterId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.taxCollectorId = reader.read_f64();
-    this.characterId = reader.read_ui64();
+    this.characterId = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GuildFightLeaveRequestMessage("
         + "taxCollectorId="

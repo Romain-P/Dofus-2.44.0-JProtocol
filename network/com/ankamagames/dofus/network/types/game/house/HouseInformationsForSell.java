@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.house;
 
 import org.heat.dofus.network.NetworkType;
@@ -35,11 +35,10 @@ public class HouseInformationsForSell extends NetworkType {
   public int[] skillListIds;
   // bool
   public boolean isLocked;
-  // ui64
-  public java.math.BigInteger price;
+  // vi64
+  public long price;
 
-  public HouseInformationsForSell()
-  {}
+  public HouseInformationsForSell() {}
 
   public HouseInformationsForSell(
       int instanceId,
@@ -54,8 +53,7 @@ public class HouseInformationsForSell extends NetworkType {
       byte nbChest,
       int[] skillListIds,
       boolean isLocked,
-      java.math.BigInteger price)
-  {
+      long price) {
     this.instanceId = instanceId;
     this.secondHand = secondHand;
     this.modelId = modelId;
@@ -72,14 +70,12 @@ public class HouseInformationsForSell extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 221;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.instanceId);
     writer.write_bool(this.secondHand);
     writer.write_vi32(this.modelId);
@@ -93,12 +89,11 @@ public class HouseInformationsForSell extends NetworkType {
     writer.write_ui16(skillListIds.length);
     writer.write_array_i32(this.skillListIds);
     writer.write_bool(this.isLocked);
-    writer.write_ui64(this.price);
+    writer.write_vi64(this.price);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.instanceId = reader.read_i32();
     this.secondHand = reader.read_bool();
     this.modelId = reader.read_vi32();
@@ -113,12 +108,11 @@ public class HouseInformationsForSell extends NetworkType {
     int skillListIds_length = reader.read_ui16();
     this.skillListIds = reader.read_array_i32(skillListIds_length);
     this.isLocked = reader.read_bool();
-    this.price = reader.read_ui64();
+    this.price = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HouseInformationsForSell("
         + "instanceId="

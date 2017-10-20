@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,8 +13,8 @@ public class FriendSpouseInformations extends NetworkType {
   public static final int PROTOCOL_ID = 77;
   // i32
   public int spouseAccountId;
-  // ui64
-  public java.math.BigInteger spouseId;
+  // vi64
+  public long spouseId;
   // str
   public java.lang.String spouseName;
   // ui8
@@ -30,20 +30,18 @@ public class FriendSpouseInformations extends NetworkType {
   // i8
   public byte alignmentSide;
 
-  public FriendSpouseInformations()
-  {}
+  public FriendSpouseInformations() {}
 
   public FriendSpouseInformations(
       int spouseAccountId,
-      java.math.BigInteger spouseId,
+      long spouseId,
       java.lang.String spouseName,
       short spouseLevel,
       byte breed,
       byte sex,
       com.ankamagames.dofus.network.types.game.look.EntityLook spouseEntityLook,
       com.ankamagames.dofus.network.types.game.context.roleplay.GuildInformations guildInfo,
-      byte alignmentSide)
-  {
+      byte alignmentSide) {
     this.spouseAccountId = spouseAccountId;
     this.spouseId = spouseId;
     this.spouseName = spouseName;
@@ -56,16 +54,14 @@ public class FriendSpouseInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 77;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.spouseAccountId);
-    writer.write_ui64(this.spouseId);
+    writer.write_vi64(this.spouseId);
     writer.write_str(this.spouseName);
     writer.write_ui8(this.spouseLevel);
     writer.write_i8(this.breed);
@@ -76,10 +72,9 @@ public class FriendSpouseInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.spouseAccountId = reader.read_i32();
-    this.spouseId = reader.read_ui64();
+    this.spouseId = reader.read_vi64();
     this.spouseName = reader.read_str();
     this.spouseLevel = reader.read_ui8();
     this.breed = reader.read_i8();
@@ -93,8 +88,7 @@ public class FriendSpouseInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FriendSpouseInformations("
         + "spouseAccountId="

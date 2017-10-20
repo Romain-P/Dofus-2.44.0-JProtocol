@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight.arena;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class GameRolePlayArenaUpdatePlayerInfosMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos
   public com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos solo;
 
-  public GameRolePlayArenaUpdatePlayerInfosMessage()
-  {}
+  public GameRolePlayArenaUpdatePlayerInfosMessage() {}
 
   public GameRolePlayArenaUpdatePlayerInfosMessage(
-      com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos solo)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos solo) {
     this.solo = solo;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6301;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.solo.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.solo =
         new com.ankamagames.dofus.network.types.game.context.roleplay.fight.arena.ArenaRankInfos();
     this.solo.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayArenaUpdatePlayerInfosMessage(" + "solo=" + this.solo + ')';
   }

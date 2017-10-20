@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,32 +16,27 @@ public class ExchangeHandleMountsStableMessage extends NetworkMessage {
   // array,vi32
   public int[] ridesId;
 
-  public ExchangeHandleMountsStableMessage()
-  {}
+  public ExchangeHandleMountsStableMessage() {}
 
-  public ExchangeHandleMountsStableMessage(byte actionType, int[] ridesId)
-  {
+  public ExchangeHandleMountsStableMessage(byte actionType, int[] ridesId) {
     this.actionType = actionType;
     this.ridesId = ridesId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6562;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.actionType);
     writer.write_ui16(ridesId.length);
     writer.write_array_vi32(this.ridesId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.actionType = reader.read_i8();
 
     int ridesId_length = reader.read_ui16();
@@ -49,8 +44,7 @@ public class ExchangeHandleMountsStableMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeHandleMountsStableMessage("
         + "actionType="

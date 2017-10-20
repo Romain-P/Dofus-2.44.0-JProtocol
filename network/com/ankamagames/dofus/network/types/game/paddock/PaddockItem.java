@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.paddock;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,36 +15,31 @@ public class PaddockItem
   // com.ankamagames.dofus.network.types.game.mount.ItemDurability
   public com.ankamagames.dofus.network.types.game.mount.ItemDurability durability;
 
-  public PaddockItem()
-  {}
+  public PaddockItem() {}
 
   public PaddockItem(
       short cellId,
       short objectGID,
-      com.ankamagames.dofus.network.types.game.mount.ItemDurability durability)
-  {
+      com.ankamagames.dofus.network.types.game.mount.ItemDurability durability) {
 
     super(cellId, objectGID);
     this.durability = durability;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 185;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     this.durability.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.durability = new com.ankamagames.dofus.network.types.game.mount.ItemDurability();
@@ -52,8 +47,7 @@ public class PaddockItem
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PaddockItem("
         + "cellId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,8 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
   public short subAreaId;
   // str
   public java.lang.String userName;
-  // ui64
-  public java.math.BigInteger callerId;
+  // vi64
+  public long callerId;
   // str
   public java.lang.String callerName;
   // f64
@@ -35,8 +35,7 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity[]
       objectsInfos;
 
-  public ExchangeGuildTaxCollectorGetMessage()
-  {}
+  public ExchangeGuildTaxCollectorGetMessage() {}
 
   public ExchangeGuildTaxCollectorGetMessage(
       java.lang.String collectorName,
@@ -45,13 +44,12 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
       double mapId,
       short subAreaId,
       java.lang.String userName,
-      java.math.BigInteger callerId,
+      long callerId,
       java.lang.String callerName,
       double experience,
       short pods,
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity[]
-          objectsInfos)
-  {
+          objectsInfos) {
     this.collectorName = collectorName;
     this.worldX = worldX;
     this.worldY = worldY;
@@ -72,14 +70,13 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
       double mapId,
       short subAreaId,
       java.lang.String userName,
-      java.math.BigInteger callerId,
+      long callerId,
       java.lang.String callerName,
       double experience,
       short pods,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity>
-          objectsInfos)
-  {
+          objectsInfos) {
     this.collectorName = collectorName;
     this.worldX = worldX;
     this.worldY = worldY;
@@ -96,43 +93,39 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5762;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.collectorName);
     writer.write_i16(this.worldX);
     writer.write_i16(this.worldY);
     writer.write_f64(this.mapId);
     writer.write_vi16(this.subAreaId);
     writer.write_str(this.userName);
-    writer.write_ui64(this.callerId);
+    writer.write_vi64(this.callerId);
     writer.write_str(this.callerName);
     writer.write_f64(this.experience);
     writer.write_vi16(this.pods);
     writer.write_ui16(objectsInfos.length);
 
-    for (int i = 0; i < objectsInfos.length; i++)
-  {
+    for (int i = 0; i < objectsInfos.length; i++) {
 
       objectsInfos[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.collectorName = reader.read_str();
     this.worldX = reader.read_i16();
     this.worldY = reader.read_i16();
     this.mapId = reader.read_f64();
     this.subAreaId = reader.read_vi16();
     this.userName = reader.read_str();
-    this.callerId = reader.read_ui64();
+    this.callerId = reader.read_vi64();
     this.callerName = reader.read_str();
     this.experience = reader.read_f64();
     this.pods = reader.read_vi16();
@@ -142,8 +135,7 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
         new com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity
             [objectsInfos_length];
 
-    for (int i = 0; i < objectsInfos_length; i++)
-  {
+    for (int i = 0; i < objectsInfos_length; i++) {
 
       com.ankamagames.dofus.network.types.game.data.items.ObjectItemGenericQuantity
           objectsInfos_it =
@@ -155,8 +147,7 @@ public class ExchangeGuildTaxCollectorGetMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeGuildTaxCollectorGetMessage("
         + "collectorName="

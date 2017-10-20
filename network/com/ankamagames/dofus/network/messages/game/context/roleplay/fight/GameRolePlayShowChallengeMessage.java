@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,38 +15,32 @@ public class GameRolePlayShowChallengeMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations
       commonsInfos;
 
-  public GameRolePlayShowChallengeMessage()
-  {}
+  public GameRolePlayShowChallengeMessage() {}
 
   public GameRolePlayShowChallengeMessage(
-      com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations commonsInfos)
-  {
+      com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations commonsInfos) {
     this.commonsInfos = commonsInfos;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 301;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.commonsInfos.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.commonsInfos =
         new com.ankamagames.dofus.network.types.game.context.fight.FightCommonInformations();
     this.commonsInfos.deserialize(reader);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayShowChallengeMessage(" + "commonsInfos=" + this.commonsInfos + ')';
   }

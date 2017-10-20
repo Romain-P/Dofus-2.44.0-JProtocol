@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay.treasureHunt;
 
 import org.heat.dofus.network.NetworkType;
@@ -25,11 +25,9 @@ public class TreasureHuntStepFollowDirectionToPOI
   // vi16
   public short poiLabelId;
 
-  public TreasureHuntStepFollowDirectionToPOI()
-  {}
+  public TreasureHuntStepFollowDirectionToPOI() {}
 
-  public TreasureHuntStepFollowDirectionToPOI(byte direction, short poiLabelId)
-  {
+  public TreasureHuntStepFollowDirectionToPOI(byte direction, short poiLabelId) {
 
     super();
     this.direction = direction;
@@ -37,14 +35,12 @@ public class TreasureHuntStepFollowDirectionToPOI
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 461;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.direction);
@@ -52,8 +48,7 @@ public class TreasureHuntStepFollowDirectionToPOI
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.direction = reader.read_i8();
@@ -61,8 +56,7 @@ public class TreasureHuntStepFollowDirectionToPOI
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TreasureHuntStepFollowDirectionToPOI("
         + "direction="

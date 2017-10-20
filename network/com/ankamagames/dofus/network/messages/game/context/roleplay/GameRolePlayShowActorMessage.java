@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,32 +15,27 @@ public class GameRolePlayShowActorMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
       informations;
 
-  public GameRolePlayShowActorMessage()
-  {}
+  public GameRolePlayShowActorMessage() {}
 
   public GameRolePlayShowActorMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.GameRolePlayActorInformations
-          informations)
-  {
+          informations) {
     this.informations = informations;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5632;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(this.informations.getProtocolId());
     this.informations.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int informations_typeId = reader.read_ui16();
     this.informations =
@@ -50,8 +45,7 @@ public class GameRolePlayShowActorMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayShowActorMessage(" + "informations=" + this.informations + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ExchangeObjectMoveKamaMessage extends NetworkMessage {
   // vi64
   public long quantity;
 
-  public ExchangeObjectMoveKamaMessage()
-  {}
+  public ExchangeObjectMoveKamaMessage() {}
 
-  public ExchangeObjectMoveKamaMessage(long quantity)
-  {
+  public ExchangeObjectMoveKamaMessage(long quantity) {
     this.quantity = quantity;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5520;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi64(this.quantity);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.quantity = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeObjectMoveKamaMessage(" + "quantity=" + this.quantity + ')';
   }

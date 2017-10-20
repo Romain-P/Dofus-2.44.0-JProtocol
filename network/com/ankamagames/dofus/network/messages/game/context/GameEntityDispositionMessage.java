@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,31 +15,26 @@ public class GameEntityDispositionMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations
       disposition;
 
-  public GameEntityDispositionMessage()
-  {}
+  public GameEntityDispositionMessage() {}
 
   public GameEntityDispositionMessage(
       com.ankamagames.dofus.network.types.game.context.IdentifiedEntityDispositionInformations
-          disposition)
-  {
+          disposition) {
     this.disposition = disposition;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5693;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.disposition.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.disposition =
         new com.ankamagames.dofus.network.types.game.context
             .IdentifiedEntityDispositionInformations();
@@ -47,8 +42,7 @@ public class GameEntityDispositionMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameEntityDispositionMessage(" + "disposition=" + this.disposition + ')';
   }

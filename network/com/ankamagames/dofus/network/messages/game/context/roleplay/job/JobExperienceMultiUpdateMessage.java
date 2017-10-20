@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,55 +15,47 @@ public class JobExperienceMultiUpdateMessage extends NetworkMessage {
   public com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience[]
       experiencesUpdate;
 
-  public JobExperienceMultiUpdateMessage()
-  {}
+  public JobExperienceMultiUpdateMessage() {}
 
   public JobExperienceMultiUpdateMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience[]
-          experiencesUpdate)
-  {
+          experiencesUpdate) {
     this.experiencesUpdate = experiencesUpdate;
   }
 
   public JobExperienceMultiUpdateMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience>
-          experiencesUpdate)
-  {
+          experiencesUpdate) {
     this.experiencesUpdate =
         experiencesUpdate.toArray(
             com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5809;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(experiencesUpdate.length);
 
-    for (int i = 0; i < experiencesUpdate.length; i++)
-  {
+    for (int i = 0; i < experiencesUpdate.length; i++) {
 
       experiencesUpdate[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int experiencesUpdate_length = reader.read_ui16();
     this.experiencesUpdate =
         new com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience
             [experiencesUpdate_length];
 
-    for (int i = 0; i < experiencesUpdate_length; i++)
-  {
+    for (int i = 0; i < experiencesUpdate_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.roleplay.job.JobExperience
           experiencesUpdate_it =
@@ -75,8 +67,7 @@ public class JobExperienceMultiUpdateMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobExperienceMultiUpdateMessage("
         + "experiencesUpdate="

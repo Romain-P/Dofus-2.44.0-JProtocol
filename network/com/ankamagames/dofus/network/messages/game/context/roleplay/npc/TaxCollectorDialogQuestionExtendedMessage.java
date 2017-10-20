@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.npc;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,17 +23,16 @@ public class TaxCollectorDialogQuestionExtendedMessage
   public byte taxCollectorsCount;
   // i32
   public int taxCollectorAttack;
-  // ui64
-  public java.math.BigInteger kamas;
-  // ui64
-  public java.math.BigInteger experience;
+  // vi64
+  public long kamas;
+  // vi64
+  public long experience;
   // vi32
   public int pods;
-  // ui64
-  public java.math.BigInteger itemsValue;
+  // vi64
+  public long itemsValue;
 
-  public TaxCollectorDialogQuestionExtendedMessage()
-  {}
+  public TaxCollectorDialogQuestionExtendedMessage() {}
 
   public TaxCollectorDialogQuestionExtendedMessage(
       com.ankamagames.dofus.network.types.game.context.roleplay.BasicGuildInformations guildInfo,
@@ -42,11 +41,10 @@ public class TaxCollectorDialogQuestionExtendedMessage
       short wisdom,
       byte taxCollectorsCount,
       int taxCollectorAttack,
-      java.math.BigInteger kamas,
-      java.math.BigInteger experience,
+      long kamas,
+      long experience,
       int pods,
-      java.math.BigInteger itemsValue)
-  {
+      long itemsValue) {
 
     super(guildInfo);
     this.maxPods = maxPods;
@@ -61,14 +59,12 @@ public class TaxCollectorDialogQuestionExtendedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5615;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.maxPods);
@@ -76,15 +72,14 @@ public class TaxCollectorDialogQuestionExtendedMessage
     writer.write_vi16(this.wisdom);
     writer.write_i8(this.taxCollectorsCount);
     writer.write_i32(this.taxCollectorAttack);
-    writer.write_ui64(this.kamas);
-    writer.write_ui64(this.experience);
+    writer.write_vi64(this.kamas);
+    writer.write_vi64(this.experience);
     writer.write_vi32(this.pods);
-    writer.write_ui64(this.itemsValue);
+    writer.write_vi64(this.itemsValue);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.maxPods = reader.read_vi16();
@@ -92,15 +87,14 @@ public class TaxCollectorDialogQuestionExtendedMessage
     this.wisdom = reader.read_vi16();
     this.taxCollectorsCount = reader.read_i8();
     this.taxCollectorAttack = reader.read_i32();
-    this.kamas = reader.read_ui64();
-    this.experience = reader.read_ui64();
+    this.kamas = reader.read_vi64();
+    this.experience = reader.read_vi64();
     this.pods = reader.read_vi32();
-    this.itemsValue = reader.read_ui64();
+    this.itemsValue = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "TaxCollectorDialogQuestionExtendedMessage("
         + "guildInfo="

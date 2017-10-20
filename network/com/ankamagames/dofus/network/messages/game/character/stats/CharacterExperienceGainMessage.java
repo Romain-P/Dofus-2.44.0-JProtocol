@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.stats;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,24 +11,22 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class CharacterExperienceGainMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 6321;
-  // ui64
-  public java.math.BigInteger experienceCharacter;
-  // ui64
-  public java.math.BigInteger experienceMount;
-  // ui64
-  public java.math.BigInteger experienceGuild;
-  // ui64
-  public java.math.BigInteger experienceIncarnation;
+  // vi64
+  public long experienceCharacter;
+  // vi64
+  public long experienceMount;
+  // vi64
+  public long experienceGuild;
+  // vi64
+  public long experienceIncarnation;
 
-  public CharacterExperienceGainMessage()
-  {}
+  public CharacterExperienceGainMessage() {}
 
   public CharacterExperienceGainMessage(
-      java.math.BigInteger experienceCharacter,
-      java.math.BigInteger experienceMount,
-      java.math.BigInteger experienceGuild,
-      java.math.BigInteger experienceIncarnation)
-  {
+      long experienceCharacter,
+      long experienceMount,
+      long experienceGuild,
+      long experienceIncarnation) {
     this.experienceCharacter = experienceCharacter;
     this.experienceMount = experienceMount;
     this.experienceGuild = experienceGuild;
@@ -36,32 +34,28 @@ public class CharacterExperienceGainMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6321;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.experienceCharacter);
-    writer.write_ui64(this.experienceMount);
-    writer.write_ui64(this.experienceGuild);
-    writer.write_ui64(this.experienceIncarnation);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.experienceCharacter);
+    writer.write_vi64(this.experienceMount);
+    writer.write_vi64(this.experienceGuild);
+    writer.write_vi64(this.experienceIncarnation);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.experienceCharacter = reader.read_ui64();
-    this.experienceMount = reader.read_ui64();
-    this.experienceGuild = reader.read_ui64();
-    this.experienceIncarnation = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.experienceCharacter = reader.read_vi64();
+    this.experienceMount = reader.read_vi64();
+    this.experienceGuild = reader.read_vi64();
+    this.experienceIncarnation = reader.read_vi64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterExperienceGainMessage("
         + "experienceCharacter="

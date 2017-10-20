@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,33 +16,28 @@ public class CharacterSelectedSuccessMessage extends NetworkMessage {
   // bool
   public boolean isCollectingStats;
 
-  public CharacterSelectedSuccessMessage()
-  {}
+  public CharacterSelectedSuccessMessage() {}
 
   public CharacterSelectedSuccessMessage(
       com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations infos,
-      boolean isCollectingStats)
-  {
+      boolean isCollectingStats) {
     this.infos = infos;
     this.isCollectingStats = isCollectingStats;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 153;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.infos.serialize(writer);
     writer.write_bool(this.isCollectingStats);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.infos =
         new com.ankamagames.dofus.network.types.game.character.choice.CharacterBaseInformations();
     this.infos.deserialize(reader);
@@ -50,8 +45,7 @@ public class CharacterSelectedSuccessMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CharacterSelectedSuccessMessage("
         + "infos="

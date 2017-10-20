@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -20,15 +20,13 @@ public class HumanInformations extends NetworkType {
   // array,com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption
   public com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption[] options;
 
-  public HumanInformations()
-  {}
+  public HumanInformations() {}
 
   public HumanInformations(
       com.ankamagames.dofus.network.types.game.character.restriction.ActorRestrictionsInformations
           restrictions,
       boolean sex,
-      com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption[] options)
-  {
+      com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption[] options) {
     this.restrictions = restrictions;
     this.sex = sex;
     this.options = options;
@@ -39,8 +37,7 @@ public class HumanInformations extends NetworkType {
           restrictions,
       boolean sex,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption>
-          options)
-  {
+          options) {
     this.restrictions = restrictions;
     this.sex = sex;
     this.options =
@@ -49,20 +46,17 @@ public class HumanInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 157;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.restrictions.serialize(writer);
     writer.write_bool(this.sex);
     writer.write_ui16(options.length);
 
-    for (int i = 0; i < options.length; i++)
-  {
+    for (int i = 0; i < options.length; i++) {
 
       writer.write_ui16(options[i].getProtocolId());
 
@@ -71,8 +65,7 @@ public class HumanInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.restrictions =
         new com.ankamagames.dofus.network.types.game.character.restriction
             .ActorRestrictionsInformations();
@@ -83,8 +76,7 @@ public class HumanInformations extends NetworkType {
     this.options =
         new com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption[options_length];
 
-    for (int i = 0; i < options_length; i++)
-  {
+    for (int i = 0; i < options_length; i++) {
 
       int options_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.HumanOption options_it =
@@ -97,8 +89,7 @@ public class HumanInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanInformations("
         + "restrictions="

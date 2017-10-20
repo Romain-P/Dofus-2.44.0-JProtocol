@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,12 +22,10 @@ public class AbstractFightTeamInformations extends NetworkType {
   // i8
   public byte nbWaves;
 
-  public AbstractFightTeamInformations()
-  {}
+  public AbstractFightTeamInformations() {}
 
   public AbstractFightTeamInformations(
-      byte teamId, double leaderId, byte teamSide, byte teamTypeId, byte nbWaves)
-  {
+      byte teamId, double leaderId, byte teamSide, byte teamTypeId, byte nbWaves) {
     this.teamId = teamId;
     this.leaderId = leaderId;
     this.teamSide = teamSide;
@@ -36,14 +34,12 @@ public class AbstractFightTeamInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 116;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.teamId);
     writer.write_f64(this.leaderId);
     writer.write_i8(this.teamSide);
@@ -52,8 +48,7 @@ public class AbstractFightTeamInformations extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.teamId = reader.read_i8();
     this.leaderId = reader.read_f64();
     this.teamSide = reader.read_i8();
@@ -62,8 +57,7 @@ public class AbstractFightTeamInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "AbstractFightTeamInformations("
         + "teamId="

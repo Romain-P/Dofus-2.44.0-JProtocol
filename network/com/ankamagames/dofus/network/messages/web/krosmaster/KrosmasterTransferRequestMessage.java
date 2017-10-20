@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.web.krosmaster;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class KrosmasterTransferRequestMessage extends NetworkMessage {
   // str
   public java.lang.String uid;
 
-  public KrosmasterTransferRequestMessage()
-  {}
+  public KrosmasterTransferRequestMessage() {}
 
-  public KrosmasterTransferRequestMessage(java.lang.String uid)
-  {
+  public KrosmasterTransferRequestMessage(java.lang.String uid) {
     this.uid = uid;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6349;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.uid);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.uid = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "KrosmasterTransferRequestMessage(" + "uid=" + this.uid + ')';
   }

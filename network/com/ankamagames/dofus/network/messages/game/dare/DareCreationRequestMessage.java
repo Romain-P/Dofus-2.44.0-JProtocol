@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,10 +19,10 @@ public class DareCreationRequestMessage extends NetworkMessage {
   public boolean isForAlliance;
   // flag,_loc2_,3
   public boolean needNotifications;
-  // ui64
-  public java.math.BigInteger subscriptionFee;
-  // ui64
-  public java.math.BigInteger jackpot;
+  // vi64
+  public long subscriptionFee;
+  // vi64
+  public long jackpot;
   // ui16
   public int maxCountWinners;
   // ui32
@@ -32,21 +32,19 @@ public class DareCreationRequestMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.dare.DareCriteria
   public com.ankamagames.dofus.network.types.game.dare.DareCriteria[] criterions;
 
-  public DareCreationRequestMessage()
-  {}
+  public DareCreationRequestMessage() {}
 
   public DareCreationRequestMessage(
       boolean isPrivate,
       boolean isForGuild,
       boolean isForAlliance,
       boolean needNotifications,
-      java.math.BigInteger subscriptionFee,
-      java.math.BigInteger jackpot,
+      long subscriptionFee,
+      long jackpot,
       int maxCountWinners,
       long delayBeforeStart,
       long duration,
-      com.ankamagames.dofus.network.types.game.dare.DareCriteria[] criterions)
-  {
+      com.ankamagames.dofus.network.types.game.dare.DareCriteria[] criterions) {
     this.isPrivate = isPrivate;
     this.isForGuild = isForGuild;
     this.isForAlliance = isForAlliance;
@@ -64,14 +62,13 @@ public class DareCreationRequestMessage extends NetworkMessage {
       boolean isForGuild,
       boolean isForAlliance,
       boolean needNotifications,
-      java.math.BigInteger subscriptionFee,
-      java.math.BigInteger jackpot,
+      long subscriptionFee,
+      long jackpot,
       int maxCountWinners,
       long delayBeforeStart,
       long duration,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.dare.DareCriteria>
-          criterions)
-  {
+          criterions) {
     this.isPrivate = isPrivate;
     this.isForGuild = isForGuild;
     this.isForAlliance = isForAlliance;
@@ -86,14 +83,12 @@ public class DareCreationRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6665;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     int _loc2_ = 0;
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isPrivate, 0);
@@ -101,31 +96,29 @@ public class DareCreationRequestMessage extends NetworkMessage {
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.isForAlliance, 2);
     _loc2_ = BooleanByteWrapper.setFlag(_loc2_, this.needNotifications, 3);
     writer.write_i8(_loc2_);
-    writer.write_ui64(this.subscriptionFee);
-    writer.write_ui64(this.jackpot);
+    writer.write_vi64(this.subscriptionFee);
+    writer.write_vi64(this.jackpot);
     writer.write_ui16(this.maxCountWinners);
     writer.write_ui32(this.delayBeforeStart);
     writer.write_ui32(this.duration);
     writer.write_ui16(criterions.length);
 
-    for (int i = 0; i < criterions.length; i++)
-  {
+    for (int i = 0; i < criterions.length; i++) {
 
       criterions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int _loc2_ = reader.read_i8();
     this.isPrivate = BooleanByteWrapper.getFlag(_loc2_, 0);
     this.isForGuild = BooleanByteWrapper.getFlag(_loc2_, 1);
     this.isForAlliance = BooleanByteWrapper.getFlag(_loc2_, 2);
     this.needNotifications = BooleanByteWrapper.getFlag(_loc2_, 3);
-    this.subscriptionFee = reader.read_ui64();
-    this.jackpot = reader.read_ui64();
+    this.subscriptionFee = reader.read_vi64();
+    this.jackpot = reader.read_vi64();
     this.maxCountWinners = reader.read_ui16();
     this.delayBeforeStart = reader.read_ui32();
     this.duration = reader.read_ui32();
@@ -134,8 +127,7 @@ public class DareCreationRequestMessage extends NetworkMessage {
     this.criterions =
         new com.ankamagames.dofus.network.types.game.dare.DareCriteria[criterions_length];
 
-    for (int i = 0; i < criterions_length; i++)
-  {
+    for (int i = 0; i < criterions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.dare.DareCriteria criterions_it =
           new com.ankamagames.dofus.network.types.game.dare.DareCriteria();
@@ -146,8 +138,7 @@ public class DareCreationRequestMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareCreationRequestMessage("
         + "isPrivate="

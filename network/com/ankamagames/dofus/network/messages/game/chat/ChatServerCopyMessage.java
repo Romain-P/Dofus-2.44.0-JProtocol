@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat;
 
 import org.heat.dofus.network.NetworkType;
@@ -12,22 +12,20 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 public class ChatServerCopyMessage
     extends com.ankamagames.dofus.network.messages.game.chat.ChatAbstractServerMessage {
   public static final int PROTOCOL_ID = 882;
-  // ui64
-  public java.math.BigInteger receiverId;
+  // vi64
+  public long receiverId;
   // str
   public java.lang.String receiverName;
 
-  public ChatServerCopyMessage()
-  {}
+  public ChatServerCopyMessage() {}
 
   public ChatServerCopyMessage(
       byte channel,
       java.lang.String content,
       int timestamp,
       java.lang.String fingerprint,
-      java.math.BigInteger receiverId,
-      java.lang.String receiverName)
-  {
+      long receiverId,
+      java.lang.String receiverName) {
 
     super(channel, content, timestamp, fingerprint);
     this.receiverId = receiverId;
@@ -35,32 +33,28 @@ public class ChatServerCopyMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 882;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.receiverId);
+    writer.write_vi64(this.receiverId);
     writer.write_str(this.receiverName);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.receiverId = reader.read_ui64();
+    this.receiverId = reader.read_vi64();
     this.receiverName = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatServerCopyMessage("
         + "channel="

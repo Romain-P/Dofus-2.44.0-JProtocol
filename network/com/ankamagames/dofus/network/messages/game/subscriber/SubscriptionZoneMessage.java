@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.subscriber;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class SubscriptionZoneMessage extends NetworkMessage {
   // bool
   public boolean active;
 
-  public SubscriptionZoneMessage()
-  {}
+  public SubscriptionZoneMessage() {}
 
-  public SubscriptionZoneMessage(boolean active)
-  {
+  public SubscriptionZoneMessage(boolean active) {
     this.active = active;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5573;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_bool(this.active);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.active = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SubscriptionZoneMessage(" + "active=" + this.active + ')';
   }

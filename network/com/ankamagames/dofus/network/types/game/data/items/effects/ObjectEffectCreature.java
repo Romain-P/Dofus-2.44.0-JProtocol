@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.data.items.effects;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ObjectEffectCreature
   // vi16
   public short monsterFamilyId;
 
-  public ObjectEffectCreature()
-  {}
+  public ObjectEffectCreature() {}
 
-  public ObjectEffectCreature(short actionId, short monsterFamilyId)
-  {
+  public ObjectEffectCreature(short actionId, short monsterFamilyId) {
 
     super(actionId);
     this.monsterFamilyId = monsterFamilyId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 71;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.monsterFamilyId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.monsterFamilyId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectEffectCreature("
         + "actionId="

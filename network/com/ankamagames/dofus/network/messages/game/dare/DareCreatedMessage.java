@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.dare;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class DareCreatedMessage extends NetworkMessage {
   // bool
   public boolean needNotifications;
 
-  public DareCreatedMessage()
-  {}
+  public DareCreatedMessage() {}
 
   public DareCreatedMessage(
       com.ankamagames.dofus.network.types.game.dare.DareInformations dareInfos,
-      boolean needNotifications)
-  {
+      boolean needNotifications) {
     this.dareInfos = dareInfos;
     this.needNotifications = needNotifications;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6668;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     this.dareInfos.serialize(writer);
     writer.write_bool(this.needNotifications);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.dareInfos = new com.ankamagames.dofus.network.types.game.dare.DareInformations();
     this.dareInfos.deserialize(reader);
     this.needNotifications = reader.read_bool();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "DareCreatedMessage("
         + "dareInfos="

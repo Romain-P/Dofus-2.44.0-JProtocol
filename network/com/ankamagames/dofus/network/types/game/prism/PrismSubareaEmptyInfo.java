@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class PrismSubareaEmptyInfo extends NetworkType {
   // vi32
   public int allianceId;
 
-  public PrismSubareaEmptyInfo()
-  {}
+  public PrismSubareaEmptyInfo() {}
 
-  public PrismSubareaEmptyInfo(short subAreaId, int allianceId)
-  {
+  public PrismSubareaEmptyInfo(short subAreaId, int allianceId) {
     this.subAreaId = subAreaId;
     this.allianceId = allianceId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 438;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.subAreaId);
     writer.write_vi32(this.allianceId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.subAreaId = reader.read_vi16();
     this.allianceId = reader.read_vi32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismSubareaEmptyInfo("
         + "subAreaId="

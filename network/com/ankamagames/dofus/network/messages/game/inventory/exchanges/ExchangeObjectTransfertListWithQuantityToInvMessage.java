@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class ExchangeObjectTransfertListWithQuantityToInvMessage extends Network
   // array,vi32
   public int[] qtys;
 
-  public ExchangeObjectTransfertListWithQuantityToInvMessage()
-  {}
+  public ExchangeObjectTransfertListWithQuantityToInvMessage() {}
 
-  public ExchangeObjectTransfertListWithQuantityToInvMessage(int[] ids, int[] qtys)
-  {
+  public ExchangeObjectTransfertListWithQuantityToInvMessage(int[] ids, int[] qtys) {
     this.ids = ids;
     this.qtys = qtys;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6470;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(ids.length);
     writer.write_array_vi32(this.ids);
     writer.write_ui16(qtys.length);
@@ -41,8 +37,7 @@ public class ExchangeObjectTransfertListWithQuantityToInvMessage extends Network
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int ids_length = reader.read_ui16();
     this.ids = reader.read_array_vi32(ids_length);
@@ -52,8 +47,7 @@ public class ExchangeObjectTransfertListWithQuantityToInvMessage extends Network
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ExchangeObjectTransfertListWithQuantityToInvMessage("
         + "ids="

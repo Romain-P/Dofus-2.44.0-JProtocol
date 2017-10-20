@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.chat;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class ChatClientPrivateMessage
   // str
   public java.lang.String receiver;
 
-  public ChatClientPrivateMessage()
-  {}
+  public ChatClientPrivateMessage() {}
 
-  public ChatClientPrivateMessage(java.lang.String content, java.lang.String receiver)
-  {
+  public ChatClientPrivateMessage(java.lang.String content, java.lang.String receiver) {
 
     super(content);
     this.receiver = receiver;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 851;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_str(this.receiver);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.receiver = reader.read_str();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ChatClientPrivateMessage("
         + "content="

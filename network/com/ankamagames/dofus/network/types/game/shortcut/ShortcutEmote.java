@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,41 +14,35 @@ public class ShortcutEmote extends com.ankamagames.dofus.network.types.game.shor
   // ui8
   public short emoteId;
 
-  public ShortcutEmote()
-  {}
+  public ShortcutEmote() {}
 
-  public ShortcutEmote(byte slot, short emoteId)
-  {
+  public ShortcutEmote(byte slot, short emoteId) {
 
     super(slot);
     this.emoteId = emoteId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 389;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.emoteId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.emoteId = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutEmote(" + "slot=" + this.slot + ", emoteId=" + this.emoteId + ')';
   }

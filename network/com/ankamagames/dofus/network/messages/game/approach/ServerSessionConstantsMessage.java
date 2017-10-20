@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:11+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.approach;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class ServerSessionConstantsMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant
   public com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant[] variables;
 
-  public ServerSessionConstantsMessage()
-  {}
+  public ServerSessionConstantsMessage() {}
 
   public ServerSessionConstantsMessage(
-      com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant[] variables)
-  {
+      com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant[] variables) {
     this.variables = variables;
   }
 
   public ServerSessionConstantsMessage(
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant>
-          variables)
-  {
+          variables) {
     this.variables =
         variables.toArray(
             com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6434;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(variables.length);
 
-    for (int i = 0; i < variables.length; i++)
-  {
+    for (int i = 0; i < variables.length; i++) {
 
       writer.write_ui16(variables[i].getProtocolId());
 
@@ -54,16 +48,14 @@ public class ServerSessionConstantsMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int variables_length = reader.read_ui16();
     this.variables =
         new com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant
             [variables_length];
 
-    for (int i = 0; i < variables_length; i++)
-  {
+    for (int i = 0; i < variables_length; i++) {
 
       int variables_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.approach.ServerSessionConstant variables_it =
@@ -76,8 +68,7 @@ public class ServerSessionConstantsMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ServerSessionConstantsMessage("
         + "variables="

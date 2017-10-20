@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,8 +15,7 @@ public class SelectedServerDataExtendedMessage
   // array,com.ankamagames.dofus.network.types.connection.GameServerInformations
   public com.ankamagames.dofus.network.types.connection.GameServerInformations[] servers;
 
-  public SelectedServerDataExtendedMessage()
-  {}
+  public SelectedServerDataExtendedMessage() {}
 
   public SelectedServerDataExtendedMessage(
       short serverId,
@@ -24,8 +23,7 @@ public class SelectedServerDataExtendedMessage
       int port,
       boolean canCreateNewCharacter,
       byte[] ticket,
-      com.ankamagames.dofus.network.types.connection.GameServerInformations[] servers)
-  {
+      com.ankamagames.dofus.network.types.connection.GameServerInformations[] servers) {
 
     super(serverId, address, port, canCreateNewCharacter, ticket);
     this.servers = servers;
@@ -38,8 +36,7 @@ public class SelectedServerDataExtendedMessage
       boolean canCreateNewCharacter,
       byte[] ticket,
       java.util.stream.Stream<com.ankamagames.dofus.network.types.connection.GameServerInformations>
-          servers)
-  {
+          servers) {
 
     super(serverId, address, port, canCreateNewCharacter, ticket);
     this.servers =
@@ -48,28 +45,24 @@ public class SelectedServerDataExtendedMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6469;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui16(servers.length);
 
-    for (int i = 0; i < servers.length; i++)
-  {
+    for (int i = 0; i < servers.length; i++) {
 
       servers[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -77,8 +70,7 @@ public class SelectedServerDataExtendedMessage
     this.servers =
         new com.ankamagames.dofus.network.types.connection.GameServerInformations[servers_length];
 
-    for (int i = 0; i < servers_length; i++)
-  {
+    for (int i = 0; i < servers_length; i++) {
 
       com.ankamagames.dofus.network.types.connection.GameServerInformations servers_it =
           new com.ankamagames.dofus.network.types.connection.GameServerInformations();
@@ -89,8 +81,7 @@ public class SelectedServerDataExtendedMessage
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SelectedServerDataExtendedMessage("
         + "serverId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,41 +16,35 @@ public class GameFightPlacementSwapPositionsRequestMessage
   // f64
   public double requestedId;
 
-  public GameFightPlacementSwapPositionsRequestMessage()
-  {}
+  public GameFightPlacementSwapPositionsRequestMessage() {}
 
-  public GameFightPlacementSwapPositionsRequestMessage(short cellId, double requestedId)
-  {
+  public GameFightPlacementSwapPositionsRequestMessage(short cellId, double requestedId) {
 
     super(cellId);
     this.requestedId = requestedId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6541;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.requestedId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.requestedId = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameFightPlacementSwapPositionsRequestMessage("
         + "cellId="

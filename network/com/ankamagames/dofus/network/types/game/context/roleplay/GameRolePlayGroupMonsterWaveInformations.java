@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -19,8 +19,7 @@ public class GameRolePlayGroupMonsterWaveInformations
   public com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformations[]
       alternatives;
 
-  public GameRolePlayGroupMonsterWaveInformations()
-  {}
+  public GameRolePlayGroupMonsterWaveInformations() {}
 
   public GameRolePlayGroupMonsterWaveInformations(
       double contextualId,
@@ -37,8 +36,7 @@ public class GameRolePlayGroupMonsterWaveInformations
       byte alignmentSide,
       byte nbWaves,
       com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformations[]
-          alternatives)
-  {
+          alternatives) {
 
     super(
         contextualId,
@@ -73,8 +71,7 @@ public class GameRolePlayGroupMonsterWaveInformations
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.roleplay
                   .GroupMonsterStaticInformations>
-          alternatives)
-  {
+          alternatives) {
 
     super(
         contextualId,
@@ -97,21 +94,18 @@ public class GameRolePlayGroupMonsterWaveInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 464;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i8(this.nbWaves);
     writer.write_ui16(alternatives.length);
 
-    for (int i = 0; i < alternatives.length; i++)
-  {
+    for (int i = 0; i < alternatives.length; i++) {
 
       writer.write_ui16(alternatives[i].getProtocolId());
 
@@ -120,8 +114,7 @@ public class GameRolePlayGroupMonsterWaveInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.nbWaves = reader.read_i8();
@@ -131,8 +124,7 @@ public class GameRolePlayGroupMonsterWaveInformations
         new com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformations
             [alternatives_length];
 
-    for (int i = 0; i < alternatives_length; i++)
-  {
+    for (int i = 0; i < alternatives_length; i++) {
 
       int alternatives_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.roleplay.GroupMonsterStaticInformations
@@ -147,8 +139,7 @@ public class GameRolePlayGroupMonsterWaveInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameRolePlayGroupMonsterWaveInformations("
         + "contextualId="

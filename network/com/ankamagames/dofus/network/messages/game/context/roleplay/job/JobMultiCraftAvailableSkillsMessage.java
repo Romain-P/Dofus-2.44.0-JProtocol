@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.job;
 
 import org.heat.dofus.network.NetworkType;
@@ -13,17 +13,14 @@ public class JobMultiCraftAvailableSkillsMessage
     extends com.ankamagames.dofus.network.messages.game.context.roleplay.job
         .JobAllowMultiCraftRequestMessage {
   public static final int PROTOCOL_ID = 5747;
-  // ui64
-  public java.math.BigInteger playerId;
+  // vi64
+  public long playerId;
   // array,vi16
   public short[] skills;
 
-  public JobMultiCraftAvailableSkillsMessage()
-  {}
+  public JobMultiCraftAvailableSkillsMessage() {}
 
-  public JobMultiCraftAvailableSkillsMessage(
-      boolean enabled, java.math.BigInteger playerId, short[] skills)
-  {
+  public JobMultiCraftAvailableSkillsMessage(boolean enabled, long playerId, short[] skills) {
 
     super(enabled);
     this.playerId = playerId;
@@ -31,35 +28,31 @@ public class JobMultiCraftAvailableSkillsMessage
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5747;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
-    writer.write_ui64(this.playerId);
+    writer.write_vi64(this.playerId);
     writer.write_ui16(skills.length);
     writer.write_array_vi16(this.skills);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
-    this.playerId = reader.read_ui64();
+    this.playerId = reader.read_vi64();
 
     int skills_length = reader.read_ui16();
     this.skills = reader.read_array_vi16(skills_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobMultiCraftAvailableSkillsMessage("
         + "enabled="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:10+02:00
+// Created by Heat the 2017-10-20 01:53:22+02:00
 package com.ankamagames.dofus.network.messages.connection;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class IdentificationFailedBannedMessage
   // f64
   public double banEndDate;
 
-  public IdentificationFailedBannedMessage()
-  {}
+  public IdentificationFailedBannedMessage() {}
 
-  public IdentificationFailedBannedMessage(byte reason, double banEndDate)
-  {
+  public IdentificationFailedBannedMessage(byte reason, double banEndDate) {
 
     super(reason);
     this.banEndDate = banEndDate;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6174;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_f64(this.banEndDate);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.banEndDate = reader.read_f64();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IdentificationFailedBannedMessage("
         + "reason="

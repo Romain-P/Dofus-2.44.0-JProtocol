@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,12 +22,10 @@ public class PrismInformation extends NetworkType {
   // vi32
   public int rewardTokenCount;
 
-  public PrismInformation()
-  {}
+  public PrismInformation() {}
 
   public PrismInformation(
-      byte typeId, byte state, int nextVulnerabilityDate, int placementDate, int rewardTokenCount)
-  {
+      byte typeId, byte state, int nextVulnerabilityDate, int placementDate, int rewardTokenCount) {
     this.typeId = typeId;
     this.state = state;
     this.nextVulnerabilityDate = nextVulnerabilityDate;
@@ -36,14 +34,12 @@ public class PrismInformation extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 428;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.typeId);
     writer.write_i8(this.state);
     writer.write_i32(this.nextVulnerabilityDate);
@@ -52,8 +48,7 @@ public class PrismInformation extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.typeId = reader.read_i8();
     this.state = reader.read_i8();
     this.nextVulnerabilityDate = reader.read_i32();
@@ -62,8 +57,7 @@ public class PrismInformation extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismInformation("
         + "typeId="

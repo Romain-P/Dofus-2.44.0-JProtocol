@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.interactive;
 
 import org.heat.dofus.network.NetworkType;
@@ -11,8 +11,8 @@ import com.ankamagames.dofus.network.InternalProtocolTypeManager;
 @SuppressWarnings("all")
 public class InteractiveUsedMessage extends NetworkMessage {
   public static final int PROTOCOL_ID = 5745;
-  // ui64
-  public java.math.BigInteger entityId;
+  // vi64
+  public long entityId;
   // vi32
   public int elemId;
   // vi16
@@ -22,12 +22,10 @@ public class InteractiveUsedMessage extends NetworkMessage {
   // bool
   public boolean canMove;
 
-  public InteractiveUsedMessage()
-  {}
+  public InteractiveUsedMessage() {}
 
   public InteractiveUsedMessage(
-      java.math.BigInteger entityId, int elemId, short skillId, short duration, boolean canMove)
-  {
+      long entityId, int elemId, short skillId, short duration, boolean canMove) {
     this.entityId = entityId;
     this.elemId = elemId;
     this.skillId = skillId;
@@ -36,15 +34,13 @@ public class InteractiveUsedMessage extends NetworkMessage {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5745;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
-    writer.write_ui64(this.entityId);
+  public void serialize(DataWriter writer) {
+    writer.write_vi64(this.entityId);
     writer.write_vi32(this.elemId);
     writer.write_vi16(this.skillId);
     writer.write_vi16(this.duration);
@@ -52,9 +48,8 @@ public class InteractiveUsedMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
-    this.entityId = reader.read_ui64();
+  public void deserialize(DataReader reader) {
+    this.entityId = reader.read_vi64();
     this.elemId = reader.read_vi32();
     this.skillId = reader.read_vi16();
     this.duration = reader.read_vi16();
@@ -62,8 +57,7 @@ public class InteractiveUsedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "InteractiveUsedMessage("
         + "entityId="

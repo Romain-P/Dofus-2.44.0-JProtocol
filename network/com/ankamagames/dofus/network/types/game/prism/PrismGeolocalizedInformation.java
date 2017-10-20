@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:28+02:00
 package com.ankamagames.dofus.network.types.game.prism;
 
 import org.heat.dofus.network.NetworkType;
@@ -21,8 +21,7 @@ public class PrismGeolocalizedInformation
   // com.ankamagames.dofus.network.types.game.prism.PrismInformation
   public com.ankamagames.dofus.network.types.game.prism.PrismInformation prism;
 
-  public PrismGeolocalizedInformation()
-  {}
+  public PrismGeolocalizedInformation() {}
 
   public PrismGeolocalizedInformation(
       short subAreaId,
@@ -30,8 +29,7 @@ public class PrismGeolocalizedInformation
       short worldX,
       short worldY,
       double mapId,
-      com.ankamagames.dofus.network.types.game.prism.PrismInformation prism)
-  {
+      com.ankamagames.dofus.network.types.game.prism.PrismInformation prism) {
 
     super(subAreaId, allianceId);
     this.worldX = worldX;
@@ -41,14 +39,12 @@ public class PrismGeolocalizedInformation
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 434;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i16(this.worldX);
@@ -59,8 +55,7 @@ public class PrismGeolocalizedInformation
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.worldX = reader.read_i16();
@@ -75,8 +70,7 @@ public class PrismGeolocalizedInformation
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "PrismGeolocalizedInformation("
         + "subAreaId="

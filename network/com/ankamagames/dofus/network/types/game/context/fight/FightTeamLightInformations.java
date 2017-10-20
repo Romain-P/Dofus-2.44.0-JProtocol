@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -27,8 +27,7 @@ public class FightTeamLightInformations
   // vi32
   public int meanLevel;
 
-  public FightTeamLightInformations()
-  {}
+  public FightTeamLightInformations() {}
 
   public FightTeamLightInformations(
       byte teamId,
@@ -42,8 +41,7 @@ public class FightTeamLightInformations
       boolean hasGroupMember,
       boolean hasMyTaxCollector,
       byte teamMembersCount,
-      int meanLevel)
-  {
+      int meanLevel) {
 
     super(teamId, leaderId, teamSide, teamTypeId, nbWaves);
     this.hasFriend = hasFriend;
@@ -56,14 +54,12 @@ public class FightTeamLightInformations
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 115;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
 
@@ -79,8 +75,7 @@ public class FightTeamLightInformations
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
 
@@ -95,8 +90,7 @@ public class FightTeamLightInformations
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightTeamLightInformations("
         + "teamId="

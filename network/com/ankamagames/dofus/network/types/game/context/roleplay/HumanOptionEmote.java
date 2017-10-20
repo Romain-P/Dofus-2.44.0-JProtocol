@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -17,11 +17,9 @@ public class HumanOptionEmote
   // f64
   public double emoteStartTime;
 
-  public HumanOptionEmote()
-  {}
+  public HumanOptionEmote() {}
 
-  public HumanOptionEmote(short emoteId, double emoteStartTime)
-  {
+  public HumanOptionEmote(short emoteId, double emoteStartTime) {
 
     super();
     this.emoteId = emoteId;
@@ -29,14 +27,12 @@ public class HumanOptionEmote
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 407;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.emoteId);
@@ -44,8 +40,7 @@ public class HumanOptionEmote
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.emoteId = reader.read_ui8();
@@ -53,8 +48,7 @@ public class HumanOptionEmote
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionEmote("
         + "emoteId="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,12 +23,10 @@ public class FightResultPvpData
   // vi16
   public short honorDelta;
 
-  public FightResultPvpData()
-  {}
+  public FightResultPvpData() {}
 
   public FightResultPvpData(
-      short grade, short minHonorForGrade, short maxHonorForGrade, short honor, short honorDelta)
-  {
+      short grade, short minHonorForGrade, short maxHonorForGrade, short honor, short honorDelta) {
 
     super();
     this.grade = grade;
@@ -39,14 +37,12 @@ public class FightResultPvpData
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 190;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.grade);
@@ -57,8 +53,7 @@ public class FightResultPvpData
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.grade = reader.read_ui8();
@@ -69,8 +64,7 @@ public class FightResultPvpData
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightResultPvpData("
         + "grade="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,33 +16,28 @@ public class ShortcutBarReplacedMessage extends NetworkMessage {
   // com.ankamagames.dofus.network.types.game.shortcut.Shortcut
   public com.ankamagames.dofus.network.types.game.shortcut.Shortcut shortcut;
 
-  public ShortcutBarReplacedMessage()
-  {}
+  public ShortcutBarReplacedMessage() {}
 
   public ShortcutBarReplacedMessage(
-      byte barType, com.ankamagames.dofus.network.types.game.shortcut.Shortcut shortcut)
-  {
+      byte barType, com.ankamagames.dofus.network.types.game.shortcut.Shortcut shortcut) {
     this.barType = barType;
     this.shortcut = shortcut;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6706;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.barType);
     writer.write_ui16(this.shortcut.getProtocolId());
     this.shortcut.serialize(writer);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.barType = reader.read_i8();
 
     int shortcut_typeId = reader.read_ui16();
@@ -53,8 +48,7 @@ public class ShortcutBarReplacedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutBarReplacedMessage("
         + "barType="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.inventory.exchanges;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,38 +14,32 @@ public class JobBookSubscribeRequestMessage extends NetworkMessage {
   // array,i8
   public byte[] jobIds;
 
-  public JobBookSubscribeRequestMessage()
-  {}
+  public JobBookSubscribeRequestMessage() {}
 
-  public JobBookSubscribeRequestMessage(byte[] jobIds)
-  {
+  public JobBookSubscribeRequestMessage(byte[] jobIds) {
     this.jobIds = jobIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6592;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(jobIds.length);
     writer.write_array_i8(this.jobIds);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int jobIds_length = reader.read_ui16();
     this.jobIds = reader.read_array_i8(jobIds_length);
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "JobBookSubscribeRequestMessage(" + "jobIds=" + +this.jobIds.length + "b" + ')';
   }

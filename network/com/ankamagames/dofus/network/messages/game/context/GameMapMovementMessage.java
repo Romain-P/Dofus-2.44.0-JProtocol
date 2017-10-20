@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:12+02:00
+// Created by Heat the 2017-10-20 01:53:23+02:00
 package com.ankamagames.dofus.network.messages.game.context;
 
 import org.heat.dofus.network.NetworkType;
@@ -18,25 +18,21 @@ public class GameMapMovementMessage extends NetworkMessage {
   // f64
   public double actorId;
 
-  public GameMapMovementMessage()
-  {}
+  public GameMapMovementMessage() {}
 
-  public GameMapMovementMessage(short[] keyMovements, short forcedDirection, double actorId)
-  {
+  public GameMapMovementMessage(short[] keyMovements, short forcedDirection, double actorId) {
     this.keyMovements = keyMovements;
     this.forcedDirection = forcedDirection;
     this.actorId = actorId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 951;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(keyMovements.length);
     writer.write_array_i16(this.keyMovements);
     writer.write_i16(this.forcedDirection);
@@ -44,8 +40,7 @@ public class GameMapMovementMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int keyMovements_length = reader.read_ui16();
     this.keyMovements = reader.read_array_i16(keyMovements_length);
@@ -54,8 +49,7 @@ public class GameMapMovementMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "GameMapMovementMessage("
         + "keyMovements="

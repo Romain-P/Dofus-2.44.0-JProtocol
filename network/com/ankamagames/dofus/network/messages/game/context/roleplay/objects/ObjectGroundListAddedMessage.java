@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:13+02:00
+// Created by Heat the 2017-10-20 01:53:24+02:00
 package com.ankamagames.dofus.network.messages.game.context.roleplay.objects;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,24 +16,20 @@ public class ObjectGroundListAddedMessage extends NetworkMessage {
   // array,vi16
   public short[] referenceIds;
 
-  public ObjectGroundListAddedMessage()
-  {}
+  public ObjectGroundListAddedMessage() {}
 
-  public ObjectGroundListAddedMessage(short[] cells, short[] referenceIds)
-  {
+  public ObjectGroundListAddedMessage(short[] cells, short[] referenceIds) {
     this.cells = cells;
     this.referenceIds = referenceIds;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5925;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(cells.length);
     writer.write_array_vi16(this.cells);
     writer.write_ui16(referenceIds.length);
@@ -41,8 +37,7 @@ public class ObjectGroundListAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int cells_length = reader.read_ui16();
     this.cells = reader.read_array_vi16(cells_length);
@@ -52,8 +47,7 @@ public class ObjectGroundListAddedMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ObjectGroundListAddedMessage("
         + "cells="

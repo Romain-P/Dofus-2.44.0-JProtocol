@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.initialization;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ServerExperienceModificatorMessage extends NetworkMessage {
   // vi16
   public short experiencePercent;
 
-  public ServerExperienceModificatorMessage()
-  {}
+  public ServerExperienceModificatorMessage() {}
 
-  public ServerExperienceModificatorMessage(short experiencePercent)
-  {
+  public ServerExperienceModificatorMessage(short experiencePercent) {
     this.experiencePercent = experiencePercent;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6237;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_vi16(this.experiencePercent);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.experiencePercent = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ServerExperienceModificatorMessage("
         + "experiencePercent="

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.social;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,46 +15,40 @@ public class BulletinMessage
   // i32
   public int lastNotifiedTimestamp;
 
-  public BulletinMessage()
-  {}
+  public BulletinMessage() {}
 
   public BulletinMessage(
       java.lang.String content,
       int timestamp,
-      java.math.BigInteger memberId,
+      long memberId,
       java.lang.String memberName,
-      int lastNotifiedTimestamp)
-  {
+      int lastNotifiedTimestamp) {
 
     super(content, timestamp, memberId, memberName);
     this.lastNotifiedTimestamp = lastNotifiedTimestamp;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6695;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_i32(this.lastNotifiedTimestamp);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.lastNotifiedTimestamp = reader.read_i32();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "BulletinMessage("
         + "content="

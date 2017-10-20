@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:14+02:00
+// Created by Heat the 2017-10-20 01:53:25+02:00
 package com.ankamagames.dofus.network.messages.game.friend;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,37 +14,31 @@ public class IgnoredListMessage extends NetworkMessage {
   // array,com.ankamagames.dofus.network.types.game.friend.IgnoredInformations
   public com.ankamagames.dofus.network.types.game.friend.IgnoredInformations[] ignoredList;
 
-  public IgnoredListMessage()
-  {}
+  public IgnoredListMessage() {}
 
   public IgnoredListMessage(
-      com.ankamagames.dofus.network.types.game.friend.IgnoredInformations[] ignoredList)
-  {
+      com.ankamagames.dofus.network.types.game.friend.IgnoredInformations[] ignoredList) {
     this.ignoredList = ignoredList;
   }
 
   public IgnoredListMessage(
       java.util.stream.Stream<com.ankamagames.dofus.network.types.game.friend.IgnoredInformations>
-          ignoredList)
-  {
+          ignoredList) {
     this.ignoredList =
         ignoredList.toArray(
             com.ankamagames.dofus.network.types.game.friend.IgnoredInformations[]::new);
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 5674;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_ui16(ignoredList.length);
 
-    for (int i = 0; i < ignoredList.length; i++)
-  {
+    for (int i = 0; i < ignoredList.length; i++) {
 
       writer.write_ui16(ignoredList[i].getProtocolId());
 
@@ -53,15 +47,13 @@ public class IgnoredListMessage extends NetworkMessage {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     int ignoredList_length = reader.read_ui16();
     this.ignoredList =
         new com.ankamagames.dofus.network.types.game.friend.IgnoredInformations[ignoredList_length];
 
-    for (int i = 0; i < ignoredList_length; i++)
-  {
+    for (int i = 0; i < ignoredList_length; i++) {
 
       int ignoredList_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.friend.IgnoredInformations ignoredList_it =
@@ -74,8 +66,7 @@ public class IgnoredListMessage extends NetworkMessage {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "IgnoredListMessage("
         + "ignoredList="

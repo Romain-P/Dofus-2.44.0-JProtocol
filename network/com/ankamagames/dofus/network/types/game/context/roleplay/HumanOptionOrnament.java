@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.roleplay;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class HumanOptionOrnament
   // vi16
   public short ornamentId;
 
-  public HumanOptionOrnament()
-  {}
+  public HumanOptionOrnament() {}
 
-  public HumanOptionOrnament(short ornamentId)
-  {
+  public HumanOptionOrnament(short ornamentId) {
 
     super();
     this.ornamentId = ornamentId;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 411;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_vi16(this.ornamentId);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.ornamentId = reader.read_vi16();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "HumanOptionOrnament(" + "ornamentId=" + this.ornamentId + ')';
   }

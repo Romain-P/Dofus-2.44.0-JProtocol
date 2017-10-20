@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:16+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.interactive.skill;
 
 import org.heat.dofus.network.NetworkType;
@@ -15,41 +15,35 @@ public class SkillActionDescriptionTimed
   // ui8
   public short time;
 
-  public SkillActionDescriptionTimed()
-  {}
+  public SkillActionDescriptionTimed() {}
 
-  public SkillActionDescriptionTimed(short skillId, short time)
-  {
+  public SkillActionDescriptionTimed(short skillId, short time) {
 
     super(skillId);
     this.time = time;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 103;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
 
     super.serialize(writer);
     writer.write_ui8(this.time);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
 
     super.deserialize(reader);
     this.time = reader.read_ui8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "SkillActionDescriptionTimed(" + "skillId=" + this.skillId + ", time=" + this.time + ')';
   }

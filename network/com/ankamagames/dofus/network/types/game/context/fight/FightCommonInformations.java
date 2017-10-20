@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.context.fight;
 
 import org.heat.dofus.network.NetworkType;
@@ -23,8 +23,7 @@ public class FightCommonInformations extends NetworkType {
   public com.ankamagames.dofus.network.types.game.context.fight.FightOptionsInformations[]
       fightTeamsOptions;
 
-  public FightCommonInformations()
-  {}
+  public FightCommonInformations() {}
 
   public FightCommonInformations(
       int fightId,
@@ -32,8 +31,7 @@ public class FightCommonInformations extends NetworkType {
       com.ankamagames.dofus.network.types.game.context.fight.FightTeamInformations[] fightTeams,
       short[] fightTeamsPositions,
       com.ankamagames.dofus.network.types.game.context.fight.FightOptionsInformations[]
-          fightTeamsOptions)
-  {
+          fightTeamsOptions) {
     this.fightId = fightId;
     this.fightType = fightType;
     this.fightTeams = fightTeams;
@@ -50,8 +48,7 @@ public class FightCommonInformations extends NetworkType {
       short[] fightTeamsPositions,
       java.util.stream.Stream<
               com.ankamagames.dofus.network.types.game.context.fight.FightOptionsInformations>
-          fightTeamsOptions)
-  {
+          fightTeamsOptions) {
     this.fightId = fightId;
     this.fightType = fightType;
     this.fightTeams =
@@ -64,20 +61,17 @@ public class FightCommonInformations extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 43;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i32(this.fightId);
     writer.write_i8(this.fightType);
     writer.write_ui16(fightTeams.length);
 
-    for (int i = 0; i < fightTeams.length; i++)
-  {
+    for (int i = 0; i < fightTeams.length; i++) {
 
       writer.write_ui16(fightTeams[i].getProtocolId());
 
@@ -87,16 +81,14 @@ public class FightCommonInformations extends NetworkType {
     writer.write_array_vi16(this.fightTeamsPositions);
     writer.write_ui16(fightTeamsOptions.length);
 
-    for (int i = 0; i < fightTeamsOptions.length; i++)
-  {
+    for (int i = 0; i < fightTeamsOptions.length; i++) {
 
       fightTeamsOptions[i].serialize(writer);
     }
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.fightId = reader.read_i32();
     this.fightType = reader.read_i8();
 
@@ -105,8 +97,7 @@ public class FightCommonInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.fight.FightTeamInformations
             [fightTeams_length];
 
-    for (int i = 0; i < fightTeams_length; i++)
-  {
+    for (int i = 0; i < fightTeams_length; i++) {
 
       int fightTeams_it_typeId = reader.read_ui16();
       com.ankamagames.dofus.network.types.game.context.fight.FightTeamInformations fightTeams_it =
@@ -125,8 +116,7 @@ public class FightCommonInformations extends NetworkType {
         new com.ankamagames.dofus.network.types.game.context.fight.FightOptionsInformations
             [fightTeamsOptions_length];
 
-    for (int i = 0; i < fightTeamsOptions_length; i++)
-  {
+    for (int i = 0; i < fightTeamsOptions_length; i++) {
 
       com.ankamagames.dofus.network.types.game.context.fight.FightOptionsInformations
           fightTeamsOptions_it =
@@ -138,8 +128,7 @@ public class FightCommonInformations extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "FightCommonInformations("
         + "fightId="

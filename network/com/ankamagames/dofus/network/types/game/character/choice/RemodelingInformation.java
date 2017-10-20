@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.types.game.character.choice;
 
 import org.heat.dofus.network.NetworkType;
@@ -22,12 +22,10 @@ public class RemodelingInformation extends NetworkType {
   // array,i32
   public int[] colors;
 
-  public RemodelingInformation()
-  {}
+  public RemodelingInformation() {}
 
   public RemodelingInformation(
-      java.lang.String name, byte breed, boolean sex, short cosmeticId, int[] colors)
-  {
+      java.lang.String name, byte breed, boolean sex, short cosmeticId, int[] colors) {
     this.name = name;
     this.breed = breed;
     this.sex = sex;
@@ -36,14 +34,12 @@ public class RemodelingInformation extends NetworkType {
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 480;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.name);
     writer.write_i8(this.breed);
     writer.write_bool(this.sex);
@@ -53,8 +49,7 @@ public class RemodelingInformation extends NetworkType {
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.name = reader.read_str();
     this.breed = reader.read_i8();
     this.sex = reader.read_bool();
@@ -65,8 +60,7 @@ public class RemodelingInformation extends NetworkType {
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "RemodelingInformation("
         + "name="

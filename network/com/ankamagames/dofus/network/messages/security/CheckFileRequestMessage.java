@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:27+02:00
 package com.ankamagames.dofus.network.messages.security;
 
 import org.heat.dofus.network.NetworkType;
@@ -16,38 +16,32 @@ public class CheckFileRequestMessage extends NetworkMessage {
   // i8
   public byte type;
 
-  public CheckFileRequestMessage()
-  {}
+  public CheckFileRequestMessage() {}
 
-  public CheckFileRequestMessage(java.lang.String filename, byte type)
-  {
+  public CheckFileRequestMessage(java.lang.String filename, byte type) {
     this.filename = filename;
     this.type = type;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6154;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_str(this.filename);
     writer.write_i8(this.type);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.filename = reader.read_str();
     this.type = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "CheckFileRequestMessage(" + "filename=" + this.filename + ", type=" + this.type + ')';
   }

@@ -1,4 +1,4 @@
-// Created by Heat the 2017-10-19 04:03:15+02:00
+// Created by Heat the 2017-10-20 01:53:26+02:00
 package com.ankamagames.dofus.network.messages.game.shortcut;
 
 import org.heat.dofus.network.NetworkType;
@@ -14,35 +14,29 @@ public class ShortcutBarSwapErrorMessage extends NetworkMessage {
   // i8
   public byte error;
 
-  public ShortcutBarSwapErrorMessage()
-  {}
+  public ShortcutBarSwapErrorMessage() {}
 
-  public ShortcutBarSwapErrorMessage(byte error)
-  {
+  public ShortcutBarSwapErrorMessage(byte error) {
     this.error = error;
   }
 
   @Override
-  public int getProtocolId()
-  {
+  public int getProtocolId() {
     return 6226;
   }
 
   @Override
-  public void serialize(DataWriter writer)
-  {
+  public void serialize(DataWriter writer) {
     writer.write_i8(this.error);
   }
 
   @Override
-  public void deserialize(DataReader reader)
-  {
+  public void deserialize(DataReader reader) {
     this.error = reader.read_i8();
   }
 
   @Override
-  public String toString()
-  {
+  public String toString() {
 
     return "ShortcutBarSwapErrorMessage(" + "error=" + this.error + ')';
   }
